@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 
-[node name="Spatial" type="KinematicBody"]
+[node name="FPSPlayer" type="KinematicBody"]
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -16,6 +16,6 @@ shape = SubResource( 1 )
 
 [node name="Camera" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1.8, 0 )
-player = NodePath("..")
+playerNodePath = NodePath("..")
 
-[node name="Spatial" parent="." instance=ExtResource( 2 )]
+[node name="FPSMesh" parent="." instance=ExtResource( 2 )]
