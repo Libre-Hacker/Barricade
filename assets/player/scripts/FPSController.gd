@@ -12,7 +12,7 @@ func _physics_process(_delta): # Use physics because this uses a KinematicBody.
 # Move this object.
 func move():
 	calculate_movement()
-	move_and_slide(velocity, Vector3.UP, true)
+	move_and_slide(velocity, Vector3.UP, true, 4, 0.35, false)
 
 # Calculates this objects velocity.
 func calculate_movement():

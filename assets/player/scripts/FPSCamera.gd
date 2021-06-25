@@ -1,8 +1,8 @@
 extends Camera
 
 export var mounseSensitivity : float = 0.1
-export(float, 0, 90, 0.1) var maxLookUp = 90
-export(float, -90, 0, 0.1) var minLookDown = -90
+export(float, 0, 90, 0.1) var maxLookUp : float= 90
+export(float, -90, 0, 0.1) var minLookDown : float = -90
 
 export(NodePath) var playerNodePath : NodePath
 onready var player = get_node(playerNodePath)
@@ -12,8 +12,8 @@ func _ready():
 
 # Gets mouse input and calls corresponding function.
 func _input(event):
-	if event is InputEventMouseMotion:
-		VerticalLook(event.relative.y)
+	if(event is InputEventMouseMotion and Input.is_action_pressed("rotate_prop") == false):
+		VerticalLook(event.relative.y) 
 		HorizontalLook(event.relative.x)
 
 # Rotates this object around the x-axis
