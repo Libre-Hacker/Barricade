@@ -11,12 +11,20 @@ config_version=4
 [application]
 
 config/name="Barricade"
-run/main_scene="res://assets/player/FPSPlayer.tscn"
-config/icon="res://~sandbox/sprites/icon.png"
+run/main_scene="res://assets/scenes/DevLvlFPSControler.tscn"
+config/icon="res://assets/sprites/icon.png"
 
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true
+
+[display]
+
+window/size/borderless=true
+
+[editor]
+
+reimport_missing_imported_files=false
 
 [gdnative]
 
@@ -64,6 +72,26 @@ rotate_prop={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
+primary_fire={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+reload={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+next_weapon={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+previous_weapon={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [physics]
 
@@ -71,4 +99,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://~sandbox/environments/default_env.tres"
+environment/default_environment="res://assets/environments/default_env.tres"

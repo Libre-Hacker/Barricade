@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/scenes/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/scenes/FPSCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/FPSMesh.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scenes/SemiAutoRifle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/scenes/Pistol.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scripts/GunSwitcher.gd" type="Script" id=6]
+[ext_resource path="res://assets/scripts/Interact.gd" type="Script" id=7]
+[ext_resource path="res://assets/scripts/FPSController.gd" type="Script" id=8]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.5
+
+[node name="FPSPlayer" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="Camera" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.8, 0 )
+playerNodePath = NodePath("..")
+
+[node name="InteractionRayCast" type="RayCast" parent="Camera"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, 2 )
+collision_mask = 4
+script = ExtResource( 7 )
+ignoreOwner = true
+
+[node name="HoldPoint" type="Position3D" parent="Camera/InteractionRayCast"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.01992e-07, 0, 2 )
+
+[node name="GunBelt" type="Spatial" parent="Camera"]
+script = ExtResource( 6 )
+
+[node name="SemiAutoRifle" parent="Camera/GunBelt" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="Position3D" parent="Camera/GunBelt/SemiAutoRifle" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62, -0.472, 2.616 )
+
+[node name="Pistol" parent="Camera/GunBelt" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="Position3D" parent="Camera/GunBelt/Pistol" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412747, -0.485862, 1.93875 )
+
+[node name="FPSMesh" parent="." instance=ExtResource( 3 )]
+
+[node name="HUD" parent="." instance=ExtResource( 1 )]
+
+[editable path="Camera/GunBelt/SemiAutoRifle"]
+[editable path="Camera/GunBelt/Pistol"]

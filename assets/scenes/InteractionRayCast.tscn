@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/Interact.gd" type="Script" id=1]
+
+[node name="InteractionRayCast" type="RayCast"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, 2 )
+collision_mask = 4
+script = ExtResource( 1 )
+maxInteractionDistance = 2.5
+ignoreOwner = true
+
+[node name="HoldPoint" type="Position3D" parent="."]
