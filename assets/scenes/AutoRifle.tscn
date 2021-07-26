@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/scenes/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/animations/semi_auto_rifle/equip.tres" type="Animation" id=2]
+[ext_resource path="res://assets/animations/semi_auto_rifle/reload.tres" type="Animation" id=3]
+[ext_resource path="res://assets/animations/semi_auto_rifle/unequip.tres" type="Animation" id=4]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.588235, 0.505882, 0.505882, 1 )
+
+[sub_resource type="CylinderMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.466667, 0.235294, 0.235294, 1 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.819608, 0.360784, 0.0235294, 1 )
+
+[node name="AutoRifle" instance=ExtResource( 1 )]
+selectedFireMode = 1
+ammoCapacity = 30
+rateOfFire = 600.0
+damage = 25.0
+equipped = true
+reserveAmmo = 90
+
+[node name="AnimationPlayer" parent="." index="0"]
+anims/equip = ExtResource( 2 )
+anims/reload = ExtResource( 3 )
+anims/unequip = ExtResource( 4 )
+
+[node name="Position3D" type="Position3D" parent="." index="3"]
+
+[node name="Mesh" type="Spatial" parent="Position3D" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.04 )
+
+[node name="Receiver" type="MeshInstance" parent="Position3D/Mesh" index="0"]
+transform = Transform( 0.05, 0, 0, 0, 0.15, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Barrel" type="MeshInstance" parent="Position3D/Mesh" index="1"]
+transform = Transform( 0.04, 0, 0, 0, -4.37114e-09, -0.04, 0, 0.1, -1.74846e-09, 0, -0.000701666, 1 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Magazine" type="MeshInstance" parent="Position3D/Mesh" index="2"]
+transform = Transform( 0.04, 0, 0, 0, -0.409576, -0.0573576, 0, 0.286788, -0.0819152, 0, -0.352758, 0.214732 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="Grip" type="MeshInstance" parent="Position3D/Mesh" index="3"]
+transform = Transform( 0.04, 0, 0, 0, -0.192127, 0.0208363, 0, -0.0555635, -0.0720475, 0, -0.266281, -0.710156 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 7 )

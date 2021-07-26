@@ -536,12 +536,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 1.75, -5.5 )
 [node name="FPSPlayer" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 
-[node name="SemiAutoRifle" parent="FPSPlayer/Camera/GunBelt" index="0"]
-equipped = false
-
-[node name="Mesh" parent="FPSPlayer/Camera/GunBelt/SemiAutoRifle/Position3D" index="0"]
-transform = Transform( 0.965926, -0.258819, 0, 0.224144, 0.836516, -0.5, 0.12941, 0.482963, 0.866026, -0.5, -1, -1.04 )
-
 [editable path="FPSPlayer"]
-[editable path="FPSPlayer/Camera/GunBelt/SemiAutoRifle"]
+[editable path="FPSPlayer/HUD"]
 [editable path="FPSPlayer/Camera/GunBelt/Pistol"]
+[editable path="FPSPlayer/Camera/GunBelt/AutoRifle"]
