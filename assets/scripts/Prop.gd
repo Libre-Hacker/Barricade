@@ -2,6 +2,7 @@ extends RigidBody
 
 var nodeToFollow : Node
 var isPickedUp : bool = false
+var isNailed : bool = false
 export (float, 1, 20, 0.1) var followSpeed : float = 7.5
 export (float, 1,1000) var health : float
 
@@ -44,3 +45,7 @@ func damage(damageTaken : float):
 		print(health)
 		if(health <= 0):
 			self.queue_free()
+
+func nail():
+	mode = 1
+	isNailed = true

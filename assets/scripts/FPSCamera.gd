@@ -10,13 +10,14 @@ onready var interactionRayCast = get_node("InteractionRayCast")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # Lock mouse to game screen.
-
+	pass
 
 # Gets mouse input and calls corresponding function.
-func _input(event):
-	if(interactionRayCast.isInteracting and Input.is_action_pressed("rotate_prop")):
+func _unhandled_input(event):
+	if(interactionRayCast.isInteracting and event.is_action_pressed("rotate_prop")):
 		return
 	if(event is InputEventMouseMotion):
+		get_tree().get_root().set_input_as_handled()
 		VerticalLook(event.relative.y)
 		HorizontalLook(event.relative.x)
 

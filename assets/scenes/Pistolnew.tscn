@@ -1,8 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/scenes/Gun.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/animations/pistol/unequip.tres" type="Animation" id=2]
-[ext_resource path="res://assets/animations/pistol/equip.tres" type="Animation" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -16,25 +14,12 @@ albedo_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="CubeMesh" id=5]
 
-[sub_resource type="CubeMesh" id=6]
-
-[sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 0.145098, 0.145098, 0.145098, 1 )
-
 [node name="PistolNew" instance=ExtResource( 1 )]
-ammoCapacity = 12
-reserveAmmo = 36
-
-[node name="AnimationPlayer" parent="." index="0"]
-anims/equip = ExtResource( 3 )
-anims/unequip = ExtResource( 2 )
+equipped = true
 
 [node name="Position3D" type="Position3D" parent="." index="3"]
 
 [node name="Pistol" type="Spatial" parent="Position3D" index="0"]
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="Receiver" type="MeshInstance" parent="Position3D/Pistol" index="0"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.4, 0, 0, -0.4 )
@@ -53,8 +38,5 @@ material/0 = SubResource( 2 )
 
 [node name="Magazine" type="MeshInstance" parent="Position3D/Pistol" index="3"]
 transform = Transform( 0.09, 0, 0, 0, -0.0307818, -0.187939, 0, 0.0845724, -0.0684042, -1.04308e-07, -0.194349, -0.697322 )
-mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
-__meta__ = {
-"_editor_description_": ""
-}
+mesh = SubResource( 5 )
+material/0 = SubResource( 2 )

@@ -6,14 +6,17 @@ var currentWeapon : Node
 
 func _ready():
 	numberOfWeapons = get_child_count()
-	switchWeapon(0) # Seitch to the first weapon in the GunBelt or all weapons will be active at game start.
+	switchWeapon(0) # Switch to the first weapon in the GunBelt or all weapons will be active at game start.
 
-func _input(_event):
+func _unhandled_input(event):
 	# Use +/- 1 to increment the current weapon when using scroll wheel.
-	if(Input.is_action_just_pressed("next_weapon")):
+	if(event.is_action_pressed("next_weapon")):
 		switchWeapon(1) 
-	elif(Input.is_action_just_pressed("previous_weapon")):
+		get_tree().get_root().set_input_as_handled()
+	elif(event.is_action_pressed("previous_weapon")):
 		switchWeapon(-1)
+		get_tree().get_root().set_input_as_handled()
+
 
 func switchWeapon(increment : int):
 	# Check if the increment needs to wrap to the start or end of the weapon list.
@@ -24,12 +27,14 @@ func switchWeapon(increment : int):
 	else:
 		currentWeaponIndex += increment
 	
+	
 	# Loop through all children, find and equip the selected weapon. Unequip all others.
 	for index in get_child_count():
 		var iteratedNode = get_child(index)
+		print(index)
 		if(index == currentWeaponIndex):
 			equipNewWeapon(iteratedNode)
-		else:
+		elif(iteratedNode.equipped == true):
 			unEquipCurrentWeapon(iteratedNode)
 
 # Prepare and unequip the current weapon.
@@ -42,6 +47,7 @@ func unEquipCurrentWeapon(oldWeapon : Node):
 	oldWeapon.equipped = false
 	oldWeapon.set_process_input(false)
 	oldWeapon.set_process(false)
+	print(oldWeapon.name, " is unequipping")
 
 # Prepare and equip the new weapon.
 func equipNewWeapon(newWeapon : Node):

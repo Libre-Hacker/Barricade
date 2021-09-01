@@ -15,9 +15,10 @@ func _process(_delta):
 	endInteract() # Call this first or we will immediately end the interaction.
 	startInteract()
 
-func _input(event):
+func _unhandled_input(event):
 	if (event is InputEventMouseMotion and Input.is_action_pressed("rotate_prop")):
 		mouseRotate(event.relative.x, event.relative.y)
+		get_tree().get_root().set_input_as_handled()
 
 func mouseRotate(mouseX, mouseY):
 	if(isInteracting == false):

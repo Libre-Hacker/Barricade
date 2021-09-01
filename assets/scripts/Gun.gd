@@ -27,11 +27,13 @@ func _ready():
 	cast_to = Vector3(0,0,maxRange)
 
 # Process user input.
-func _input(_event):
-	if(Input.is_action_just_pressed("primary_fire") and selectedFireMode == fireModes.semiAuto):
+func _unhandled_input(event):
+	if(event.is_action_pressed("primary_fire") and selectedFireMode == fireModes.semiAuto):
 		primary_fire()
-	if(Input.is_action_just_pressed("reload")):
+		get_tree().get_root().set_input_as_handled()
+	if(event.is_action_pressed("reload")):
 		startReload()
+		get_tree().get_root().set_input_as_handled()
 
 func _process(_delta):
 	if(Input.is_action_pressed("primary_fire") and selectedFireMode == fireModes.fullAuto): # Must use _process() for full auto, or input will only be checked when another input is given.

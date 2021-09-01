@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/scripts/Hammer.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/HammerModel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/animations/hammer/equip.tres" type="Animation" id=3]
+[ext_resource path="res://assets/animations/hammer/unequip.tres" type="Animation" id=4]
+
+[node name="Hammer" type="RayCast"]
+enabled = true
+cast_to = Vector3( 0, 0, 3 )
+collision_mask = 7
+script = ExtResource( 1 )
+hammerReach = 3.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/equip = ExtResource( 3 )
+anims/unequip = ExtResource( 4 )
+
+[node name="Position3D" type="Position3D" parent="."]
+
+[node name="HammerModel" parent="Position3D" instance=ExtResource( 2 )]
+transform = Transform( 0.939693, -0.34202, 1.0193e-08, 0.321394, 0.883022, -0.34202, 0.116978, 0.321394, 0.939693, -0.551437, -0.632245, 0 )
