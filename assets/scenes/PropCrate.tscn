@@ -6,16 +6,16 @@
 
 [sub_resource type="BoxShape" id=2]
 
-[node name="RigidBody" type="RigidBody" groups=[
+[node name="PropCrate" type="RigidBody" groups=[
 "Destructibles",
 "Props",
 ]]
 collision_layer = 4
 collision_mask = 7
-can_sleep = false
 angular_damp = 2.0
 script = ExtResource( 1 )
 health = 200.0
+maxHealth = 200.0
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )

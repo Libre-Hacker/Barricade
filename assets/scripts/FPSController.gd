@@ -3,6 +3,7 @@ extends KinematicBody
 export(float, 0, 25, 0.01) var moveSpeed = 7.5
 export(float, 0, 25, 0.01) var jumpSpeed = 6.5
 export(float, -5, -0.1, 0.001) var fallSpeed = -0.326
+export(float, 0,90) var maxSlopeAngle
 
 var velocity : Vector3 = Vector3()
 
@@ -12,7 +13,7 @@ func _physics_process(_delta): # Use physics because this uses a KinematicBody.
 # Move this object.
 func move():
 	calculate_movement()
-	move_and_slide(velocity, Vector3.UP, true, 4, 0.35, false)
+	move_and_slide(velocity, Vector3.UP, true, 4, maxSlopeAngle, false)
 
 # Calculates this objects velocity.
 func calculate_movement():

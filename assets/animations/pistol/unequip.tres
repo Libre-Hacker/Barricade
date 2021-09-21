@@ -16,14 +16,14 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "transform"
-tracks/1/path = NodePath("Position3D/Pistol")
+tracks/1/path = NodePath("Pivot/Model")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = PoolRealArray(  )
 tracks/2/type = "value"
-tracks/2/path = NodePath("Position3D/Pistol:translation")
+tracks/2/path = NodePath("Pivot/Model:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -35,7 +35,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( -0.551437, -0.632245, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Position3D/Pistol:rotation_degrees")
+tracks/3/path = NodePath("Pivot/Model:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false

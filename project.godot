@@ -9,19 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "RayCast",
+"base": "Reference",
 "class": "CollisionData",
 "language": "GDScript",
-"path": "res://assets/scripts/CollisionDataClass.gd"
+"path": "res://assets/scripts/Class_CollisionData.gd"
+}, {
+"base": "Spatial",
+"class": "Equippable",
+"language": "GDScript",
+"path": "res://assets/scripts/Class_Equippable.gd"
+}, {
+"base": "RayCast",
+"class": "RayCastAll",
+"language": "GDScript",
+"path": "res://assets/scripts/Class_RayCastAll.gd"
 } ]
 _global_script_class_icons={
-"CollisionData": ""
+"CollisionData": "",
+"Equippable": "",
+"RayCastAll": ""
 }
 
 [application]
 
 config/name="Barricade"
-run/main_scene="res://assets/scenes/DevLvlFPSControler.tscn"
+run/main_scene="res://assets/scenes/levels/DevLvlFPSController.tscn"
 config/icon="res://assets/sprites/icon.png"
 
 [debug]
@@ -115,4 +127,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/filters/msaa=3
 environment/default_environment="res://assets/environments/default_env.tres"

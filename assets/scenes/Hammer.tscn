@@ -1,24 +1,116 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/scripts/Hammer.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/HammerPrimaryFire.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/HammerModel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/animations/hammer/equip.tres" type="Animation" id=3]
 [ext_resource path="res://assets/animations/hammer/unequip.tres" type="Animation" id=4]
+[ext_resource path="res://assets/scripts/HammerAltFire.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/Hammer.gd" type="Script" id=6]
+[ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=7]
 
-[node name="Hammer" type="RayCast"]
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/HammerModel:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/HammerModel:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/HammerModel:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 5, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/HammerModel:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -0.2 ), Vector3( 0, 0, 0.2 ), Vector3( 0, 0, 0.2 ), Vector3( 0, 0.1, 0.1 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Hammer" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="Repair" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 3 )
 collision_mask = 7
 script = ExtResource( 1 )
-hammerReach = 3.0
+repairRange = 3.0
+repairAmount = 20.0
+damage = 10.0
+coolDown = 3.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Cooldown" type="Timer" parent="Repair"]
+wait_time = 0.7
+one_shot = true
+__meta__ = {
+"_editor_description_": "NOTE: Must be set in the editor."
+}
+
+[node name="Nail" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, 3 )
+collision_mask = 7
+script = ExtResource( 5 )
+ammo = 5
+maxAmmo = 20
+nailRange = 3.0
+nailMargin = 0.2
+
+[node name="Cooldown" type="Timer" parent="Nail"]
+wait_time = 0.7
+one_shot = true
+__meta__ = {
+"_editor_description_": "NOTE: Must be set in the editor."
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/equip = ExtResource( 3 )
+anims/idle = SubResource( 1 )
+anims/nail = SubResource( 2 )
 anims/unequip = ExtResource( 4 )
+script = ExtResource( 7 )
 
-[node name="Position3D" type="Position3D" parent="."]
+[node name="Pivot" type="Position3D" parent="."]
 
-[node name="HammerModel" parent="Position3D" instance=ExtResource( 2 )]
-transform = Transform( 0.939693, -0.34202, 1.0193e-08, 0.321394, 0.883022, -0.34202, 0.116978, 0.321394, 0.939693, -0.551437, -0.632245, 0 )
+[node name="HammerModel" parent="Pivot" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
+
+[connection signal="play_animation" from="Repair" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="play_animation" from="Nail" to="AnimationPlayer" method="_on_change_animation"]

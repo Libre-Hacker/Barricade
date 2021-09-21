@@ -16,7 +16,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Position3D/HammerModel:translation")
+tracks/1/path = NodePath("Pivot/HammerModel:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( -0.551437, -0.632245, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Position3D/HammerModel:rotation_degrees")
+tracks/2/path = NodePath("Pivot/HammerModel:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false

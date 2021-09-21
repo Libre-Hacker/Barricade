@@ -1,60 +1,348 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/scenes/Gun.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/animations/pistol/unequip.tres" type="Animation" id=2]
-[ext_resource path="res://assets/animations/pistol/equip.tres" type="Animation" id=3]
+[ext_resource path="res://assets/scripts/ShootRaycast.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/Pistol.gd" type="Script" id=2]
+[ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=3]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.01
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Pivot/Model")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Model:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Model:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+[sub_resource type="Animation" id=2]
+resource_name = "equip"
+length = 0.3
+tracks/0/type = "transform"
+tracks/0/path = NodePath("Pivot/Model")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Model:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.551437, -0.632245, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Model:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 20, 6.21496e-07, 20 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pivot/Model/Magazine:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1.04308e-07, -0.194349, -0.697322 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Pivot/Model/Magazine:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 110, 0, 0 ) ]
+}
 
-[sub_resource type="CylinderMesh" id=3]
+[sub_resource type="Animation" id=3]
+resource_name = "primary_fire"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("OmniLight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0, 0, 0, 1 )
+[sub_resource type="Animation" id=4]
+length = 1.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("PrimaryFire")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "endReload"
+} ]
+}
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Pivot/Model")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray(  )
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Model:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.13215, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pivot/Model:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -7.561, 0, 0 ), Vector3( -6.301, 0, 11.576 ), Vector3( -6.301, 0, 11.576 ), Vector3( -3.601, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "transform"
+tracks/4/path = NodePath("Pivot/Model/Magazine")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = PoolRealArray(  )
+tracks/5/type = "value"
+tracks/5/path = NodePath("Pivot/Model/Magazine:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -1.04308e-07, -0.194349, -0.697322 ), Vector3( -1.04308e-07, -0.96391, -0.977419 ), Vector3( -1.04308e-07, -0.96391, -0.977419 ), Vector3( -1.04308e-07, -0.194349, -0.697322 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Pivot/Model/Magazine:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 110, 0, 0 ), Vector3( 110, 0, 0 ), Vector3( 35.73, 105.1, 114.9 ), Vector3( 35.7376, 105.183, 114.921 ), Vector3( 110, 0, 0 ) ]
+}
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="Animation" id=5]
+resource_name = "unequip"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Pivot/Model")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray(  )
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Model:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -0.551437, -0.632245, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pivot/Model:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 20, 0, 20 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Pivot/Model/Magazine:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1.04308e-07, -0.194349, -0.697322 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Pivot/Model/Magazine:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 110, 0, 0 ) ]
+}
 
 [sub_resource type="CubeMesh" id=6]
 
 [sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
-[node name="PistolNew" instance=ExtResource( 1 )]
+[sub_resource type="CylinderMesh" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=10]
+
+[sub_resource type="CubeMesh" id=11]
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.145098, 0.145098, 0.145098, 1 )
+
+[node name="Pistol" type="Spatial"]
+visible = false
+script = ExtResource( 2 )
+
+[node name="PrimaryFire" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, 100 )
+collision_mask = 5
+script = ExtResource( 1 )
 ammoCapacity = 12
-reserveAmmo = 36
+reserveAmmo = 60
+maxReserveAmmo = 60
+rateOfFire = 360.0
+damage = 10.0
+maxRange = 100.0
 
-[node name="AnimationPlayer" parent="." index="0"]
-anims/equip = ExtResource( 3 )
-anims/unequip = ExtResource( 2 )
+[node name="Cooldown" type="Timer" parent="PrimaryFire"]
+one_shot = true
+__meta__ = {
+"_editor_description_": "NOTE: Do NOT set wait time in editor."
+}
 
-[node name="Position3D" type="Position3D" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 1 )
+anims/equip = SubResource( 2 )
+anims/primary_fire = SubResource( 3 )
+anims/reload = SubResource( 4 )
+anims/unequip = SubResource( 5 )
+script = ExtResource( 3 )
 
-[node name="Pistol" type="Spatial" parent="Position3D" index="0"]
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0622389 )
+visible = false
+
+[node name="Pivot" type="Position3D" parent="."]
+
+[node name="Model" type="Spatial" parent="Pivot"]
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Receiver" type="MeshInstance" parent="Position3D/Pistol" index="0"]
+[node name="Receiver" type="MeshInstance" parent="Pivot/Model"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.4, 0, 0, -0.4 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-
-[node name="Barrel" type="MeshInstance" parent="Position3D/Pistol" index="1"]
-transform = Transform( 0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
-
-[node name="Grip" type="MeshInstance" parent="Position3D/Pistol" index="2"]
-transform = Transform( 0.1, 0, 0, 0, -0.034202, -0.187939, 0, 0.0939693, -0.068404, 0, -0.212174, -0.70381 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 2 )
-
-[node name="Magazine" type="MeshInstance" parent="Position3D/Pistol" index="3"]
-transform = Transform( 0.09, 0, 0, 0, -0.0307818, -0.187939, 0, 0.0845724, -0.0684042, -1.04308e-07, -0.194349, -0.697322 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
+
+[node name="Barrel" type="MeshInstance" parent="Pivot/Model"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Grip" type="MeshInstance" parent="Pivot/Model"]
+transform = Transform( 0.1, 0, 0, 0, -0.034202, -0.187939, 0, 0.0939693, -0.068404, 0, -0.212174, -0.70381 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 7 )
+
+[node name="Magazine" type="MeshInstance" parent="Pivot/Model"]
+transform = Transform( 0.09, 0, 0, 0, -0.0307818, -0.187939, 0, 0.0845724, -0.0684042, -1.04308e-07, -0.194349, -0.697322 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 12 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[connection signal="play_animation" from="PrimaryFire" to="AnimationPlayer" method="_on_change_animation"]

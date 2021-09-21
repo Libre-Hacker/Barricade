@@ -17,14 +17,14 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "transform"
-tracks/1/path = NodePath("Position3D/Pistol")
+tracks/1/path = NodePath("Pivot/Model")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = PoolRealArray(  )
 tracks/2/type = "value"
-tracks/2/path = NodePath("Position3D/Pistol:translation")
+tracks/2/path = NodePath("Pivot/Model:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -36,7 +36,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.13215, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Position3D/Pistol:rotation_degrees")
+tracks/3/path = NodePath("Pivot/Model:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -48,14 +48,14 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( -7.561, 0, 0 ), Vector3( -6.301, 0, 11.576 ), Vector3( -6.301, 0, 11.576 ), Vector3( -3.601, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/4/type = "transform"
-tracks/4/path = NodePath("Position3D/Pistol/Magazine")
+tracks/4/path = NodePath("Pivot/Model/Magazine")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray(  )
 tracks/5/type = "value"
-tracks/5/path = NodePath("Position3D/Pistol/Magazine:translation")
+tracks/5/path = NodePath("Pivot/Model/Magazine:translation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -67,7 +67,7 @@ tracks/5/keys = {
 "values": [ Vector3( -1.04308e-07, -0.194349, -0.697322 ), Vector3( -1.04308e-07, -0.96391, -0.977419 ), Vector3( -1.04308e-07, -0.96391, -0.977419 ), Vector3( -1.04308e-07, -0.194349, -0.697322 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Position3D/Pistol/Magazine:rotation_degrees")
+tracks/6/path = NodePath("Pivot/Model/Magazine:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false

@@ -39,6 +39,7 @@ func setExceptions():
 func startInteract():
 	if(is_colliding() == false):
 		return
+
 	if(get_collider().is_in_group("Props") and Input.is_action_just_pressed("interact")):
 		usingNode = get_collider()
 		usingNode.call("pickup", get_node("HoldPoint"))
