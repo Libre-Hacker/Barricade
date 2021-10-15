@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/ZombieManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/ZombieSpawnerManager.gd" type="Script" id=4]
+
+[node name="ZombieManager" type="Spatial"]
+script = ExtResource( 1 )
+respawnTime = 5.0
+zombieCount = 10
+
+[node name="Zombies" type="Spatial" parent="."]
+
+[node name="Spawners" type="Spatial" parent="."]
+script = ExtResource( 4 )

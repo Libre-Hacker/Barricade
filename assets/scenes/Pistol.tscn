@@ -289,6 +289,7 @@ script = ExtResource( 2 )
 enabled = true
 cast_to = Vector3( 0, 0, 100 )
 collision_mask = 5
+collide_with_areas = true
 script = ExtResource( 1 )
 ammoCapacity = 12
 reserveAmmo = 60

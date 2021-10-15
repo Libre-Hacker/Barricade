@@ -15,6 +15,8 @@ func _physics_process(_delta):
 func pickup(assignedNode):
 	if(isPickedUp == false):
 		set_collision_mask_bit(1, false) # Change collision mask so this can't be detected by other rays.
+		set_collision_mask_bit(5, false) # Change collision mask so this won't collide while held.
+		set_collision_mask_bit(3, false) # Change collision mask so this won't collide while held.
 		nodeToFollow = assignedNode
 		isPickedUp = true
 	else:
@@ -24,6 +26,8 @@ func pickup(assignedNode):
 # Called from outside class.
 func drop():
 	set_collision_mask_bit(1, true)
+	set_collision_mask_bit(5, true)
+	set_collision_mask_bit(3, true) 
 	nodeToFollow = null
 	isPickedUp = false
 

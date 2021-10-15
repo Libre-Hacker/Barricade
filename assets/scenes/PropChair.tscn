@@ -22,7 +22,8 @@ albedo_color = Color( 0.145098, 0.796078, 0.764706, 1 )
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
 collision_layer = 4
-collision_mask = 7
+collision_mask = 15
+can_sleep = false
 angular_damp = 2.0
 script = ExtResource( 1 )
 health = 50.0

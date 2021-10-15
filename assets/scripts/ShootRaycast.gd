@@ -55,8 +55,12 @@ func primary_fire():
 
 # Damage the object hit.
 func damageObject():
-	if(get_collider().is_in_group("Destructibles") and get_collider().isNailed == false):
-		get_collider().call("damage", damage)
+	if(get_collider().is_in_group("Props") and get_collider().isNailed):
+		return
+	if(get_collider().is_in_group("Destructibles")):
+		print("Damaging")
+		print(get_collider())
+		get_collider().damage(damage)
 
 # Emits a particle effect where the bullet impacted.
 func emitImpactEffect():

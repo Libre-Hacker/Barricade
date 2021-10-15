@@ -70,6 +70,7 @@ script = ExtResource( 6 )
 enabled = true
 cast_to = Vector3( 0, 0, 3 )
 collision_mask = 7
+collide_with_areas = true
 script = ExtResource( 1 )
 repairRange = 3.0
 repairAmount = 20.0

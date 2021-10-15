@@ -15,7 +15,6 @@ albedo_color = Color( 0, 0, 0, 1 )
 [sub_resource type="CubeMesh" id=5]
 
 [node name="PistolNew" instance=ExtResource( 1 )]
-equipped = true
 
 [node name="Position3D" type="Position3D" parent="." index="3"]
 

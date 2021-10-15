@@ -13,7 +13,7 @@ func _physics_process(_delta): # Use physics because this uses a KinematicBody.
 # Move this object.
 func move():
 	calculate_movement()
-	move_and_slide(velocity, Vector3.UP, true, 4, maxSlopeAngle, false)
+	move_and_slide(velocity, Vector3.UP, true, 10, deg2rad(maxSlopeAngle), false)
 
 # Calculates this objects velocity.
 func calculate_movement():
@@ -45,7 +45,7 @@ func gravity():
 
 # Returns a positive value to "jump".
 func jump():
-	if Input.is_action_just_pressed("jump") and self.is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		return jumpSpeed
 	else:
 		return 0
