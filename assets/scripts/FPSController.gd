@@ -3,7 +3,9 @@ extends KinematicBody
 export(float, 0, 25, 0.01) var moveSpeed = 7.5
 export(float, 0, 25, 0.01) var jumpSpeed = 6.5
 export(float, -5, -0.1, 0.001) var fallSpeed = -0.326
-export(float, 0,90) var maxSlopeAngle
+export(float, 0,90) var maxSlopeAngle = 35
+export(float,0,1000) var health = 100
+export(float,0,200) var push = 5
 
 var velocity : Vector3 = Vector3()
 
@@ -13,7 +15,14 @@ func _physics_process(_delta): # Use physics because this uses a KinematicBody.
 # Move this object.
 func move():
 	calculate_movement()
-	move_and_slide(velocity, Vector3.UP, true, 10, deg2rad(maxSlopeAngle), false)
+	move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(maxSlopeAngle), false)
+
+# Pushes any rigid body this object collides with in a realistic way.
+func push_rigid_bodies():
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if(collision.collider.is_in_group("Props")):
+			collision.collider.apply_central_impulse(-collision.normal * push)
 
 # Calculates this objects velocity.
 func calculate_movement():
@@ -49,3 +58,12 @@ func jump():
 		return jumpSpeed
 	else:
 		return 0
+
+# Flips damage value to negative.
+func damage(value : float):
+	if(health - value <= 0):
+		print(name, " is destroyed.")
+		self.queue_free()
+	else:
+		health -= value
+		print(name, " health = ", health)

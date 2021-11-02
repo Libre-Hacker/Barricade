@@ -21,13 +21,15 @@ func _unhandled_input(event):
 
 # Swings the Hammer, repairing nailed props, or damaging unnailed props / enemies.
 func swing():
-	if(is_colliding() == false or cooldownTimer.is_stopped() == false):
+	if(cooldownTimer.is_stopped() == false):
 		return
-
 	emit_signal("play_animation", "nail")
 	cooldownTimer.start()
+	if(is_colliding() == false):
+		return
+		
 	var hitObject = get_collider()
-	
+
 	# Try to repair first because a repairable prop has the same properties as
 	# a damagable prop.
 	if(hitObject.is_in_group("Props") and hitObject.isNailed):

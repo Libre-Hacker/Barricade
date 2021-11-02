@@ -1,3 +1,4 @@
+extends Spatial
 class_name CollisionData
 
 var collider : Object

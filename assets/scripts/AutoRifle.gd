@@ -9,8 +9,7 @@ func _equip():
 	yield(animationPlayer, "animation_finished")
 	primaryFireNode.set_process(true)
 	primaryFireNode.set_process_unhandled_input(true)
-
-
+	primaryFireNode.update_ui()
 
 func _unequip():
 	if(primaryFireNode.isReloading):

@@ -5,7 +5,6 @@
 
 [node name="ZombieManager" type="Spatial"]
 script = ExtResource( 1 )
-respawnTime = 5.0
 zombieCount = 10
 
 [node name="Zombies" type="Spatial" parent="."]

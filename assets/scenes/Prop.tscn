@@ -8,6 +8,7 @@
 ]]
 collision_layer = 4
 collision_mask = 7
+continuous_cd = true
 can_sleep = false
 angular_damp = 2.0
 script = ExtResource( 1 )

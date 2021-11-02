@@ -38,11 +38,11 @@ func followPoint():
 		linear_velocity = moveDistance * followSpeed # Use physics to detect collisions.
 
 # Rotates this object relative to the nodeToFollow.
-func rotateProp(mouseMovement):
-	var x = deg2rad(mouseMovement.y)
-	var y = deg2rad(mouseMovement.x)
-	global_rotate(nodeToFollow.transform.basis.y, y)
-	rotate(nodeToFollow.global_transform.basis.x, x)
+func rotate_prop(mouseMovement):
+	var x = nodeToFollow.global_transform.basis.x.normalized() * mouseMovement.y * 10
+	var y = nodeToFollow.global_transform.basis.y.normalized() * mouseMovement.x * 10
+	add_torque(x)
+	add_torque(y)
 
 # Flips damage value to negative.
 func damage(value : float):

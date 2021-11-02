@@ -9,9 +9,12 @@ export (float,0,10) var nailRange # How far the hammer can nail.
 export (float,0,1) var nailMargin # How much of the nail has to be exposed.
 
 signal play_animation(animationName)
+signal nail_prop
 signal ammo_changed
 
 var nailNode = preload("res://assets/scenes/Nail.tscn")
+const uiLoadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
+const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
 
 onready var cooldownTimer = get_node("Cooldown")
 
@@ -40,6 +43,7 @@ func nail():
 			return
 	
 	emit_signal("play_animation", "nail")
+	emit_signal("nail_prop")
 	cooldownTimer.start()
 	create_nail(propData,surfaceData)
 
@@ -62,7 +66,7 @@ func create_nail(propData, surfaceData):
 	var nailInstance = nailNode.instance()
 	var midpoint = (propData.collisionPoint + surfaceData.collisionPoint) / 2
 	ammo -= 1
-	updateUI()
+	update_ui()
 	propData.collider.add_child(nailInstance)
 	nailInstance.global_transform.origin = midpoint
 	nailInstance.look_at(propData.collisionPoint, Vector3.UP)
@@ -70,13 +74,14 @@ func create_nail(propData, surfaceData):
 
 # Removes a nail from a prop. Returning the prop to its rigidbody state.
 func remove_nail():
-	if(is_colliding() == false or get_collider().is_in_group("Props") == false or get_collider().isNailed == false):
+	if(is_colliding() == false or get_collider().is_in_group("Props") == false or get_collider().isNailed == false):  
 		return
 	get_collider().unnail()
 	get_collider().get_node("Nail").queue_free()
 	emit_signal("play_animation", "nail")
 	ammo += 1
-	updateUI()
+	update_ui()
 
-func updateUI():
-	emit_signal("ammo_changed", ammo, 0)
+func update_ui():
+	uiLoadedAmmo.Value = ammo
+	uiReserveAmmo.Value = 0

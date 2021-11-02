@@ -2,7 +2,7 @@ extends Spatial
 
 var currentWeaponIndex : int = 0 # Currently equipped weapon. Default 0.
 var switchInProgress = false # Prevents switching too multiple times.
-onready var numberOfWeapons : int = get_child_count() 
+onready var numberOfWeapons : int = get_child_count()
 
 func _ready():
 	# Switch to the first weapon in the GunBelt or all weapons will be active 
@@ -35,7 +35,6 @@ func changeWeaponIndex(increment : int):
 
 
 func switchWeapons():
-
 	# Loop through all children, unequip any equipped weaons. Equip the new weapon.
 	for index in get_child_count():
 		var iteratedNode = get_child(index)

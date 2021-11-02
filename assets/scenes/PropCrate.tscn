@@ -12,8 +12,10 @@
 ]]
 collision_layer = 4
 collision_mask = 15
+mass = 40.0
+continuous_cd = true
 can_sleep = false
-angular_damp = 2.0
+angular_damp = 4.0
 script = ExtResource( 1 )
 health = 200.0
 maxHealth = 200.0

@@ -14,6 +14,7 @@ func _equip():
 	repairNode.set_process_unhandled_input(true)
 	nailNode.set_process(true)
 	nailNode.set_process_unhandled_input(true)
+	nailNode.update_ui()
 
 # Override unequip code for each input function
 func _unequip():

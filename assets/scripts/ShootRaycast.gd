@@ -20,8 +20,10 @@ signal play_animation(animationName)
 var buletHitParticleNode = preload("res://assets/scenes/BulletHitParticle.tscn")
 
 onready var cooldownTimer = get_node("Cooldown")
-onready var animationPlayer = get_node("AnimationPlayer")
 onready var currentAmmo = ammoCapacity
+
+const uiLoadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
+const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
 
 func _ready():
 	cooldownTimer.wait_time = 60 / rateOfFire # Convert rounds/minute into time per round.
@@ -45,7 +47,7 @@ func primary_fire():
 	if(currentAmmo <= 0 or cooldownTimer.is_stopped() == false or isReloading):
 		return
 	currentAmmo -= 1
-	updateUI()
+	update_ui()
 	emit_signal("play_animation", "primary_fire")
 	cooldownTimer.start() # Start CycleTimer so this can't shoot before it is done.
 
@@ -89,7 +91,8 @@ func endReload():
 	
 	currentAmmo += ammoToReload
 	reserveAmmo -= ammoToReload
-	updateUI()
+	update_ui()
 
-func updateUI():
-	emit_signal("ammo_changed", currentAmmo, reserveAmmo)
+func update_ui():
+	uiLoadedAmmo.Value = currentAmmo
+	uiReserveAmmo.Value = reserveAmmo

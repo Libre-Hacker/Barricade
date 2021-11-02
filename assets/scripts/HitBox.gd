@@ -2,7 +2,7 @@ extends Area
 
 export (float, 0, 10) var  multiplier = 1
 
-signal hit(damage)
+signal hitbox_collision(damage)
 
 func damage(value):
-	emit_signal("hit", value * multiplier)
+	emit_signal("hitbox_collision", value * multiplier)
