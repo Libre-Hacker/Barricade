@@ -29,7 +29,7 @@ func attack():
 	# return from this function without resetting it.
 	attacking = false
 	find_target()
-	damage_target()
+	attempt_attack()
 
 # Establishes a target by checking if there is line of sight to each object
 # in the area.
@@ -42,13 +42,17 @@ func find_target():
 		else:
 			emit_signal("targets_unavilable")
 
-# Damages the target if the attack cooldown is expired.
+# Starts the cooldown timer and singals for animation player to play attack
+func attempt_attack():
+	if(get_node("AttackTimer").is_stopped()):
+		emit_signal("play_animation", "attack")
+		get_node("AttackTimer").start()
+
+# Damages the target, called by the AnimationPlayer
 func damage_target():
 	if(target == null):
 		return
-	if(get_node("AttackTimer").is_stopped()):
-		target.damage(attackDamage)
-		get_node("AttackTimer").start()
+	target.damage(attackDamage)
 
 # A priority target is a player or a nailed prop.
 func is_priority_target(body):

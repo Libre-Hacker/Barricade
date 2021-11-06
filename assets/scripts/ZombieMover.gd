@@ -5,7 +5,7 @@ extends KinematicBody
 # For now, health values are handled on this class for the same reason. This may
 # be a good idea to change down the road.
 
-export (float, 0, 1000) var health = 100 # Amount of hitpoints this entity has.
+
 export (float, 0,200) var pushForce = 2 # Amount of force applied to pushed rigidbodies.
 export (float, 0, 10) var moveSpeed = 4 # Movement velocity.
 export (float, 0, 1) var slowedThreshold = 0.01 # Velocity below threshold is considered obstructed.
@@ -15,16 +15,9 @@ export (float, 0, 90) var maxSlope = 45 # Max incline degrees this entity can cl
 var seeking = false # AI State, while true executes the state behaviour loop.
 
 signal obstructed(value)
-signal destroyed
+
 
 onready var navigator = get_node("Navigator")
-
-# FOR TESTING ONLY, DELETE WHEN READY!
-func _unhandled_input(event):
-	if(event.is_action_pressed("TEST_KILL")):
-		print("kill all")
-		emit_signal("destroyed")
-		self.queue_free()
 
 func _physics_process(delta):
 	if(seeking):
@@ -74,18 +67,7 @@ func push_rigid_bodies():
 		if(collision.collider.is_in_group("Props")):
 			collision.collider.apply_central_impulse(-collision.normal * pushForce)
 
-# Removes health from this object. Destroying it when below 0.
-func damage(value : float):
-	if(health - value <= 0):
-		print(name, " is destroyed.")
-		emit_signal("destroyed") # Emit signal to be qued for respawn
-		self.queue_free()
-	else:
-		health -= value
-		print(name, " health = ", health)
 
-func _on_hitbox_collision(damageReceived):
-	damage(damageReceived)
 
 # Signal from the AIController to start executing the behaviour loop.
 func _on_AIController_seek():

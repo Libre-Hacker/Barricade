@@ -19,6 +19,7 @@ signal play_animation(animationName)
 
 var buletHitParticleNode = preload("res://assets/scenes/BulletHitParticle.tscn")
 
+onready var player = find_parent("FPSPlayer*")
 onready var cooldownTimer = get_node("Cooldown")
 onready var currentAmmo = ammoCapacity
 
@@ -62,7 +63,8 @@ func damageObject():
 	if(get_collider().is_in_group("Destructibles")):
 		print("Damaging")
 		print(get_collider())
-		get_collider().damage(damage)
+		
+		get_collider().damage(player, damage)
 
 # Emits a particle effect where the bullet impacted.
 func emitImpactEffect():

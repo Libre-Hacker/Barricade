@@ -15,13 +15,15 @@ func _physics_process(_delta): # Use physics because this uses a KinematicBody.
 # Move this object.
 func move():
 	calculate_movement()
-	move_and_slide(velocity, Vector3.UP, true, 4, deg2rad(maxSlopeAngle), false)
+	move_and_slide(velocity, Vector3.UP, true, 2, deg2rad(maxSlopeAngle), false)
+	push_rigid_bodies()
 
 # Pushes any rigid body this object collides with in a realistic way.
 func push_rigid_bodies():
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
 		if(collision.collider.is_in_group("Props")):
+			print("pushing")
 			collision.collider.apply_central_impulse(-collision.normal * push)
 
 # Calculates this objects velocity.

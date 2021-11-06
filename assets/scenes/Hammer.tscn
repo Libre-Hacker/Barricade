@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scripts/HammerPrimaryFire.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/HammerModel.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/scripts/HammerAltFire.gd" type="Script" id=5]
 [ext_resource path="res://assets/scripts/Hammer.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=7]
+[ext_resource path="res://assets/scripts/GatherPropInfo.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -65,6 +66,7 @@ tracks/1/keys = {
 
 [node name="Hammer" type="Spatial"]
 script = ExtResource( 6 )
+startDisabled = true
 
 [node name="Repair" type="RayCast" parent="."]
 enabled = true
@@ -100,6 +102,12 @@ one_shot = true
 __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
+
+[node name="InfoGather" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, 3 )
+collision_mask = 4
+script = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/equip = ExtResource( 3 )

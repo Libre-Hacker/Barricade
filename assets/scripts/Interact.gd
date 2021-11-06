@@ -33,8 +33,11 @@ func mouseRotate(mouseX, mouseY):
 func startInteract():
 	if(is_colliding() == false):
 		return
-
-	if(get_collider().is_in_group("Props") and Input.is_action_just_pressed("interact")):
+	
+	if(get_collider().is_in_group("Interactables")):
+		get_collider().buy_item(get_owner())
+	
+	if(get_collider().is_in_group("Props")):
 		usingNode = get_collider()
 		usingNode.call("pickup", get_node("HoldPoint"))
 		isInteracting = true

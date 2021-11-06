@@ -3,6 +3,11 @@ extends Equippable
 onready var primaryFireNode = get_node("PrimaryFire")
 onready var animationPlayer = get_node("AnimationPlayer")
 
+func _ready():
+	if(startDisabled):
+		visible = false
+		_unequip()
+
 func _equip():
 	.equip()
 	animationPlayer.play("equip")

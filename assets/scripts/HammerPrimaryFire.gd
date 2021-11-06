@@ -9,15 +9,15 @@ signal play_animation(animationName)
 
 var repairParticleNode = preload("res://assets/scenes/RepairParticle.tscn")
 
+onready var player = find_parent("FPSPlayer*")
 onready var cooldownTimer = get_node("Cooldown")
 
 func _ready():
 	cast_to.z = repairRange
 
-func _unhandled_input(event):
-	if(event.is_action_pressed("primary_fire")):
+func _process(_delta):
+	if(Input.is_action_pressed("primary_fire")):
 		swing()
-		get_tree().get_root().set_input_as_handled()
 
 # Swings the Hammer, repairing nailed props, or damaging unnailed props / enemies.
 func swing():
@@ -42,7 +42,7 @@ func swing():
 		return
 	if(hitObject.is_in_group("Destructibles")):
 		print("damage")
-		hitObject.damage(damage)
+		hitObject.damage(player, damage)
 
 func emitImpactEffect():
 	var particleInstance = repairParticleNode.instance()

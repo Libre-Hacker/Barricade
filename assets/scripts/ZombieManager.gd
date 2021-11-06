@@ -27,7 +27,7 @@ func spawn_zombie():
 		var newZombie = basicZombie.instance()
 		newZombie.transform.origin = spawnPoint.transform.origin
 		zombies.add_child(newZombie)
-		newZombie.connect("destroyed", self, "_on_zombie_destroyed")
+		newZombie.get_node("Health").connect("destroyed", self, "_on_zombie_destroyed")
 		spawnQue -= 1 # Need to remove last.
 
 # Adds a zombie to the spawn que.

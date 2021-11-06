@@ -58,6 +58,7 @@ continuous_cd = true
 can_sleep = false
 angular_damp = 4.0
 script = ExtResource( 1 )
+realName = "Chair"
 health = 300.0
 maxHealth = 300.0
 

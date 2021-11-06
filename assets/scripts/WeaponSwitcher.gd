@@ -33,6 +33,12 @@ func changeWeaponIndex(increment : int):
 	
 	switchWeapons()
 
+func set_weapon_index(value):
+	if(switchInProgress == true):
+		yield(switchWeapons(), "completed")
+	switchInProgress = true
+	currentWeaponIndex = value
+	switchWeapons()
 
 func switchWeapons():
 	# Loop through all children, unequip any equipped weaons. Equip the new weapon.
@@ -43,3 +49,11 @@ func switchWeapons():
 
 	yield(get_child(currentWeaponIndex)._equip(), "completed")
 	switchInProgress = false
+
+# Adds a new weapon to the gun belt.
+func add_weapon(newWeapon):
+	add_child(newWeapon)
+	numberOfWeapons = get_child_count()
+	set_weapon_index(newWeapon.get_index())
+	
+	

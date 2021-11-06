@@ -3,6 +3,7 @@ extends RigidBody
 var nodeToFollow : Node
 var isPickedUp : bool = false
 var isNailed : bool = false
+export (String) var realName = "Prop"
 export (float, 1, 20, 0.1) var followSpeed : float = 7.5
 export (float, 1,1000) var health : float
 export (float, 1,1000) var maxHealth : float
@@ -45,7 +46,7 @@ func rotate_prop(mouseMovement):
 	add_torque(y)
 
 # Flips damage value to negative.
-func damage(value : float):
+func damage(attacker = null, value = 0.0):
 	if(health - value <= 0):
 		print(name, " is destroyed.")
 		self.queue_free()

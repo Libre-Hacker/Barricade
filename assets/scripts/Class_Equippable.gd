@@ -1,6 +1,7 @@
 extends Spatial
 class_name Equippable
 
+export var startDisabled = false
 var equipped = true
 
 func equip():

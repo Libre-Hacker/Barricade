@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://assets/scripts/Class_Equippable.gd"
 }, {
 "base": "Resource",
+"class": "FloatReference",
+"language": "GDScript",
+"path": "res://assets/scripts/FloatReference.gd"
+}, {
+"base": "Resource",
 "class": "IntReference",
 "language": "GDScript",
 "path": "res://assets/scripts/IntReference.gd"
@@ -28,12 +33,19 @@ _global_script_classes=[ {
 "class": "RayCastAll",
 "language": "GDScript",
 "path": "res://assets/scripts/Class_RayCastAll.gd"
+}, {
+"base": "Resource",
+"class": "StringReference",
+"language": "GDScript",
+"path": "res://assets/scripts/StringReference.gd"
 } ]
 _global_script_class_icons={
 "CollisionData": "",
 "Equippable": "",
+"FloatReference": "",
 "IntReference": "",
-"RayCastAll": ""
+"RayCastAll": "",
+"StringReference": ""
 }
 
 [application]
@@ -141,6 +153,7 @@ TEST_KILL={
 3d_physics/layer_2="Players"
 3d_physics/layer_3="Props"
 3d_physics/layer_4="Zombies"
+3d_physics/layer_5="Interactables"
 
 [node]
 

@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/scripts/UIAmmoCount.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Pixeled.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+extra_spacing_top = -15
+extra_spacing_bottom = -8
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+extra_spacing_top = -11
+extra_spacing_bottom = -6
+font_data = ExtResource( 2 )
+
+[node name="AmmoCount" type="Panel"]
+modulate = Color( 1, 1, 1, 0.745098 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -33.1802
+margin_right = 110.0
+margin_bottom = -10.1802
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadedAmmo" type="Label" parent="HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.94902, 0.690196, 0.0823529, 1 )
+custom_colors/font_outline_modulate = Color( 0.94902, 0.690196, 0.0823529, 1 )
+text = "99"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 41.0
+margin_top = 4.0
+margin_right = 48.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0.94902, 0.690196, 0.0823529, 1 )
+text = "|"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReserveAmmo" type="Label" parent="HBoxContainer"]
+margin_left = 53.0
+margin_right = 90.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+text = "999"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
