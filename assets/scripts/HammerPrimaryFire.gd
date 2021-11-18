@@ -5,6 +5,7 @@ export (float,0,100) var repairAmount # How much health is repaired per swing.
 export (float,0,100) var damage # How much damage is done per swing.
 export (float, 0,10) var coolDown # How much time between each swing.
 
+const menuOpened = preload("res://assets/resources/menu_opened.tres")
 signal play_animation(animationName)
 
 var repairParticleNode = preload("res://assets/scenes/RepairParticle.tscn")
@@ -16,6 +17,8 @@ func _ready():
 	cast_to.z = repairRange
 
 func _process(_delta):
+	if(menuOpened.Value):
+		return
 	if(Input.is_action_pressed("primary_fire")):
 		swing()
 
@@ -36,7 +39,7 @@ func swing():
 		# Check if object is repairable so we only spawn particles and modify
 		# prop health if this is true.
 		if(hitObject.is_repairable()):
-			hitObject.repair(repairAmount)
+			hitObject.repair(player, repairAmount)
 			emitImpactEffect()
 			print("repair")
 		return

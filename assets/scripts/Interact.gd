@@ -19,12 +19,15 @@ func _unhandled_input(event):
 	if(Input.is_action_just_pressed("interact")):
 		if(isInteracting):
 			# Call this before startInteracting or we will immediately end the interaction.
+			dropProp()
 			endInteract() 
 		else:
 			startInteract()
 		get_tree().get_root().set_input_as_handled()
 
 func mouseRotate(mouseX, mouseY):
+	if(isInteracting == false):
+		return
 	var mouseMovement = Vector3(mouseX * rotateSensitivity, mouseY * rotateSensitivity, 0)
 	mouseMovement.normalized()
 	usingNode.rotate_prop(mouseMovement)
@@ -39,13 +42,18 @@ func startInteract():
 	
 	if(get_collider().is_in_group("Props")):
 		usingNode = get_collider()
-		usingNode.call("pickup", get_node("HoldPoint"))
+# warning-ignore:return_value_discarded
+		usingNode.connect("dropped", self, "endInteract")
+		usingNode.call("pickup", get_node("HoldPoint"), find_parent("FPSPlayer"))
 		isInteracting = true
 		enabled = false
 
+func dropProp():
+	if(usingNode.is_in_group("Props")):
+		usingNode.drop()
+
 # Resets our variables to their default
 func endInteract():
-	usingNode.drop()
 	usingNode = null
 	isInteracting = false
 	enabled = true

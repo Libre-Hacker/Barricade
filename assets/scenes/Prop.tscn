@@ -1,15 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
 
-[node name="RigidBody" type="RigidBody" groups=[
-"Destructibles",
-"Props",
-]]
+[node name="RigidBody" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 13
 continuous_cd = true
 can_sleep = false
 angular_damp = 2.0
 script = ExtResource( 1 )
 health = 200.0
+
+[node name="Reward" parent="." instance=ExtResource( 2 )]
+payoutOnDeath = false
+worth = 10
+
+[connection signal="health_changed" from="." to="Reward" method="_on_health_changed"]

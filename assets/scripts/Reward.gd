@@ -2,7 +2,7 @@ extends Spatial
 
 # Manages a 2D array of players that have dealth damage to this entity, and pays
 # them out their fair portion of money based on the percentage of damage they dealt.
-
+export (bool) var payoutOnDeath = true
 export (int, 0, 1000) var worth = 100 # How much money rewarded for kill.
 
 # 2D array values can be accessed like so: array[0] = first value. array[1] = second value.
@@ -25,13 +25,21 @@ func add_contribution(attacker, damage):
 
 # Pays out the reward to all players in the array.
 func distribute_reward():
+	print("Payout")
 	for i in contributors[0].size():
 		# Convert the percent of damage dealt into an int.
 		var reward = contributors[1][i] * worth 
 		contributors[0][i].get_node("Wallet").add_money(reward)
 
+func give_instant_reward(player):
+	player.get_node("Wallet").add_money(worth)
+
 func _on_destroyed():
 	distribute_reward()
 
 func _on_health_changed(attacker, damage):
-	add_contribution(attacker, damage)
+	print("Add Contribution")
+	if(payoutOnDeath):
+		add_contribution(attacker, damage)
+	else:
+		give_instant_reward(attacker)

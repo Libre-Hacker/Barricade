@@ -32,3 +32,6 @@ func damage(attacker = null, value = 0):
 
 func _on_hitbox_collision(attackingEntity, damageReceived):
 	damage(attackingEntity, damageReceived)
+
+func kill():
+	damage(null, health)

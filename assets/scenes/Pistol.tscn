@@ -38,6 +38,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("OmniLight:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "equip"
@@ -293,7 +305,7 @@ collide_with_areas = true
 script = ExtResource( 1 )
 ammoCapacity = 12
 reserveAmmo = 60
-maxReserveAmmo = 60
+maxReserveAmmo = 120
 rateOfFire = 360.0
 damage = 10.0
 maxRange = 100.0
@@ -347,3 +359,4 @@ __meta__ = {
 }
 
 [connection signal="play_animation" from="PrimaryFire" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

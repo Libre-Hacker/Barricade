@@ -3,8 +3,10 @@ extends Camera
 export var mounseSensitivity : float = 0.1
 export(float, 0, 90, 0.1) var maxLookUp : float= 90
 export(float, -90, 0, 0.1) var minLookDown : float = -90
-
 export(NodePath) var playerNodePath : NodePath
+
+const menuOpened = preload("res://assets/resources/menu_opened.tres")
+
 onready var player = get_node(playerNodePath)
 onready var interactionRayCast = get_node("InteractionRayCast")
 
@@ -14,6 +16,8 @@ func _ready():
 
 # Gets mouse input and calls corresponding function.
 func _unhandled_input(event):
+	if(menuOpened.Value):
+		return
 	if(interactionRayCast.isInteracting and event.is_action_pressed("rotate_prop")):
 		return
 	if(event is InputEventMouseMotion):

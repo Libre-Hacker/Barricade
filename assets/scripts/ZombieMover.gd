@@ -48,6 +48,7 @@ func look_at_target(direction, delta):
 func move(direction):
 	# Track the distance before and after moving to see if this object is stuck.
 	var currentPos = transform.origin
+# warning-ignore:return_value_discarded
 	move_and_slide(direction.normalized() * moveSpeed, Vector3.UP, true, 3, deg2rad(maxSlope), false)
 	var newPos = transform.origin
 	var distanceMoved = currentPos.distance_to(newPos)

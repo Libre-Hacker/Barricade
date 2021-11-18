@@ -1,17 +1,18 @@
-extends Spatial
-
+extends Node
 # Manages all child spawners, keeping track of which are available to be used.
 # Also contains methods for selecting spawners.
 
+onready var spawners = get_children()
 var openSpawners = [] # List of available spawners.
 signal spawner_available # Signals when a spawn has become available.
 
 func _ready():
-	if(get_child_count() == 0):
+	if(spawners.size() == 0):
 		print("WARNING: No spawners detected ")
-	for spawn in get_children():
+		return
+	for spawn in spawners:
 		spawn.connect("open", self, "_on_spawner_opened")
-		spawn.connect("close", self, "_on_spawner_closed")
+		spawn.connect("closed", self, "_on_spawner_closed")
 
 # Adds spawns to the list of available spawners.
 func _on_spawner_opened(spawner):
@@ -24,6 +25,7 @@ func _on_spawner_closed(spawner):
 
 # Returns a random spawn from the list of available spawners.
 func get_random_spawner():
+	print("Finding Spawner")
 	if(openSpawners.empty()):
 		return null
 	randomize()

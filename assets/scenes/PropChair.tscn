@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CylinderMesh" id=1]
 top_radius = 0.05
@@ -22,39 +23,31 @@ size = Vector3( 0.65, 0.1, 0.65 )
 albedo_color = Color( 0.145098, 0.796078, 0.764706, 1 )
 
 [sub_resource type="CubeMesh" id=6]
-size = Vector3( 0.6, 0.2, 0.1 )
+size = Vector3( 0.65, 0.2, 0.1 )
 
-[sub_resource type="CylinderShape" id=7]
-radius = 0.05
-height = 0.6
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 0.05, 0.3, 0.05 )
 
-[sub_resource type="CylinderShape" id=8]
-radius = 0.05
-height = 0.6
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 0.05, 0.3, 0.05 )
 
-[sub_resource type="CylinderShape" id=9]
-radius = 0.05
-height = 1.2
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 0.05, 0.6, 0.05 )
 
-[sub_resource type="CylinderShape" id=10]
-radius = 0.05
-height = 1.2
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.05, 0.6, 0.05 )
 
 [sub_resource type="BoxShape" id=11]
-extents = Vector3( 0.3, 0.1, 0.05 )
+extents = Vector3( 0.325, 0.1, 0.05 )
 
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 0.325, 0.05, 0.325 )
 
-[node name="PropChair" type="RigidBody" groups=[
-"Destructibles",
-"Props",
-]]
+[node name="PropChair" type="RigidBody" groups=["Destructibles", "Props"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0 )
 collision_layer = 4
-collision_mask = 15
+collision_mask = 13
 mass = 20.0
-continuous_cd = true
 can_sleep = false
 angular_damp = 4.0
 script = ExtResource( 1 )
@@ -100,24 +93,30 @@ material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.45, 0.25 )
-shape = SubResource( 7 )
+shape = SubResource( 13 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.45, 0.25 )
-shape = SubResource( 8 )
+shape = SubResource( 14 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.15, -0.25 )
-shape = SubResource( 9 )
+shape = SubResource( 15 )
 
 [node name="CollisionShape6" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.15, -0.25 )
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="CollisionShape7" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500033, -0.25 )
 shape = SubResource( 11 )
 
 [node name="CollisionShape8" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0 )
 shape = SubResource( 12 )
+
+[node name="Reward" parent="." instance=ExtResource( 2 )]
+payoutOnDeath = false
+worth = 10
+
+[connection signal="health_changed" from="." to="Reward" method="_on_health_changed"]

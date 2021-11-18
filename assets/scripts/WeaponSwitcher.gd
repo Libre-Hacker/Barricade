@@ -2,6 +2,8 @@ extends Spatial
 
 var currentWeaponIndex : int = 0 # Currently equipped weapon. Default 0.
 var switchInProgress = false # Prevents switching too multiple times.
+var enabled = true
+signal switch_finished
 onready var numberOfWeapons : int = get_child_count()
 
 func _ready():
@@ -20,7 +22,7 @@ func _unhandled_input(event):
 
 # Modifies the current weapon index based on player mouse wheel input.
 func changeWeaponIndex(increment : int):
-	if(switchInProgress == true):
+	if(switchInProgress == true or enabled == false):
 		return
 	switchInProgress = true
 	# Check if the increment needs to wrap to the start or end of the weapon list.
@@ -48,6 +50,7 @@ func switchWeapons():
 			yield(iteratedNode._unequip(), "completed")
 
 	yield(get_child(currentWeaponIndex)._equip(), "completed")
+	emit_signal("switch_finished")
 	switchInProgress = false
 
 # Adds a new weapon to the gun belt.
@@ -55,5 +58,15 @@ func add_weapon(newWeapon):
 	add_child(newWeapon)
 	numberOfWeapons = get_child_count()
 	set_weapon_index(newWeapon.get_index())
-	
-	
+
+# Enables weapons when not phased.
+func enable_weapons():
+	get_child(currentWeaponIndex).enable()
+	enabled = true
+
+# Disables weapons when phased.
+func disable_weapons():
+	if(switchInProgress):
+		yield(self, "switch_finished")
+	get_child(currentWeaponIndex).disable()
+	enabled = false

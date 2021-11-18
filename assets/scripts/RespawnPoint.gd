@@ -37,4 +37,4 @@ func _on_body_exited(body):
 # Keeps track of collision state, signals the area is not clear
 func _on_body_entered(body):
 	bodyCount.append(body)
-	emit_signal("close", self)
+	emit_signal("closed", self)

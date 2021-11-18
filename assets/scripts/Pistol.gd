@@ -12,16 +12,25 @@ func _equip():
 	.equip()
 	animationPlayer.play("equip")
 	yield(animationPlayer, "animation_finished")
-	primaryFireNode.set_process(true)
-	primaryFireNode.set_process_unhandled_input(true)
-	primaryFireNode.update_ui()
+	enable()
 
 func _unequip():
-	if(primaryFireNode.isReloading):
-		primaryFireNode.isReloading = false
-	primaryFireNode.set_process_unhandled_input(false)
-	primaryFireNode.set_process(false)
+	disable()
 	animationPlayer.play("unequip")
 	yield(animationPlayer, "animation_finished")
 	.unequip()
 
+func add_ammo(primaryValue = 0, _alternativeValue = 0):
+	if(primaryFireNode.is_reserve_full() == false):
+		primaryFireNode.add_reserve_ammo(primaryValue)
+
+func disable():
+	if(primaryFireNode.isReloading):
+		primaryFireNode.isReloading = false
+	primaryFireNode.set_process_unhandled_input(false)
+	primaryFireNode.set_process(false)
+
+func enable():
+	primaryFireNode.set_process_unhandled_input(true)
+	primaryFireNode.set_process(true)
+	primaryFireNode.update_ui()

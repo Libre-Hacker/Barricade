@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=5]
 [ext_resource path="res://assets/scripts/ZombieAIController.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/Navigator.gd" type="Script" id=7]
-[ext_resource path="res://assets/scripts/Reward.gd" type="Script" id=8]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/scripts/Health.gd" type="Script" id=9]
 
 [sub_resource type="CylinderShape" id=1]
@@ -157,8 +157,7 @@ script = ExtResource( 5 )
 returnToDefaultAnimation = true
 defaultAnimation = "idle"
 
-[node name="Reward" type="Spatial" parent="."]
-script = ExtResource( 8 )
+[node name="Reward" parent="." instance=ExtResource( 8 )]
 
 [node name="Health" type="Spatial" parent="."]
 script = ExtResource( 9 )
@@ -351,9 +350,5 @@ shape = SubResource( 12 )
 [connection signal="targets_available" from="PrimaryAttack" to="AIController" method="_on_PrimaryAttack_targets_available"]
 [connection signal="targets_unavilable" from="PrimaryAttack" to="AIController" method="_on_PrimaryAttack_targets_unavilable"]
 [connection signal="hitbox_collision" from="MeshAndHitbox/Head/HitBoxHead" to="Health" method="_on_hitbox_collision"]
-[connection signal="hitbox_collision" from="MeshAndHitbox/Head/HitBoxHead" to="Reward" method="_on_hitbox_collision"]
 [connection signal="hitbox_collision" from="MeshAndHitbox/Body/HitBoxBody" to="Health" method="_on_hitbox_collision"]
-[connection signal="hitbox_collision" from="MeshAndHitbox/Body/HitBoxBody" to="Reward" method="_on_hitbox_collision"]
-[connection signal="hitbox_collision" from="MeshAndHitbox/PivotArmLeft/HitBoxArmLeft" to="Reward" method="_on_hitbox_collision"]
 [connection signal="hitbox_collision" from="MeshAndHitbox/PivotArmRight/HitBoxArmRight" to="Health" method="_on_hitbox_collision"]
-[connection signal="hitbox_collision" from="MeshAndHitbox/PivotArmRight/HitBoxArmRight" to="Reward" method="_on_hitbox_collision"]

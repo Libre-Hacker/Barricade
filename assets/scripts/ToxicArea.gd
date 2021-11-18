@@ -8,7 +8,7 @@ export (float,0,100) var damage = 1 # Damage delt each tick.
 func damage_bodies():
 	if(get_overlapping_bodies().size()>0):
 		for bodies in get_overlapping_bodies():
-			bodies.damage(damage)
+			bodies.damage(null, damage)
 
 func _on_CooldownTimer_timeout():
 	damage_bodies()

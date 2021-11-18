@@ -10,15 +10,17 @@ export (float,0,1) var nailMargin # How much of the nail has to be exposed.
 
 signal play_animation(animationName)
 signal nail_prop
-signal ammo_changed
 
 var nailNode = preload("res://assets/scenes/Nail.tscn")
+const menuOpened = preload("res://assets/resources/menu_opened.tres")
 const uiLoadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
 const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
 
 onready var cooldownTimer = get_node("Cooldown")
 
 func _unhandled_input(event):
+	if(menuOpened.Value):
+		return
 	if(event.is_action_pressed("alt_fire")):
 		nail()
 		get_tree().get_root().set_input_as_handled()
@@ -31,7 +33,6 @@ func _unhandled_input(event):
 func nail():
 	if (ammo <= 0 or cooldownTimer.is_stopped() == false):
 		return
-
 	var raycastData = get_collision_data()
 	var propData = get_prop(raycastData)
 	var surfaceData = get_surface(raycastData)
@@ -80,6 +81,19 @@ func remove_nail():
 	get_collider().get_node("Nail").queue_free()
 	emit_signal("play_animation", "nail")
 	ammo += 1
+	update_ui()
+
+func is_ammo_full():
+	if(ammo == maxAmmo):
+		return true
+	else:
+		return false
+
+func add_ammo(value):
+	if(ammo + value >= maxAmmo):
+		ammo = maxAmmo
+	else:
+		ammo += value
 	update_ui()
 
 func update_ui():

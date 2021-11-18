@@ -1,13 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://assets/scripts/ZombieManager.gd" type="Script" id=1]
-[ext_resource path="res://assets/scripts/ZombieSpawnerManager.gd" type="Script" id=4]
 
-[node name="ZombieManager" type="Spatial"]
+[node name="ZombieManager" type="Node"]
 script = ExtResource( 1 )
-zombieCount = 10
-
-[node name="Zombies" type="Spatial" parent="."]
-
-[node name="Spawners" type="Spatial" parent="."]
-script = ExtResource( 4 )
+maxZombiesPerRound = [ 4, 6, 8, 10 ]

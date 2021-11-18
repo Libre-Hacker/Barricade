@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/scenes/modularassets/Floor4x4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/modularassets/Door4x3.tscn" type="PackedScene" id=2]
@@ -7,10 +7,9 @@
 [ext_resource path="res://assets/scenes/modularassets/Door2x3.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scenes/modularassets/Wall2x3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/scenes/PropCrate.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/scenes/FPSPlayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/scripts/SpawnerManager.gd" type="Script" id=8]
 [ext_resource path="res://assets/scenes/PropChair.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/scenes/ZombieManager.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/scenes/ZombieRespawnPoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/scenes/RespawnPoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/scenes/ToxicArea.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/scenes/WeaponStore.tscn" type="PackedScene" id=13]
 
@@ -19,13 +18,6 @@ vertices = PoolVector3Array( 0.9, 0.2, 4.01812, 3.1, 0.2, 4.01812, 3.3, 0.2, 3.5
 polygons = [ PoolIntArray( 1, 0, 2 ), PoolIntArray( 2, 0, 3 ), PoolIntArray( 3, 0, 4 ), PoolIntArray( 6, 5, 7 ), PoolIntArray( 7, 5, 8 ), PoolIntArray( 10, 9, 11 ), PoolIntArray( 11, 9, 12 ), PoolIntArray( 13, 16, 14 ), PoolIntArray( 14, 16, 15 ), PoolIntArray( 18, 17, 19 ), PoolIntArray( 19, 17, 22 ), PoolIntArray( 19, 22, 21 ), PoolIntArray( 19, 21, 20 ), PoolIntArray( 24, 23, 25 ), PoolIntArray( 25, 23, 26 ), PoolIntArray( 28, 27, 29 ), PoolIntArray( 29, 27, 30 ), PoolIntArray( 30, 27, 31 ), PoolIntArray( 31, 27, 32 ), PoolIntArray( 35, 34, 33 ), PoolIntArray( 38, 37, 36 ), PoolIntArray( 40, 39, 41 ), PoolIntArray( 41, 39, 42 ), PoolIntArray( 44, 43, 45 ), PoolIntArray( 45, 43, 46 ), PoolIntArray( 49, 48, 47 ), PoolIntArray( 51, 50, 52 ), PoolIntArray( 52, 50, 53 ), PoolIntArray( 56, 55, 54 ), PoolIntArray( 58, 57, 59 ), PoolIntArray( 59, 57, 60 ), PoolIntArray( 62, 61, 63 ), PoolIntArray( 63, 61, 66 ), PoolIntArray( 63, 66, 65 ), PoolIntArray( 63, 65, 64 ), PoolIntArray( 67, 69, 68 ), PoolIntArray( 73, 72, 70 ), PoolIntArray( 70, 72, 71 ), PoolIntArray( 75, 74, 76 ), PoolIntArray( 76, 74, 77 ), PoolIntArray( 79, 78, 80 ), PoolIntArray( 80, 78, 81 ), PoolIntArray( 82, 84, 83 ), PoolIntArray( 86, 85, 87 ), PoolIntArray( 87, 85, 88 ), PoolIntArray( 90, 89, 91 ), PoolIntArray( 91, 89, 92 ), PoolIntArray( 95, 94, 93 ), PoolIntArray( 97, 96, 98 ), PoolIntArray( 98, 96, 99 ), PoolIntArray( 101, 100, 102 ), PoolIntArray( 102, 100, 103 ), PoolIntArray( 103, 100, 105 ), PoolIntArray( 103, 105, 104 ), PoolIntArray( 107, 106, 108 ), PoolIntArray( 108, 106, 109 ), PoolIntArray( 110, 112, 111 ), PoolIntArray( 114, 113, 115 ), PoolIntArray( 115, 113, 116 ), PoolIntArray( 118, 117, 119 ), PoolIntArray( 119, 117, 120 ), PoolIntArray( 122, 121, 123 ), PoolIntArray( 123, 121, 124 ), PoolIntArray( 126, 125, 127 ), PoolIntArray( 127, 125, 128 ), PoolIntArray( 130, 129, 131 ), PoolIntArray( 131, 129, 134 ), PoolIntArray( 131, 134, 133 ), PoolIntArray( 131, 133, 132 ), PoolIntArray( 136, 135, 137 ), PoolIntArray( 137, 135, 138 ), PoolIntArray( 140, 139, 141 ), PoolIntArray( 141, 139, 144 ), PoolIntArray( 141, 144, 143 ), PoolIntArray( 141, 143, 142 ), PoolIntArray( 146, 145, 147 ), PoolIntArray( 147, 145, 148 ), PoolIntArray( 150, 149, 151 ), PoolIntArray( 151, 149, 152 ), PoolIntArray( 157, 156, 153 ), PoolIntArray( 153, 156, 154 ), PoolIntArray( 154, 156, 155 ), PoolIntArray( 158, 160, 159 ), PoolIntArray( 162, 161, 163 ), PoolIntArray( 163, 161, 164 ), PoolIntArray( 168, 167, 165 ), PoolIntArray( 165, 167, 166 ), PoolIntArray( 172, 171, 169 ), PoolIntArray( 169, 171, 170 ), PoolIntArray( 174, 173, 175 ), PoolIntArray( 175, 173, 176 ), PoolIntArray( 178, 177, 179 ), PoolIntArray( 179, 177, 180 ), PoolIntArray( 180, 177, 181 ), PoolIntArray( 183, 182, 184 ), PoolIntArray( 184, 182, 185 ), PoolIntArray( 187, 186, 188 ), PoolIntArray( 188, 186, 189 ), PoolIntArray( 191, 190, 192 ), PoolIntArray( 192, 190, 194 ), PoolIntArray( 192, 194, 193 ), PoolIntArray( 197, 196, 195 ), PoolIntArray( 199, 198, 200 ), PoolIntArray( 200, 198, 201 ), PoolIntArray( 201, 198, 203 ), PoolIntArray( 201, 203, 202 ), PoolIntArray( 206, 205, 204 ), PoolIntArray( 207, 210, 208 ), PoolIntArray( 208, 210, 209 ), PoolIntArray( 213, 212, 211 ), PoolIntArray( 215, 214, 216 ), PoolIntArray( 216, 214, 217 ), PoolIntArray( 217, 214, 218 ), PoolIntArray( 218, 214, 219 ), PoolIntArray( 222, 221, 220 ), PoolIntArray( 225, 224, 223 ), PoolIntArray( 227, 226, 228 ), PoolIntArray( 230, 229, 231 ), PoolIntArray( 231, 229, 233 ), PoolIntArray( 231, 233, 232 ), PoolIntArray( 235, 234, 236 ), PoolIntArray( 236, 234, 237 ) ]
 cell/size = 0.1
 cell/height = 0.1
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Camera
-
-
-
-"
 
 [node name="Spatial" type="Spatial"]
 
@@ -252,102 +244,58 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18 )
 [node name="Floor10x10_2" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
 
-[node name="ZombieManager" parent="Navigation" instance=ExtResource( 10 )]
-zombieCount = 1
-
-[node name="ZombieRespawnPoint" parent="Navigation/ZombieManager/Spawners" index="0" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 34 )
-
-[node name="ZombieRespawnPoint2" parent="Navigation/ZombieManager/Spawners" index="1" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.71088 )
-
 [node name="Props" type="Spatial" parent="."]
-
-[node name="PropCrate2" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.89276, 1, 6 )
-health = 60.0
-
-[node name="PropCrate2_2" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64276, 1, 3.275 )
-health = 60.0
-
-[node name="PropCrate2_3" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14276, 1, 3.75 )
-health = 60.0
-
-[node name="PropCrate2_4" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.39276, 1, 3.25 )
-health = 60.0
-
-[node name="PropCrate2_5" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14276, 1, 2.525 )
-health = 60.0
-
-[node name="PropCrate2_6" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14276, 2.25, 3.275 )
-health = 60.0
-
-[node name="PropCrate2_7" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.35724, 1, 22 )
-health = 60.0
-
-[node name="PropCrate2_8" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10724, 1, 22 )
-health = 60.0
-
-[node name="PropCrate2_9" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85724, 1, 22 )
-health = 60.0
-
-[node name="PropCrate2_10" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10724, 1, 20.75 )
-health = 60.0
-
-[node name="PropCrate2_11" parent="Props" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10724, 2.25, 21.25 )
-health = 60.0
 
 [node name="PropChair4" parent="Props" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88229, 0.6, 15.8056 )
 linear_damp = 2.0
 
-[node name="PropChair4_2" parent="Props" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63229, 0.6, 8.8056 )
+[node name="PropCrate" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68537, 2.15458, 13.942 )
 
-[node name="FPSPlayer" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72312, 0.696912, 15 )
+[node name="PropCrate_2" parent="Props" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68537, 2.15458, 15.4733 )
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="Lights" type="Spatial" parent="."]
 
-[node name="OmniLight" type="OmniLight" parent="Spatial"]
+[node name="OmniLight" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 8 )
 
-[node name="OmniLight4" type="OmniLight" parent="Spatial"]
+[node name="OmniLight4" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 6 )
 
-[node name="OmniLight2" type="OmniLight" parent="Spatial"]
+[node name="OmniLight2" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, 15 )
 
-[node name="OmniLight3" type="OmniLight" parent="Spatial"]
+[node name="OmniLight3" type="OmniLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 15 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -1.13133e-08, -0.965926, 0.258819, -4.2222e-08, 0.258819, 0.965926, -1, 8.88178e-16, -4.37114e-08, 7.85458, 20.2333, 16.2678 )
-script = SubResource( 2 )
-
-[node name="ToxicArea" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
-
-[node name="ToxicArea_2" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 34 )
 
 [node name="Interactables" type="Spatial" parent="."]
 
 [node name="WeaponStore_2" parent="Interactables" instance=ExtResource( 13 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.75, 1.6, 17.9 )
 
-[editable path="Navigation/NavigationMeshInstance/Floor4x4"]
-[editable path="Navigation/NavigationMeshInstance/Wall4x6"]
-[editable path="Navigation/NavigationMeshInstance/Wall4x12"]
-[editable path="Navigation/NavigationMeshInstance/Floor10x10_2"]
-[editable path="Navigation/ZombieManager"]
+[node name="ZombieSpawners" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="RespawnPoint" parent="ZombieSpawners" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+
+[node name="ToxicArea" parent="ZombieSpawners/RespawnPoint" instance=ExtResource( 12 )]
+
+[node name="RespawnPoint_2" parent="ZombieSpawners" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 34 )
+
+[node name="ToxicArea" parent="ZombieSpawners/RespawnPoint_2" instance=ExtResource( 12 )]
+
+[node name="PlayerSpawners" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="RespawnPoint" parent="PlayerSpawners" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 14 )
+
+[node name="RespawnPoint_2" parent="PlayerSpawners" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6 )
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52003, 0.408505, 7.96863 )

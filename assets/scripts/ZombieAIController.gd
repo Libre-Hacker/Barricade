@@ -18,7 +18,7 @@ func _physics_process(delta):
 	send_current_state(delta)
 
 # Sends the signal for the current state.
-func send_current_state(delta):
+func send_current_state(_delta):
 	match currentState:
 		AI_STATE.IDLE:
 			pass
@@ -33,7 +33,7 @@ func change_state(newState : int):
 		print("ERROR: Current state already is: ", AI_STATE.keys()[newState])
 		return
 	currentState = newState
-	print("Switching state to: ", AI_STATE.keys()[currentState])
+	#print("Switching state to: ", AI_STATE.keys()[currentState])
 
 func _on_KinematicBody_obstructed(value):
 	obstruction_countdown(value)

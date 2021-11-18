@@ -52,7 +52,7 @@ func attempt_attack():
 func damage_target():
 	if(target == null):
 		return
-	target.damage(attackDamage)
+	target.damage(null, attackDamage)
 
 # A priority target is a player or a nailed prop.
 func is_priority_target(body):

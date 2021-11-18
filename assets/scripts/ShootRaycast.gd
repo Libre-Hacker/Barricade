@@ -14,7 +14,6 @@ export(float,1,1000, 0.1) var maxRange : float # Maximum range of the weapon.
 
 var isReloading : bool = false
 
-signal ammo_changed
 signal play_animation(animationName)
 
 var buletHitParticleNode = preload("res://assets/scenes/BulletHitParticle.tscn")
@@ -23,6 +22,7 @@ onready var player = find_parent("FPSPlayer*")
 onready var cooldownTimer = get_node("Cooldown")
 onready var currentAmmo = ammoCapacity
 
+const menuOpened = preload("res://assets/resources/menu_opened.tres")
 const uiLoadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
 const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
 
@@ -32,6 +32,8 @@ func _ready():
 
 # Process user input.
 func _unhandled_input(event):
+	if(menuOpened.Value):
+		return
 	if(event.is_action_pressed("primary_fire") and selectedFireMode == fireModes.semiAuto):
 		primary_fire()
 		get_tree().get_root().set_input_as_handled()
@@ -40,6 +42,8 @@ func _unhandled_input(event):
 		get_tree().get_root().set_input_as_handled()
 
 func _process(_delta):
+	if(menuOpened.Value):
+		return
 	if(Input.is_action_pressed("primary_fire") and selectedFireMode == fireModes.fullAuto): # Must use _process() for full auto, or input will only be checked when another input is given.
 		primary_fire()
 
@@ -93,6 +97,19 @@ func endReload():
 	
 	currentAmmo += ammoToReload
 	reserveAmmo -= ammoToReload
+	update_ui()
+
+func is_reserve_full():
+	if(reserveAmmo == maxReserveAmmo):
+		return true
+	else:
+		return false
+
+func add_reserve_ammo(value):
+	if(reserveAmmo + value >= maxReserveAmmo):
+		reserveAmmo = maxReserveAmmo
+	else:
+		reserveAmmo += value
 	update_ui()
 
 func update_ui():

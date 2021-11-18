@@ -13,6 +13,6 @@ func _on_change_animation(animationName):
 	play(animationName)
 
 # Plays the default animation if set.
-func _on_animation_finished():
+func _on_animation_finished(_anim_name):
 	if(returnToDefaultAnimation):
 		play(defaultAnimation)
