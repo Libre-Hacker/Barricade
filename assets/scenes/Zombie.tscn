@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/scripts/ZombieMover.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=2]
@@ -9,6 +9,16 @@
 [ext_resource path="res://assets/scripts/Navigator.gd" type="Script" id=7]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/scripts/Health.gd" type="Script" id=9]
+[ext_resource path="res://assets/sounds/zo_pain1.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/zo_pain2.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/scripts/IdleAudio.gd" type="Script" id=12]
+[ext_resource path="res://assets/sounds/zo_idle4.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sounds/zo_idle3.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sounds/zo_idle1.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/sounds/zo_idle2.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/sounds/zo_attack1.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/claw_miss2.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/sounds/claw_strike2.wav" type="AudioStream" id=19]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.25
@@ -66,6 +76,20 @@ tracks/4/keys = {
 "args": [  ],
 "method": "damage_target"
 } ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("PrimaryAttack/AudioStreamPlayer3D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 17 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=3]
@@ -161,6 +185,11 @@ defaultAnimation = "idle"
 
 [node name="Health" type="Spatial" parent="."]
 script = ExtResource( 9 )
+hurtSounds = [ ExtResource( 10 ), ExtResource( 11 ) ]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Health"]
+unit_db = 5.0
+bus = "Sound"
 
 [node name="AIController" type="Spatial" parent="."]
 script = ExtResource( 6 )
@@ -180,6 +209,8 @@ autostart = true
 collision_layer = 0
 collision_mask = 6
 script = ExtResource( 3 )
+missSound = ExtResource( 18 )
+hitSound = ExtResource( 19 )
 
 [node name="AttackArea" type="CollisionShape" parent="PrimaryAttack"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4 )
@@ -255,6 +286,14 @@ collision_mask = 7
 transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
 collision_mask = 7
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PrimaryAttack"]
+stream = ExtResource( 17 )
+unit_db = -5.0
+bus = "Sound"
+
+[node name="AudioStreamPlayer3D_2" type="AudioStreamPlayer3D" parent="PrimaryAttack"]
+bus = "Sound"
 
 [node name="MeshAndHitbox" type="Position3D" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -336,6 +375,14 @@ multiplier = 0.8
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0.5, 0.25 )
 shape = SubResource( 12 )
 
+[node name="IdleAudio" type="AudioStreamPlayer3D" parent="."]
+bus = "Sound"
+script = ExtResource( 12 )
+idleSounds = [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 13 ) ]
+
+[node name="Timer" type="Timer" parent="IdleAudio"]
+one_shot = true
+
 [connection signal="obstructed" from="." to="AIController" method="_on_KinematicBody_obstructed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
 [connection signal="destroyed" from="Health" to="Reward" method="_on_destroyed"]
@@ -352,3 +399,5 @@ shape = SubResource( 12 )
 [connection signal="hitbox_collision" from="MeshAndHitbox/Head/HitBoxHead" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_collision" from="MeshAndHitbox/Body/HitBoxBody" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_collision" from="MeshAndHitbox/PivotArmRight/HitBoxArmRight" to="Health" method="_on_hitbox_collision"]
+[connection signal="finished" from="IdleAudio" to="IdleAudio" method="_on_sound_finished"]
+[connection signal="timeout" from="IdleAudio/Timer" to="IdleAudio" method="_on_Timer_timeout"]

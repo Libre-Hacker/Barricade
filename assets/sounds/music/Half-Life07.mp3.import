@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Half-Life07.mp3-8f32ae524fe1e8015b3bf1d72d047771.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/Half-Life07.mp3"
+dest_files=[ "res://.import/Half-Life07.mp3-8f32ae524fe1e8015b3bf1d72d047771.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

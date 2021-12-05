@@ -3,8 +3,11 @@ extends Spatial
 export (float, 1,1000) var health = 100.0
 export (float, 1,1000) var maxHealth = 100.0
 
+export (Array, Resource) var hurtSounds = []
 signal health_changed
 signal destroyed
+
+onready var audioPlayer = get_node("AudioStreamPlayer3D")
 
 func _ready():
 	health = maxHealth
@@ -17,6 +20,10 @@ func _unhandled_input(event):
 
 # Removes health from this object. Destroying it when below 0.
 func damage(attacker = null, value = 0):
+	if(audioPlayer.is_playing() == false):
+		randomize()
+		audioPlayer.set_stream(hurtSounds[round(rand_range(0,hurtSounds.size()-1))])
+		audioPlayer.play()
 	if(health - value <= 0):
 		print(name, " is destroyed.")
 		# Use health instead of damage because damage may be greater than health.

@@ -299,3 +299,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6 )
 
 [node name="Position3D" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52003, 0.408505, 7.96863 )
+
+[node name="Cameras" type="Node" parent="."]
+
+[node name="Camera" type="Camera" parent="Cameras"]
+transform = Transform( 0.642788, -0.198267, 0.739942, 0, 0.965926, 0.258819, -0.766044, -0.166366, 0.620885, 9.6, 2.55, 17.65 )

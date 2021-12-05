@@ -1,8 +1,10 @@
-[gd_resource type="Animation" format=2]
+[gd_resource type="Animation" load_steps=2 format=2]
+
+[ext_resource path="res://assets/sounds/ammopickup1.wav" type="AudioStream" id=1]
 
 [resource]
 resource_name = "equip"
-length = 0.3
+length = 0.9
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Pivot/Mesh")
 tracks/0/interp = 1
@@ -57,4 +59,32 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 145, 0, 0 ) ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer3D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 1 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "animation_finished" ],
+"method": "emit_signal"
+} ]
 }

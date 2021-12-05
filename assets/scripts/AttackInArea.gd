@@ -7,6 +7,8 @@ extends Area
 # found deal damage to it.
 
 export (float, 0, 100) var attackDamage = 10 # Damage each attack deals.
+export (Resource) var missSound
+export (Resource) var hitSound
 
 var attacking = false # Behaviour state bool, when true executes the main loop.
 var target = null # Keep target variable for optimization.
@@ -50,8 +52,13 @@ func attempt_attack():
 
 # Damages the target, called by the AnimationPlayer
 func damage_target():
+	var audioPlayer = get_node("AudioStreamPlayer3D_2")
 	if(target == null):
+		audioPlayer.set_stream(missSound)
+		audioPlayer.play()
 		return
+	audioPlayer.set_stream(hitSound)
+	audioPlayer.play()
 	target.damage(null, attackDamage)
 
 # A priority target is a player or a nailed prop.

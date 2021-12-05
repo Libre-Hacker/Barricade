@@ -3,7 +3,6 @@ extends Node
 onready var players = get_children()
 onready var playersAlive = players.size()-1
 onready var playerSpawners = get_tree().get_root().find_node("PlayerSpawners",true,false)
-
 signal all_players_dead
 
 func _ready():
@@ -26,6 +25,7 @@ func spawn_players():
 		playersAlive += 1
 
 func respawn_player(player):
+	player.get_node("Camera").make_current()
 	player.transform.origin = playerSpawners.get_random_spawner().transform.origin
 	player.health = 100
 	add_child(player)

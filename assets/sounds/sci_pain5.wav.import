@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sci_pain5.wav-5b4a4e03b94f5d62bcd941865ac52e05.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sci_pain5.wav"
+dest_files=[ "res://.import/sci_pain5.wav-5b4a4e03b94f5d62bcd941865ac52e05.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

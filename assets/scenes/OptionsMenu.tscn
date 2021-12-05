@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/MALERMEI.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Pixeled.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/scripts/OptionsMenu.gd" type="Script" id=3]
+[ext_resource path="res://assets/scripts/VideoSettings.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/AudioSettings.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/InputRemapper.gd" type="Script" id=6]
+[ext_resource path="res://assets/scripts/InputSettings.gd" type="Script" id=7]
+[ext_resource path="res://assets/scripts/KeyBindButton.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 10
 extra_spacing_top = -8
+extra_spacing_bottom = -4
 font_data = ExtResource( 2 )
 
 [node name="OptionsMenu" type="CanvasLayer"]
@@ -17,16 +24,14 @@ script = ExtResource( 3 )
 
 [node name="Tittle" type="Label" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 margin_left = -230.0
-margin_top = -25.0
+margin_top = 15.0
 margin_right = 230.0
-margin_bottom = 25.0
+margin_bottom = 65.0
 custom_colors/font_color = Color( 0.835294, 0.568627, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "COMING SOON"
+text = "OPTIONS"
 align = 1
 valign = 1
 __meta__ = {
@@ -49,4 +54,635 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.5
+margin_top = -201.5
+margin_right = 199.5
+margin_bottom = 19.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Video" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+tab_align = 0
+script = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer"]
+margin_right = 391.0
+margin_bottom = 24.0
+
+[node name="Fullscreen" type="Label" parent="TabContainer/Video/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 70.0
+margin_bottom = 19.0
+text = "Full Screen"
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="TabContainer/Video/VBoxContainer/HBoxContainer" groups=["setting_control"]]
+margin_left = 74.0
+margin_right = 98.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer_2" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer"]
+margin_top = 28.0
+margin_right = 391.0
+margin_bottom = 52.0
+
+[node name="Borderless" type="Label" parent="TabContainer/Video/VBoxContainer/HBoxContainer_2"]
+margin_top = 5.0
+margin_right = 69.0
+margin_bottom = 19.0
+text = "Borderless"
+
+[node name="BorderlessCheckBox" type="CheckBox" parent="TabContainer/Video/VBoxContainer/HBoxContainer_2" groups=["setting_control"]]
+margin_left = 73.0
+margin_right = 97.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer_3" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer"]
+margin_top = 56.0
+margin_right = 391.0
+margin_bottom = 76.0
+
+[node name="Resolution" type="Label" parent="TabContainer/Video/VBoxContainer/HBoxContainer_3"]
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 17.0
+text = "Resolution  "
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="TabContainer/Video/VBoxContainer/HBoxContainer_3" groups=["setting_control"]]
+margin_left = 80.0
+margin_right = 164.0
+margin_bottom = 20.0
+text = "640x360"
+items = [ "640x360", null, false, 0, null, "1280x720", null, false, 1, null, "1920x1080", null, false, 2, null ]
+selected = 0
+
+[node name="HBoxContainer_4" type="HBoxContainer" parent="TabContainer/Video/VBoxContainer"]
+margin_top = 80.0
+margin_right = 391.0
+margin_bottom = 104.0
+
+[node name="Vsync" type="Label" parent="TabContainer/Video/VBoxContainer/HBoxContainer_4"]
+margin_top = 5.0
+margin_right = 37.0
+margin_bottom = 19.0
+text = "Vsync"
+
+[node name="VsyncCheckBox" type="CheckBox" parent="TabContainer/Video/VBoxContainer/HBoxContainer_4" groups=["setting_control"]]
+margin_left = 41.0
+margin_right = 65.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+tab_align = 0
+script = ExtResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Audio/VBoxContainer"]
+margin_right = 391.0
+margin_bottom = 16.0
+
+[node name="MasterVolume" type="Label" parent="TabContainer/Audio/VBoxContainer/HBoxContainer"]
+margin_top = 1.0
+margin_right = 105.0
+margin_bottom = 15.0
+text = "Master Volume: "
+
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/HBoxContainer" groups=["setting_control"]]
+margin_left = 109.0
+margin_right = 359.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 250, 0 )
+max_value = 1.0
+step = 0.01
+value = 0.9
+
+[node name="HBoxContainer_2" type="HBoxContainer" parent="TabContainer/Audio/VBoxContainer"]
+margin_top = 20.0
+margin_right = 391.0
+margin_bottom = 36.0
+
+[node name="MusicVolume" type="Label" parent="TabContainer/Audio/VBoxContainer/HBoxContainer_2"]
+margin_top = 1.0
+margin_right = 99.0
+margin_bottom = 15.0
+text = "Music Volume: "
+
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/HBoxContainer_2" groups=["setting_control"]]
+margin_left = 103.0
+margin_right = 353.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 250, 0 )
+max_value = 1.0
+step = 0.01
+value = 0.1
+
+[node name="HBoxContainer_3" type="HBoxContainer" parent="TabContainer/Audio/VBoxContainer"]
+margin_top = 40.0
+margin_right = 391.0
+margin_bottom = 56.0
+
+[node name="SoundVolume" type="Label" parent="TabContainer/Audio/VBoxContainer/HBoxContainer_3"]
+margin_top = 1.0
+margin_right = 100.0
+margin_bottom = 15.0
+text = "Sound Volume: "
+
+[node name="SoundSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer/HBoxContainer_3" groups=["setting_control"]]
+margin_left = 104.0
+margin_right = 354.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 250, 0 )
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Input" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 7 )
+
+[node name="InputRemapper" type="Node" parent="TabContainer/Input"]
+script = ExtResource( 6 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Input"]
+anchor_right = 1.0
+anchor_bottom = 0.751
+margin_bottom = 0.0649872
+scroll_horizontal_enabled = false
+scroll_vertical = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="TabContainer/Input/ScrollContainer"]
+margin_right = 391.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 500 )
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel"]
+margin_right = 377.0
+margin_bottom = 266.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_right = 377.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Header"]
+margin_right = 186.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Action"
+align = 1
+
+[node name="Label_2" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Header"]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Key"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 18.0
+margin_right = 377.0
+margin_bottom = 22.0
+
+[node name="MoveForward" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 26.0
+margin_right = 377.0
+margin_bottom = 46.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveForward"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Move Forward"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveForward" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "W"
+script = ExtResource( 8 )
+
+[node name="MoveBackward" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 50.0
+margin_right = 377.0
+margin_bottom = 70.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveBackward"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Move Backward"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveBackward" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "S"
+script = ExtResource( 8 )
+assignedAction = "move_backward"
+
+[node name="StrafeLeft" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 74.0
+margin_right = 377.0
+margin_bottom = 94.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeLeft"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Strafe Left"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeLeft" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "A"
+script = ExtResource( 8 )
+assignedAction = "move_left"
+
+[node name="StrafeRight" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 98.0
+margin_right = 377.0
+margin_bottom = 118.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeRight"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Strafe Right"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeRight" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "D"
+script = ExtResource( 8 )
+assignedAction = "move_right"
+
+[node name="Jump" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 122.0
+margin_right = 377.0
+margin_bottom = 142.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Jump"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Jump"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Jump" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "SPACE"
+script = ExtResource( 8 )
+assignedAction = "jump"
+
+[node name="Interact" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 146.0
+margin_right = 377.0
+margin_bottom = 166.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Interact"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Interact"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Interact" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "E"
+script = ExtResource( 8 )
+assignedAction = "interact"
+
+[node name="Phase" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 170.0
+margin_right = 377.0
+margin_bottom = 190.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Phase"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Phase"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Phase" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Z"
+script = ExtResource( 8 )
+assignedAction = "phase"
+
+[node name="Reload" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 194.0
+margin_right = 377.0
+margin_bottom = 214.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Reload"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Reload"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Reload" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "R"
+script = ExtResource( 8 )
+assignedAction = "reload"
+
+[node name="RotateProp" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 218.0
+margin_right = 377.0
+margin_bottom = 238.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/RotateProp"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Rotate Prop"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/RotateProp" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "ALT"
+script = ExtResource( 8 )
+assignedAction = "rotate_prop"
+
+[node name="PrimaryFire" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 242.0
+margin_right = 377.0
+margin_bottom = 262.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PrimaryFire"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Primary Fire"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PrimaryFire" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "LMB"
+script = ExtResource( 8 )
+assignedAction = "primary_fire"
+
+[node name="SecondaryFire" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 266.0
+margin_right = 377.0
+margin_bottom = 286.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/SecondaryFire"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Secondary Fire"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/SecondaryFire" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "RMB"
+script = ExtResource( 8 )
+assignedAction = "alt_fire"
+
+[node name="NextWeapon" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 290.0
+margin_right = 377.0
+margin_bottom = 310.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/NextWeapon"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Next Weapon"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/NextWeapon" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "SCROLL UP"
+script = ExtResource( 8 )
+assignedAction = "next_weapon"
+
+[node name="PreviousWeapon" type="HBoxContainer" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer"]
+margin_top = 314.0
+margin_right = 377.0
+margin_bottom = 334.0
+
+[node name="ActionLabel" type="Label" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PreviousWeapon"]
+margin_top = 3.0
+margin_right = 186.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Previous Weapon"
+align = 1
+
+[node name="KeyButton" type="Button" parent="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PreviousWeapon" groups=["setting_control"]]
+margin_left = 190.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "SCROLL DOWN"
+script = ExtResource( 8 )
+assignedAction = "previous_weapon"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.397
+anchor_top = 0.478
+anchor_right = 0.603
+anchor_bottom = 0.515
+margin_left = -0.240051
+margin_top = -0.23999
+margin_right = 0.239868
+margin_bottom = -0.200073
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetToDefault" type="Button" parent="HBoxContainer"]
+margin_right = 196.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "RESET TO DEFAULT"
+
+[node name="ConfirmChanges" type="Button" parent="HBoxContainer"]
+margin_left = 200.0
+margin_right = 396.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "CONFIRM CHANGES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -225.5
+margin_top = -50.5
+margin_right = 225.5
+margin_bottom = 50.5
+window_title = "Discard Changes?"
+dialog_text = "Clicking ok will revert all changes, and return you to the main menu.
+Apply your changes before exiting."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -217.5
+margin_top = -11.5
+margin_right = 217.5
+margin_bottom = 14.5
+color = Color( 0, 0, 0, 0.729412 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="button_down" from="Back" to="." method="_on_Back_button_down"]
+[connection signal="setting_changed" from="TabContainer/Video" to="." method="_on_setting_changed"]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/HBoxContainer/FullscreenCheckBox" to="TabContainer/Video" method="_on_FullscreenCheckBox_pressed"]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/HBoxContainer_2/BorderlessCheckBox" to="TabContainer/Video" method="_on_BorderlessCheckBox_pressed"]
+[connection signal="item_selected" from="TabContainer/Video/VBoxContainer/HBoxContainer_3/ResolutionOptionButton" to="TabContainer/Video" method="_on_ResolutionOptionButton_item_selected"]
+[connection signal="pressed" from="TabContainer/Video/VBoxContainer/HBoxContainer_4/VsyncCheckBox" to="TabContainer/Video" method="_on_VsyncCheckBox_pressed"]
+[connection signal="setting_changed" from="TabContainer/Audio" to="." method="_on_setting_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/VBoxContainer/HBoxContainer/MasterSlider" to="TabContainer/Audio" method="_on_Slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/VBoxContainer/HBoxContainer_2/MusicSlider" to="TabContainer/Audio" method="_on_Slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/VBoxContainer/HBoxContainer_3/SoundSlider" to="TabContainer/Audio" method="_on_Slider_value_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveForward/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveForward/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveForward/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveBackward/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveBackward/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/MoveBackward/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeLeft/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeLeft/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeLeft/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeRight/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeRight/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/StrafeRight/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Jump/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Jump/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Jump/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Interact/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Interact/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Interact/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Phase/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Phase/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Phase/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Reload/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Reload/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/Reload/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/RotateProp/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/RotateProp/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/RotateProp/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PrimaryFire/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PrimaryFire/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PrimaryFire/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/SecondaryFire/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/SecondaryFire/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/SecondaryFire/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/NextWeapon/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/NextWeapon/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/NextWeapon/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PreviousWeapon/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PreviousWeapon/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="setting_changed" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PreviousWeapon/KeyButton" to="." method="_on_setting_changed"]
+[connection signal="button_up" from="HBoxContainer/ResetToDefault" to="." method="_on_ResetToDefault_button_up"]
+[connection signal="button_up" from="HBoxContainer/ConfirmChanges" to="." method="_on_ConfirmChanges_button_up"]
+[connection signal="confirmed" from="Popup" to="." method="_on_Popup_confirmed"]

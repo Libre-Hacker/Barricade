@@ -13,13 +13,13 @@ font_data = ExtResource( 2 )
 extra_spacing_top = -8
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=3]
 antialiased = false
 font_path = "res://assets/fonts/Pixeled.ttf"
 
 [sub_resource type="DynamicFont" id=4]
 size = 12
-font_data = SubResource( 5 )
+font_data = SubResource( 3 )
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -40,8 +40,8 @@ __meta__ = {
 [node name="Tittle" type="Label" parent="VBoxContainer"]
 margin_right = 390.0
 margin_bottom = 50.0
-custom_colors/font_color = Color( 0.835294, 0.568627, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.835294, 0.568627, 0, 1 )
 text = "BARRICADE"
 align = 1
 valign = 1
@@ -50,8 +50,8 @@ valign = 1
 margin_top = 54.0
 margin_right = 390.0
 margin_bottom = 98.0
-custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 text = "START GAME"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,8 +61,8 @@ __meta__ = {
 margin_top = 102.0
 margin_right = 390.0
 margin_bottom = 146.0
-custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 text = "OPTIONS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -72,8 +72,8 @@ __meta__ = {
 margin_top = 150.0
 margin_right = 390.0
 margin_bottom = 194.0
-custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 text = "QUIT"
 script = ExtResource( 3 )
 __meta__ = {
@@ -109,8 +109,8 @@ custom_constants/separation = 10
 margin_right = 190.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
-custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 text = "CANCEL"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -121,8 +121,8 @@ margin_left = 200.0
 margin_right = 390.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
-custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 text = "CONFIRM"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -134,8 +134,8 @@ anchor_bottom = 1.0
 margin_left = 6.0
 margin_top = -35.0
 margin_right = 258.0
-custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "VERSION: 0.01"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/Class_SettingData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+fullscreen = true
+borderless = false
+resolution = Vector2( 1920, 1080 )
+vsync = false
+masterVolume = 1
+musicVolume = 1
+soundVolume = 1

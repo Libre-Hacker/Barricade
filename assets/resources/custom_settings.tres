@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/Class_SettingData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+fullscreen = true
+borderless = false
+resolution = Vector2( 1920, 1080 )
+vsync = false
+masterVolume = 1.0
+musicVolume = 0.1
+soundVolume = 0.5
+keyBinds = [ [ "move_forward", "move_backward", "move_left", "move_right", "jump", "phase", "interact", "reload", "rotate_prop", "primary_fire", "alt_fire", "next_weapon", "previous_weapon" ], [ 87, 83, 65, 68, 32, 90, 69, 82, 16777240, 1, 2, 4, 5 ] ]

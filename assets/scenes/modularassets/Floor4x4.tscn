@@ -11,7 +11,9 @@ size = Vector2( 4, 4 )
 
 [node name="Floor4x4" type="Spatial"]
 
-[node name="StaticBody" type="StaticBody" parent="."]
+[node name="StaticBody" type="StaticBody" parent="." groups=[
+"tile",
+]]
 collision_mask = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]

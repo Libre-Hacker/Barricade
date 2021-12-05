@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hks2.wav-b08e77e3acbf61ef35ae6b15f56314c2.sample"
+
+[deps]
+
+source_file="res://assets/sounds/hks2.wav"
+dest_files=[ "res://.import/hks2.wav-b08e77e3acbf61ef35ae6b15f56314c2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

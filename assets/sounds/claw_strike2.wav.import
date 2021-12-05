@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/claw_strike2.wav-2ccd1dc3acf5d19b42436fa5a19eb29a.sample"
+
+[deps]
+
+source_file="res://assets/sounds/claw_strike2.wav"
+dest_files=[ "res://.import/claw_strike2.wav-2ccd1dc3acf5d19b42436fa5a19eb29a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

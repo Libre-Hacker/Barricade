@@ -4,12 +4,15 @@ export (float,0,10) var repairRange # How far the hammer can reach.
 export (float,0,100) var repairAmount # How much health is repaired per swing.
 export (float,0,100) var damage # How much damage is done per swing.
 export (float, 0,10) var coolDown # How much time between each swing.
+export (Resource) var swingSound
+export (Resource) var hitSound
 
 const menuOpened = preload("res://assets/resources/menu_opened.tres")
 signal play_animation(animationName)
 
 var repairParticleNode = preload("res://assets/scenes/RepairParticle.tscn")
 
+onready var audioPlayer = get_node("AudioStreamPlayer3D")
 onready var player = find_parent("FPSPlayer*")
 onready var cooldownTimer = get_node("Cooldown")
 
@@ -29,8 +32,9 @@ func swing():
 	emit_signal("play_animation", "nail")
 	cooldownTimer.start()
 	if(is_colliding() == false):
+		audioPlayer._on_change_sound(swingSound)
 		return
-		
+	audioPlayer._on_change_sound(hitSound)
 	var hitObject = get_collider()
 
 	# Try to repair first because a repairable prop has the same properties as

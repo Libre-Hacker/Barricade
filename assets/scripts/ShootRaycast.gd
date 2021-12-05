@@ -11,7 +11,6 @@ export(int,1,1000) var maxReserveAmmo : int # Maximum ammo held in reserve.
 export(float,1,1024) var rateOfFire : float # The weapons cycle time, in rounds/minute.
 export(float,0.1,1000, 0.1) var damage : float # How much damage each bullet causes.
 export(float,1,1000, 0.1) var maxRange : float # Maximum range of the weapon.
-
 var isReloading : bool = false
 
 signal play_animation(animationName)
@@ -19,6 +18,7 @@ signal play_animation(animationName)
 var buletHitParticleNode = preload("res://assets/scenes/BulletHitParticle.tscn")
 
 onready var player = find_parent("FPSPlayer*")
+onready var audioPlayer = get_node("AudioStreamPlayer3D")
 onready var cooldownTimer = get_node("Cooldown")
 onready var currentAmmo = ammoCapacity
 
@@ -54,6 +54,8 @@ func primary_fire():
 	currentAmmo -= 1
 	update_ui()
 	emit_signal("play_animation", "primary_fire")
+	audioPlayer.play_random()
+	audioPlayer.play_random()
 	cooldownTimer.start() # Start CycleTimer so this can't shoot before it is done.
 
 	if(is_colliding()):
@@ -85,6 +87,7 @@ func startReload():
 		return
 	isReloading = true
 	emit_signal("play_animation", "reload")
+	yield(get_tree().create_timer(1), "timeout")
 
 # Called by the animator after the reload has been completed.
 func endReload():

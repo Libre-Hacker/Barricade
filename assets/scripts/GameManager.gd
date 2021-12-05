@@ -6,21 +6,34 @@ var zombieManager : Node
 var playerManager : Node
 var roundManager : Node
 
+var currentMusic
+
 onready var levelSwitcher = get_node("Level/SceneSwitcher")
 onready var menuSwitcher = get_node("Menus/SceneSwitcher")
 
 func _on_all_players_dead():
 	menuSwitcher._on_level_changed("DefeatMenu")
+	var newSound = load("res://assets/scenes/OneTimeAudio.tscn").instance()
+	newSound.bus = "Music"
+	newSound.set_stream(load("res://assets/sounds/music/Suspense07.mp3"))
+	add_child(newSound)
+	currentMusic = newSound
 	end_game()
 
 func _on_last_round_ended():
 	menuSwitcher._on_level_changed("VictoryMenu")
+	var newSound = load("res://assets/scenes/OneTimeAudio.tscn").instance()
+	newSound.bus = "Music"
+	newSound.set_stream(load("res://assets/sounds/music/Half-Life17.mp3"))
+	add_child(newSound)
+	currentMusic = newSound
 	end_game()
 
 func _ready():
 	return_to_main_menu()
 
 func _on_start_game():
+	get_node("AudioManager/Music").stop()
 	levelSwitcher._on_level_changed("levels/DevLvlLab")
 	menuSwitcher.unload_level()
 	if(zombieManager == null):
@@ -43,6 +56,8 @@ func _on_start_game():
 	gameStarted.Value = true
 
 func return_to_main_menu():
+	if(currentMusic != null):
+		currentMusic.queue_free()
 	menuSwitcher._on_level_changed("MainMenu")
 	menuSwitcher.get_child(0).connect("start_game", self, "_on_start_game")
 
@@ -58,3 +73,4 @@ func end_game():
 	yield(menuSwitcher.get_child(0), "return_to_MainMenu")
 	print("returning")
 	return_to_main_menu()
+	get_node("AudioManager/Music").play()

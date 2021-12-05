@@ -10,7 +10,9 @@ extents = Vector3( 4, 0.1, 4 )
 
 [node name="Floor8x8" type="Spatial"]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="MeshInstance" type="MeshInstance" parent="." groups=[
+"tile",
+]]
 transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 4, 0, 4 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )

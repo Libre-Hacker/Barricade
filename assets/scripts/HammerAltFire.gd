@@ -17,6 +17,7 @@ const uiLoadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
 const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
 
 onready var cooldownTimer = get_node("Cooldown")
+onready var audioPlayer = get_node("AudioStreamPlayer3D")
 
 func _unhandled_input(event):
 	if(menuOpened.Value):
@@ -43,6 +44,7 @@ func nail():
 		or propData.collisionPoint.distance_to(surfaceData.collisionPoint) > nailSize - nailMargin):
 			return
 	
+	audioPlayer.play()
 	emit_signal("play_animation", "nail")
 	emit_signal("nail_prop")
 	cooldownTimer.start()

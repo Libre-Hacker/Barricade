@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pl_tile3.wav-35f194db0165c693dfd69ffd6c899806.sample"
+
+[deps]
+
+source_file="res://assets/sounds/pl_tile3.wav"
+dest_files=[ "res://.import/pl_tile3.wav-35f194db0165c693dfd69ffd6c899806.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/scripts/HammerPrimaryFire.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/HammerModel.tscn" type="PackedScene" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://assets/scripts/Hammer.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=7]
 [ext_resource path="res://assets/scripts/GatherPropInfo.gd" type="Script" id=8]
+[ext_resource path="res://assets/sounds/metal1.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/cbar_miss1.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/scripts/AudioController3D.gd" type="Script" id=11]
+[ext_resource path="res://assets/sounds/ammopickup1.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/metal6.wav" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -78,6 +83,8 @@ repairRange = 3.0
 repairAmount = 20.0
 damage = 10.0
 coolDown = 3.0
+swingSound = ExtResource( 10 )
+hitSound = ExtResource( 9 )
 
 [node name="Cooldown" type="Timer" parent="Repair"]
 wait_time = 0.7
@@ -85,6 +92,10 @@ one_shot = true
 __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Repair"]
+bus = "Sound"
+script = ExtResource( 11 )
 
 [node name="Nail" type="RayCast" parent="."]
 enabled = true
@@ -103,6 +114,10 @@ __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Nail"]
+stream = ExtResource( 13 )
+bus = "Sound"
+
 [node name="InfoGather" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 3 )
@@ -120,6 +135,10 @@ script = ExtResource( 7 )
 
 [node name="HammerModel" parent="Pivot" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 12 )
+bus = "Sound"
 
 [connection signal="play_animation" from="Repair" to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="play_animation" from="Nail" to="AnimationPlayer" method="_on_change_animation"]

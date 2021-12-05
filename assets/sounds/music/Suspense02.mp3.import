@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Suspense02.mp3-21089ad53024b8eab27decf8de0c5cad.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/Suspense02.mp3"
+dest_files=[ "res://.import/Suspense02.mp3-21089ad53024b8eab27decf8de0c5cad.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

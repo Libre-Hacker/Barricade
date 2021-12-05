@@ -13,3 +13,4 @@ func _on_Options_button_down():
 
 func _on_Start_button_down():
 	emit_signal("start_game")
+

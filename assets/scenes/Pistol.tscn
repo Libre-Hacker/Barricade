@@ -1,8 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/scripts/ShootRaycast.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/Pistol.gd" type="Script" id=2]
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=3]
+[ext_resource path="res://assets/sounds/pl_gun3.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/scripts/AudioController3D.gd" type="Script" id=5]
+[ext_resource path="res://assets/sounds/reload2.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/reload1.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/ammopickup1.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -53,7 +58,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "equip"
-length = 0.3
+length = 0.9
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Pivot/Model")
 tracks/0/interp = 1
@@ -108,6 +113,34 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 110, 0, 0 ) ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer3D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "animation_finished" ],
+"method": "emit_signal"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -203,6 +236,24 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 110, 0, 0 ), Vector3( 110, 0, 0 ), Vector3( 35.73, 105.1, 114.9 ), Vector3( 35.7376, 105.183, 114.921 ), Vector3( 110, 0, 0 ) ]
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("AudioStreamPlayer3D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0, 1.2 )
 }
 
 [sub_resource type="Animation" id=5]
@@ -316,6 +367,11 @@ __meta__ = {
 "_editor_description_": "NOTE: Do NOT set wait time in editor."
 }
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PrimaryFire"]
+stream = ExtResource( 4 )
+bus = "Sound"
+script = ExtResource( 5 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 1 )
 anims/equip = SubResource( 2 )
@@ -357,6 +413,11 @@ material/0 = SubResource( 12 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )
+bus = "Sound"
+script = ExtResource( 5 )
 
 [connection signal="play_animation" from="PrimaryFire" to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
