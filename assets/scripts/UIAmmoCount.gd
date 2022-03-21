@@ -1,4 +1,5 @@
 extends Panel
+# Displays the players ammo quantities.
 
 const loadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
 const reserveAmmo = preload("res://assets/resources/reserve_ammo.tres")

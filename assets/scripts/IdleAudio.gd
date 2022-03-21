@@ -1,26 +1,21 @@
-extends AudioStreamPlayer3D
+extends Node
+# Plays a random sound from the idleSound array.
 
 export (Array, Resource) var idleSounds = []
+export var emitChance = 0.5
+signal play_3dsound(stream)
 
-func _ready():
-	playSound()
-
+# Returns a random index from the idleSounds array.
 func get_random_sound(soundArray = []):
 	randomize()
 	return round(rand_range(0,soundArray.size()-1))
 
+# Plays a random sound.
 func playSound():
-	if(!is_playing()):
-		set_stream(idleSounds[get_random_sound(idleSounds)])
-		play()
+	emit_signal("play_3dsound", idleSounds[get_random_sound()])
 
-func _on_sound_finished() -> void:
+# Rolls to see if a sound will be emitted.
+func _on_Timer_timeout():
 	randomize()
-	if(round(rand_range(0,1)) == 0):
+	if(rand_range(0,1) >= emitChance):
 		playSound()
-	else:
-		get_node("Timer").start()
-
-
-func _on_Timer_timeout() -> void:
-	playSound()

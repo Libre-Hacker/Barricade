@@ -1,19 +1,17 @@
 extends RayCast
-# Converts player input into a raycast that damages objects.
-# Has two fire modes: Semi, and Full Auto.
+# Manages ammo, and fires a raycast that damages objects.
 
-enum fireModes {semiAuto, fullAuto}
-
-export(fireModes) var selectedFireMode
 export(int,1,200) var ammoCapacity : int # Maximum ammo the gun can hold.
 export var reserveAmmo : int # Export for now until buying ammo is implemented.
 export(int,1,1000) var maxReserveAmmo : int # Maximum ammo held in reserve.
 export(float,1,1024) var rateOfFire : float # The weapons cycle time, in rounds/minute.
 export(float,0.1,1000, 0.1) var damage : float # How much damage each bullet causes.
 export(float,1,1000, 0.1) var maxRange : float # Maximum range of the weapon.
+export (Resource) var fireSound
 var isReloading : bool = false
 
 signal play_animation(animationName)
+signal play_3d_sound
 
 var buletHitParticleNode = preload("res://assets/scenes/BulletHitParticle.tscn")
 
@@ -22,30 +20,14 @@ onready var audioPlayer = get_node("AudioStreamPlayer3D")
 onready var cooldownTimer = get_node("Cooldown")
 onready var currentAmmo = ammoCapacity
 
-const menuOpened = preload("res://assets/resources/menu_opened.tres")
 const uiLoadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
 const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
+
 
 func _ready():
 	cooldownTimer.wait_time = 60 / rateOfFire # Convert rounds/minute into time per round.
 	cast_to = Vector3(0,0,maxRange)
 
-# Process user input.
-func _unhandled_input(event):
-	if(menuOpened.Value):
-		return
-	if(event.is_action_pressed("primary_fire") and selectedFireMode == fireModes.semiAuto):
-		primary_fire()
-		get_tree().get_root().set_input_as_handled()
-	if(event.is_action_pressed("reload")):
-		startReload()
-		get_tree().get_root().set_input_as_handled()
-
-func _process(_delta):
-	if(menuOpened.Value):
-		return
-	if(Input.is_action_pressed("primary_fire") and selectedFireMode == fireModes.fullAuto): # Must use _process() for full auto, or input will only be checked when another input is given.
-		primary_fire()
 
 # Fire 1 bullet, handles all logic and effects.
 func primary_fire():
@@ -54,23 +36,21 @@ func primary_fire():
 	currentAmmo -= 1
 	update_ui()
 	emit_signal("play_animation", "primary_fire")
-	audioPlayer.play_random()
-	audioPlayer.play_random()
+	emit_signal("play_3d_sound", fireSound)
 	cooldownTimer.start() # Start CycleTimer so this can't shoot before it is done.
 
 	if(is_colliding()):
 		emitImpactEffect()
 		damageObject()
 
+
 # Damage the object hit.
 func damageObject():
-	if(get_collider().is_in_group("Props") and get_collider().isNailed):
+	if(get_collider().is_in_group("Props") and get_collider().get_parent().isNailed):
 		return
 	if(get_collider().is_in_group("Destructibles")):
-		print("Damaging")
-		print(get_collider())
-		
-		get_collider().damage(player, damage)
+		get_collider().damage(damage, player)
+
 
 # Emits a particle effect where the bullet impacted.
 func emitImpactEffect():
@@ -81,6 +61,7 @@ func emitImpactEffect():
 	particleInstance.look_at(get_collision_point() + get_collision_normal(), Vector3.UP) 
 	particleInstance.emitting = true
 
+
 # Starts the reload animation.
 func startReload():
 	if(isReloading == true or currentAmmo >= ammoCapacity or reserveAmmo <= 0):
@@ -88,6 +69,7 @@ func startReload():
 	isReloading = true
 	emit_signal("play_animation", "reload")
 	yield(get_tree().create_timer(1), "timeout")
+
 
 # Called by the animator after the reload has been completed.
 func endReload():
@@ -102,18 +84,21 @@ func endReload():
 	reserveAmmo -= ammoToReload
 	update_ui()
 
+
 func is_reserve_full():
 	if(reserveAmmo == maxReserveAmmo):
 		return true
 	else:
 		return false
 
-func add_reserve_ammo(value):
+
+func add_ammo(value):
 	if(reserveAmmo + value >= maxReserveAmmo):
 		reserveAmmo = maxReserveAmmo
 	else:
 		reserveAmmo += value
 	update_ui()
+
 
 func update_ui():
 	uiLoadedAmmo.Value = currentAmmo

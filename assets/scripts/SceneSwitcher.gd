@@ -1,30 +1,29 @@
 extends Node
+# Loads and unloads scenes.
 
-var currentLevel
-var previousLevelName
+var currentScene
+var currentScenePath
+var previousScenePath = ""
 
-func _ready():
-	if(get_child_count() == 0):
+# Loads the scene at the given path.
+func load_scene(scenePath: String):
+	unload_scene()
+	currentScenePath = scenePath
+	if(ResourceLoader.exists(scenePath) == false):
+		print("Failed to load scene: ", scenePath, " is not a valid path...")
 		return
-	currentLevel = get_child(0)
-	currentLevel.connect("level_changed", self, "_on_level_changed")
+	var newScene = load(scenePath).instance()
+	
+	currentScene = newScene
+	add_child(newScene)
 
-func _on_level_changed(nextLevelName: String):
-	if(nextLevelName == ""):
-		unload_level()
-		return
-	if(nextLevelName == "PreviousLevel"):
-		nextLevelName = previousLevelName
-	var nextLevel = load("res://assets/scenes/" + nextLevelName + ".tscn").instance()
-	if(currentLevel != null):
-		previousLevelName = currentLevel.name
-		currentLevel.queue_free()
-	currentLevel = nextLevel
-	add_child(nextLevel)
-	if("levels/" in nextLevelName):
-		return
-	nextLevel.connect("level_changed", self, "_on_level_changed")
+# Loads the previously loaded scene. Useful for back buttons in menus.
+func load_previous_scene():
+	load_scene(previousScenePath)
 
-func unload_level():
-	get_child(0).queue_free()
-	currentLevel = null
+# Unloads the current scene.
+func unload_scene():
+	if(currentScene != null):
+		previousScenePath = currentScenePath
+		currentScene.queue_free()
+		currentScene = null

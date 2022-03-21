@@ -50,21 +50,20 @@ tracks/3/keys = {
 "method": "endReload"
 } ]
 }
-tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/type = "method"
+tracks/4/path = NodePath("AudioManager")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 1 )
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ ExtResource( 1 ), null, null, null, null ],
+"method": "new_3d_sound"
 }, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 2 )
-} ],
-"times": PoolRealArray( 0, 1 )
+"args": [ ExtResource( 2 ), null, null, null, null ],
+"method": "new_3d_sound"
+} ]
 }

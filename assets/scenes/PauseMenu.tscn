@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/Pixeled.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/scripts/QuitGame.gd" type="Script" id=2]
 [ext_resource path="res://assets/scripts/PauseMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/MALERMEI.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/scenes/QuitPopup.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=4]
 size = 48
@@ -12,14 +12,6 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=5]
 extra_spacing_top = -8
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFontData" id=3]
-antialiased = false
-font_path = "res://assets/fonts/Pixeled.ttf"
-
-[sub_resource type="DynamicFont" id=6]
-size = 12
-font_data = SubResource( 3 )
 
 [sub_resource type="DynamicFontData" id=7]
 antialiased = false
@@ -33,14 +25,14 @@ font_data = SubResource( 7 )
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -195.0
-margin_top = -109.5
-margin_right = 195.0
-margin_bottom = 109.5
+anchor_left = 0.398
+anchor_top = 0.399
+anchor_right = 0.602
+anchor_bottom = 0.601
+margin_left = 0.839966
+margin_top = -0.420013
+margin_right = -0.840088
+margin_bottom = 0.419983
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -83,58 +75,11 @@ margin_bottom = 194.0
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "QUIT"
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Quit"]
-visible = false
-anchor_top = 1.136
-anchor_right = 1.0
-anchor_bottom = 2.136
-margin_top = 0.0159988
-margin_bottom = 0.0159912
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="VBoxContainer/Quit/VBoxContainer"]
-margin_right = 390.0
-margin_bottom = 46.0
-custom_fonts/font = SubResource( 6 )
-text = "ARE YOU SURE?"
-align = 1
-valign = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Quit/VBoxContainer"]
-margin_top = 50.0
-margin_right = 390.0
-margin_bottom = 94.0
-custom_constants/separation = 10
-
-[node name="Cancel" type="Button" parent="VBoxContainer/Quit/VBoxContainer/HBoxContainer"]
-margin_right = 190.0
-margin_bottom = 44.0
-size_flags_horizontal = 3
-custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
-custom_fonts/font = SubResource( 5 )
-text = "CANCEL"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Confirm" type="Button" parent="VBoxContainer/Quit/VBoxContainer/HBoxContainer"]
-margin_left = 200.0
-margin_right = 390.0
-margin_bottom = 44.0
-size_flags_horizontal = 3
-custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
-custom_fonts/font = SubResource( 5 )
-text = "CONFIRM"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Popup" parent="." instance=ExtResource( 5 )]
 
 [node name="Version" type="Label" parent="."]
 anchor_top = 1.0
@@ -149,9 +94,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="button_down" from="VBoxContainer/Resume" to="." method="_on_Resume_button_down"]
 [connection signal="button_up" from="VBoxContainer/Resume" to="." method="_on_Resume_button_up"]
-[connection signal="button_down" from="VBoxContainer/Options" to="." method="_on_Options_button_down"]
-[connection signal="button_down" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="_on_Quit_button_down"]
-[connection signal="button_down" from="VBoxContainer/Quit/VBoxContainer/HBoxContainer/Cancel" to="VBoxContainer/Quit" method="_on_Cancel_button_down"]
-[connection signal="button_down" from="VBoxContainer/Quit/VBoxContainer/HBoxContainer/Confirm" to="VBoxContainer/Quit" method="_on_Confirm_button_down"]
+[connection signal="button_up" from="VBoxContainer/Options" to="." method="_on_Options_button_up"]
+[connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_Quit_button_up"]

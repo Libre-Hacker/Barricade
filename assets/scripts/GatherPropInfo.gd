@@ -1,18 +1,17 @@
 extends RayCast
+# Functions to detect a prop, and pass its stats to a UI widget.
 
 const currentHealth = preload("res://assets/resources/current_prop_health.tres")
 const maxHealth = preload("res://assets/resources/max_prop_health.tres")
 const propName = preload("res://assets/resources/prop_name.tres")
-const menuOpened = preload("res://assets/resources/menu_opened.tres")
 
-func _physics_process(_delta):
-	update_ui()
-
-func update_ui(forceStop = false):
-	if(is_colliding() == false or forceStop or menuOpened.Value):
+func gather_prop_info():
+	if(is_colliding() == false or get_collider().is_in_group("Props") == false):
 		propName.Value = ""
 		return
-	var prop = get_collider()
-	currentHealth.Value = prop.health
-	maxHealth.Value = prop.maxHealth
+	update_ui(get_collider())
+
+func update_ui(prop):
+	currentHealth.Value = prop.get_node("Health").health
+	maxHealth.Value = prop.get_node("Health").maxHealth
 	propName.Value = prop.realName

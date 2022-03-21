@@ -1,55 +1,47 @@
 extends RayCast
+# Repairs/damages props, and attacks enemies.
 
 export (float,0,10) var repairRange # How far the hammer can reach.
 export (float,0,100) var repairAmount # How much health is repaired per swing.
 export (float,0,100) var damage # How much damage is done per swing.
-export (float, 0,10) var coolDown # How much time between each swing.
 export (Resource) var swingSound
 export (Resource) var hitSound
 
-const menuOpened = preload("res://assets/resources/menu_opened.tres")
 signal play_animation(animationName)
+signal play_3d_sound
 
 var repairParticleNode = preload("res://assets/scenes/RepairParticle.tscn")
 
-onready var audioPlayer = get_node("AudioStreamPlayer3D")
 onready var player = find_parent("FPSPlayer*")
 onready var cooldownTimer = get_node("Cooldown")
 
 func _ready():
 	cast_to.z = repairRange
 
-func _process(_delta):
-	if(menuOpened.Value):
-		return
-	if(Input.is_action_pressed("primary_fire")):
-		swing()
-
 # Swings the Hammer, repairing nailed props, or damaging unnailed props / enemies.
 func swing():
 	if(cooldownTimer.is_stopped() == false):
 		return
-	emit_signal("play_animation", "nail")
 	cooldownTimer.start()
+	emit_signal("play_animation", "nail")
 	if(is_colliding() == false):
-		audioPlayer._on_change_sound(swingSound)
+		emit_signal("play_3d_sound", swingSound)
 		return
-	audioPlayer._on_change_sound(hitSound)
+	emit_signal("play_3d_sound", hitSound)
 	var hitObject = get_collider()
-
-	# Try to repair first because a repairable prop has the same properties as
-	# a damagable prop.
-	if(hitObject.is_in_group("Props") and hitObject.isNailed):
-		# Check if object is repairable so we only spawn particles and modify
-		# prop health if this is true.
-		if(hitObject.is_repairable()):
-			hitObject.repair(player, repairAmount)
-			emitImpactEffect()
-			print("repair")
-		return
+	# Try to repair first because a repairable prop has the same properties as a damagable prop.
+	if(hitObject.is_in_group("Props") and hitObject.get_parent().is_repairable()):
+		repair(hitObject)
+		return # Stop exectuion so we only repair.
 	if(hitObject.is_in_group("Destructibles")):
-		print("damage")
-		hitObject.damage(player, damage)
+		attack(hitObject)
+
+func repair(hitObject):
+	hitObject.heal(repairAmount, player)
+	emitImpactEffect()
+
+func attack(hitObject):
+	hitObject.damage(damage, player)
 
 func emitImpactEffect():
 	var particleInstance = repairParticleNode.instance()

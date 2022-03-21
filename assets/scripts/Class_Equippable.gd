@@ -6,16 +6,16 @@ var equipped = true
 
 func equip():
 	set_process(true)
-	visible = true
+	show()
 	set_process_unhandled_input(true)
-	set_block_signals(false)
+	set_physics_process(true)
 	equipped = true
 
 
 func unequip():
-	visible = false
+	hide()
 	set_process_unhandled_input(false)
-	set_block_signals(true)
 	set_process(false)
+	set_physics_process(false)
 	equipped = false
 

@@ -1,63 +1,72 @@
 extends RayCast
+# A raycast that detects useable objects that the player can interact with using input.
+# Also handles manipulation of props.
 
-var isInteracting : bool = false
-var usingNode : Node
+export (float, 0, 20, 0.1) var maxPropHoldDistance = 4.0 # Held prop further than this value will be dropped.
 
-export (float, 0, 20, 0.1) var maxInteractionDistance : float = 4
-export (float, 0.01, 1, 0.01) var rotateSensitivity : float = 0.1
-export var ignoreOwner : bool = false
-export (Array, NodePath) var nodeExceptions
+var propInUse : Node # The prop currently held by the player.
 
-func _physics_process(_delta):
-	if(isInteracting and global_transform.origin.distance_to(usingNode.transform.origin) > maxInteractionDistance):
-		endInteract()
+onready var player = find_parent("FPSPlayer")
 
 func _unhandled_input(event):
-	if (event is InputEventMouseMotion and Input.is_action_pressed("rotate_prop") and isInteracting):
-		mouseRotate(event.relative.x, event.relative.y)
+	# Must use Input to check if rotating prop, because the event is researved for mouse motion.
+	if(event is InputEventMouseMotion and Input.is_action_pressed("rotate_prop") and is_holding_prop()):
+		rotate_prop(event.relative.x, event.relative.y)
 		get_tree().get_root().set_input_as_handled()
-	if(Input.is_action_just_pressed("interact")):
-		if(isInteracting):
-			# Call this before startInteracting or we will immediately end the interaction.
-			dropProp()
-			endInteract() 
-		else:
-			startInteract()
+		return
+	if(event.is_action_pressed("interact")):
+		interact()
 		get_tree().get_root().set_input_as_handled()
 
-func mouseRotate(mouseX, mouseY):
-	if(isInteracting == false):
-		return
-	var mouseMovement = Vector3(mouseX * rotateSensitivity, mouseY * rotateSensitivity, 0)
-	mouseMovement.normalized()
-	usingNode.rotate_prop(mouseMovement)
+func _physics_process(_delta):
+	is_prop_in_range()
 
 # Sets the class variables and calls the hit objects "interact" function.
-func startInteract():
+func interact():
+	if(is_holding_prop()):
+		drop_prop()
+		return
+
 	if(is_colliding() == false):
 		return
-	
+
 	if(get_collider().is_in_group("Interactables")):
 		get_collider().buy_item(get_owner())
-	
+		return
+
 	if(get_collider().is_in_group("Props")):
-		usingNode = get_collider()
-# warning-ignore:return_value_discarded
-		usingNode.connect("dropped", self, "endInteract")
-		usingNode.call("pickup", get_node("HoldPoint"), find_parent("FPSPlayer"))
-		isInteracting = true
-		enabled = false
+		pickup_prop()
 
-func dropProp():
-	if(usingNode.is_in_group("Props")):
-		usingNode.drop()
+# Gathers mouse input and sends it to the prop in use to be rotated.
+func rotate_prop(mouseX, mouseY):
+	var mouseMovement = Vector3(mouseX, 0, mouseY)
+	propInUse.mouse_rotate(mouseMovement)
 
-# Resets our variables to their default
-func endInteract():
-	usingNode = null
-	isInteracting = false
+# Sets the targeted prop to follow the assigned point.
+func pickup_prop():
+	propInUse = get_collider()
+	propInUse.connect("dropped", self, "drop_prop")
+	propInUse.connect("tree_exiting", self, "drop_prop")
+	propInUse.pickup(get_node("HoldPoint"), player)
+	enabled = false
+
+# Tells the held prop to stop following the assigned point.
+func drop_prop():
+	propInUse.drop()
+	propInUse.disconnect("dropped", self, "drop_prop")
+	propInUse.disconnect("tree_exiting", self, "drop_prop")
+	propInUse = null
 	enabled = true
 
-func _on_nail_prop() -> void:
-	if(isInteracting):
-		endInteract()
+# Checks if the propInUse variable is null.
+func is_holding_prop():
+	if(propInUse != null):
+		return true
+	else:
+		return false
+
+# Checks if the held prop is in range, if not drops the prop.
+func is_prop_in_range():
+	if(is_holding_prop() and global_transform.origin.distance_to(propInUse.transform.origin) > maxPropHoldDistance):
+		drop_prop()
+

@@ -1,13 +1,23 @@
 extends CanvasLayer
+# Handles input for pause menu.
 
-const menuOpened = preload("res://assets/resources/menu_opened.tres")
-signal level_changed
-signal menu_closed
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED) # Show cursor but confine to window.
 
-func _on_Options_button_down():
-	emit_signal("level_changed", "OptionsMenu")
+# Allows player to unpause with the "pause" action.
+func _unhandled_key_input(event: InputEventKey):
+	if(event.is_action_pressed("pause")):
+		_on_Resume_button_up()
 
+# Resumes game.
 func _on_Resume_button_up():
-	emit_signal("level_changed", "")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # Lock mouse to game screen.
-	menuOpened.Value = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # Hide cursor.
+	GameManager.resume_game()
+
+# Loads the options menu.
+func _on_Options_button_up():
+	MenuSwitcher.load_scene("res://assets/scenes/OptionsMenu.tscn")
+
+# Shows the quit confirm popup.
+func _on_Quit_button_up():
+	get_node("Popup").popup()

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Prospero01.mp3-56ee37cd0572c9bb1bcc851145574e0c.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

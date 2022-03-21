@@ -1,15 +1,17 @@
 extends RigidBody
+# Handles state of prop, we do not use a hit box to detect attacks because most
+# props will have unique collision boxes, so the rigid body captures the attacks
+# and forwards them to the health node.
 
-var nodeToFollow : Node
-var isPickedUp : bool = false
+export (String) var realName = "Prop" # The name of the prop, for UI use.
+export (float, 1) var followSpeed : float = 7.5 # The speed the prop moves while held.
+export (float, 1) var rotationSpeed = 1.0 # The speed the prop can rotate.
+
+var nodeToFollow : Node # Node the prop follows while picked up.
 var isNailed : bool = false
-var interactingPlayer = null
-export (String) var realName = "Prop"
-export (float, 1, 20, 0.1) var followSpeed : float = 7.5
-export (float, 1,1000) var health : float
-export (float, 1,1000) var maxHealth : float
 
-signal health_changed
+signal damage_taken
+signal repair_received
 signal dropped
 
 func _physics_process(_delta):
@@ -18,73 +20,60 @@ func _physics_process(_delta):
 # Sets class variables to enable pickup. 
 # Called from outside class.
 func pickup(assignedNode, player):
-	if(isPickedUp == false):
+	if(is_picked_up() == false):
 		set_collision_mask_bit(3, false) # Change collision mask so this won't collide while held.
 		nodeToFollow = assignedNode
-		isPickedUp = true
-		interactingPlayer = player
-		add_collision_exception_with(interactingPlayer)
+		add_collision_exception_with(player)
 	else:
 		print("Prop already in use.")
 
 # Resets class variables to defaults.
 # Called from outside class.
 func drop():
-	emit_signal("dropped")
 	set_collision_mask_bit(3, true) # Change collision mask so this won't collide while held.
+	if(is_picked_up()):
+		remove_collision_exception_with(get_collision_exceptions()[0])
 	nodeToFollow = null
-	isPickedUp = false
-	remove_collision_exception_with(interactingPlayer)
-	interactingPlayer = null
 
 # Moves this object to the nodeToFollow variable.
 func followPoint():
-	if(isPickedUp):
+	if(is_picked_up()):
 		var moveDistance = (nodeToFollow.global_transform.origin - transform.origin)
 		linear_velocity = moveDistance * followSpeed # Use physics to detect collisions.
 
 # Rotates this object relative to the nodeToFollow.
-func rotate_prop(mouseMovement):
-	var x = nodeToFollow.global_transform.basis.x.normalized() * mouseMovement.y * 10
-	var y = nodeToFollow.global_transform.basis.y.normalized() * mouseMovement.x * 10
-	add_torque(x)
-	add_torque(y)
+func mouse_rotate(mouseMovement):
+	var x = -nodeToFollow.global_transform.basis.x * mouseMovement.z
+	var y = nodeToFollow.global_transform.basis.y * mouseMovement.x
+	var z = (x + y).normalized()
+	add_torque(z * (rotationSpeed * 10)) # "10" is the default multiplier.
 
-# Flips damage value to negative.
-func damage(_attacker = null, value = 0.0):
-	if(health - value <= 0):
-		print(name, " is destroyed.")
-		self.queue_free()
-	else:
-		health -= value
-		print(name, " health = ", health)
-
+# Changes the prop to a static body, drops the prop if it was carried.
 func nail():
-	drop()
+	if(is_picked_up()):
+		emit_signal("dropped") # Connected via script to Player's Interaction node.
+	else:
+		drop()
 	mode = 1
 	angular_velocity = Vector3.ZERO
 	linear_velocity = Vector3.ZERO
 	isNailed = true
 
+# Returns the prop to a rigid body.
 func unnail():
 	mode = 0
 	isNailed = false
 
-func repair(entity, value):
-	if(health >= maxHealth):
-		return
-	if(health + value > maxHealth):
-		health = maxHealth
-	else:
-		health += value
-	print(name, " health = ", health)
-	emit_signal("health_changed", entity, value)
-
+# Returns true if the object is nailed.
 func is_repairable():
-	if(isNailed == true and health < maxHealth):
+	if(isNailed == true):
 		return true
 	else:
 		return false
 
-func kill():
-	damage(null, health)
+# Returns true if nodeToFollow is not null.
+func is_picked_up():
+	if(nodeToFollow == null):
+		return false
+	else:
+		return true

@@ -60,31 +60,31 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector3( 145, 0, 0 ) ]
 }
-tracks/5/type = "audio"
-tracks/5/path = NodePath("AudioStreamPlayer3D")
+tracks/5/type = "method"
+tracks/5/path = NodePath("AnimationPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 1 )
-} ],
-"times": PoolRealArray( 0 )
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath("AnimationPlayer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "animation_finished" ],
 "method": "emit_signal"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("AudioManager")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 1 ), null, null, null, null ],
+"method": "new_3d_sound"
 } ]
 }

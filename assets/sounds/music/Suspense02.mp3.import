@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Suspense02.mp3-21089ad53024b8eab27decf8de0c5cad.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

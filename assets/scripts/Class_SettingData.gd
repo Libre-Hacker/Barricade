@@ -1,13 +1,9 @@
 extends Resource
 class_name SettingsData
 
-export var fullscreen = true
-export var borderless = false
-export var resolution = Vector2(1920,1080)
-export var vsync = false
-export var masterVolume = 1
-export var musicVolume = 1
-export var soundVolume = 1
+export (Array) var videoSettings = [["fullscreen", "borderless", "resolution", "vsync"],[true, false, Vector2(1920,1080), false]]
+
+export (Array) var audioSettings = [[],[]]
 
 export (Array) var keyBinds = [["move_forward",
 				"move_backward",

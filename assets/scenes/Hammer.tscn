@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scripts/HammerPrimaryFire.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/HammerModel.tscn" type="PackedScene" id=2]
@@ -10,9 +10,8 @@
 [ext_resource path="res://assets/scripts/GatherPropInfo.gd" type="Script" id=8]
 [ext_resource path="res://assets/sounds/metal1.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/cbar_miss1.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/scripts/AudioController3D.gd" type="Script" id=11]
-[ext_resource path="res://assets/sounds/ammopickup1.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/sounds/metal6.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -71,18 +70,17 @@ tracks/1/keys = {
 
 [node name="Hammer" type="Spatial"]
 script = ExtResource( 6 )
-startDisabled = true
 
 [node name="Repair" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 3 )
 collision_mask = 13
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 1 )
 repairRange = 3.0
 repairAmount = 20.0
 damage = 10.0
-coolDown = 3.0
 swingSound = ExtResource( 10 )
 hitSound = ExtResource( 9 )
 
@@ -93,10 +91,6 @@ __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Repair"]
-bus = "Sound"
-script = ExtResource( 11 )
-
 [node name="Nail" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 3 )
@@ -106,6 +100,7 @@ ammo = 5
 maxAmmo = 20
 nailRange = 3.0
 nailMargin = 0.2
+nailSound = ExtResource( 13 )
 
 [node name="Cooldown" type="Timer" parent="Nail"]
 wait_time = 0.7
@@ -114,14 +109,10 @@ __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Nail"]
-stream = ExtResource( 13 )
-bus = "Sound"
-
 [node name="InfoGather" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 3 )
-collision_mask = 4
+collision_mask = 5
 script = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -132,13 +123,14 @@ anims/unequip = ExtResource( 4 )
 script = ExtResource( 7 )
 
 [node name="Pivot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257752, -0.421191, 0.648785 )
 
 [node name="HammerModel" parent="Pivot" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 12 )
-bus = "Sound"
+[node name="AudioManager" parent="." instance=ExtResource( 14 )]
 
+[connection signal="play_3d_sound" from="Repair" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_animation" from="Repair" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="play_3d_sound" from="Nail" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_animation" from="Nail" to="AnimationPlayer" method="_on_change_animation"]

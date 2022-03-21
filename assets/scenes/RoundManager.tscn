@@ -1,29 +1,18 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/scripts/RoundManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/music/404024__joshuaempyre__victory-percussion-music-cue.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/sounds/music/Suspense02.mp3" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/music/Half-Life07.mp3" type="AudioStream" id=4]
-[ext_resource path="res://assets/animations/Fade.tres" type="Animation" id=5]
 
 [node name="RoundManager" type="Node"]
 script = ExtResource( 1 )
+prepareMusic = ExtResource( 4 )
+roundStartMusic = ExtResource( 3 )
+roundEndMusic = ExtResource( 2 )
 roundTimes = [ 140.0, 150.0, 120.0, 180.0, 120.0, 210.0 ]
 
 [node name="RoundTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="PrepareMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-bus = "Music"
-
-[node name="RoundStartMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-bus = "Music"
-
-[node name="RoundEndMusic" type="AudioStreamPlayer" parent="."]
-bus = "Music"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RoundEndMusic"]
-anims/Fade = ExtResource( 5 )
 
 [connection signal="timeout" from="RoundTimer" to="." method="_on_RoundTimer_timeout"]

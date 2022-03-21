@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/scripts/Pistol.gd" type="Script" id=2]
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=3]
 [ext_resource path="res://assets/sounds/pl_gun3.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/scripts/AudioController3D.gd" type="Script" id=5]
+[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sounds/reload2.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sounds/reload1.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/ammopickup1.wav" type="AudioStream" id=8]
@@ -44,7 +44,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("OmniLight:visible")
+tracks/3/path = NodePath("Pivot/Model/OmniLight:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -114,27 +114,13 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector3( 110, 0, 0 ) ]
 }
-tracks/5/type = "audio"
-tracks/5/path = NodePath("AudioStreamPlayer3D")
+tracks/5/type = "method"
+tracks/5/path = NodePath("AnimationPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 8 )
-} ],
-"times": PoolRealArray( 0 )
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath("AnimationPlayer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -142,12 +128,26 @@ tracks/6/keys = {
 "method": "emit_signal"
 } ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("AudioManager")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 8 ), null, null, null, null ],
+"method": "new_3d_sound"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "primary_fire"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("OmniLight:visible")
+tracks/0/path = NodePath("Pivot/Model/OmniLight:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -237,23 +237,22 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector3( 110, 0, 0 ), Vector3( 110, 0, 0 ), Vector3( 35.73, 105.1, 114.9 ), Vector3( 35.7376, 105.183, 114.921 ), Vector3( 110, 0, 0 ) ]
 }
-tracks/7/type = "audio"
-tracks/7/path = NodePath("AudioStreamPlayer3D")
+tracks/7/type = "method"
+tracks/7/path = NodePath("AudioManager")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 6 )
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ ExtResource( 6 ), null, null, null, null ],
+"method": "new_3d_sound"
 }, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 7 )
-} ],
-"times": PoolRealArray( 0, 1.2 )
+"args": [ ExtResource( 7 ), null, null, null, null ],
+"method": "new_3d_sound"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -346,13 +345,13 @@ albedo_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
 [node name="Pistol" type="Spatial"]
 script = ExtResource( 2 )
-startDisabled = true
 
 [node name="PrimaryFire" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 100 )
-collision_mask = 5
+collision_mask = 13
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 1 )
 ammoCapacity = 12
 reserveAmmo = 60
@@ -360,17 +359,13 @@ maxReserveAmmo = 120
 rateOfFire = 360.0
 damage = 10.0
 maxRange = 100.0
+fireSound = ExtResource( 4 )
 
 [node name="Cooldown" type="Timer" parent="PrimaryFire"]
 one_shot = true
 __meta__ = {
 "_editor_description_": "NOTE: Do NOT set wait time in editor."
 }
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PrimaryFire"]
-stream = ExtResource( 4 )
-bus = "Sound"
-script = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 1 )
@@ -380,11 +375,8 @@ anims/reload = SubResource( 4 )
 anims/unequip = SubResource( 5 )
 script = ExtResource( 3 )
 
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0622389 )
-visible = false
-
 [node name="Pivot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.455, -0.466, 1.714 )
 
 [node name="Model" type="Spatial" parent="Pivot"]
 __meta__ = {
@@ -414,10 +406,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 8 )
-bus = "Sound"
-script = ExtResource( 5 )
+[node name="OmniLight" type="OmniLight" parent="Pivot/Model"]
+transform = Transform( 1, -1.86265e-08, 7.45058e-09, 7.45058e-09, 1, -2.98023e-08, -1.49012e-08, 5.96046e-08, 1, -5.96046e-08, 0, 0.0622389 )
+visible = false
 
+[node name="AudioManager" parent="." instance=ExtResource( 5 )]
+
+[connection signal="play_3d_sound" from="PrimaryFire" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_animation" from="PrimaryFire" to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

@@ -1,47 +1,47 @@
-extends Equippable
-# Manager class for the Hammer, handles connections and equipping/unequipping.
+extends Spatial
+# Controller class for the Hammer, controls input, and enabling/disabling the weapon.
+
+var equipped = true
 
 onready var repairNode = get_node("Repair")
 onready var nailNode = get_node("Nail")
 onready var animationPlayer = get_node("AnimationPlayer")
 onready var infoGatherNode = get_node("InfoGather")
 
-func _ready():
-	if(startDisabled):
-		visible = false
-		_unequip()
+# Using process for all input, makes it easier to enable/disable on switching and since only one
+# weapon is active at a time this shouldn't have a big impact on performance.
+func _process(_delta):
+	if(GameManager.isPaused):
+		return
+	if(Input.is_action_pressed("primary_fire") and nailNode.cooldownTimer.is_stopped()):
+		repairNode.swing()
+		get_tree().get_root().set_input_as_handled()
+	if(repairNode.cooldownTimer.is_stopped()):
+		if(Input.is_action_just_pressed("alt_fire")):
+			nailNode.nail()
+			get_tree().get_root().set_input_as_handled()
+		if(Input.is_action_just_pressed("reload")):
+			nailNode.remove_nail()
+			get_tree().get_root().set_input_as_handled()
+	infoGatherNode.gather_prop_info()
 
-# Override equip code for each input function
-func _equip():
-	.equip()
+
+func equip():
+	show()
+	set_process(true)
 	animationPlayer.play("equip")
 	yield(animationPlayer, "animation_finished")
-	enable()
+	infoGatherNode.enabled = true
+	nailNode.update_ui()
 
-# Override unequip code for each input function
-func _unequip():
-	disable()
+
+func unequip():
+	infoGatherNode.enabled = false
 	animationPlayer.play("unequip")
 	yield(animationPlayer, "animation_finished")
-	.unequip()
-	
-func add_ammo(primaryValue = 0, _alternativeValue = 0):
-	if(nailNode.is_ammo_full() == false):
-		nailNode.add_ammo(primaryValue)
+	set_process(false)
+	hide()
 
-func disable():
-	repairNode.set_process_unhandled_input(false)
-	repairNode.set_process(false)
-	nailNode.set_process_unhandled_input(false)
-	nailNode.set_process(false)
-	infoGatherNode.set_physics_process(false)
-	infoGatherNode.update_ui(true)
-
-func enable():
-	repairNode.set_process_unhandled_input(true)
-	repairNode.set_process(true)
-	nailNode.set_process_unhandled_input(true)
-	nailNode.set_process(true)
-	nailNode.update_ui()
-	infoGatherNode.set_physics_process(true)
-	
+# Used by external sources to add ammo to this weapon.
+func add_ammo(primaryAmmo = 0, secondaryAmmo = 0):
+	nailNode.add_ammo(primaryAmmo)

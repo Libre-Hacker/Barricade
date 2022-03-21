@@ -1,92 +1,45 @@
 extends KinematicBody
+# Takes input from player and converts it into movement.
 
-export(float, 0, 25, 0.01) var moveSpeed = 7.5
-export(float, 0, 25, 0.01) var jumpSpeed = 6.5
+export(float, 0, 25, 0.01) var moveSpeed = 7.5 # The players current move speed.
+export(float, 0, 25, 0.01) var jumpSpeed = 17.3 # Upward momentum applied during a jump.
 export(float, -5, -0.1, 0.001) var fallSpeed = -0.326
-export(float, 0,90) var maxSlopeAngle = 35
-export(float,0,1000) var health = 100
-export(float,0,200) var push = 5
-export(float, 0, 25) var phaseSpeed = 1.5
-export(int, 0, 3) var respawnsRemaining = 0
-export (Resource) var deathSound
+export(float, 0, 90) var maxSlopeAngle = 35 # Maximum angle in degrees the player can walk up.
+export(float, 0, 200) var push = 5 # Strength of force applied to props.
+export(float, 0, 25) var phaseSpeed = 1.5 # Move speed while phasing.
+
 export (Resource) var jumpSound
 export (Resource) var landSound
 
-const menuOpened = preload("res://assets/resources/menu_opened.tres")
-const healthUI = preload("res://assets/resources/player_health.tres")
-const respawnCountUI = preload("res://assets/resources/player_respawns_left.tres")
-
 var falling = false
-var phasing = false
-var hurtSoundCoolDown = false
-var velocity : Vector3 = Vector3()
-var isGrounded = false
+var velocity : Vector3 = Vector3() # The velocity and direction to move the player by.
 
-signal player_died
-
+onready var baseMoveSpeed = moveSpeed # Players base move speed before any modifiers.
+onready var audioManager = get_node("AudioManager")
 onready var footSteps = get_node("Footsteps")
-onready var defaultMoveSpeed = moveSpeed
-onready var occupiedAreaNode = get_node("OccupiedArea")
-onready var groundCheck = get_node("GroundCheck")
-
-func _ready():
-	update_ui()
-
-func _unhandled_input(event):
-	if(menuOpened.Value):
-		return
-	if(event.is_action("phase") and event.is_pressed()):
-		phase()
-		get_tree().get_root().set_input_as_handled()
-	if(event.is_action_released("phase")):
-		end_phase()
-		get_tree().get_root().set_input_as_handled()
+onready var occupiedArea = get_node("OccupiedArea") # Area taken up by the player.
 
 func _physics_process(_delta): # Use physics because this uses a KinematicBody.
-	if(menuOpened.Value):
+	if(GameManager.isPaused): # Disables input when game is paused.
 		return
+
 	move()
-	if(groundCheck.monitoring and groundCheck.get_overlapping_bodies().size() > 0):
-		isGrounded = true
-	else:
-		isGrounded = false
-	if(velocity.y < 0):
-		groundCheck.monitoring = true
+
+	if(Input.is_action_pressed("phase")):
+		start_phase()
+	if(Input.is_action_just_released("phase")):
+		end_phase()
 
 # Move this object.
 func move():
 	calculate_movement()
-	var oldPos = transform.origin
-# warning-ignore:return_value_discarded
-	move_and_slide(velocity, Vector3.UP, true, 10, deg2rad(maxSlopeAngle), false)
-	if(isGrounded):
+	var oldPos = transform.origin # Used to track distance moved for the footstep node.
+	move_and_slide(velocity, Vector3.UP, true, 6, deg2rad(maxSlopeAngle), false)
+	fall()
+	if(is_on_floor()):
+		 # Applies distance moved to the footstep node.
 		footSteps.add_travel_distance(transform.origin.distance_to(oldPos))
 	push_rigid_bodies()
-
-func phase():
-	if(phasing == false):
-		moveSpeed = phaseSpeed
-		set_collision_mask_bit(2,false)
-		get_node("Camera/GunBelt").disable_weapons()
-	phasing = true
-
-func end_phase():
-	if(occupiedAreaNode.is_clear() == false):
-		yield (occupiedAreaNode, "area_empty")
-	moveSpeed = defaultMoveSpeed
-	set_collision_mask_bit(2,true)
-	phasing = false
-	get_node("Camera/GunBelt").enable_weapons()
-	
-# Pushes any rigid body this object collides with in a realistic way.
-func push_rigid_bodies():
-	if(phasing):
-		return
-	for index in get_slide_count():
-		var collision = get_slide_collision(index)
-		if(collision.collider.is_in_group("Props") and collision.get_collider().mode != 1):
-			print("Pushing")
-			collision.collider.apply_central_impulse(-collision.normal * push)
 
 # Calculates this objects velocity.
 func calculate_movement():
@@ -111,54 +64,56 @@ func get_input():
 
 # Returns a negative value to simulate "gravity".
 func gravity():
-	if(isGrounded): # Apply a small constant down force to keep grounded.
-		if(falling == true):
-			var newSound = load("res://assets/scenes/OneTimeAudio3D.tscn").instance()
-			newSound.set_stream(landSound)
-			add_child(newSound)
-		falling = false
-		return -0.1
+	if(is_on_floor()):
+		return -9.8 # Needs to be around this number or is_on_floor goes false.
 	else:
-		falling = true
 		return velocity.y + fallSpeed
 
 # Returns a positive value to "jump".
 func jump():
-	if Input.is_action_just_pressed("jump") and isGrounded:
-		var newSound = load("res://assets/scenes/OneTimeAudio3D.tscn").instance()
-		newSound.bus = "Sound"
-		newSound.set_stream(jumpSound)
-		add_child(newSound)
-		groundCheck.monitoring = false
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		audioManager.new_3d_sound(jumpSound, global_transform.origin)
 		return jumpSpeed
 	else:
 		return 0
 
-# Flips damage value to negative.
-func damage(_attacker = null, value = 0.0):
-	if(health - value <= 0):
-		print(name, " is destroyed.")
-		var newSound = load("res://assets/scenes/OneTimeAudio.tscn").instance()
-		newSound.set_stream(deathSound)
-		get_tree().get_root().add_child(newSound)
-		if(respawnsRemaining > 0):
-			respawnsRemaining -= 1
-			emit_signal("player_died", self, true)
-		else:
-			emit_signal("player_died", self)
-	else:
-		health -= value
-		print(name, " health = ", health)
-		if(hurtSoundCoolDown == false):
-			get_node("HurtSound").play()
-			hurtSoundCoolDown = true
-			yield(get_tree().create_timer(1.6), "timeout")
-			hurtSoundCoolDown = false 
-	update_ui()
+# Checks if player is falling, plays audio if player lands.
+func fall():
+	if(is_on_floor() == false and velocity.y < 0): 
+		falling = true
+		return
+	elif(is_on_floor() and falling == true):
+		falling = false
+		audioManager.new_3d_sound(landSound, global_transform.origin)
 
-func update_ui():
-	respawnCountUI.Value = respawnsRemaining
-	healthUI.Value = health
+# Disables collisions with props, if the player goes inside a prop then move speed is reduced, and
+# weapons are disabled.
+func start_phase():
+	set_collision_mask_bit(2,false)
+	if(is_phasing()):
+		moveSpeed = phaseSpeed
+		get_node("Camera/GunBelt").disable_weapons()
+
+# Returns true if the player is inside props, false if they are not colliding with props.
+func is_phasing():
+	if(occupiedArea.is_clear() == false):
+		return true
+	else:
+		return false
+
+# Enables prop collision, resets move speed, and enables weapons if the player isn't inside any props.
+func end_phase():
+	if(is_phasing()):
+		yield (occupiedArea, "area_empty") # Keeps us in phase until the player is free from all props.
+	moveSpeed = baseMoveSpeed
+	set_collision_mask_bit(2,true)
+	get_node("Camera/GunBelt").enable_weapons()
 	
-func kill():
-	damage(null, health)
+# Pushes any rigid body this object collides with in a realistic way.
+func push_rigid_bodies():
+	if(is_phasing()):
+		return
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if(collision.collider.is_in_group("Props") and collision.get_collider().mode != 1):
+			collision.collider.apply_central_impulse(-collision.normal * push)

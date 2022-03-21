@@ -1,4 +1,5 @@
 extends AnimationPlayer
+# Base Class for Animation Player nodes.
 
 export var returnToDefaultAnimation = false
 export var defaultAnimation = "" # Default animation to play after all animations.

@@ -1,72 +1,78 @@
 extends Spatial
+# Manages weapons equipped weapons, and swiching between them.
 
 var currentWeaponIndex : int = 0 # Currently equipped weapon. Default 0.
-var switchInProgress = false # Prevents switching too multiple times.
-var enabled = true
-signal switch_finished
-onready var numberOfWeapons : int = get_child_count()
+var switchInProgress = false # Prevents switching multiple times.
+var enabled = true # Is switching enabled.
 
 func _ready():
-	# Switch to the first weapon in the GunBelt or all weapons will be active 
-	# at game start.
-	switchWeapons() 
+	for child in get_child_count():
+		get_child(child).hide()
+		get_child(child).set_process(false)
+	switch_weapons() # Switch to weapon 0 or all weapons will be active at game start.
+
 
 func _unhandled_input(event):
+	if(GameManager.isPaused): # Prevents input while the game is paused.
+		return
 	# Use +/- 1 to increment the current weapon when using scroll wheel.
 	if(event.is_action_pressed("next_weapon")):
-		changeWeaponIndex(1) 
+		increment_weapon_index(1) 
 		get_tree().get_root().set_input_as_handled()
 	elif(event.is_action_pressed("previous_weapon")):
-		changeWeaponIndex(-1)
+		increment_weapon_index(-1)
 		get_tree().get_root().set_input_as_handled()
 
 # Modifies the current weapon index based on player mouse wheel input.
-func changeWeaponIndex(increment : int):
-	if(switchInProgress == true or enabled == false):
-		return
-	switchInProgress = true
+func increment_weapon_index(increment : int):
 	# Check if the increment needs to wrap to the start or end of the weapon list.
-	if(currentWeaponIndex + increment > numberOfWeapons - 1): # Minus numberOfWeapons by 1 because currentWeaponIndex starts at 0.
-		currentWeaponIndex = 0
+	if(currentWeaponIndex + increment > get_child_count() - 1): # Minus child count by 1 because currentWeaponIndex starts at 0.
+		set_current_weapon_index(0)
 	elif(currentWeaponIndex + increment < 0):
-		currentWeaponIndex = numberOfWeapons - 1 # Minus numberOfWeapons by 1 because currentWeaponIndex starts at 0.
+		set_current_weapon_index(get_child_count() - 1) # Minus child count by 1 because currentWeaponIndex starts at 0.
 	else:
-		currentWeaponIndex += increment
-	
-	switchWeapons()
+		set_current_weapon_index(currentWeaponIndex + increment)
 
-func set_weapon_index(value):
+# Sets the current weapon index.
+func set_current_weapon_index(value : int):
+	if(enabled != true):
+		return
 	if(switchInProgress == true):
-		yield(switchWeapons(), "completed")
-	switchInProgress = true
+		return
+	clamp(value, 0, get_child_count() - 1)
 	currentWeaponIndex = value
-	switchWeapons()
+	switch_weapons()
 
-func switchWeapons():
+# Unequips active weapon, and equips the weapon at the current index.
+func switch_weapons(index = -1):
+	switchInProgress = true
 	# Loop through all children, unequip any equipped weaons. Equip the new weapon.
-	for index in get_child_count():
-		var iteratedNode = get_child(index)
-		if(iteratedNode.equipped == true):
-			yield(iteratedNode._unequip(), "completed")
+	for weapon in get_child_count():
+		var iteratedNode = get_child(weapon)
+		if(iteratedNode.is_processing()):
+			yield(iteratedNode.unequip(), "completed")
+	
+	if(index != -1 and index != currentWeaponIndex):
+		currentWeaponIndex = index
 
-	yield(get_child(currentWeaponIndex)._equip(), "completed")
-	emit_signal("switch_finished")
+	yield(get_child(currentWeaponIndex).equip(), "completed")
 	switchInProgress = false
 
 # Adds a new weapon to the gun belt.
 func add_weapon(newWeapon):
+	newWeapon.hide()
+	newWeapon.set_process(false)
 	add_child(newWeapon)
-	numberOfWeapons = get_child_count()
-	set_weapon_index(newWeapon.get_index())
+	set_current_weapon_index(newWeapon.get_index())
 
 # Enables weapons when not phased.
 func enable_weapons():
 	get_child(currentWeaponIndex).enable()
 	enabled = true
 
-# Disables weapons when phased.
+# Disables current weapon, and weapon switching.
 func disable_weapons():
 	if(switchInProgress):
-		yield(self, "switch_finished")
+		yield(switch_weapons(), "completed")
 	get_child(currentWeaponIndex).disable()
 	enabled = false

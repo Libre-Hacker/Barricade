@@ -1,4 +1,5 @@
 extends Panel
+# Displays the player's health.
 
 const health = preload("res://assets/resources/player_health.tres")
 onready var healthLabel = get_node("HBoxContainer/HealthLabel")

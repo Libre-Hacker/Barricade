@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scripts/PropHealth.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=5]
 
 [node name="RigidBody" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
@@ -10,10 +13,21 @@ continuous_cd = true
 can_sleep = false
 angular_damp = 2.0
 script = ExtResource( 1 )
-health = 200.0
+
+[node name="Health" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
 
 [node name="Reward" parent="." instance=ExtResource( 2 )]
 payoutOnDeath = false
-worth = 10
+rewardAmount = 10
 
-[connection signal="health_changed" from="." to="Reward" method="_on_health_changed"]
+[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 5 )
+
+[connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
+[connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
+[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]

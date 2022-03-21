@@ -1,4 +1,5 @@
 extends Panel
+# Displays the health bar of the assigned prop.
 
 const currentHealth = preload("res://assets/resources/current_prop_health.tres")
 const maxHealth = preload("res://assets/resources/max_prop_health.tres")
@@ -19,4 +20,4 @@ func _process(_delta):
 	maxHealthLabel.text = str(maxHealth.Value)
 	propNameLabel.text = propName.Value
 	visible = true
-		
+

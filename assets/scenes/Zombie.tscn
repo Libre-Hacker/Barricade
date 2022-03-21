@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/scripts/ZombieMover.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=2]
@@ -8,8 +8,8 @@
 [ext_resource path="res://assets/scripts/ZombieAIController.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/Navigator.gd" type="Script" id=7]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/scripts/Health.gd" type="Script" id=9]
-[ext_resource path="res://assets/sounds/zo_pain1.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/scripts/ZombieHealth.gd" type="Script" id=10]
 [ext_resource path="res://assets/sounds/zo_pain2.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/scripts/IdleAudio.gd" type="Script" id=12]
 [ext_resource path="res://assets/sounds/zo_idle4.wav" type="AudioStream" id=13]
@@ -19,9 +19,41 @@
 [ext_resource path="res://assets/sounds/zo_attack1.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/sounds/claw_miss2.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/sounds/claw_strike2.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/sounds/zo_pain1.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=21]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.25
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.5, 1.05, 0.4 )
+
+[sub_resource type="SphereMesh" id=5]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.419608, 0.509804, 0.156863, 1 )
+
+[sub_resource type="SphereShape" id=7]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id=8]
+radius = 0.5
+mid_height = 0.5
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.584314, 0.584314, 0.584314, 1 )
+
+[sub_resource type="CapsuleShape" id=10]
+radius = 0.5
+height = 0.5
+
+[sub_resource type="CubeMesh" id=11]
+size = Vector3( 0.2, 0.2, 1 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.1, 0.1, 0.5 )
 
 [sub_resource type="Animation" id=2]
 length = 1.5
@@ -77,20 +109,6 @@ tracks/4/keys = {
 "method": "damage_target"
 } ]
 }
-tracks/5/type = "audio"
-tracks/5/path = NodePath("PrimaryAttack/AudioStreamPlayer3D")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 17 )
-} ],
-"times": PoolRealArray( 0 )
-}
 
 [sub_resource type="Animation" id=3]
 length = 0.1
@@ -133,40 +151,10 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.5, 1.05, 0.4 )
-
-[sub_resource type="SphereMesh" id=5]
-radius = 0.3
-height = 0.6
-
-[sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0.419608, 0.509804, 0.156863, 1 )
-
-[sub_resource type="SphereShape" id=7]
-radius = 0.3
-
-[sub_resource type="CapsuleMesh" id=8]
-radius = 0.5
-mid_height = 0.5
-
-[sub_resource type="SpatialMaterial" id=9]
-albedo_color = Color( 0.584314, 0.584314, 0.584314, 1 )
-
-[sub_resource type="CapsuleShape" id=10]
-radius = 0.5
-height = 0.5
-
-[sub_resource type="CubeMesh" id=11]
-size = Vector3( 0.2, 0.2, 1 )
-
-[sub_resource type="BoxShape" id=12]
-extents = Vector3( 0.1, 0.1, 0.5 )
-
 [node name="Zombie" type="KinematicBody"]
-input_ray_pickable = false
 collision_layer = 8
-collision_mask = 13
+collision_mask = 4
+input_ray_pickable = false
 script = ExtResource( 1 )
 pushForce = 4.0
 
@@ -174,28 +162,11 @@ pushForce = 4.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 2 )
-anims/idle = SubResource( 3 )
-script = ExtResource( 5 )
-returnToDefaultAnimation = true
-defaultAnimation = "idle"
-
-[node name="Reward" parent="." instance=ExtResource( 8 )]
-
-[node name="Health" type="Spatial" parent="."]
-script = ExtResource( 9 )
-hurtSounds = [ ExtResource( 10 ), ExtResource( 11 ) ]
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Health"]
-unit_db = 5.0
-bus = "Sound"
-
-[node name="AIController" type="Spatial" parent="."]
+[node name="AIController" type="Node" parent="."]
 script = ExtResource( 6 )
 
 [node name="ObstructedTimer" type="Timer" parent="AIController"]
-wait_time = 0.75
+wait_time = 2.0
 one_shot = true
 
 [node name="Navigator" type="Spatial" parent="."]
@@ -205,18 +176,25 @@ script = ExtResource( 7 )
 wait_time = 0.2
 autostart = true
 
+[node name="Health" parent="." instance=ExtResource( 9 )]
+script = ExtResource( 10 )
+hurtSounds = [ ExtResource( 20 ), ExtResource( 11 ) ]
+
+[node name="Reward" parent="." instance=ExtResource( 8 )]
+
 [node name="PrimaryAttack" type="Area" parent="."]
 collision_layer = 0
 collision_mask = 6
 script = ExtResource( 3 )
 missSound = ExtResource( 18 )
 hitSound = ExtResource( 19 )
+attackSound = ExtResource( 17 )
 
 [node name="AttackArea" type="CollisionShape" parent="PrimaryAttack"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.4 )
 shape = SubResource( 4 )
 
-[node name="AttackTimer" type="Timer" parent="PrimaryAttack"]
+[node name="AttackCDTimer" type="Timer" parent="PrimaryAttack"]
 one_shot = true
 
 [node name="LineOfSight" type="Spatial" parent="PrimaryAttack"]
@@ -225,75 +203,81 @@ script = ExtResource( 4 )
 
 [node name="RayCast" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_10" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 0.996195, 9.31323e-10, -0.0871557, -0.00759612, 0.996195, -0.0868241, 0.0868241, 0.0871557, 0.992404, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
 collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_11" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 0.996137, 0.0151344, 0.0864975, -0.00759612, 0.996195, -0.0868241, -0.0874824, 0.0858316, 0.992462, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_12" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 0.996137, 0.0151344, 0.0864975, -0.0226719, 0.995965, 0.0868341, -0.0848343, -0.0884597, 0.992461, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_13" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 0.995735, 0.0302654, -0.0871556, -0.0226719, 0.995965, 0.0868341, 0.0894319, -0.0844878, 0.992403, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_6" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_7" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_8" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_9" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_2" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_3" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_4" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="RayCast_5" type="RayCast" parent="PrimaryAttack/LineOfSight"]
 transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0, 0 )
 cast_to = Vector3( 0, 0, -2 )
-collision_mask = 7
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PrimaryAttack"]
-stream = ExtResource( 17 )
-unit_db = -5.0
-bus = "Sound"
-
-[node name="AudioStreamPlayer3D_2" type="AudioStreamPlayer3D" parent="PrimaryAttack"]
-bus = "Sound"
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="MeshAndHitbox" type="Position3D" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -303,12 +287,11 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.75
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
-[node name="HitBoxHead" type="Area" parent="MeshAndHitbox/Head" groups=[
-"Destructibles",
-]]
+[node name="HitBoxHead" type="Area" parent="MeshAndHitbox/Head" groups=["Destructibles"]]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
-gravity_vec = Vector3( 0, 0, 0 )
+collision_layer = 8
 collision_mask = 0
+gravity_vec = Vector3( 0, 0, 0 )
 script = ExtResource( 2 )
 multiplier = 1.5
 
@@ -321,12 +304,11 @@ transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.742
 mesh = SubResource( 8 )
 material/0 = SubResource( 9 )
 
-[node name="HitBoxBody" type="Area" parent="MeshAndHitbox/Body" groups=[
-"Destructibles",
-]]
+[node name="HitBoxBody" type="Area" parent="MeshAndHitbox/Body" groups=["Destructibles"]]
 transform = Transform( -1, 2.5411e-21, 8.74228e-08, -8.74228e-08, -4.37114e-08, -1, 3.82137e-15, -1, 4.37114e-08, 0, 0, 0 )
-gravity_vec = Vector3( 0, 0, 0 )
+collision_layer = 8
 collision_mask = 0
+gravity_vec = Vector3( 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="ColliderBody" type="CollisionShape" parent="MeshAndHitbox/Body/HitBoxBody"]
@@ -341,12 +323,11 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -2.9802
 mesh = SubResource( 11 )
 material/0 = SubResource( 6 )
 
-[node name="HitBoxArmLeft" type="Area" parent="MeshAndHitbox/PivotArmLeft" groups=[
-"Destructibles",
-]]
+[node name="HitBoxArmLeft" type="Area" parent="MeshAndHitbox/PivotArmLeft" groups=["Destructibles"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -4.37114e-08 )
-gravity_vec = Vector3( 0, 0, 0 )
+collision_layer = 8
 collision_mask = 0
+gravity_vec = Vector3( 0, 0, 0 )
 script = ExtResource( 2 )
 multiplier = 0.8
 
@@ -362,12 +343,11 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0
 mesh = SubResource( 11 )
 material/0 = SubResource( 6 )
 
-[node name="HitBoxArmRight" type="Area" parent="MeshAndHitbox/PivotArmRight" groups=[
-"Destructibles",
-]]
+[node name="HitBoxArmRight" type="Area" parent="MeshAndHitbox/PivotArmRight" groups=["Destructibles"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 4.37114e-08 )
-gravity_vec = Vector3( 0, 0, 0 )
+collision_layer = 8
 collision_mask = 0
+gravity_vec = Vector3( 0, 0, 0 )
 script = ExtResource( 2 )
 multiplier = 0.8
 
@@ -375,29 +355,39 @@ multiplier = 0.8
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 0.5, 0.25 )
 shape = SubResource( 12 )
 
-[node name="IdleAudio" type="AudioStreamPlayer3D" parent="."]
-bus = "Sound"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 2 )
+anims/idle = SubResource( 3 )
+script = ExtResource( 5 )
+returnToDefaultAnimation = true
+defaultAnimation = "idle"
+
+[node name="IdleAudio" type="Node" parent="."]
 script = ExtResource( 12 )
 idleSounds = [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 13 ) ]
 
 [node name="Timer" type="Timer" parent="IdleAudio"]
-one_shot = true
+autostart = true
+
+[node name="AudioManager" parent="." instance=ExtResource( 21 )]
 
 [connection signal="obstructed" from="." to="AIController" method="_on_KinematicBody_obstructed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
-[connection signal="destroyed" from="Health" to="Reward" method="_on_destroyed"]
-[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
-[connection signal="attack" from="AIController" to="PrimaryAttack" method="_on_AIController_attack"]
-[connection signal="seek" from="AIController" to="." method="_on_AIController_seek"]
+[connection signal="attack" from="AIController" to="PrimaryAttack" method="attack_behaviour"]
+[connection signal="seek" from="AIController" to="." method="seek_behaviour"]
 [connection signal="timeout" from="AIController/ObstructedTimer" to="AIController" method="_on_ObstructedTimer_timeout"]
 [connection signal="timeout" from="Navigator/NavigationTimer" to="Navigator" method="_on_NavigationTimer_timeout"]
-[connection signal="body_entered" from="PrimaryAttack" to="PrimaryAttack" method="_on_PrimaryAttack_body_entered"]
-[connection signal="body_exited" from="PrimaryAttack" to="PrimaryAttack" method="_on_PrimaryAttack_body_exited"]
+[connection signal="destroyed" from="Health" to="Reward" method="distribute_reward"]
+[connection signal="health_changed" from="Health" to="Reward" method="add_contribution"]
+[connection signal="area_entered" from="PrimaryAttack" to="PrimaryAttack" method="_on_area_entered"]
+[connection signal="area_exited" from="PrimaryAttack" to="PrimaryAttack" method="_on_area_exited"]
+[connection signal="play_3dsound" from="PrimaryAttack" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_animation" from="PrimaryAttack" to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="targets_available" from="PrimaryAttack" to="AIController" method="_on_PrimaryAttack_targets_available"]
-[connection signal="targets_unavilable" from="PrimaryAttack" to="AIController" method="_on_PrimaryAttack_targets_unavilable"]
+[connection signal="targets_unavailable" from="PrimaryAttack" to="AIController" method="_on_PrimaryAttack_targets_unavailable"]
 [connection signal="hitbox_collision" from="MeshAndHitbox/Head/HitBoxHead" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_collision" from="MeshAndHitbox/Body/HitBoxBody" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_collision" from="MeshAndHitbox/PivotArmLeft/HitBoxArmLeft" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_collision" from="MeshAndHitbox/PivotArmRight/HitBoxArmRight" to="Health" method="_on_hitbox_collision"]
-[connection signal="finished" from="IdleAudio" to="IdleAudio" method="_on_sound_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
+[connection signal="play_3dsound" from="IdleAudio" to="AudioManager" method="new_3d_sound"]
 [connection signal="timeout" from="IdleAudio/Timer" to="IdleAudio" method="_on_Timer_timeout"]

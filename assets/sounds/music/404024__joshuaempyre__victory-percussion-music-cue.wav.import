@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/404024__joshuaempyre__victory-percussion-music-cue.wav-cfc7f2dd432cdaf0067d94b348d1f965.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/404024__joshuaempyre__victory-percussion-music-cue.wav"
+dest_files=[ "res://.import/404024__joshuaempyre__victory-percussion-music-cue.wav-cfc7f2dd432cdaf0067d94b348d1f965.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/scripts/FloatReference.gd"
 }, {
+"base": "Spatial",
+"class": "Health",
+"language": "GDScript",
+"path": "res://assets/scripts/Health.gd"
+}, {
 "base": "Resource",
 "class": "IntReference",
 "language": "GDScript",
@@ -60,6 +65,7 @@ _global_script_class_icons={
 "CollisionData": "",
 "Equippable": "",
 "FloatReference": "",
+"Health": "",
 "IntReference": "",
 "RayCastAll": "",
 "SettingsData": "",
@@ -75,10 +81,15 @@ config/icon="res://assets/sprites/icon.png"
 [autoload]
 
 Settings="*res://assets/scripts/Settings.gd"
+LevelSwitcher="*res://assets/scripts/SceneSwitcher.gd"
+GameManager="*res://assets/scripts/GameManager.gd"
+MenuSwitcher="*res://assets/scripts/SceneSwitcher.gd"
+AudioManager="*res://assets/scripts/AudioManager.gd"
 
 [debug]
 
 gdscript/completion/autocomplete_setters_and_getters=true
+shapes/collision/shape_color=Color( 0, 0.6, 0.701961, 0.470588 )
 
 [display]
 
@@ -194,6 +205,7 @@ pause={
 3d_physics/layer_3="Props"
 3d_physics/layer_4="Zombies"
 3d_physics/layer_5="Interactables"
+3d_physics/layer_6="Hitboxes"
 
 [node]
 

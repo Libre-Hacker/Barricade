@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/scenes/Money.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scenes/RoundTimer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scripts/HUD.gd" type="Script" id=6]
-[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/scenes/HealthUI.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/scenes/RespawnsUI.tscn" type="PackedScene" id=8]
 
 [node name="HUD" type="Control"]

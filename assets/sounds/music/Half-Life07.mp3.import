@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Half-Life07.mp3-8f32ae524fe1e8015b3bf1d72d047771.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

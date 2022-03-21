@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/scripts/ShootRaycast.gd" type="Script" id=1]
 [ext_resource path="res://assets/animations/semi_auto_rifle/idle.tres" type="Animation" id=2]
@@ -10,35 +10,29 @@
 [ext_resource path="res://assets/scripts/AutoRifle.gd" type="Script" id=8]
 [ext_resource path="res://assets/scenes/AutoRifleMesh.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sounds/hks1.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/scripts/AudioController3D.gd" type="Script" id=11]
-[ext_resource path="res://assets/sounds/reload1.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=11]
 
 [node name="AutoRifle" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 8 )
-startDisabled = true
 
 [node name="PrimaryFire" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 100 )
-collision_mask = 5
+collision_mask = 13
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 1 )
-selectedFireMode = 1
 ammoCapacity = 30
 reserveAmmo = 90
 maxReserveAmmo = 300
 rateOfFire = 450.0
 damage = 20.0
 maxRange = 100.0
+fireSound = ExtResource( 10 )
 
 [node name="Cooldown" type="Timer" parent="PrimaryFire"]
 one_shot = true
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PrimaryFire"]
-stream = ExtResource( 10 )
-bus = "Sound"
-script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/equip = ExtResource( 6 )
@@ -60,9 +54,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 1.75 )
 
 [node name="Mesh" parent="Pivot" instance=ExtResource( 9 )]
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 12 )
-bus = "Sound"
+[node name="AudioManager" parent="." instance=ExtResource( 11 )]
 
+[connection signal="play_3d_sound" from="PrimaryFire" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_animation" from="PrimaryFire" to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

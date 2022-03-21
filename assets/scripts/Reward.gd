@@ -1,45 +1,53 @@
 extends Spatial
+# Manages a 2D array of players that have contributed to the reward, and pays
+# them out their portion of money based on the percentage of value they provided.
 
-# Manages a 2D array of players that have dealth damage to this entity, and pays
-# them out their fair portion of money based on the percentage of damage they dealt.
-export (bool) var payoutOnDeath = true
-export (int, 0, 1000) var worth = 100 # How much money rewarded for kill.
+export var payoutOnDeath = true # If true, payouts are only distributed upon death.
+export var rewardAmount = 100 # How much money rewarded for kill.
 
 # 2D array values can be accessed like so: array[0] = first value. array[1] = second value.
 # To get the index of that value would look like so: array[0][index] = first value at index.
 var contributors = [[],[]] # A 2D array of contributors to the kill.
 
-# Adds, and updates players and how much damage they have dealt to this object.
+# Adds players, and updates how much damage they have dealt to this object.
 # Damage is a percent.
-func add_contribution(attacker, damage):
-	if(attacker == null): # Check for null as some damage sources are not players.
-		return
+func add_contribution(attacker, value):
+	# Searches the array for the attacking player.
 	var i = contributors[0].find(attacker)
+
 	# Adds a new player to the array.
 	if(i == -1):
 		contributors[0].append(attacker)
-		contributors[1].append(damage)
-	# Updates the damage dealt by the player.
+		contributors[1].append(value)
+	# Updates the value contributed by the player.
 	else:
-		contributors[1][i] = contributors[1][i] + damage
+		contributors[1][i] = contributors[1][i] + value
 
 # Pays out the reward to all players in the array.
 func distribute_reward():
-	print("Payout")
+	var totalContributions = 0
+	for i in contributors[1].size():
+		totalContributions += contributors[1][i]
+
 	for i in contributors[0].size():
-		# Convert the percent of damage dealt into an int.
-		var reward = contributors[1][i] * worth 
+		# Convert the contribution of each player into a percentage of the total
+		# contributions, and payout their percentage of the reward.
+		var reward = rewardAmount * (contributors[1][i] / totalContributions)
 		contributors[0][i].get_node("Wallet").add_money(reward)
 
-func give_instant_reward(player):
-	player.get_node("Wallet").add_money(worth)
+# Pays out an instant reward to the player, default reward can be overridden.
+func give_instant_reward(player, reward = rewardAmount):
+	player.get_node("Wallet").add_money(reward)
 
+# Called when the object is destroyed, pays out the rewards.
 func _on_destroyed():
 	distribute_reward()
 
-func _on_health_changed(attacker, damage):
-	print("Add Contribution")
+# Adds reward when health_changed signal is received.
+func _on_health_changed(attacker, value):
+	if(attacker == null): # Check if attacking source can collect rewards.
+		return
 	if(payoutOnDeath):
-		add_contribution(attacker, damage)
+		add_contribution(attacker, value)
 	else:
 		give_instant_reward(attacker)

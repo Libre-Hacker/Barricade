@@ -1,34 +1,26 @@
-## Test
-## Hello
 extends RayCastAll
+# Functions for nailing props to surfaces and removing nails from props.
 
 export(int,1,200) var ammo # Current amount of nails held.
 export(int,1,200) var maxAmmo # Maximum nails the player can hold.
 export (float,0,2) var nailSize = 1 # How long a nail is.
 export (float,0,10) var nailRange # How far the hammer can nail.
 export (float,0,1) var nailMargin # How much of the nail has to be exposed.
+export (Resource) var nailSound
+
 
 signal play_animation(animationName)
 signal nail_prop
+signal play_3d_sound
 
 var nailNode = preload("res://assets/scenes/Nail.tscn")
-const menuOpened = preload("res://assets/resources/menu_opened.tres")
 const uiLoadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
 const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
 
 onready var cooldownTimer = get_node("Cooldown")
-onready var audioPlayer = get_node("AudioStreamPlayer3D")
 
-func _unhandled_input(event):
-	if(menuOpened.Value):
-		return
-	if(event.is_action_pressed("alt_fire")):
-		nail()
-		get_tree().get_root().set_input_as_handled()
-	
-	if(event.is_action_pressed("reload")):
-		remove_nail()
-		get_tree().get_root().set_input_as_handled()
+func _ready():
+	cast_to.z = nailRange
 
 # Checks if there are nailable objects present
 func nail():
@@ -44,7 +36,7 @@ func nail():
 		or propData.collisionPoint.distance_to(surfaceData.collisionPoint) > nailSize - nailMargin):
 			return
 	
-	audioPlayer.play()
+	emit_signal("play_3d_sound", nailSound)
 	emit_signal("play_animation", "nail")
 	emit_signal("nail_prop")
 	cooldownTimer.start()
@@ -77,11 +69,13 @@ func create_nail(propData, surfaceData):
 
 # Removes a nail from a prop. Returning the prop to its rigidbody state.
 func remove_nail():
-	if(is_colliding() == false or get_collider().is_in_group("Props") == false or get_collider().isNailed == false):  
+	if(is_colliding() == false or get_collider().is_in_group("Props") == false or get_collider().isNailed == false or cooldownTimer.is_stopped() == false):  
 		return
 	get_collider().unnail()
 	get_collider().get_node("Nail").queue_free()
 	emit_signal("play_animation", "nail")
+	emit_signal("play_3d_sound", nailSound)
+	cooldownTimer.start()
 	ammo += 1
 	update_ui()
 
