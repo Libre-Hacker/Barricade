@@ -49,6 +49,7 @@ func damageObject():
 	if(get_collider().is_in_group("Props") and get_collider().get_parent().isNailed):
 		return
 	if(get_collider().is_in_group("Destructibles")):
+		print("wtf")
 		get_collider().damage(damage, player)
 
 

@@ -349,9 +349,8 @@ script = ExtResource( 2 )
 [node name="PrimaryFire" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 100 )
-collision_mask = 13
+collision_mask = 193
 collide_with_areas = true
-collide_with_bodies = false
 script = ExtResource( 1 )
 ammoCapacity = 12
 reserveAmmo = 60
@@ -385,21 +384,25 @@ __meta__ = {
 
 [node name="Receiver" type="MeshInstance" parent="Pivot/Model"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.4, 0, 0, -0.4 )
+layers = 2
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
 [node name="Barrel" type="MeshInstance" parent="Pivot/Model"]
 transform = Transform( 0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0 )
+layers = 2
 mesh = SubResource( 8 )
 material/0 = SubResource( 9 )
 
 [node name="Grip" type="MeshInstance" parent="Pivot/Model"]
 transform = Transform( 0.1, 0, 0, 0, -0.034202, -0.187939, 0, 0.0939693, -0.068404, 0, -0.212174, -0.70381 )
+layers = 2
 mesh = SubResource( 10 )
 material/0 = SubResource( 7 )
 
 [node name="Magazine" type="MeshInstance" parent="Pivot/Model"]
 transform = Transform( 0.09, 0, 0, 0, -0.0307818, -0.187939, 0, 0.0845724, -0.0684042, -1.04308e-07, -0.194349, -0.697322 )
+layers = 2
 mesh = SubResource( 11 )
 material/0 = SubResource( 12 )
 __meta__ = {

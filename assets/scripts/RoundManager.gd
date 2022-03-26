@@ -18,18 +18,22 @@ signal last_round_ended
 
 onready var roundTimer = get_node("RoundTimer")
 
+
 func _ready():
 	set_roundTimer(roundTimes[currentRound])
 	AudioManager.new_music(prepareMusic)
+
 
 # DELETE LATER FOR TESTING ONLY
 func _unhandled_input(event):
 	if(event.is_action_pressed("next_round")):
 			roundTimer.start(0.01)
 
+
 # Sets and starts the timer to the given perameter.
 func set_roundTimer(time = 0):
 	roundTimer.start(time)
+
 
 # Checks if this round was the last, and updates the current round and timer accordingly.
 func _on_RoundTimer_timeout():

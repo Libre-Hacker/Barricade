@@ -206,6 +206,8 @@ pause={
 3d_physics/layer_4="Zombies"
 3d_physics/layer_5="Interactables"
 3d_physics/layer_6="Hitboxes"
+3d_physics/layer_7="PropHitbox"
+3d_physics/layer_8="ZombieHitbox"
 
 [node]
 
@@ -215,6 +217,8 @@ name_num_separator=2
 
 3d/physics_engine="GodotPhysics"
 3d/active_soft_world=false
+3d/default_linear_damp=0.0
+3d/default_angular_damp=0.0
 
 [rendering]
 

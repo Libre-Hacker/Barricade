@@ -25,26 +25,27 @@
 [ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/scripts/PlayerHealth.gd" type="Script" id=24]
 
-[sub_resource type="CapsuleShape" id=4]
-radius = 0.5
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.5, 1, 0.5 )
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 1, 0.5 )
 
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.4, 0.9, 0.4 )
+[sub_resource type="CapsuleShape" id=5]
+radius = 0.51
 
 [node name="FPSPlayer" type="KinematicBody" groups=["Players"]]
 collision_layer = 2
 collision_mask = 13
 collision/safe_margin = 0.04
 script = ExtResource( 8 )
-push = 10.0
+jumpSpeed = 10.0
+fallSpeed = -0.6
 jumpSound = ExtResource( 19 )
 landSound = ExtResource( 20 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 4 )
 
 [node name="OccupiedArea" type="Area" parent="."]
@@ -57,16 +58,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
 [node name="HitBox" type="Area" parent="." groups=["Players"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 22 )
 
 [node name="ColliderHitBox" type="CollisionShape" parent="HitBox"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.8, 0 )
+cull_mask = 524285
 current = true
 playerNodePath = NodePath("..")
 
@@ -92,8 +94,6 @@ visible = false
 
 [node name="Health" parent="." instance=ExtResource( 23 )]
 script = ExtResource( 24 )
-health = 20.0
-maxHealth = 20.0
 respawns = 1
 hurtSound = ExtResource( 17 )
 deathSound = ExtResource( 18 )
@@ -103,7 +103,7 @@ script = ExtResource( 10 )
 
 [node name="Footsteps" type="RayCast" parent="."]
 enabled = true
-cast_to = Vector3( 0, -0.1, 0 )
+cast_to = Vector3( 0, -0.5, 0 )
 script = ExtResource( 11 )
 tileSounds = [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 13 ) ]
 
@@ -113,6 +113,28 @@ tileSounds = [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResou
 
 [node name="HUD" parent="." instance=ExtResource( 1 )]
 margin_right = -0.00012207
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1920, 1080 )
+size_override_stretch = true
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+shadow_atlas_size = 4
+
+[node name="GunCamera" type="Camera" parent="ViewportContainer/Viewport"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.8, 0 )
+cull_mask = 2
+fov = 90.0
 
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
 [connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]

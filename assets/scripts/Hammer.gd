@@ -23,12 +23,16 @@ func _process(_delta):
 		if(Input.is_action_just_pressed("reload")):
 			nailNode.remove_nail()
 			get_tree().get_root().set_input_as_handled()
-	infoGatherNode.gather_prop_info()
 
+func _physics_process(_delta):
+	if(GameManager.isPaused):
+		return
+	infoGatherNode.gather_prop_info()
 
 func equip():
 	show()
 	set_process(true)
+	set_physics_process(true)
 	animationPlayer.play("equip")
 	yield(animationPlayer, "animation_finished")
 	infoGatherNode.enabled = true
@@ -40,6 +44,7 @@ func unequip():
 	animationPlayer.play("unequip")
 	yield(animationPlayer, "animation_finished")
 	set_process(false)
+	set_physics_process(false)
 	hide()
 
 # Used by external sources to add ammo to this weapon.

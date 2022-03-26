@@ -8,6 +8,19 @@ export(NodePath) var playerNodePath : NodePath
 
 onready var player = get_node(playerNodePath)
 onready var interactionRayCast = get_node("Interaction")
+onready var gunCamera = get_parent().get_node("ViewportContainer/Viewport/GunCamera")
+
+
+func _ready():
+	get_viewport().connect("size_changed", self, "_on_window_resize")
+	gunCamera.set_environment(get_environment())
+
+func _on_window_resize():
+	get_parent().get_node("ViewportContainer/Viewport").size = get_viewport().size
+	print(get_parent().get_node("ViewportContainer/Viewport").size)
+
+func _process(delta):
+	gunCamera.global_transform = global_transform
 
 # Gets mouse input and calls corresponding function.
 func _unhandled_input(event):

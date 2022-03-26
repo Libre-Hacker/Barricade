@@ -2,8 +2,8 @@ extends KinematicBody
 # Takes input from player and converts it into movement.
 
 export(float, 0, 25, 0.01) var moveSpeed = 7.5 # The players current move speed.
-export(float, 0, 25, 0.01) var jumpSpeed = 17.3 # Upward momentum applied during a jump.
-export(float, -5, -0.1, 0.001) var fallSpeed = -0.326
+export(float) var jumpSpeed = 100 # Upward momentum applied during a jump.
+export(float) var fallSpeed = -0.4
 export(float, 0, 90) var maxSlopeAngle = 35 # Maximum angle in degrees the player can walk up.
 export(float, 0, 200) var push = 5 # Strength of force applied to props.
 export(float, 0, 25) var phaseSpeed = 1.5 # Move speed while phasing.
@@ -45,7 +45,16 @@ func move():
 func calculate_movement():
 	velocity.x = get_input().x * moveSpeed
 	velocity.z = get_input().z * moveSpeed
-	velocity.y = gravity() + jump()
+	
+	if(jump()):
+		return
+	
+	if(is_on_floor()):
+		velocity.y = 0
+		var gravityResistance = get_floor_normal()
+		velocity -= gravityResistance * 9.8
+	else:
+		gravity()
 
 # Returns player input as normalized Vector3.
 func get_input():
@@ -64,18 +73,17 @@ func get_input():
 
 # Returns a negative value to simulate "gravity".
 func gravity():
-	if(is_on_floor()):
-		return -9.8 # Needs to be around this number or is_on_floor goes false.
+	if(is_on_ceiling()):
+		velocity.y = -1
 	else:
-		return velocity.y + fallSpeed
+		velocity.y += fallSpeed
 
 # Returns a positive value to "jump".
 func jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		audioManager.new_3d_sound(jumpSound, global_transform.origin)
-		return jumpSpeed
-	else:
-		return 0
+		audioManager.new_3d_sound(jumpSound)
+		velocity.y = jumpSpeed
+		return true
 
 # Checks if player is falling, plays audio if player lands.
 func fall():

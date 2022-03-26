@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/scripts/PropHealth.gd" type="Script" id=4]
 [ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=6]
 
 [sub_resource type="CylinderMesh" id=1]
 top_radius = 0.05
@@ -12,7 +13,8 @@ bottom_radius = 0.05
 height = 0.6
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.576471, 0.576471, 0.576471, 1 )
+resource_local_to_scene = true
+albedo_color = Color( 0.576471, 0.576471, 0.576471, 0.607843 )
 
 [sub_resource type="CylinderMesh" id=3]
 top_radius = 0.05
@@ -23,7 +25,8 @@ height = 1.2
 size = Vector3( 0.65, 0.1, 0.65 )
 
 [sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.145098, 0.796078, 0.764706, 1 )
+resource_local_to_scene = true
+albedo_color = Color( 0.145098, 0.796078, 0.764706, 0.607843 )
 
 [sub_resource type="CubeMesh" id=6]
 size = Vector3( 0.65, 0.2, 0.1 )
@@ -46,15 +49,17 @@ extents = Vector3( 0.325, 0.1, 0.05 )
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 0.325, 0.05, 0.325 )
 
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.35, 0.7, 0.35 )
+
 [node name="PropChair" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
-collision_mask = 15
-mass = 20.0
+collision_mask = 12
+mass = 15.0
 can_sleep = false
-angular_damp = 4.0
 script = ExtResource( 1 )
 realName = "Chair"
-rotationSpeed = 50.0
+maxRotationSpeed = 75.0
 
 [node name="Pivot" type="Position3D" parent="."]
 
@@ -122,7 +127,7 @@ rewardAmount = 10
 script = ExtResource( 4 )
 
 [node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props"]]
-collision_layer = 4
+collision_layer = 64
 collision_mask = 0
 script = ExtResource( 5 )
 
@@ -149,8 +154,19 @@ shape = SubResource( 11 )
 [node name="CollisionShape8" type="CollisionShape" parent="HitBox"]
 shape = SubResource( 12 )
 
+[node name="OccupiedArea" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0776582, 0 )
+shape = SubResource( 17 )
+
 [connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
 [connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
 [connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
+[connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
+[connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]

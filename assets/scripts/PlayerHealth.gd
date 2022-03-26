@@ -20,6 +20,9 @@ func _ready():
 	health = maxHealth
 	updateUI()
 
+func _process(_delta):
+	updateUI()
+
 # Recevied from the hitbox that was hit. Removes health from the base class.
 func _on_hitbox_collision(damageReceived, attacker):
 	.damage(damageReceived)
@@ -40,7 +43,7 @@ func is_destroyed():
 			emit_signal("player_died", player) # Notifies PlayerManager that a player has died.
 	else:
 		updateUI()
-		emit_signal("play_3d_sound", hurtSound, global_transform.origin)
+		emit_signal("play_3d_sound", hurtSound)
 
 # Updates the UI to the new values.
 func updateUI():

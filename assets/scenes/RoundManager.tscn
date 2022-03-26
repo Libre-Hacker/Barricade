@@ -7,10 +7,15 @@
 
 [node name="RoundManager" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Round Times Array Legend
+0 & Even Indexes = Prepare Rounds
+Odd Indexes = Attack Rounds"
+}
 prepareMusic = ExtResource( 4 )
 roundStartMusic = ExtResource( 3 )
 roundEndMusic = ExtResource( 2 )
-roundTimes = [ 140.0, 150.0, 120.0, 180.0, 120.0, 210.0 ]
+roundTimes = [ 30.0, 90.0, 30.0, 90.0, 30.0, 90.0 ]
 
 [node name="RoundTimer" type="Timer" parent="."]
 one_shot = true

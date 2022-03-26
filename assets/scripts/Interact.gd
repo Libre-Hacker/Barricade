@@ -5,21 +5,29 @@ extends RayCast
 export (float, 0, 20, 0.1) var maxPropHoldDistance = 4.0 # Held prop further than this value will be dropped.
 
 var propInUse : Node # The prop currently held by the player.
+var mouseX
+var mouseY
 
 onready var player = find_parent("FPSPlayer")
 
 func _unhandled_input(event):
 	# Must use Input to check if rotating prop, because the event is researved for mouse motion.
 	if(event is InputEventMouseMotion and Input.is_action_pressed("rotate_prop") and is_holding_prop()):
-		rotate_prop(event.relative.x, event.relative.y)
+		mouseX = event.relative.x
+		mouseY = event.relative.y
 		get_tree().get_root().set_input_as_handled()
 		return
+	else:
+		mouseX = 0
+		mouseY = 0
 	if(event.is_action_pressed("interact")):
 		interact()
 		get_tree().get_root().set_input_as_handled()
 
 func _physics_process(_delta):
 	is_prop_in_range()
+	if(Input.is_action_pressed("rotate_prop") and is_holding_prop()):
+		rotate_prop(mouseX, mouseY)
 
 # Sets the class variables and calls the hit objects "interact" function.
 func interact():
@@ -38,8 +46,8 @@ func interact():
 		pickup_prop()
 
 # Gathers mouse input and sends it to the prop in use to be rotated.
-func rotate_prop(mouseX, mouseY):
-	var mouseMovement = Vector3(mouseX, 0, mouseY)
+func rotate_prop(x, y):
+	var mouseMovement = Vector3(x, y, 0) * 0.1
 	propInUse.mouse_rotate(mouseMovement)
 
 # Sets the targeted prop to follow the assigned point.

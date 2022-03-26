@@ -3,9 +3,9 @@ extends Node
 
 const uiMoney = preload("res://assets/resources/money.tres") # The UI variable.
 
-export (int, 0) var startingMoney = 1000 # Money player starts with.
+export (int) var startingMoney = 100 # Money player starts with.
 export (int) var maxMoney = 100000 # Maximum amount of money they player can have.
-var money = 0# Amount of money this player owns.
+var money = 0 # Amount of money this player owns.
 
 
 func _ready():

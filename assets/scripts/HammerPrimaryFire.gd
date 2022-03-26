@@ -37,8 +37,10 @@ func swing():
 		attack(hitObject)
 
 func repair(hitObject):
-	hitObject.heal(repairAmount, player)
-	emitImpactEffect()
+	var hitObjectHealthValues = hitObject.get_health()
+	if(hitObjectHealthValues[0] < hitObjectHealthValues[1]):
+		hitObject.heal(repairAmount, player)
+		emitImpactEffect()
 
 func attack(hitObject):
 	hitObject.damage(damage, player)

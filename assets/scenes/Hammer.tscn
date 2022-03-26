@@ -73,14 +73,14 @@ script = ExtResource( 6 )
 
 [node name="Repair" type="RayCast" parent="."]
 enabled = true
-cast_to = Vector3( 0, 0, 3 )
-collision_mask = 13
+cast_to = Vector3( 0, 0, 1.8 )
+collision_mask = 193
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource( 1 )
 repairRange = 3.0
 repairAmount = 20.0
-damage = 10.0
+damage = 25.0
 swingSound = ExtResource( 10 )
 hitSound = ExtResource( 9 )
 

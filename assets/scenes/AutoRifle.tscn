@@ -19,7 +19,7 @@ script = ExtResource( 8 )
 [node name="PrimaryFire" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 100 )
-collision_mask = 13
+collision_mask = 193
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource( 1 )

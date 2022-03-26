@@ -4,7 +4,7 @@ extends Node
 
 # A list of the number of zombies to spawn per round. Index 0 is ignored, on the first round we set the index to 1.
 export (Array, int) var maxZombiesPerRound = []
-export var respawnTime = 5 # The time it takes for a zombie to respawn.
+export (float) var respawnTime = 5 # The time it takes for a zombie to respawn.
 
 var maxZombieIndex = 0
 var enableSpawning = false

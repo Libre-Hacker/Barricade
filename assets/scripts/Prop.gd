@@ -5,7 +5,9 @@ extends RigidBody
 
 export (String) var realName = "Prop" # The name of the prop, for UI use.
 export (float, 1) var followSpeed : float = 7.5 # The speed the prop moves while held.
-export (float, 1) var rotationSpeed = 1.0 # The speed the prop can rotate.
+export (float) var rotationAcceleration = 2 # The speed the prop can rotate.
+export (float) var maxRotationSpeed = 30
+export (float) var rotationDamping = 10
 
 var nodeToFollow : Node # Node the prop follows while picked up.
 var isNailed : bool = false
@@ -14,6 +16,8 @@ signal damage_taken
 signal repair_received
 signal dropped
 
+onready var defaultAngularDamp = angular_damp
+
 func _physics_process(_delta):
 	followPoint()
 
@@ -21,19 +25,28 @@ func _physics_process(_delta):
 # Called from outside class.
 func pickup(assignedNode, player):
 	if(is_picked_up() == false):
+		for child in get_node("Pivot/Model").get_children():
+			child.get_surface_material(0).flags_transparent = true
 		set_collision_mask_bit(3, false) # Change collision mask so this won't collide while held.
 		nodeToFollow = assignedNode
-		add_collision_exception_with(player)
+		angular_damp = 10
+		for players in GameManager.get_node("PlayerManager").players:
+			add_collision_exception_with(players)
 	else:
 		print("Prop already in use.")
 
 # Resets class variables to defaults.
 # Called from outside class.
 func drop():
-	set_collision_mask_bit(3, true) # Change collision mask so this won't collide while held.
-	if(is_picked_up()):
-		remove_collision_exception_with(get_collision_exceptions()[0])
 	nodeToFollow = null
+	if(get_node("OccupiedArea").bodyCount.size() > 0):
+		yield(get_node("OccupiedArea"), "area_empty")
+	for exception in get_collision_exceptions():
+		remove_collision_exception_with(exception)
+	set_collision_mask_bit(3, true) # Change collision mask so this won't collide while held.
+	angular_damp = defaultAngularDamp
+	for child in get_node("Pivot/Model").get_children():
+		child.get_surface_material(0).flags_transparent = false
 
 # Moves this object to the nodeToFollow variable.
 func followPoint():
@@ -43,10 +56,22 @@ func followPoint():
 
 # Rotates this object relative to the nodeToFollow.
 func mouse_rotate(mouseMovement):
-	var x = -nodeToFollow.global_transform.basis.x * mouseMovement.z
-	var y = nodeToFollow.global_transform.basis.y * mouseMovement.x
-	var z = (x + y).normalized()
-	add_torque(z * (rotationSpeed * 10)) # "10" is the default multiplier.
+	var xRot = Vector3.ZERO
+	var yRot = Vector3.ZERO
+
+	if(abs(abs(mouseMovement.x) - abs(mouseMovement.y)) > 0.15):
+		if(abs(mouseMovement.x) > abs(mouseMovement.y)):
+			yRot = nodeToFollow.global_transform.basis.y * mouseMovement.x
+		else:
+			xRot = -nodeToFollow.global_transform.basis.x * mouseMovement.y
+	else:
+		yRot = nodeToFollow.global_transform.basis.y * mouseMovement.x
+		xRot = -nodeToFollow.global_transform.basis.x * mouseMovement.y
+
+	var rotDirection = (xRot + yRot) * rotationAcceleration
+	if(angular_velocity.length() < maxRotationSpeed):
+		angular_velocity += rotDirection
+
 
 # Changes the prop to a static body, drops the prop if it was carried.
 func nail():
