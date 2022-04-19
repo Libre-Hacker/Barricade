@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=2]
+[ext_resource path="res://assets/scripts/PropHealth.gd" type="Script" id=3]
+[ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=4]
+[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/meshes/props/StorageShelf_StorageShelf.mesh" type="ArrayMesh" id=7]
+
+[sub_resource type="BoxShape" id=1]
+margin = 2.0
+extents = Vector3( 0.252148, 0.05, 0.74981 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.02, 1, 0.02 )
+
+[sub_resource type="SpatialMaterial" id=5]
+resource_local_to_scene = true
+albedo_color = Color( 0.494118, 0.494118, 0.494118, 0.490196 )
+
+[sub_resource type="SpatialMaterial" id=6]
+resource_local_to_scene = true
+albedo_color = Color( 0, 0.231373, 1, 1 )
+
+[node name="PropStorageShelf" type="RigidBody" groups=["Destructibles", "Props"]]
+collision_layer = 4
+collision_mask = 13
+can_sleep = false
+script = ExtResource( 1 )
+realName = "Plank"
+followSpeed = 5.0
+rotationAcceleration = 1.0
+maxRotationSpeed = 6.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.996918, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape_2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000360906, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape_3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00518, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape_4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199734, -0.000758946, -0.700119 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape_5" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198719, -0.000758946, -0.700119 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape_6" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198719, -0.000758946, 0.697417 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape_7" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201452, -0.000758946, 0.697417 )
+shape = SubResource( 4 )
+
+[node name="Health" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 3 )
+health = 300.0
+maxHealth = 300.0
+
+[node name="Reward" parent="." instance=ExtResource( 6 )]
+payoutOnDeath = false
+rewardAmount = 10
+
+[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props"]]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HitBox"]
+shape = SubResource( 1 )
+
+[node name="OccupiedArea" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="OccupiedArea"]
+shape = SubResource( 1 )
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Model"]
+mesh = ExtResource( 7 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+
+[connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
+[connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
+[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
+[connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
+[connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]

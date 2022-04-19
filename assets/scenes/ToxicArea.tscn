@@ -4,15 +4,15 @@
 [ext_resource path="res://assets/scenes/ToxicAreaParticle.tscn" type="PackedScene" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 2, 2, 2 )
+extents = Vector3( 1, 1.1, 1 )
 
 [node name="ToxicArea" type="Spatial"]
 
 [node name="Area" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-gravity = 0.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 0
-collision_mask = 6
+collision_mask = 66
+gravity = 0.0
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
@@ -23,6 +23,6 @@ wait_time = 0.2
 autostart = true
 
 [node name="Particles" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.25, 0 )
 
 [connection signal="timeout" from="Area/CooldownTimer" to="Area" method="_on_CooldownTimer_timeout"]

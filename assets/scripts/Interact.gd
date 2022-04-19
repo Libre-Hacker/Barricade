@@ -42,7 +42,7 @@ func interact():
 		get_collider().buy_item(get_owner())
 		return
 
-	if(get_collider().is_in_group("Props")):
+	if(get_collider().is_in_group("Props") and get_collider().isNailed == false):
 		pickup_prop()
 
 # Gathers mouse input and sends it to the prop in use to be rotated.

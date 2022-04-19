@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/scripts/ShootRaycast.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/Pistol.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/sounds/reload2.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sounds/reload1.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/ammopickup1.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/ZapSplat/industrial_plastic_box_of_drywall_screws_movement_2.mp3" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -157,6 +158,37 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/1/type = "transform"
+tracks/1/path = NodePath("Pivot/Model")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray(  )
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot/Model:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.32725, -0.270287 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pivot/Model:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -20, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -345,6 +377,7 @@ albedo_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 
 [node name="Pistol" type="Spatial"]
 script = ExtResource( 2 )
+addAmmoSound = ExtResource( 9 )
 
 [node name="PrimaryFire" type="RayCast" parent="."]
 enabled = true
@@ -355,9 +388,15 @@ script = ExtResource( 1 )
 ammoCapacity = 12
 reserveAmmo = 60
 maxReserveAmmo = 120
-rateOfFire = 360.0
-damage = 10.0
+rateOfFire = 999.0
+damage = 20.0
 maxRange = 100.0
+recoilGain = 1.5
+maxHorizonalRecoil = 5.0
+minHorizonalRecoil = -5.0
+maxVerticalRecoil = 5.0
+minVerticalRecoil = -2.0
+recoilRecovery = 4.0
 fireSound = ExtResource( 4 )
 
 [node name="Cooldown" type="Timer" parent="PrimaryFire"]
@@ -412,6 +451,7 @@ __meta__ = {
 [node name="OmniLight" type="OmniLight" parent="Pivot/Model"]
 transform = Transform( 1, -1.86265e-08, 7.45058e-09, 7.45058e-09, 1, -2.98023e-08, -1.49012e-08, 5.96046e-08, 1, -5.96046e-08, 0, 0.0622389 )
 visible = false
+omni_range = 0.5
 
 [node name="AudioManager" parent="." instance=ExtResource( 5 )]
 

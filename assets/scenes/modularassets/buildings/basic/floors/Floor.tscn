@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/meshes/modularbasicroom/BasicRoom_Floor.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/materials/Planks.tres" type="Material" id=2]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2, 0.1, 2 )
+
+[node name="Floor" type="MeshInstance"]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "PROCESS
+1: Save as new scene
+2: Add the imported mesh
+3: Create trimesh static body
+4: Copy the collision shape to the Area node
+5: Rename the root node"
+}
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+shape = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="." groups=["tile"]]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+shape = SubResource( 2 )

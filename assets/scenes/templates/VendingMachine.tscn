@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sounds/ZapSplat/zapsplat_foley_cash_register_ka_ching_002_44083.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/scripts/VendingMachine.gd" type="Script" id=3]
+[ext_resource path="res://assets/scenes/AutoRifle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sounds/ZapSplat/zapsplat_multimedia_game_error_tone_007_24925.mp3" type="AudioStream" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 0.3, 0.1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.309804, 0.309804, 0.309804, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 2 )
+size = Vector3( 2, 0.6, 0.1 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.6, 0.2, 0.2 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.298039, 0.835294, 1, 1 )
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color( 0.298039, 0.835294, 1, 1 )
+emission_energy = 0.18
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CylinderMesh" id=6]
+material = SubResource( 5 )
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.55
+
+[node name="VendingMachine" type="StaticBody" groups=["Interactables"]]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource( 3 )
+price = 1000
+primaryAmmo = 60
+ammoPrice = 200
+weapon = ExtResource( 4 )
+purchaseSound = ExtResource( 2 )
+insufficientFundsSound = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Mesh" type="Spatial" parent="."]
+
+[node name="Base" type="MeshInstance" parent="Mesh"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Plate" type="MeshInstance" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.25, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="LightLeft" type="MeshInstance" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0, 0.05 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="LightRight" type="MeshInstance" parent="Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0, 0.05 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0, 0.1 )
+light_color = Color( 0.298039, 0.835294, 1, 1 )
+light_energy = 0.2
+light_specular = 0.0
+
+[node name="OmniLight_2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0, 0.1 )
+light_color = Color( 0.298039, 0.835294, 1, 1 )
+light_energy = 0.2
+
+[node name="MountPoint" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.1 )
+
+[node name="AudioManager" parent="." instance=ExtResource( 1 )]

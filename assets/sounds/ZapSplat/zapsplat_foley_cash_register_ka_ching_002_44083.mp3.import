@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_cash_register_ka_ching_002_44083.mp3-5a07f7b5deca75bf483b96204cc3608d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/ZapSplat/zapsplat_foley_cash_register_ka_ching_002_44083.mp3"
+dest_files=[ "res://.import/zapsplat_foley_cash_register_ka_ching_002_44083.mp3-5a07f7b5deca75bf483b96204cc3608d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

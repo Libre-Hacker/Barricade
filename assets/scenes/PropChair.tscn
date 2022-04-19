@@ -7,6 +7,27 @@
 [ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=5]
 [ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=6]
 
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 0.05, 0.3, 0.05 )
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 0.05, 0.3, 0.05 )
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 0.05, 0.6, 0.05 )
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.05, 0.6, 0.05 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.325, 0.1, 0.05 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.325, 0.05, 0.325 )
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.35, 0.7, 0.35 )
+
 [sub_resource type="CylinderMesh" id=1]
 top_radius = 0.05
 bottom_radius = 0.05
@@ -31,70 +52,14 @@ albedo_color = Color( 0.145098, 0.796078, 0.764706, 0.607843 )
 [sub_resource type="CubeMesh" id=6]
 size = Vector3( 0.65, 0.2, 0.1 )
 
-[sub_resource type="BoxShape" id=13]
-extents = Vector3( 0.05, 0.3, 0.05 )
-
-[sub_resource type="BoxShape" id=14]
-extents = Vector3( 0.05, 0.3, 0.05 )
-
-[sub_resource type="BoxShape" id=15]
-extents = Vector3( 0.05, 0.6, 0.05 )
-
-[sub_resource type="BoxShape" id=16]
-extents = Vector3( 0.05, 0.6, 0.05 )
-
-[sub_resource type="BoxShape" id=11]
-extents = Vector3( 0.325, 0.1, 0.05 )
-
-[sub_resource type="BoxShape" id=12]
-extents = Vector3( 0.325, 0.05, 0.325 )
-
-[sub_resource type="BoxShape" id=17]
-extents = Vector3( 0.35, 0.7, 0.35 )
-
 [node name="PropChair" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
-collision_mask = 12
+collision_mask = 13
 mass = 15.0
 can_sleep = false
 script = ExtResource( 1 )
 realName = "Chair"
 maxRotationSpeed = 75.0
-
-[node name="Pivot" type="Position3D" parent="."]
-
-[node name="Model" type="Spatial" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
-
-[node name="Leg03" type="MeshInstance" parent="Pivot/Model"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.3, 0.25 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-
-[node name="Leg04" type="MeshInstance" parent="Pivot/Model"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249954, 0.3, 0.25 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-
-[node name="BackRest01" type="MeshInstance" parent="Pivot/Model"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.6, -0.25 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 2 )
-
-[node name="BackRest01_2" type="MeshInstance" parent="Pivot/Model"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.6, -0.25 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 2 )
-
-[node name="Seat" type="MeshInstance" parent="Pivot/Model"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
-
-[node name="Back" type="MeshInstance" parent="Pivot/Model"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -0.25 )
-mesh = SubResource( 6 )
-material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.3, 0.25 )
@@ -162,6 +127,39 @@ script = ExtResource( 6 )
 [node name="CollisionShape" type="CollisionShape" parent="OccupiedArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0776582, 0 )
 shape = SubResource( 17 )
+
+[node name="Model" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
+
+[node name="Leg03" type="MeshInstance" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.3, 0.25 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Leg04" type="MeshInstance" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249954, 0.3, 0.25 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="BackRest01" type="MeshInstance" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.6, -0.25 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 2 )
+
+[node name="BackRest01_2" type="MeshInstance" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.6, -0.25 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 2 )
+
+[node name="Seat" type="MeshInstance" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="Back" type="MeshInstance" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -0.25 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 5 )
 
 [connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
 [connection signal="repair_received" from="." to="Health" method="_on_repair_received"]

@@ -15,11 +15,12 @@ func new_sound(stream = "", volumedb = 0.0, loop = false, bus = "Sound"):
 	add_child(newAudio)
 
 # Creates a new 3D sound, position must be set.
-func new_3d_sound(stream = "", position = Vector3.ZERO, volumedb = 0.0, loop = false, bus = "Sound"):
+func new_3d_sound(stream = "", position = Vector3.ZERO, volumedb = 0.0, unitSize = 1, loop = false, bus = "Sound"):
 	var newAudio = load("res://assets/scenes/AudioNode3D.tscn").instance()
 	newAudio.set_stream(stream)
 	newAudio.transform.origin = position
 	newAudio.unit_db = volumedb
+	newAudio.unit_size = unitSize
 	if(loop):
 		newAudio.loop = true
 	newAudio.bus = bus

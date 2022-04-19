@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/scenes/templates/VendingMachine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/scenes/Hammer.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CylinderMesh" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.768627, 0.576471, 0.117647, 1 )
+
+[sub_resource type="CylinderMesh" id=10]
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.458824, 0.458824, 0.458824, 1 )
+
+[sub_resource type="SphereMesh" id=12]
+
+[sub_resource type="CubeMesh" id=13]
+
+[sub_resource type="PrismMesh" id=7]
+left_to_right = 1.0
+
+[node name="VendingMachineHammer" type="Spatial"]
+
+[node name="VendingMachine" parent="." instance=ExtResource( 1 )]
+primaryAmmo = 2
+weapon = ExtResource( 2 )
+
+[node name="Model" type="Spatial" parent="VendingMachine"]
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.0788628, 0.0722003 )
+
+[node name="Shaft" type="MeshInstance" parent="VendingMachine/Model"]
+transform = Transform( 0.03, 0, 0, 0, 0.3, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="Head" type="MeshInstance" parent="VendingMachine/Model"]
+transform = Transform( 0.03, 0, 0, 0, -1.31134e-09, -0.03, 0, 0.03, -1.31134e-09, 0, 0.265, 0.161184 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="Head2" type="MeshInstance" parent="VendingMachine/Model"]
+transform = Transform( 0.03, 0, 0, 0, -1.31134e-09, -0.03, 0, 0.03, -1.31134e-09, 0, 0.265, 0.131648 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 11 )
+
+[node name="HeadBody" type="MeshInstance" parent="VendingMachine/Model"]
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.1, 0, 0.26521, 0.0101602 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 11 )
+
+[node name="LeftPuller" type="MeshInstance" parent="VendingMachine/Model"]
+transform = Transform( 5.73206e-17, -1.74846e-09, 0.01, -0.03, -1.74846e-09, -2.97785e-24, 1.31134e-09, -0.04, -4.37114e-10, 0.02, 0.265, -0.12978 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 11 )
+
+[node name="RightPuller" type="MeshInstance" parent="VendingMachine/Model"]
+transform = Transform( 5.73206e-17, -1.74846e-09, 0.01, -0.03, -1.74846e-09, -2.97785e-24, 1.31134e-09, -0.04, -4.37114e-10, -0.02, 0.265, -0.13 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 11 )

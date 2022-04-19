@@ -1,8 +1,8 @@
 extends Spatial
 # Responsible for calculating and updating the pathfinding.
 
-export var pathMargin = 1 # The distance margin to the next path point.
-export var targetMargin = 1 # The distance margin to the target.
+export (float) var pathMargin = 0.3 # The distance margin to the next path point.
+export (float) var targetMargin = 1 # The distance margin to the target.
 
 var pathPoints = [] # An array of points that lead to the target.
 var pathIndex = 0 # The current index of the path array.

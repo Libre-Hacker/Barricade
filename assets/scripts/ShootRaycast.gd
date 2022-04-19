@@ -7,7 +7,14 @@ export(int,1,1000) var maxReserveAmmo : int # Maximum ammo held in reserve.
 export(float,1,1024) var rateOfFire : float # The weapons cycle time, in rounds/minute.
 export(float,0.1,1000, 0.1) var damage : float # How much damage each bullet causes.
 export(float,1,1000, 0.1) var maxRange : float # Maximum range of the weapon.
+export(float) var recoilGain # Recoil is gained per shot.
+export(float) var maxHorizonalRecoil
+export(float) var minHorizonalRecoil
+export(float) var maxVerticalRecoil
+export(float) var minVerticalRecoil
+export(float) var recoilRecovery #Recoil recovery per second.
 export (Resource) var fireSound
+var recoilValue : float = 0
 var isReloading : bool = false
 
 signal play_animation(animationName)
@@ -25,20 +32,31 @@ const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
 
 
 func _ready():
+	connect("play_animation", find_parent("Camera").get_node("AnimationPlayer"), "_on_change_animation")
 	cooldownTimer.wait_time = 60 / rateOfFire # Convert rounds/minute into time per round.
 	cast_to = Vector3(0,0,maxRange)
 
+func _process(delta):
+	change_recoil(-recoilRecovery * delta)
 
 # Fire 1 bullet, handles all logic and effects.
 func primary_fire():
 	if(currentAmmo <= 0 or cooldownTimer.is_stopped() == false or isReloading):
 		return
 	currentAmmo -= 1
+
 	update_ui()
 	emit_signal("play_animation", "primary_fire")
+	emit_signal("play_animation", "recoil")
 	emit_signal("play_3d_sound", fireSound)
 	cooldownTimer.start() # Start CycleTimer so this can't shoot before it is done.
 
+	# Changes the ray direction based on the recoil value to a random direction within the recoil limits.
+	cast_to.y = clamp(rand_range(-recoilValue,recoilValue),minVerticalRecoil,maxVerticalRecoil)
+	cast_to.x = clamp(rand_range(-recoilValue,recoilValue),minHorizonalRecoil,maxHorizonalRecoil)
+	change_recoil(recoilGain)
+	force_raycast_update()
+	
 	if(is_colliding()):
 		emitImpactEffect()
 		damageObject()
@@ -49,9 +67,12 @@ func damageObject():
 	if(get_collider().is_in_group("Props") and get_collider().get_parent().isNailed):
 		return
 	if(get_collider().is_in_group("Destructibles")):
-		print("wtf")
 		get_collider().damage(damage, player)
 
+# Adds to the recoil value.
+func change_recoil(value : float):
+	recoilValue += value
+	recoilValue = clamp(recoilValue, 0, max(maxHorizonalRecoil,maxVerticalRecoil))
 
 # Emits a particle effect where the bullet impacted.
 func emitImpactEffect():

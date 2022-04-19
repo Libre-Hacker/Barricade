@@ -4,9 +4,9 @@ extends RigidBody
 # and forwards them to the health node.
 
 export (String) var realName = "Prop" # The name of the prop, for UI use.
-export (float, 1) var followSpeed : float = 7.5 # The speed the prop moves while held.
+export (float) var followSpeed : float = 7.5 # The speed the prop moves while held.
 export (float) var rotationAcceleration = 2 # The speed the prop can rotate.
-export (float) var maxRotationSpeed = 30
+export (float) var maxRotationSpeed = 10
 export (float) var rotationDamping = 10
 
 var nodeToFollow : Node # Node the prop follows while picked up.
@@ -25,7 +25,8 @@ func _physics_process(_delta):
 # Called from outside class.
 func pickup(assignedNode, player):
 	if(is_picked_up() == false):
-		for child in get_node("Pivot/Model").get_children():
+		gravity_scale = 0
+		for child in get_node("Model").get_children():
 			child.get_surface_material(0).flags_transparent = true
 		set_collision_mask_bit(3, false) # Change collision mask so this won't collide while held.
 		nodeToFollow = assignedNode
@@ -39,20 +40,22 @@ func pickup(assignedNode, player):
 # Called from outside class.
 func drop():
 	nodeToFollow = null
+	gravity_scale = 1
 	if(get_node("OccupiedArea").bodyCount.size() > 0):
 		yield(get_node("OccupiedArea"), "area_empty")
 	for exception in get_collision_exceptions():
 		remove_collision_exception_with(exception)
 	set_collision_mask_bit(3, true) # Change collision mask so this won't collide while held.
 	angular_damp = defaultAngularDamp
-	for child in get_node("Pivot/Model").get_children():
+	for child in get_node("Model").get_children():
 		child.get_surface_material(0).flags_transparent = false
 
 # Moves this object to the nodeToFollow variable.
 func followPoint():
 	if(is_picked_up()):
-		var moveDistance = (nodeToFollow.global_transform.origin - transform.origin)
-		linear_velocity = moveDistance * followSpeed # Use physics to detect collisions.
+
+		var moveDistance = (nodeToFollow.global_transform.origin - transform.origin) * followSpeed
+		linear_velocity = moveDistance # Use physics to detect collisions.
 
 # Rotates this object relative to the nodeToFollow.
 func mouse_rotate(mouseMovement):
@@ -79,14 +82,25 @@ func nail():
 		emit_signal("dropped") # Connected via script to Player's Interaction node.
 	else:
 		drop()
-	mode = 1
+
 	angular_velocity = Vector3.ZERO
 	linear_velocity = Vector3.ZERO
+	lock_all_axis(true)
 	isNailed = true
+
+
+func lock_all_axis(value : bool):
+	axis_lock_angular_x = value
+	axis_lock_angular_y = value
+	axis_lock_angular_z = value
+	axis_lock_linear_x = value
+	axis_lock_linear_y = value
+	axis_lock_linear_z = value
+
 
 # Returns the prop to a rigid body.
 func unnail():
-	mode = 0
+	lock_all_axis(false)
 	isNailed = false
 
 # Returns true if the object is nailed.

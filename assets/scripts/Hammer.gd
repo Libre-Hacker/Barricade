@@ -7,6 +7,7 @@ onready var repairNode = get_node("Repair")
 onready var nailNode = get_node("Nail")
 onready var animationPlayer = get_node("AnimationPlayer")
 onready var infoGatherNode = get_node("InfoGather")
+export (Resource) var addAmmoSound
 
 # Using process for all input, makes it easier to enable/disable on switching and since only one
 # weapon is active at a time this shouldn't have a big impact on performance.
@@ -50,3 +51,11 @@ func unequip():
 # Used by external sources to add ammo to this weapon.
 func add_ammo(primaryAmmo = 0, secondaryAmmo = 0):
 	nailNode.add_ammo(primaryAmmo)
+	get_node("AudioManager").new_3d_sound(addAmmoSound)
+
+
+func has_max_ammo():
+	if(nailNode.ammo >= nailNode.maxAmmo):
+		return true
+	else:
+		return false

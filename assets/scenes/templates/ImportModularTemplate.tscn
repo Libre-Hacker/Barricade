@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="RENAMEME" type="MeshInstance"]
+__meta__ = {
+"_editor_description_": "PROCESS
+1: Save as new scene
+2: Add the imported mesh
+3: Create trimesh static body
+4: Copy the collision shape to the Area node
+5: Rename the root node"
+}
+
+[node name="Area" type="Area" parent="."]

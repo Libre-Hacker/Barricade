@@ -2,6 +2,7 @@ extends Spatial
 
 onready var primaryFireNode = get_node("PrimaryFire")
 onready var animationPlayer = get_node("AnimationPlayer")
+export (Resource) var addAmmoSound
 
 func _process(delta):
 	if(GameManager.isPaused):
@@ -34,3 +35,11 @@ func unequip():
 # Used by external sources to add ammo to this weapon.
 func add_ammo(primaryAmmo = 0, secondaryAmmo = 0):
 	primaryFireNode.add_ammo(primaryAmmo)
+	get_node("AudioManager").new_3d_sound(addAmmoSound)
+
+
+func has_max_ammo():
+	if(primaryFireNode.reserveAmmo >= primaryFireNode.maxReserveAmmo):
+		return true
+	else:
+		return false

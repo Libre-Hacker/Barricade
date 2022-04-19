@@ -12,11 +12,12 @@ curve = SubResource( 1 )
 
 [sub_resource type="ParticlesMaterial" id=3]
 direction = Vector3( 0, 0, 0 )
-gravity = Vector3( 0, 5, 0 )
+gravity = Vector3( 0, 0, 0 )
 angular_velocity = 100.0
 angular_velocity_random = 1.0
 angle = 360.0
 angle_random = 1.0
+scale = 0.75
 scale_curve = SubResource( 2 )
 
 [sub_resource type="SpatialMaterial" id=4]
@@ -36,6 +37,7 @@ size = Vector2( 3, 3 )
 [node name="Particles" type="Particles"]
 amount = 10
 speed_scale = 0.4
+visibility_aabb = AABB( -3, -3, -3, 6, 6, 6 )
 draw_order = 1
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 5 )

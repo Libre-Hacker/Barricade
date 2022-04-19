@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/industrial_plastic_box_of_drywall_screws_movement_2.mp3-13bda315ed74d3c4d6e1c1ec3512a7e6.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/ZapSplat/industrial_plastic_box_of_drywall_screws_movement_2.mp3"
+dest_files=[ "res://.import/industrial_plastic_box_of_drywall_screws_movement_2.mp3-13bda315ed74d3c4d6e1c1ec3512a7e6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

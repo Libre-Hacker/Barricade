@@ -11,6 +11,8 @@ func _ready():
 
 # Plays the signaled animation
 func _on_change_animation(animationName):
+	if(current_animation == animationName):
+		stop(true)
 	play(animationName)
 
 # Plays the default animation if set.

@@ -15,7 +15,7 @@ Odd Indexes = Attack Rounds"
 prepareMusic = ExtResource( 4 )
 roundStartMusic = ExtResource( 3 )
 roundEndMusic = ExtResource( 2 )
-roundTimes = [ 30.0, 90.0, 30.0, 90.0, 30.0, 90.0 ]
+roundTimes = [ 300.0, 90.0, 30.0, 90.0, 30.0, 90.0 ]
 
 [node name="RoundTimer" type="Timer" parent="."]
 one_shot = true
