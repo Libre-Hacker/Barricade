@@ -66,5 +66,6 @@ func _on_PrimaryAttack_targets_available():
 	_on_change_state(2)
 
 func _on_PrimaryAttack_targets_unavailable():
+
 	if(GameManager.playerManager.players.size() != 0):
 		_on_change_state(1)

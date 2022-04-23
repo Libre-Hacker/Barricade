@@ -7,3 +7,4 @@ script = ExtResource( 1 )
 videoSettings = [ [ "fullscreen", "borderless", "resolution", "vsync" ], [ true, false, Vector2( 1920, 1080 ), false ] ]
 audioSettings = [ [ "Master", "Music", "Sound" ], [ 0.5, 0.01, 1.0 ] ]
 keyBinds = [ [ "move_forward", "move_backward", "move_left", "move_right", "jump", "phase", "interact", "reload", "rotate_prop", "primary_fire", "alt_fire", "next_weapon", "previous_weapon" ], [ 87, 83, 65, 68, 32, 90, 69, 82, 16777240, 1, 2, 4, 5 ] ]
+miscSettings = [ [ "tutorials" ], [ true ] ]

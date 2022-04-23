@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=2]
@@ -8,8 +8,10 @@
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/meshes/props/Plank.obj" type="ArrayMesh" id=7]
 
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.15, 0.05, 1.25 )
+
 [sub_resource type="BoxShape" id=1]
-margin = 2.0
 extents = Vector3( 0.15, 0.05, 1.25 )
 
 [sub_resource type="SpatialMaterial" id=2]
@@ -19,7 +21,8 @@ albedo_color = Color( 0.313726, 0.180392, 0, 0.490196 )
 [node name="PropPlank" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
 collision_mask = 13
-can_sleep = false
+continuous_cd = true
+angular_damp = 1.0
 script = ExtResource( 1 )
 realName = "Plank"
 followSpeed = 5.0
@@ -27,7 +30,7 @@ rotationAcceleration = 1.0
 maxRotationSpeed = 6.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
 script = ExtResource( 3 )

@@ -22,7 +22,6 @@ func spawn_players():
 			# If no spawner is found, wait until one becomes available.
 			# This saves countless computing time.
 			yield(playerSpawners, "spawner_available")
-		print("spawning player")
 		var newPlayer = load("res://assets/scenes/FPSPlayer.tscn").instance()
 		newPlayer.transform.origin = spawnPoint.transform.origin
 		add_child(newPlayer)

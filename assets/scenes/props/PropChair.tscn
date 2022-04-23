@@ -1,0 +1,168 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scripts/PropHealth.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=6]
+[ext_resource path="res://assets/meshes/props/Chair_Chair.mesh" type="ArrayMesh" id=7]
+
+[sub_resource type="BoxShape" id=13]
+extents = Vector3( 0.05, 0.331715, 0.05 )
+
+[sub_resource type="BoxShape" id=18]
+extents = Vector3( 0.05, 0.347138, 0.05 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.306157, 0.106878, 0.0296377 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.325, 0.0357174, 0.323609 )
+
+[sub_resource type="SpatialMaterial" id=19]
+resource_local_to_scene = true
+albedo_color = Color( 0.282353, 0.168627, 0.137255, 0.490196 )
+
+[sub_resource type="SpatialMaterial" id=20]
+resource_local_to_scene = true
+albedo_color = Color( 0.984314, 0.396078, 0.196078, 0.490196 )
+
+[node name="PropChair" type="RigidBody" groups=["Destructibles", "Props"]]
+collision_layer = 4
+collision_mask = 13
+continuous_cd = true
+script = ExtResource( 1 )
+realName = "Chair"
+maxRotationSpeed = 75.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27, -0.378, 0.36 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.270349, -0.378, -0.185667 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_5" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, -0.270349, 0.3486, -0.218379 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape_6" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0.27, 0.349, -0.218 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape_4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27, -0.378, -0.186 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27, -0.378, 0.36 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 0.562066, -0.241828 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0105169, 0.088102 )
+shape = SubResource( 12 )
+
+[node name="Reward" parent="." instance=ExtResource( 2 )]
+payoutOnDeath = false
+rewardAmount = 10
+
+[node name="Health" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props"]]
+visible = false
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27, -0.378, 0.36 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_2" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.270349, -0.378, -0.185667 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_5" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, -0.270349, 0.3486, -0.218379 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape_6" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0.27, 0.349, -0.218 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape_4" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27, -0.378, -0.186 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_3" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27, -0.378, 0.36 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 0.562066, -0.241828 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0105169, 0.088102 )
+shape = SubResource( 12 )
+
+[node name="OccupiedArea" type="Area" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 10
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27, -0.378, 0.36 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_2" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.270349, -0.378, -0.185667 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_5" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, -0.270349, 0.3486, -0.218379 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape_6" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0.27, 0.349, -0.218 )
+shape = SubResource( 18 )
+
+[node name="CollisionShape_4" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27, -0.378, -0.186 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape_3" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27, -0.378, 0.36 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, 0, 0.562066, -0.241828 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0105169, 0.088102 )
+shape = SubResource( 12 )
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Model"]
+transform = Transform( -1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0 )
+mesh = ExtResource( 7 )
+material/0 = SubResource( 19 )
+material/1 = SubResource( 20 )
+
+[connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
+[connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
+[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
+[connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
+[connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]

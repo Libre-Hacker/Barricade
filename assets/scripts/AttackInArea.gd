@@ -33,8 +33,9 @@ func find_target():
 	for object in areaCount:
 		if(lineOfSight.has_line_of_sight(object)):
 			target = object
-		else:
-			emit_signal("targets_unavailable")
+			return
+	if(target == null):
+		emit_signal("targets_unavailable")
 
 # Starts the cooldown timer and singals for animation player to play attack
 func attempt_attack():

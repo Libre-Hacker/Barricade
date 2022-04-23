@@ -8,7 +8,11 @@ var propInUse : Node # The prop currently held by the player.
 var mouseX
 var mouseY
 
+signal prop_picked_up
+signal prop_interacted_with
+
 onready var player = find_parent("FPSPlayer")
+
 
 func _unhandled_input(event):
 	# Must use Input to check if rotating prop, because the event is researved for mouse motion.
@@ -57,6 +61,8 @@ func pickup_prop():
 	propInUse.connect("tree_exiting", self, "drop_prop")
 	propInUse.pickup(get_node("HoldPoint"), player)
 	enabled = false
+	emit_signal("prop_interacted_with")
+	emit_signal("prop_picked_up", 0)
 
 # Tells the held prop to stop following the assigned point.
 func drop_prop():
@@ -65,6 +71,7 @@ func drop_prop():
 	propInUse.disconnect("tree_exiting", self, "drop_prop")
 	propInUse = null
 	enabled = true
+	emit_signal("prop_interacted_with")
 
 # Checks if the propInUse variable is null.
 func is_holding_prop():

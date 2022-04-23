@@ -5,6 +5,7 @@ extends Node
 # A list of the number of zombies to spawn per round. Index 0 is ignored, on the first round we set the index to 1.
 export (Array, int) var maxZombiesPerRound = []
 export (float) var respawnTime = 5 # The time it takes for a zombie to respawn.
+export (Array, Resource) var zombies
 
 var maxZombieIndex = 0
 var enableSpawning = false
@@ -28,7 +29,7 @@ func spawn_zombie():
 			# This saves countless computing time.
 			yield(spawners, "spawner_available")
 			return
-		var newZombie = basicZombie.instance()
+		var newZombie = zombies[round(rand_range(0, zombies.size()-1))].instance()
 		newZombie.transform.origin = spawnPoint.transform.origin
 		add_child(newZombie)
 		newZombie.get_node("Health").connect("destroyed", self, "_on_zombie_destroyed")

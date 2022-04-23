@@ -215,11 +215,10 @@ name_num_separator=2
 
 [physics]
 
-common/physics_fps=180
+common/physics_jitter_fix=0.0
 3d/physics_engine="GodotPhysics"
 3d/active_soft_world=false
-3d/default_linear_damp=0.0
-3d/default_angular_damp=0.0
+3d/godot_physics/use_bvh=false
 
 [rendering]
 

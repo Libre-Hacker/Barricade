@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/MALERMEI.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/Pixeled.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/scripts/OptionsMenu.gd" type="Script" id=3]
 [ext_resource path="res://assets/scripts/ResolutionSettingDropdown.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/MiscSettingCheckBox.gd" type="Script" id=5]
 [ext_resource path="res://assets/scripts/OptionSettingCheckBox.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/VolumeSettingSlider.gd" type="Script" id=7]
 [ext_resource path="res://assets/scripts/KeyBindSettingButton.gd" type="Script" id=8]
@@ -249,8 +250,9 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="TabContainer/Input/ScrollContainer"]
+margin_top = -100.0
 margin_right = 391.0
-margin_bottom = 500.0
+margin_bottom = 400.0
 rect_min_size = Vector2( 0, 500 )
 size_flags_horizontal = 3
 
@@ -572,6 +574,39 @@ text = "SCROLL DOWN"
 script = ExtResource( 8 )
 assignedAction = 12
 
+[node name="Misc" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Misc"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Misc/VBoxContainer"]
+margin_right = 129.0
+margin_bottom = 24.0
+
+[node name="Tutorials" type="Label" parent="TabContainer/Misc/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 101.0
+margin_bottom = 19.0
+text = "Enable Tutorials"
+
+[node name="TutorialsCheckBox" type="CheckBox" parent="TabContainer/Misc/VBoxContainer/HBoxContainer" groups=["setting_control"]]
+margin_left = 105.0
+margin_right = 129.0
+margin_bottom = 24.0
+pressed = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.397
 anchor_top = 0.478
@@ -611,6 +646,7 @@ margin_left = 788.5
 margin_top = 505.0
 margin_right = -788.5
 margin_bottom = -505.0
+rect_min_size = Vector2( 160, 56 )
 window_title = "ARE YOU SURE?"
 dialog_text = "Clicking OK will reset you settings to their defaults."
 __meta__ = {
@@ -637,6 +673,7 @@ __meta__ = {
 [connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/SecondaryFire/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/SecondaryFire/KeyButton" method="_on_KeyButton_button_up"]
 [connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/NextWeapon/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/NextWeapon/KeyButton" method="_on_KeyButton_button_up"]
 [connection signal="button_up" from="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PreviousWeapon/KeyButton" to="TabContainer/Input/ScrollContainer/Panel/VBoxContainer/PreviousWeapon/KeyButton" method="_on_KeyButton_button_up"]
+[connection signal="pressed" from="TabContainer/Misc/VBoxContainer/HBoxContainer/TutorialsCheckBox" to="TabContainer/Misc/VBoxContainer/HBoxContainer/TutorialsCheckBox" method="_on_pressed"]
 [connection signal="button_up" from="HBoxContainer/ResetToDefault" to="." method="_on_ResetToDefault_button_up"]
 [connection signal="button_up" from="HBoxContainer/Back" to="." method="_on_Back_button_up"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

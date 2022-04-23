@@ -123,5 +123,5 @@ func push_rigid_bodies():
 		return
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
-		if(collision.collider.is_in_group("Props") and collision.get_collider().mode != 1):
+		if(collision.collider.is_in_group("Props") and collision.get_collider().isNailed == false):
 			collision.collider.apply_central_impulse(-collision.normal * push)

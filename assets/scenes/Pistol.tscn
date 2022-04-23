@@ -389,7 +389,7 @@ ammoCapacity = 12
 reserveAmmo = 60
 maxReserveAmmo = 120
 rateOfFire = 999.0
-damage = 20.0
+damage = 10.0
 maxRange = 100.0
 recoilGain = 1.5
 maxHorizonalRecoil = 5.0
@@ -414,7 +414,10 @@ anims/unequip = SubResource( 5 )
 script = ExtResource( 3 )
 
 [node name="Pivot" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.455, -0.466, 1.714 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.682, -0.566, 1.901 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Model" type="Spatial" parent="Pivot"]
 __meta__ = {

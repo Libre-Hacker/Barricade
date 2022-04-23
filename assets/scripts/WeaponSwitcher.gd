@@ -35,9 +35,7 @@ func increment_weapon_index(increment : int):
 
 # Sets the current weapon index.
 func set_current_weapon_index(value : int):
-	if(enabled != true):
-		return
-	if(switchInProgress == true):
+	if(enabled != true or switchInProgress == true or currentWeaponIndex == value):
 		return
 	clamp(value, 0, get_child_count() - 1)
 	currentWeaponIndex = value

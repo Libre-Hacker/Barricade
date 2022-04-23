@@ -1,0 +1,423 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://assets/scripts/Navigator.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=2]
+[ext_resource path="res://assets/scripts/IdleAudio.gd" type="Script" id=3]
+[ext_resource path="res://assets/scripts/ZombieHealth.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/LineOfSight.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/ZombieMover.gd" type="Script" id=6]
+[ext_resource path="res://assets/scripts/ZombieAIController.gd" type="Script" id=7]
+[ext_resource path="res://assets/sounds/zo_idle4.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/zo_pain2.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/zo_idle1.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/claw_miss2.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/zo_idle2.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/zo_idle3.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sounds/claw_strike2.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sounds/zo_attack1.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/sounds/zo_pain1.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=20]
+[ext_resource path="res://assets/scripts/AttackInArea.gd" type="Script" id=21]
+
+[sub_resource type="SphereShape" id=18]
+radius = 0.4
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 0.5, 0.4, 0.202682 )
+
+[sub_resource type="SphereMesh" id=5]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.419608, 0.509804, 0.156863, 1 )
+
+[sub_resource type="SphereShape" id=7]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id=15]
+radius = 0.2
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.584314, 0.584314, 0.584314, 1 )
+
+[sub_resource type="CapsuleShape" id=16]
+radius = 0.2
+
+[sub_resource type="CubeMesh" id=11]
+size = Vector3( 0.2, 0.2, 1 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.1, 0.1, 0.5 )
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshAndHitbox/PivotArmRight:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshAndHitbox/PivotArmLeft:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 1.5
+tracks/0/type = "transform"
+tracks/0/path = NodePath("MeshAndHitbox/PivotArmLeft")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("MeshAndHitbox/PivotArmRight")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray(  )
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshAndHitbox/PivotArmRight:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 15, -15, 0 ), Vector3( -90, -15, 0 ), Vector3( -90, -15, 0 ), Vector3( 30, -15, 0 ), Vector3( 15, -15, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("PrimaryAttack")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "damage_target"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.1
+tracks/0/type = "transform"
+tracks/0/path = NodePath("MeshAndHitbox/PivotArmLeft")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "transform"
+tracks/1/path = NodePath("MeshAndHitbox/PivotArmRight")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = PoolRealArray(  )
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshAndHitbox/PivotArmLeft:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 15, 15, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeshAndHitbox/PivotArmRight:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 15, -15, 0 ) ]
+}
+
+[node name="ZombieCrawler" type="KinematicBody"]
+collision_layer = 8
+input_ray_pickable = false
+script = ExtResource( 6 )
+pushForce = 4.0
+moveSpeed = 2.0
+
+[node name="ColliderMain" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.189677 )
+shape = SubResource( 18 )
+
+[node name="AIController" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="ObstructedTimer" type="Timer" parent="AIController"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Navigator" type="Spatial" parent="."]
+script = ExtResource( 1 )
+
+[node name="NavigationTimer" type="Timer" parent="Navigator"]
+wait_time = 0.5
+autostart = true
+
+[node name="Health" parent="." instance=ExtResource( 19 )]
+script = ExtResource( 4 )
+health = 60.0
+maxHealth = 60.0
+hurtSounds = [ ExtResource( 16 ), ExtResource( 9 ) ]
+
+[node name="Reward" parent="." instance=ExtResource( 18 )]
+
+[node name="PrimaryAttack" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.228568 )
+collision_layer = 0
+collision_mask = 66
+script = ExtResource( 21 )
+attackDamage = 8.0
+missSound = ExtResource( 11 )
+hitSound = ExtResource( 14 )
+attackSound = ExtResource( 15 )
+
+[node name="AttackArea" type="CollisionShape" parent="PrimaryAttack"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.765154 )
+shape = SubResource( 14 )
+
+[node name="AttackCDTimer" type="Timer" parent="PrimaryAttack"]
+one_shot = true
+
+[node name="LineOfSight" type="Spatial" parent="PrimaryAttack"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.85 )
+script = ExtResource( 5 )
+
+[node name="RayCast" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_10" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 0.996195, 9.31323e-10, -0.0871557, -0.00759612, 0.996195, -0.0868241, 0.0868241, 0.0871557, 0.992404, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_11" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 0.996137, 0.0151344, 0.0864975, -0.00759612, 0.996195, -0.0868241, -0.0874824, 0.0858316, 0.992462, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_12" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 0.996137, 0.0151344, 0.0864975, -0.0226719, 0.995965, 0.0868341, -0.0848343, -0.0884597, 0.992461, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_13" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 0.995735, 0.0302654, -0.0871556, -0.0226719, 0.995965, 0.0868341, 0.0894319, -0.0844878, 0.992403, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_6" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_7" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_8" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_9" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_2" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_3" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_4" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, 0.996195, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast_5" type="RayCast" parent="PrimaryAttack/LineOfSight"]
+transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0, 0 )
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 67
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="MeshAndHitbox" type="Position3D" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.228568 )
+
+[node name="Head" type="MeshInstance" parent="MeshAndHitbox"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.25032e-08, 0.523474, 0.486179 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="HitBoxHead" type="Area" parent="MeshAndHitbox/Head" groups=["Destructibles"]]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
+collision_layer = 128
+collision_mask = 0
+gravity_vec = Vector3( 0, 0, 0 )
+script = ExtResource( 2 )
+multiplier = 1.5
+
+[node name="ColliderHead" type="CollisionShape" parent="MeshAndHitbox/Head/HitBoxHead"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="Body" type="MeshInstance" parent="MeshAndHitbox"]
+transform = Transform( 1, 1.40435e-08, 1.13535e-09, -1.40435e-08, 0.987013, 0.160639, 1.13535e-09, -0.160639, 0.987013, 1.78562e-08, 0.285405, -0.204251 )
+mesh = SubResource( 15 )
+material/0 = SubResource( 9 )
+
+[node name="HitBoxBody" type="Area" parent="MeshAndHitbox/Body" groups=["Destructibles"]]
+transform = Transform( -1, 2.5411e-21, 8.74228e-08, -8.74228e-08, -4.37114e-08, -1, 3.82137e-15, -1, 4.37114e-08, 0, 0, 0 )
+collision_layer = 128
+collision_mask = 0
+gravity_vec = Vector3( 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="ColliderBody" type="CollisionShape" parent="MeshAndHitbox/Body/HitBoxBody"]
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0 )
+shape = SubResource( 16 )
+
+[node name="PivotArmLeft" type="Position3D" parent="MeshAndHitbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.3, 0.4 )
+
+[node name="ArmLeft" type="MeshInstance" parent="MeshAndHitbox/PivotArmLeft"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -7.45058e-08, 0, 0.25 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 6 )
+
+[node name="HitBoxArmLeft" type="Area" parent="MeshAndHitbox/PivotArmLeft" groups=["Destructibles"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -1.19209e-07 )
+collision_layer = 128
+collision_mask = 0
+gravity_vec = Vector3( 0, 0, 0 )
+script = ExtResource( 2 )
+multiplier = 0.8
+
+[node name="ColliderArmLeft" type="CollisionShape" parent="MeshAndHitbox/PivotArmLeft/HitBoxArmLeft"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0.5, 0.25 )
+shape = SubResource( 12 )
+
+[node name="PivotArmRight" type="Position3D" parent="MeshAndHitbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.3, 0.4 )
+
+[node name="ArmRight" type="MeshInstance" parent="MeshAndHitbox/PivotArmRight"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0.25 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 6 )
+
+[node name="HitBoxArmRight" type="Area" parent="MeshAndHitbox/PivotArmRight" groups=["Destructibles"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 4.37114e-08 )
+collision_layer = 128
+collision_mask = 0
+gravity_vec = Vector3( 0, 0, 0 )
+script = ExtResource( 2 )
+multiplier = 0.8
+
+[node name="ColliderArmRight" type="CollisionShape" parent="MeshAndHitbox/PivotArmRight/HitBoxArmRight"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.5, 0.5, 0.25 )
+shape = SubResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 17 )
+anims/attack = SubResource( 2 )
+anims/idle = SubResource( 3 )
+script = ExtResource( 20 )
+returnToDefaultAnimation = true
+defaultAnimation = "idle"
+
+[node name="IdleAudio" type="Node" parent="."]
+script = ExtResource( 3 )
+idleSounds = [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 8 ) ]
+
+[node name="Timer" type="Timer" parent="IdleAudio"]
+autostart = true
+
+[node name="AudioManager" parent="." instance=ExtResource( 17 )]
+
+[connection signal="obstructed" from="." to="AIController" method="_on_KinematicBody_obstructed"]
+[connection signal="attack" from="AIController" to="PrimaryAttack" method="attack_behaviour"]
+[connection signal="seek" from="AIController" to="." method="seek_behaviour"]
+[connection signal="timeout" from="AIController/ObstructedTimer" to="AIController" method="_on_ObstructedTimer_timeout"]
+[connection signal="timeout" from="Navigator/NavigationTimer" to="Navigator" method="_on_NavigationTimer_timeout"]
+[connection signal="destroyed" from="Health" to="Reward" method="distribute_reward"]
+[connection signal="health_changed" from="Health" to="Reward" method="add_contribution"]
+[connection signal="area_entered" from="PrimaryAttack" to="PrimaryAttack" method="_on_area_entered"]
+[connection signal="area_exited" from="PrimaryAttack" to="PrimaryAttack" method="_on_area_exited"]
+[connection signal="play_3dsound" from="PrimaryAttack" to="AudioManager" method="new_3d_sound"]
+[connection signal="play_animation" from="PrimaryAttack" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="targets_available" from="PrimaryAttack" to="AIController" method="_on_PrimaryAttack_targets_available"]
+[connection signal="targets_unavailable" from="PrimaryAttack" to="AIController" method="_on_PrimaryAttack_targets_unavailable"]
+[connection signal="hitbox_collision" from="MeshAndHitbox/Head/HitBoxHead" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_collision" from="MeshAndHitbox/Body/HitBoxBody" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_collision" from="MeshAndHitbox/PivotArmLeft/HitBoxArmLeft" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_collision" from="MeshAndHitbox/PivotArmRight/HitBoxArmRight" to="Health" method="_on_hitbox_collision"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
+[connection signal="play_3dsound" from="IdleAudio" to="AudioManager" method="new_3d_sound"]
+[connection signal="timeout" from="IdleAudio/Timer" to="IdleAudio" method="_on_Timer_timeout"]

@@ -26,8 +26,8 @@ func _physics_process(_delta):
 func pickup(assignedNode, player):
 	if(is_picked_up() == false):
 		gravity_scale = 0
-		for child in get_node("Model").get_children():
-			child.get_surface_material(0).flags_transparent = true
+		for materials in get_node("Model/MeshInstance").get_surface_material_count():
+			get_node("Model/MeshInstance").get_surface_material(materials).flags_transparent = true
 		set_collision_mask_bit(3, false) # Change collision mask so this won't collide while held.
 		nodeToFollow = assignedNode
 		angular_damp = 10
@@ -47,8 +47,8 @@ func drop():
 		remove_collision_exception_with(exception)
 	set_collision_mask_bit(3, true) # Change collision mask so this won't collide while held.
 	angular_damp = defaultAngularDamp
-	for child in get_node("Model").get_children():
-		child.get_surface_material(0).flags_transparent = false
+	for materials in get_node("Model/MeshInstance").get_surface_material_count():
+		get_node("Model/MeshInstance").get_surface_material(materials).flags_transparent = false
 
 # Moves this object to the nodeToFollow variable.
 func followPoint():
@@ -102,6 +102,7 @@ func lock_all_axis(value : bool):
 func unnail():
 	lock_all_axis(false)
 	isNailed = false
+	sleeping = false
 
 # Returns true if the object is nailed.
 func is_repairable():

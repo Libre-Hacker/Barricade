@@ -25,7 +25,6 @@ func _on_spawner_closed(spawner):
 
 # Returns a random spawn from the list of available spawners.
 func get_random_spawner():
-	print("Finding Spawner")
 	if(openSpawners.empty()):
 		return null
 	randomize()

@@ -1,0 +1,283 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/textures/icons/KeyAlt.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/icons/MouseMove.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/icons/KeyE.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Pixeled.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/textures/icons/RightClick.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/icons/LeftClick.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/icons/KeyR.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/icons/WASDKey.png" type="Texture" id=8]
+[ext_resource path="res://assets/scripts/TutorialUI.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+extra_spacing_top = -12
+extra_spacing_bottom = -5
+font_data = ExtResource( 4 )
+
+[node name="TutorialUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -389.0
+margin_top = -206.0
+margin_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Movement" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 389.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Movement"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Movement"]
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 122.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "MOVE"
+
+[node name="Interact" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 52.0
+margin_right = 389.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Interact"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Interact"]
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 376.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "PICKUP / DROP / INTERACT"
+
+[node name="RotateProps" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 104.0
+margin_right = 389.0
+margin_bottom = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/RotateProps"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_2" type="Label" parent="VBoxContainer/RotateProps"]
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 65.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect_2" type="TextureRect" parent="VBoxContainer/RotateProps"]
+margin_left = 69.0
+margin_right = 117.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/RotateProps"]
+margin_left = 121.0
+margin_top = 9.0
+margin_right = 293.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "ROTATE PROP"
+
+[node name="Nail" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 104.0
+margin_right = 389.0
+margin_bottom = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Nail"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Nail"]
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 176.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "NAIL PROP"
+
+[node name="Repair" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 208.0
+margin_right = 389.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Repair"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Repair"]
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 265.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "ATTACK / REPAIR"
+
+[node name="Shoot" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 208.0
+margin_right = 389.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Shoot"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Shoot"]
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 135.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "SHOOT"
+
+[node name="Reload" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 260.0
+margin_right = 389.0
+margin_bottom = 308.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Reload"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Reload"]
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 148.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "RELOAD"
+
+[node name="RemoveNail" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 104.0
+margin_right = 389.0
+margin_bottom = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/RemoveNail"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_vertical = 0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/RemoveNail"]
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 214.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "REMOVE NAIL"

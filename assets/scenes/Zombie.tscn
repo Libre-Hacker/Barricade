@@ -23,10 +23,10 @@
 [ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=21]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.2
+radius = 0.3
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.5, 1.05, 0.5 )
+extents = Vector3( 0.253013, 1.05, 0.248612 )
 
 [sub_resource type="SphereMesh" id=5]
 radius = 0.3
@@ -153,7 +153,6 @@ tracks/3/keys = {
 
 [node name="Zombie" type="KinematicBody"]
 collision_layer = 8
-collision_mask = 9
 input_ray_pickable = false
 script = ExtResource( 1 )
 pushForce = 4.0
@@ -173,7 +172,7 @@ one_shot = true
 script = ExtResource( 7 )
 
 [node name="NavigationTimer" type="Timer" parent="Navigator"]
-wait_time = 0.2
+wait_time = 0.5
 autostart = true
 
 [node name="Health" parent="." instance=ExtResource( 9 )]
@@ -191,7 +190,7 @@ hitSound = ExtResource( 19 )
 attackSound = ExtResource( 17 )
 
 [node name="AttackArea" type="CollisionShape" parent="PrimaryAttack"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.481981 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.244002 )
 shape = SubResource( 4 )
 
 [node name="AttackCDTimer" type="Timer" parent="PrimaryAttack"]

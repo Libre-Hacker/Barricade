@@ -17,7 +17,6 @@ func _ready():
 
 func _on_window_resize():
 	get_parent().get_node("ViewportContainer/Viewport").size = get_viewport().size
-	print(get_parent().get_node("ViewportContainer/Viewport").size)
 
 func _process(delta):
 	gunCamera.global_transform = global_transform

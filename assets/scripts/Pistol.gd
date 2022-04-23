@@ -4,6 +4,8 @@ onready var primaryFireNode = get_node("PrimaryFire")
 onready var animationPlayer = get_node("AnimationPlayer")
 export (Resource) var addAmmoSound
 
+signal pistol_equipped
+
 func _process(delta):
 	if(GameManager.isPaused):
 		return
@@ -15,11 +17,15 @@ func _process(delta):
 		get_tree().get_root().set_input_as_handled()
 
 
+func _ready():
+	connect("pistol_equipped", find_parent("FPSPlayer").get_node("HUD/TutorialUI"), "toggle_gun_controls")
+
 func equip():
 	show()
 	set_process(true)
 	primaryFireNode.update_ui()
 	animationPlayer.play("equip")
+	emit_signal("pistol_equipped")
 	yield(animationPlayer, "animation_finished")
 
 
@@ -28,6 +34,7 @@ func unequip():
 		primaryFireNode.isReloading = false
 	set_process(false)
 	animationPlayer.play("unequip")
+	emit_signal("pistol_equipped")
 	yield(animationPlayer, "animation_finished")
 	hide()
 

@@ -50,7 +50,6 @@ func primary_fire():
 	cooldownTimer.start() # Start CycleTimer so this can't shoot before it is done.
 
 	if(is_colliding()):
-		print("Shooting")
 		emitImpactEffect()
 		damageObject()
 
@@ -70,7 +69,6 @@ func emitImpactEffect():
 # Starts the reload animation.
 func startReload():
 	if(isReloading == true or currentAmmo >= ammoCapacity or reserveAmmo <= 0):
-		print(isReloading, currentAmmo, self.name)
 		return
 	isReloading = true
 	emit_signal("play_animation", "reload")

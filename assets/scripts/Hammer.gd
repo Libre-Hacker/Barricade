@@ -9,6 +9,11 @@ onready var animationPlayer = get_node("AnimationPlayer")
 onready var infoGatherNode = get_node("InfoGather")
 export (Resource) var addAmmoSound
 
+signal hammer_equipped
+
+func _ready():
+	connect("hammer_equipped", find_parent("FPSPlayer").get_node("HUD/TutorialUI"), "toggle_hammer_controls")
+
 # Using process for all input, makes it easier to enable/disable on switching and since only one
 # weapon is active at a time this shouldn't have a big impact on performance.
 func _process(_delta):
@@ -35,6 +40,7 @@ func equip():
 	set_process(true)
 	set_physics_process(true)
 	animationPlayer.play("equip")
+	emit_signal("hammer_equipped")
 	yield(animationPlayer, "animation_finished")
 	infoGatherNode.enabled = true
 	nailNode.update_ui()
@@ -43,6 +49,7 @@ func equip():
 func unequip():
 	infoGatherNode.enabled = false
 	animationPlayer.play("unequip")
+	emit_signal("hammer_equipped")
 	yield(animationPlayer, "animation_finished")
 	set_process(false)
 	set_physics_process(false)

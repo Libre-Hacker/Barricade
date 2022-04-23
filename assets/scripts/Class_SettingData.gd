@@ -31,3 +31,5 @@ export (Array) var keyBinds = [["move_forward",
 				BUTTON_RIGHT,
 				BUTTON_WHEEL_UP,
 				BUTTON_WHEEL_DOWN]]
+
+export (Array) var miscSettings = [[],[]]

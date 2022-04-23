@@ -24,7 +24,6 @@ func play_sound():
 		return
 	
 	distanceTraveled -= threshold
-	print(get_collider())
 	if(get_collider() == null):
 		return
 	if(get_collider().is_in_group("tile")):
