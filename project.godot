@@ -208,6 +208,7 @@ pause={
 3d_physics/layer_6="Hitboxes"
 3d_physics/layer_7="PropHitbox"
 3d_physics/layer_8="ZombieHitbox"
+3d_physics/layer_9="Ragdolls"
 
 [node]
 
@@ -215,14 +216,16 @@ name_num_separator=2
 
 [physics]
 
-common/physics_jitter_fix=0.0
-3d/physics_engine="GodotPhysics"
+3d/physics_engine="Bullet"
 3d/active_soft_world=false
-3d/godot_physics/use_bvh=false
 
 [rendering]
 
-quality/shadows/filter_mode=2
+threads/thread_model=2
+quality/directional_shadow/size=1024
+quality/shadow_atlas/size=1024
+quality/shading/force_lambert_over_burley=true
+quality/shading/use_physical_light_attenuation=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-quality/filters/msaa=3
+quality/filters/msaa=2
 environment/default_environment="res://assets/environments/default_env.tres"

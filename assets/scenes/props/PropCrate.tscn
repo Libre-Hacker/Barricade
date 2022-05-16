@@ -38,6 +38,8 @@ rewardAmount = 10
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
 script = ExtResource( 4 )
+health = 200.0
+maxHealth = 200.0
 
 [node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props"]]
 collision_layer = 64

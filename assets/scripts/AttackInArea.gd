@@ -42,7 +42,7 @@ func attempt_attack():
 	if(target == null):
 		return
 	if(attackCDTimer.is_stopped()):
-		emit_signal("play_animation", "attack")
+		emit_signal("play_animation", "Attack")
 		attackCDTimer.start()
 
 # Damages the target, called by the AnimationPlayer

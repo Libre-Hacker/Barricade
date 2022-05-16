@@ -105,6 +105,7 @@ shape = SubResource( 5 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.8, 0 )
 cull_mask = 524285
 current = true
+fov = 93.0
 playerNodePath = NodePath("..")
 
 [node name="Interaction" type="RayCast" parent="Camera"]
@@ -139,7 +140,7 @@ deathSound = ExtResource( 18 )
 
 [node name="Wallet" type="Node" parent="."]
 script = ExtResource( 10 )
-startingMoney = 900
+startingMoney = 5000
 
 [node name="Footsteps" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )

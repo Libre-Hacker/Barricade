@@ -17,7 +17,7 @@ func buy_item(player):
 	var wallet = player.find_node("Wallet")
 	var inventory = player.find_node("GunBelt")
 	if (wallet == null or inventory == null):
-		print("ERROR: Missing wallet / gun belt...")
+		#print("ERROR: Missing wallet / gun belt...")
 		return
 
 	var newWeapon = weapon.instance()

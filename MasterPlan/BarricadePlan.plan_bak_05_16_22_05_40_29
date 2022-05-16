@@ -4,9 +4,9 @@
   "BoardIndex": 1,
   "BoardCount": 3,
   "AutoSave": false,
-  "Pan.X": -1040.7047119140625,
-  "Pan.Y": -342.38677978515625,
-  "ZoomLevel": 5,
+  "Pan.X": -357.5260009765625,
+  "Pan.Y": -250.3458251953125,
+  "ZoomLevel": 3,
   "TaskTransparency": 5,
   "OutlineTasks": true,
   "BracketSubtasks": true,
@@ -498,38 +498,14 @@
     {
       "BoardIndex": 1,
       "Position.X": 928,
-      "Position.Y": 240,
+      "Position.Y": 160,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[UI] Tutorial Prompts",
+      "Description": "[DESIGN] Reconnect Hitboxes for Lanker Zombie ",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Mar 26 2022 15:51:36"
-    }, 
-    {
-      "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 256,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[UI] Tutorial Options",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Mar 26 2022 15:51:47"
-    }, 
-    {
-      "BoardIndex": 1,
-      "Position.X": -480,
-      "Position.Y": 80,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[PROGRAMMING] Tutorial Options",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Mar 26 2022 15:52:06"
+      "CreationTime": "May 8 2022 21:02:34"
     }, 
     {
       "BoardIndex": 0,
@@ -628,18 +604,6 @@
       "CreationTime": "Nov 14 2021 16:34:34"
     }, 
     {
-      "BoardIndex": 1,
-      "Position.X": -480,
-      "Position.Y": 64,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[DESIGN] Ammo Shop",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Mar 26 2022 10:39:06"
-    }, 
-    {
       "BoardIndex": 2,
       "Position.X": 0,
       "Position.Y": 64,
@@ -672,7 +636,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -480,
-      "Position.Y": 512,
+      "Position.Y": 528,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -684,7 +648,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -480,
-      "Position.Y": 528,
+      "Position.Y": 544,
       "ImageDisplaySize.X": 112,
       "ImageDisplaySize.Y": 80,
       "Checkbox.Checked": false,
@@ -725,20 +689,8 @@
     }, 
     {
       "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 288,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[MODELING] Chair Prop",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 13 2022 16:29:10"
-    }, 
-    {
-      "BoardIndex": 1,
       "Position.X": -464,
-      "Position.Y": 128,
+      "Position.Y": 96,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -750,7 +702,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -464,
-      "Position.Y": 144,
+      "Position.Y": 112,
       "ImageDisplaySize.X": 96,
       "ImageDisplaySize.Y": 128,
       "Checkbox.Checked": false,
@@ -765,7 +717,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -368,
-      "Position.Y": 144,
+      "Position.Y": 112,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -777,7 +729,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -480,
-      "Position.Y": 96,
+      "Position.Y": 64,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -789,7 +741,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -464,
-      "Position.Y": 112,
+      "Position.Y": 80,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -801,7 +753,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -464,
-      "Position.Y": 272,
+      "Position.Y": 240,
       "ImageDisplaySize.X": 112,
       "ImageDisplaySize.Y": 48,
       "Checkbox.Checked": false,
@@ -815,20 +767,8 @@
     }, 
     {
       "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 224,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Player Can Push Props While Holding Them",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 20 2022 20:19:00"
-    }, 
-    {
-      "BoardIndex": 1,
       "Position.X": -480,
-      "Position.Y": 320,
+      "Position.Y": 304,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -840,7 +780,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -400,
-      "Position.Y": 336,
+      "Position.Y": 320,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -852,9 +792,9 @@
     {
       "BoardIndex": 1,
       "Position.X": -480,
-      "Position.Y": 336,
+      "Position.Y": 320,
       "ImageDisplaySize.X": 80,
-      "ImageDisplaySize.Y": 64,
+      "ImageDisplaySize.Y": 80,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -866,80 +806,8 @@
     }, 
     {
       "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 144,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[DESIGN] Zombie Crawler",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 20 2022 05:24:51"
-    }, 
-    {
-      "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 160,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Add Hitboxes To Shelf & Plank",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 20 2022 06:28:58"
-    }, 
-    {
-      "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 192,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Players Can Push Props Through Walls",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 20 2022 06:29:22"
-    }, 
-    {
-      "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 176,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Player Rigid Body Not Pushing Props Right",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 20 2022 07:15:34"
-    }, 
-    {
-      "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 208,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Fix Thin Props Going Through Static Geometry",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 20 2022 20:19:13"
-    }, 
-    {
-      "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 272,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[PROGRAMMING] Swap to Hammer While Holding Prop",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 21 2022 20:40:19"
-    }, 
-    {
-      "BoardIndex": 1,
       "Position.X": -480,
-      "Position.Y": 608,
+      "Position.Y": 640,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -951,7 +819,7 @@
     {
       "BoardIndex": 1,
       "Position.X": -464,
-      "Position.Y": 624,
+      "Position.Y": 656,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -962,21 +830,8 @@
     }, 
     {
       "BoardIndex": 1,
-      "Position.X": 928,
-      "Position.Y": 304,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BALANCE] Lower Pistol Damage from 20-10",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 23 2022 14:46:22",
-      "CompletionTime": "Apr 23 2022 14:47:48"
-    }, 
-    {
-      "BoardIndex": 1,
       "Position.X": -480,
-      "Position.Y": 640,
+      "Position.Y": 688,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -988,38 +843,74 @@
     {
       "BoardIndex": 1,
       "Position.X": 928,
-      "Position.Y": 320,
+      "Position.Y": 144,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BALANCE] Lower Auto Rifle Damage 20-15",
+      "Description": "[MODELING] Create Lanker Zombie",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 23 2022 14:46:34"
+      "CreationTime": "May 4 2022 18:25:40"
     }, 
     {
       "BoardIndex": 1,
       "Position.X": 928,
-      "Position.Y": 336,
+      "Position.Y": 176,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BALANCE] Change Zombie Prop Hit Detection Size",
+      "Description": "[DESGIN] Enable Ragdoll for Lanker",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 23 2022 14:56:56"
+      "CreationTime": "May 11 2022 20:33:07"
     }, 
     {
       "BoardIndex": 1,
       "Position.X": 928,
-      "Position.Y": 352,
+      "Position.Y": 240,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BUG] Zombies Get Stuck in Attack Mode",
+      "Description": "[DESIGN] Clean up Lanker Tree",
+      "Selected": true,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 11 2022 20:33:30"
+    }, 
+    {
+      "BoardIndex": 1,
+      "Position.X": 928,
+      "Position.Y": 208,
+      "Checkbox.Checked": true,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[PROGRAMMING] Stop AI On Death",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 23 2022 16:53:26"
+      "CreationTime": "May 11 2022 20:33:43"
+    }, 
+    {
+      "BoardIndex": 1,
+      "Position.X": 928,
+      "Position.Y": 192,
+      "Checkbox.Checked": true,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[BUG] Bullet Impact Particle Emitting In Wrong Direction When Shooting Floor",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 15 2022 09:08:07"
+    }, 
+    {
+      "BoardIndex": 1,
+      "Position.X": 928,
+      "Position.Y": 224,
+      "Checkbox.Checked": true,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[OPTIMIZATION] Get 20 Zombies On Screen At Once",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 16 2022 05:34:30"
     }
   ]
 }

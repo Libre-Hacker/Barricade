@@ -13,10 +13,10 @@ func _ready():
 # Removes health from this object. Destroying it when below 0.
 func damage(value = 0):
 	if(health <= 0):
-		print("health is already depleted")
+		#print("health is already depleted")
 		return
 	health -= value
-	print(get_parent().name, " health = ", health)
+	#print(get_parent().name, " health = ", health)
 
 # Adds health to this object.
 func heal(value = 0):
@@ -26,5 +26,5 @@ func heal(value = 0):
 		health = maxHealth
 	else:
 		health += value
-	print(get_parent().name, " health = ", health)
+	#print(get_parent().name, " health = ", health)
 	return true

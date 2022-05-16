@@ -19,7 +19,7 @@ func _on_hitbox_hit_heal(value, entity):
 # Overrides the base function for player specific uses. Handles respawning and audio.
 func is_destroyed():
 	if(health <= 0):
-		print(get_parent().name, " is destroyed.") # For debugging
+		#print(get_parent().name, " is destroyed.") # For debugging
 		
 		# Play this on the global AudioManager so sound continues after player object has been freed.
 		# Might be able to change this once corpse stays in world.

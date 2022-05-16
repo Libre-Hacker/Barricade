@@ -9,7 +9,9 @@ export (float, 0, 10) var turnRate = 10 # Turning velocity.
 export (float, 0, 90) var maxSlope = 45 # Max incline degrees this entity can climb.
 
 signal obstructed
+signal play_animation
 
+onready var aiController = get_node("AIController")
 onready var navigator = get_node("Navigator")
 onready var primaryAttack = get_node("PrimaryAttack")
 
@@ -25,9 +27,13 @@ func _physics_process(delta):
 func seek_behaviour(delta):
 	var direction = navigator.get_path_direction()
 	move(direction)
+	emit_signal("play_animation", "Walk")
+	
 
 # Rotates towards a target Vector3.
 func look_at_target(target, delta):
+	if(aiController.currentState == aiController.AI_STATE.DEAD):
+		return
 	var direction = target - global_transform.origin
 	rotation.y = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), delta * turnRate)
 
@@ -54,3 +60,7 @@ func push_rigid_bodies():
 		var collision = get_slide_collision(index)
 		if(collision.collider.is_in_group("Props")):
 			collision.collider.apply_central_impulse(-collision.normal * pushForce)
+
+
+func disable_collisions():
+	get_node("ColliderMain").disabled = true

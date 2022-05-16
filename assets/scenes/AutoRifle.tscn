@@ -64,6 +64,7 @@ minHorizonalRecoil = -3.0
 maxVerticalRecoil = 6.0
 minVerticalRecoil = -1.0
 recoilRecovery = 8.0
+bulletForce = 20.0
 fireSound = ExtResource( 10 )
 
 [node name="Cooldown" type="Timer" parent="PrimaryFire"]

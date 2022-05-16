@@ -53,34 +53,8 @@ size = Vector3( 0.2, 0.2, 1 )
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 0.1, 0.1, 0.5 )
 
-[sub_resource type="Animation" id=17]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("MeshAndHitbox/PivotArmRight:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("MeshAndHitbox/PivotArmLeft:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
-
 [sub_resource type="Animation" id=2]
+resource_name = "Attack"
 length = 1.5
 tracks/0/type = "transform"
 tracks/0/path = NodePath("MeshAndHitbox/PivotArmLeft")
@@ -121,6 +95,33 @@ tracks/3/keys = {
 "args": [  ],
 "method": "damage_target"
 } ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshAndHitbox/PivotArmRight:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshAndHitbox/PivotArmLeft:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -385,8 +386,8 @@ transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.5, 0
 shape = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 2 )
 anims/RESET = SubResource( 17 )
-anims/attack = SubResource( 2 )
 anims/idle = SubResource( 3 )
 script = ExtResource( 20 )
 returnToDefaultAnimation = true
@@ -406,6 +407,7 @@ autostart = true
 [connection signal="seek" from="AIController" to="." method="seek_behaviour"]
 [connection signal="timeout" from="AIController/ObstructedTimer" to="AIController" method="_on_ObstructedTimer_timeout"]
 [connection signal="timeout" from="Navigator/NavigationTimer" to="Navigator" method="_on_NavigationTimer_timeout"]
+[connection signal="destroyed" from="Health" to="AIController" method="_on_change_state"]
 [connection signal="destroyed" from="Health" to="Reward" method="distribute_reward"]
 [connection signal="health_changed" from="Health" to="Reward" method="add_contribution"]
 [connection signal="area_entered" from="PrimaryAttack" to="PrimaryAttack" method="_on_area_entered"]
