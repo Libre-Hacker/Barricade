@@ -36,7 +36,7 @@ top_radius = 0.03
 bottom_radius = 0.03
 height = 0.55
 
-[node name="VendingMachine" type="StaticBody" groups=["Interactables"]]
+[node name="VendingMachine" type="StaticBody" groups=["Interactables", "VendingMachine"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource( 3 )

@@ -6,8 +6,7 @@ extends RigidBody
 export (String) var realName = "Prop" # The name of the prop, for UI use.
 export (float) var followSpeed : float = 7.5 # The speed the prop moves while held.
 export (float) var rotationAcceleration = 2 # The speed the prop can rotate.
-export (float) var maxRotationSpeed = 10
-export (float) var rotationDamping = 10
+export (float) var maxRotationSpeed = 20
 
 var nodeToFollow : Node # Node the prop follows while picked up.
 var isNailed : bool = false
@@ -58,10 +57,15 @@ func followPoint():
 		linear_velocity = moveDistance # Use physics to detect collisions.
 
 # Rotates this object relative to the nodeToFollow.
-func mouse_rotate(mouseMovement):
+func mouse_rotate(mouseMovement, snapping):
 	var xRot = Vector3.ZERO
 	var yRot = Vector3.ZERO
+	
+	if(mouseMovement.length() == 0):
+		return
 
+	# If the X and Y mouse input is greater than 0.15, only rotate the prop in the direction of the
+	# greater input direction.
 	if(abs(abs(mouseMovement.x) - abs(mouseMovement.y)) > 0.15):
 		if(abs(mouseMovement.x) > abs(mouseMovement.y)):
 			yRot = nodeToFollow.global_transform.basis.y * mouseMovement.x
@@ -72,6 +76,7 @@ func mouse_rotate(mouseMovement):
 		xRot = -nodeToFollow.global_transform.basis.x * mouseMovement.y
 
 	var rotDirection = (xRot + yRot) * rotationAcceleration
+
 	if(angular_velocity.length() < maxRotationSpeed):
 		angular_velocity += rotDirection
 

@@ -31,7 +31,7 @@
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=29]
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 0.190678, 0.252426, 0.619704 )
+extents = Vector3( 0.240409, 0.237838, 0.619704 )
 
 [sub_resource type="RayShape" id=8]
 
@@ -69,7 +69,6 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource( 8 )
 jumpSpeed = 10.0
-fallSpeed = -0.6
 maxSlopeAngle = 45.0
 push = 3.0
 jumpSound = ExtResource( 19 )
@@ -182,8 +181,10 @@ fov = 90.0
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
 [connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="hide_ui" from="Camera/Interaction" to="HUD/InteractionPrompt" method="hide_text"]
 [connection signal="prop_interacted_with" from="Camera/Interaction" to="HUD/TutorialUI" method="toggle_prop_controls"]
 [connection signal="prop_picked_up" from="Camera/Interaction" to="Camera/GunBelt" method="set_current_weapon_index"]
+[connection signal="show_ui" from="Camera/Interaction" to="HUD/InteractionPrompt" method="show_text"]
 [connection signal="play_3d_sound" from="Health" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_3DSound" from="Footsteps" to="AudioManager" method="new_3d_sound"]
 

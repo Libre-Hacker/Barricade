@@ -10,6 +10,8 @@ var mouseY
 
 signal prop_picked_up
 signal prop_interacted_with
+signal show_ui
+signal hide_ui
 
 onready var player = find_parent("FPSPlayer")
 
@@ -30,8 +32,18 @@ func _unhandled_input(event):
 
 func _physics_process(_delta):
 	is_prop_in_range()
+	show_ui_prompt()
 	if(Input.is_action_pressed("rotate_prop") and is_holding_prop()):
 		rotate_prop(mouseX, mouseY)
+
+func show_ui_prompt():
+	if(is_colliding() == false):
+		emit_signal("hide_ui")
+		return
+	if(get_collider().is_in_group("Interactables") == false):
+		emit_signal("hide_ui")
+		return
+	emit_signal("show_ui", get_collider(), player)
 
 # Sets the class variables and calls the hit objects "interact" function.
 func interact():
@@ -52,7 +64,10 @@ func interact():
 # Gathers mouse input and sends it to the prop in use to be rotated.
 func rotate_prop(x, y):
 	var mouseMovement = Vector3(x, y, 0) * 0.1
-	propInUse.mouse_rotate(mouseMovement)
+	var snapping = false
+	if(Input.is_action_pressed("rotate_snap")):
+		snapping = true
+	propInUse.mouse_rotate(mouseMovement, snapping)
 
 # Sets the targeted prop to follow the assigned point.
 func pickup_prop():

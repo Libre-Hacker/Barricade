@@ -31,7 +31,7 @@ func pause_game():
 # the player, zombie, and round managers.
 func start_game():
 	AudioManager.stop_music()
-	LevelSwitcher.load_scene("res://assets/scenes/levels/DevLvlHouse.tscn")
+	LevelSwitcher.load_scene("res://assets/scenes/levels/DevLvlWarehouse.tscn")
 	MenuSwitcher.unload_scene()
 	set_process_unhandled_input(true)
 	instance_managers()

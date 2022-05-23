@@ -10,6 +10,7 @@ export (AudioStream) var roundStartMusic
 export (AudioStream) var roundEndMusic
 export (Array, float) var roundTimes = [] # A list of rounds and their time length.
 
+var attackRound = false
 var currentRound = 0 # The current round the game is on.
 
 signal round_finished
@@ -40,9 +41,11 @@ func _on_RoundTimer_timeout():
 	if(currentRound % 2 != 0):
 		emit_signal("round_finished")
 		AudioManager.new_music(roundEndMusic)
+		attackRound = false
 	else:
 		emit_signal("round_started")
 		AudioManager.new_music(roundStartMusic)
+		attackRound = true
 	if(currentRound < roundTimes.size()-1):
 		currentRound += 1
 	else:

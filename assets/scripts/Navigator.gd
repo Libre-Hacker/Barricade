@@ -8,11 +8,25 @@ var pathPoints = [] # An array of points that lead to the target.
 var pathIndex = 0 # The current index of the path array.
 var navigation = null # Set by the zombie manager.
 
+onready var randomPoint = round(rand_range(0,4))
+
 # Need to replace this with an aggro system for multiplayer.
 onready var player = get_tree().get_root().find_node("FPSPlayer", true, false)
 
+
 func _on_NavigationTimer_timeout():
-	calculate_path(player.transform.origin)
+	if(get_parent().get_node("AIController").currentState != get_parent().get_node("AIController").AI_STATE.SEEK):
+		pathPoints = []
+		return
+	if(get_parent().transform.origin.distance_to(player.transform.origin) > 3):
+		var randomVector = Vector3(rand_range(-3,3),0,rand_range(-3,3))
+		calculate_path(player.transform.origin + randomVector)
+		return
+	elif(get_parent().transform.origin.distance_to(player.transform.origin) <= 3):
+		calculate_path(player.transform.origin)
+		return
+	else:
+		pathPoints = []
 
 # Updates the pathPoints to the current target.
 func calculate_path(destination):
@@ -42,6 +56,14 @@ func get_path_direction():
 func update_path_index():
 	if(has_path() == false):
 		return
+	if(pathPoints.size() - pathIndex > 5):
+		get_node("NavigationTimerShort").stop()
+		if(get_node("NavigationTimerLong").is_stopped()):
+			get_node("NavigationTimerLong").start()
+	else:
+		get_node("NavigationTimerLong").stop()
+		if(get_node("NavigationTimerShort").is_stopped()):
+			get_node("NavigationTimerShort").start()
 	if(global_transform.origin.distance_to(pathPoints[pathIndex]) < pathMargin):
 		pathIndex += 1
 

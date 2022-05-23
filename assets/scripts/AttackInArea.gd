@@ -41,9 +41,10 @@ func find_target():
 func attempt_attack():
 	if(target == null):
 		return
-	if(attackCDTimer.is_stopped()):
-		emit_signal("play_animation", "Attack")
-		attackCDTimer.start()
+	if(get_parent().get_node("Navigator").has_path()):
+		emit_signal("play_animation", "WalkAttack", true)
+	else:
+		emit_signal("play_animation", "Attack", true)
 
 # Damages the target, called by the AnimationPlayer
 func damage_target():
@@ -56,7 +57,7 @@ func damage_target():
 
 # A priority target is a player or a nailed prop.
 func is_priority_target(hitbox):
-	if(hitbox.is_in_group("Players") or hitbox.is_in_group("Props") and hitbox.get_parent().isNailed):
+	if(hitbox.is_in_group("Players") or hitbox.is_in_group("Props")):
 		return true
 	else:
 		return false
@@ -75,6 +76,4 @@ func _on_area_exited(area):
 	if(area == target):
 		target = null
 	if(areaCount.empty()):
-		if(attackCDTimer.is_stopped() == false):
-			yield(attackCDTimer, "timeout")
 		emit_signal("targets_unavailable")

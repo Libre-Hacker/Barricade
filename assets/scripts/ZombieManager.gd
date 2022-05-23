@@ -12,7 +12,6 @@ var enableSpawning = false
 var spawnQue = 0 # Number of zombies wiating to be spawned.
 var zombiesAlive = 0
 
-onready var basicZombie = preload("res://assets/scenes/Zombie.tscn")
 onready var spawners = get_tree().get_root().find_node("ZombieSpawners", true, false)
 onready var navigation = get_tree().get_root().find_node("Navigation", true, false)
 

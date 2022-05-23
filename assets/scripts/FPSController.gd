@@ -19,16 +19,18 @@ onready var audioManager = get_node("AudioManager")
 onready var footSteps = get_node("Footsteps")
 onready var occupiedArea = get_node("OccupiedArea") # Area taken up by the player.
 
+
 func _physics_process(_delta): # Use physics because this uses a KinematicBody.
 	if(GameManager.isPaused): # Disables input when game is paused.
 		return
-
+		
 	move()
 
 	if(Input.is_action_pressed("phase")):
 		start_phase()
 	if(Input.is_action_just_released("phase")):
 		end_phase()
+
 
 # Move this object.
 func move():
@@ -40,6 +42,7 @@ func move():
 		 # Applies distance moved to the footstep node.
 		footSteps.add_travel_distance(transform.origin.distance_to(oldPos))
 	push_rigid_bodies()
+
 
 # Calculates this objects velocity.
 func calculate_movement():
@@ -56,6 +59,7 @@ func calculate_movement():
 	else:
 		gravity()
 
+
 # Returns player input as normalized Vector3.
 func get_input():
 	var inputDirection = Vector3()
@@ -71,6 +75,7 @@ func get_input():
 	inputDirection = inputDirection.normalized() # Normalize vector so speed is constant in all directions.
 	return inputDirection
 
+
 # Returns a negative value to simulate "gravity".
 func gravity():
 	if(is_on_ceiling()):
@@ -78,12 +83,14 @@ func gravity():
 	else:
 		velocity.y += fallSpeed
 
+
 # Returns a positive value to "jump".
 func jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		audioManager.new_3d_sound(jumpSound)
 		velocity.y = jumpSpeed
 		return true
+
 
 # Checks if player is falling, plays audio if player lands.
 func fall():
@@ -94,6 +101,7 @@ func fall():
 		falling = false
 		audioManager.new_3d_sound(landSound, global_transform.origin)
 
+
 # Disables collisions with props, if the player goes inside a prop then move speed is reduced, and
 # weapons are disabled.
 func start_phase():
@@ -102,12 +110,14 @@ func start_phase():
 		moveSpeed = phaseSpeed
 		get_node("Camera/GunBelt").disable_weapons()
 
+
 # Returns true if the player is inside props, false if they are not colliding with props.
 func is_phasing():
 	if(occupiedArea.is_clear() == false):
 		return true
 	else:
 		return false
+
 
 # Enables prop collision, resets move speed, and enables weapons if the player isn't inside any props.
 func end_phase():
@@ -116,6 +126,7 @@ func end_phase():
 	moveSpeed = baseMoveSpeed
 	set_collision_mask_bit(2,true)
 	get_node("Camera/GunBelt").enable_weapons()
+	
 	
 # Pushes any rigid body this object collides with in a realistic way.
 func push_rigid_bodies():

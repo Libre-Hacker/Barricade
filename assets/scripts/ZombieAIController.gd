@@ -8,8 +8,9 @@ enum AI_STATE {IDLE, SEEK, ATTACK, DEAD	} # List of possible states.
 var currentState = AI_STATE.SEEK # The current state the AI is in.
 var currentTarget = null
 
-signal seek
 signal attack
+signal seek
+signal play_animation
 
 onready var obstructedTimer = get_node("ObstructedTimer")
 
@@ -38,6 +39,7 @@ func send_current_state(delta):
 			return
 		AI_STATE.SEEK:
 			emit_signal("seek", delta)
+			emit_signal("play_animation", "Walk")
 		AI_STATE.ATTACK:
 			emit_signal("attack")
 		AI_STATE.DEAD:
@@ -52,19 +54,6 @@ func _on_change_state(newState : int):
 		return
 	currentState = newState
 	print("Switching state to: ", AI_STATE.keys()[currentState])
-
-func _on_KinematicBody_obstructed(value):
-	obstruction_countdown(value)
-
-# Starts / stops, the obstruction timer.
-func obstruction_countdown(value):
-	if(value and obstructedTimer.is_stopped()):
-		obstructedTimer.start()
-	elif(value == false):
-		obstructedTimer.stop()
-
-func _on_ObstructedTimer_timeout():
-	_on_change_state(2)
 
 func _on_PrimaryAttack_targets_available():
 	_on_change_state(2)

@@ -56,7 +56,7 @@ ammoCapacity = 30
 reserveAmmo = 90
 maxReserveAmmo = 300
 rateOfFire = 450.0
-damage = 15.0
+damage = 17.5
 maxRange = 100.0
 recoilGain = 1.5
 maxHorizonalRecoil = 3.0
@@ -64,7 +64,7 @@ minHorizonalRecoil = -3.0
 maxVerticalRecoil = 6.0
 minVerticalRecoil = -1.0
 recoilRecovery = 8.0
-bulletForce = 20.0
+bulletForce = 30.0
 fireSound = ExtResource( 10 )
 
 [node name="Cooldown" type="Timer" parent="PrimaryFire"]
@@ -83,6 +83,7 @@ defaultAnimation = "idle"
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 1.75 )
+visible = false
 omni_range = 0.5
 
 [node name="Pivot" type="Position3D" parent="."]

@@ -389,7 +389,7 @@ ammoCapacity = 12
 reserveAmmo = 60
 maxReserveAmmo = 120
 rateOfFire = 999.0
-damage = 10.0
+damage = 15.0
 maxRange = 100.0
 recoilGain = 1.5
 maxHorizonalRecoil = 5.0
@@ -397,6 +397,7 @@ minHorizonalRecoil = -5.0
 maxVerticalRecoil = 5.0
 minVerticalRecoil = -2.0
 recoilRecovery = 4.0
+bulletForce = 10.0
 fireSound = ExtResource( 4 )
 
 [node name="Cooldown" type="Timer" parent="PrimaryFire"]
