@@ -11,6 +11,7 @@ export (Resource) var hitSound
 export (Resource) var attackSound
 
 var target = null # Keep target variable for optimization.
+var hitPoint
 
 signal play_animation(animationName)
 signal targets_available # Emit's when viable targets are in range.

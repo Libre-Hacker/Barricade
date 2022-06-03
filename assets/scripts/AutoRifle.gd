@@ -4,6 +4,12 @@ onready var primaryFireNode = get_node("PrimaryFire")
 onready var animationPlayer = get_node("AnimationPlayer")
 export (Resource) var addAmmoSound
 
+signal autorifle_equipped
+
+func _ready():
+	connect("autorifle_equipped", find_parent("FPSPlayer").get_node("HUD/TutorialUI"), "toggle_gun_controls")
+	connect("autorifle_equipped", find_parent("FPSPlayer").get_node("HUD/Crosshairs"), "on_autorifle_equipped")
+
 func _process(delta):
 	if(GameManager.isPaused):
 		return
@@ -17,10 +23,11 @@ func _process(delta):
 
 func equip():
 	show()
-	set_process(true)
 	primaryFireNode.update_ui()
 	animationPlayer.play("equip")
 	yield(animationPlayer, "animation_finished")
+	set_process(true)
+	emit_signal("autorifle_equipped")
 
 
 func unequip():

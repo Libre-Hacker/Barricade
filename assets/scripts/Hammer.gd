@@ -13,7 +13,7 @@ signal hammer_equipped
 
 func _ready():
 	connect("hammer_equipped", find_parent("FPSPlayer").get_node("HUD/TutorialUI"), "toggle_hammer_controls")
-
+	connect("hammer_equipped", find_parent("FPSPlayer").get_node("HUD/Crosshairs"), "on_hammer_equipped")
 # Using process for all input, makes it easier to enable/disable on switching and since only one
 # weapon is active at a time this shouldn't have a big impact on performance.
 func _process(_delta):
@@ -37,21 +37,21 @@ func _physics_process(_delta):
 
 func equip():
 	show()
-	set_process(true)
 	set_physics_process(true)
 	animationPlayer.play("equip")
 	emit_signal("hammer_equipped")
 	yield(animationPlayer, "animation_finished")
+	set_process(true)
 	infoGatherNode.enabled = true
 	nailNode.update_ui()
 
 
 func unequip():
 	infoGatherNode.enabled = false
+	set_process(false)
 	animationPlayer.play("unequip")
 	emit_signal("hammer_equipped")
 	yield(animationPlayer, "animation_finished")
-	set_process(false)
 	set_physics_process(false)
 	hide()
 

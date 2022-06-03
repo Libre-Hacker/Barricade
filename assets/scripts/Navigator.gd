@@ -3,12 +3,13 @@ extends Spatial
 
 export (float) var pathMargin = 0.3 # The distance margin to the next path point.
 export (float) var targetMargin = 1 # The distance margin to the target.
+export (String) var navigationType = ""
 
 var pathPoints = [] # An array of points that lead to the target.
 var pathIndex = 0 # The current index of the path array.
-var navigation = null # Set by the zombie manager.
 
-onready var randomPoint = round(rand_range(0,4))
+onready var randomPoint = round(rand_range(-2,2))
+onready var navigation = get_tree().get_root().find_node("Navigation" + navigationType, true, false)
 
 # Need to replace this with an aggro system for multiplayer.
 onready var player = get_tree().get_root().find_node("FPSPlayer", true, false)
@@ -18,13 +19,11 @@ func _on_NavigationTimer_timeout():
 	if(get_parent().get_node("AIController").currentState != get_parent().get_node("AIController").AI_STATE.SEEK):
 		pathPoints = []
 		return
-	if(get_parent().transform.origin.distance_to(player.transform.origin) > 3):
-		var randomVector = Vector3(rand_range(-3,3),0,rand_range(-3,3))
-		calculate_path(player.transform.origin + randomVector)
+	if(get_parent().transform.origin.distance_to(player.transform.origin) > 4):
+		calculate_path(player.transform.origin + Vector3(randomPoint,0,0))
 		return
-	elif(get_parent().transform.origin.distance_to(player.transform.origin) <= 3):
+	elif(get_parent().transform.origin.distance_to(player.transform.origin) > 1):
 		calculate_path(player.transform.origin)
-		return
 	else:
 		pathPoints = []
 

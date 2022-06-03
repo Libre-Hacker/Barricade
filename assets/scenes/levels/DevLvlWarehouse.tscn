@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/scripts/SpawnerManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/RespawnPoint.tscn" type="PackedScene" id=2]
@@ -34,12 +34,19 @@
 [ext_resource path="res://assets/scenes/props/PropPlank.tscn" type="PackedScene" id=32]
 [ext_resource path="res://assets/scenes/props/PropChair.tscn" type="PackedScene" id=33]
 
-[sub_resource type="NavigationMesh" id=1]
-vertices = PoolVector3Array( -5.4, 0.2, -22.4, 1.5, 0.2, -22.3, 1.5, 0.2, -33.4, -5.4, 0.2, -33.4, -5.7, 0.2, -21.4, -6.3, 0.2, -21.5, -6.3, 0.2, -18.5, -5.6, 0.2, -18.5, -5.4, 0.2, -18.3, -5.4, 0.2, -17.6, 1.5, 0.2, -17.6, 1.5, 0.2, -18.3, 2.4, 0.2, -18.5, 2.3, 0.2, -21.5, 1.7, 0.2, -21.4, 1.7, 0.2, -18.5, 1.5, 0.2, -22.3, -5.4, 0.2, -22.4, -5.4, 0.2, -21.7, 1.5, 0.2, -21.6, 1.5, 0.2, -18.3, 1.7, 0.2, -18.5, 1.7, 0.2, -21.4, -5.7, 0.2, -21.4, -5.6, 0.2, -18.5, -5.4, 0.2, -18.3, 1.5, 0.2, -18.3, 1.7, 0.2, -21.4, 1.5, 0.2, -21.6, -5.4, 0.2, -21.7, -5.7, 0.2, -21.4, -5.4, 0.2, -18.3, -6.3, 0.2, -18.5, -6.3, 0.2, -21.5, -9.5, 0.2, -21.5, -9.5, 0.2, -18.5, 2.4, 0.2, -18.5, 5.5, 0.2, -18.5, 5.5, 0.2, -21.5, 2.3, 0.2, -21.5, -5, 0.2, -9.9, 1.1, 0.2, -9.9, 1.1, 0.2, -10.3, -5, 0.2, -10.3, -5.4, 0.2, -10.5, -5, 0.2, -10.3, 1.1, 0.2, -10.3, 1.5, 0.2, -10.5, 1.5, 0.2, -17.6, -5.4, 0.2, -17.6, -5.6, 0.2, -4.7, -5.6, 0.2, -2.2, -5.4, 0.2, -2.1, -5.2, 0.2, -9.4, -5.9, 0.2, -9.4, -5.9, 1.1, -4.8, -5.6, 0.2, -4.7, -5.4, 0.2, -2.1, -5.4, 0.2, -1.4, 1.4, 0.2, 1.5, 5.5, 0.2, 1.5, 5.5, 0.2, -9.4, 1.3, 0.2, -9.4, -5, 0.2, -9.9, -5.2, 0.2, -9.4, -5.6, 0.2, -4.7, -5.4, 0.2, -2.1, 1.3, 0.2, -9.4, 1.1, 0.2, -9.9, -9.4, 1.7, -4.1, -6.3, 1.7, -4, -6.3, 1.3, -4.6, -7.85, 1.3, -4.35, -9.4, 1.7, -4.1, -6.3, 1.3, -4.6, -5.9, 1.1, -4.8, -5.9, 0.2, -9.4, -9.4, 0.2, -9.4, -9.4, 0.2, -5.86667, -7.85, 1.3, -4.35, -6.80391, 0.2, -6.4065, -6.80789, 0.3, -5.80892, -9.4, 0.2, -4.2, -9.4, 0.2, -2.1, -8.3, 0.2, -2.1, -8.3, 0.2, -4.2, -7.6, 0.2, -4.2, -7.6, 0.2, -2.1, -6.3, 0.2, -2.2, -6.3, 0.2, -4.2, -6.5, 3, -2.1, -6.3, 3, -2.2, -6.3, 1.7, -4, -9.4, 1.7, -4.1, -8.43333, 2, -3.43333, -7.95, 2.4, -3.1, -9, 3.2, 2, -6.9, 3.2, 2.1, -6.9, 3.2, 1.7, -9, 3.2, 1.7, -9.4, 3.2, 1.5, -9, 3.2, 1.7, -6.9, 3.2, 1.7, -6.5, 3.2, 1.5, -6.5, 3, -2.1, -9.4, 1.7, -4.1, -9.4, 3.2, -1.86, -6.5, 3.2, -1.58572, -7.95, 2.4, -3.1, -8.43333, 2, -3.43333, -8.00199, 3, -2.20121, -7.99398, 3.2, -1.59242, -8.61, 2.6, -2.81, -6, 0.2, 1, -6, 0.2, -1, -6.3, 0.2, -1, -6.5, 0.2, 1.2, -6, 0.2, 1, -6.3, 0.2, -1, -6.5, 0.2, -1.4, -9.4, 0.2, -1.4, -9.4, 0.2, 1.5, -9.4, 0.2, 1.5, -6.5, 0.2, 1.5, -6.5, 0.2, 1.2, -5.6, 0.2, 1, -5.4, 0.2, 1.5, -5, 0.2, 1.7, -5.7, 0.2, -1, -6, 0.2, -1, -6, 0.2, 1, -5.6, 0.2, 1, -5, 0.2, 1.7, -5, 0.2, 2, 1.1, 0.2, 2, 1.1, 0.2, 1.7, -5.4, 0.2, -1.4, -5.7, 0.2, -1, -5.6, 0.2, 1, -5, 0.2, 1.7, 1.1, 0.2, 1.7, 1.4, 0.2, 1.5, -6.9, 3.2, 2.1, -9, 3.2, 2, -9, 3.2, 2.3, -6.8, 3.2, 2.5, -6.9, 3.2, 2.1, -9, 3.2, 2.3, -9.4, 3.2, 2.6, -9.4, 3.2, 5.5, -6.9, 3.2, 5.5, -5.7, 0.8, 3.7, -6, 0.8, 3.7, -6, 0.8, 4.4, -5.85, 0.8, 4.05, -5.7, 0.8, 3.7, -6, 0.8, 4.4, -5.4, 0.2, 4.6, -5.4, 0.2, 3.4, -5.85, 0.8, 4.05, -5.7, 0.2, 4.5, -5, 0.2, 2.4, -5.4, 0.2, 2.6, -5.4, 0.2, 3.4, 1.1, 0.2, 2.4, 1.1, 0.2, 2, -5, 0.2, 2, -5, 0.2, 2.4, -5.9, 0.2, 7, -5.9, 0.2, 9.1, -5.6, 0.2, 9.1, -5, 0.2, 2.4, -5.4, 0.2, 3.4, -5.4, 0.2, 4.6, -5.4, 0.2, 6.8, -5.9, 0.2, 7, -5.6, 0.2, 9.1, -5.4, 0.2, 9.5, 1.5, 0.2, 2.6, 1.1, 0.2, 2.4, -5, 0.2, 2.4, -5.4, 0.2, 6.8, -5.4, 0.2, 9.5, 1.5, 0.2, 9.5, -5, 0.2, 2.4, -5.4, 0.2, 4.6, -5.4, 0.2, 6.8, 0.6, 3.2, 2.6, 0.400001, 3.8, 2.1, -0.3, 3.8, 2.1, -0.599999, 3.2, 2.6, 1.5, 3.2, 5.5, -3.4, 3.2, 2.6, -3.6, 3.8, 2.1, -4.4, 3.8, 2.1, -4.6, 3.2, 2.6, -4.6, 3.2, 2.6, -6.8, 3.2, 2.5, -6.9, 3.2, 5.5, -3.4, 3.2, 2.6, -4.6, 3.2, 2.6, -6.9, 3.2, 5.5, 1.5, 3.2, 5.5, 1.5, 3.2, 2.6, 0.6, 3.2, 2.6, 1.5, 3.2, 5.5, -0.599999, 3.2, 2.6, -3.4, 3.2, 2.6, -6.9, 3.2, 5.5, -6.5, 0.2, 4.6, -6, 0.8, 4.4, -6, 0.8, 3.7, -6.5, 0.2, 3.5, -13.4, 0.2, 2.6, -6.5, 0.2, 3.5, -6.5, 0.2, 2.6, -13.4, 0.2, 2.6, -6.3, 0.2, 9.1, -5.9, 0.2, 9.1, -5.9, 0.2, 7, -6.3, 0.2, 9.1, -5.9, 0.2, 7, -6.5, 0.2, 6.8, -13.4, 0.2, 9.5, -6.5, 0.2, 9.5, -6.5, 0.2, 6.8, -6.5, 0.2, 4.6, -13.4, 0.2, 2.6, -13.4, 0.2, 9.5 )
-polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ), PoolIntArray( 7, 6, 4 ), PoolIntArray( 4, 6, 5 ), PoolIntArray( 11, 10, 8 ), PoolIntArray( 8, 10, 9 ), PoolIntArray( 14, 13, 15 ), PoolIntArray( 15, 13, 12 ), PoolIntArray( 17, 16, 18 ), PoolIntArray( 18, 16, 19 ), PoolIntArray( 22, 21, 20 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 27, 26, 28 ), PoolIntArray( 28, 26, 31 ), PoolIntArray( 28, 31, 29 ), PoolIntArray( 29, 31, 30 ), PoolIntArray( 35, 34, 32 ), PoolIntArray( 32, 34, 33 ), PoolIntArray( 37, 36, 38 ), PoolIntArray( 38, 36, 39 ), PoolIntArray( 43, 42, 40 ), PoolIntArray( 40, 42, 41 ), PoolIntArray( 45, 44, 46 ), PoolIntArray( 46, 44, 47 ), PoolIntArray( 47, 44, 49 ), PoolIntArray( 47, 49, 48 ), PoolIntArray( 52, 51, 50 ), PoolIntArray( 55, 54, 56 ), PoolIntArray( 56, 54, 53 ), PoolIntArray( 58, 57, 59 ), PoolIntArray( 59, 57, 60 ), PoolIntArray( 60, 57, 62 ), PoolIntArray( 60, 62, 61 ), PoolIntArray( 64, 63, 65 ), PoolIntArray( 65, 63, 66 ), PoolIntArray( 66, 63, 67 ), PoolIntArray( 67, 63, 68 ), PoolIntArray( 71, 70, 72 ), PoolIntArray( 72, 70, 69 ), PoolIntArray( 76, 80, 77 ), PoolIntArray( 77, 80, 78 ), PoolIntArray( 78, 79, 73 ), PoolIntArray( 79, 81, 74 ), PoolIntArray( 74, 81, 75 ), PoolIntArray( 75, 80, 76 ), PoolIntArray( 80, 81, 78 ), PoolIntArray( 78, 81, 79 ), PoolIntArray( 81, 80, 75 ), PoolIntArray( 85, 84, 82 ), PoolIntArray( 82, 84, 83 ), PoolIntArray( 89, 88, 86 ), PoolIntArray( 86, 88, 87 ), PoolIntArray( 90, 95, 91 ), PoolIntArray( 91, 95, 94 ), PoolIntArray( 91, 94, 92 ), PoolIntArray( 92, 94, 93 ), PoolIntArray( 99, 98, 96 ), PoolIntArray( 96, 98, 97 ), PoolIntArray( 109, 112, 105 ), PoolIntArray( 105, 112, 106 ), PoolIntArray( 106, 111, 100 ), PoolIntArray( 100, 111, 101 ), PoolIntArray( 101, 111, 102 ), PoolIntArray( 102, 111, 103 ), PoolIntArray( 103, 111, 107 ), PoolIntArray( 107, 111, 104 ), PoolIntArray( 104, 110, 108 ), PoolIntArray( 108, 112, 109 ), PoolIntArray( 112, 110, 106 ), PoolIntArray( 106, 110, 111 ), PoolIntArray( 111, 110, 104 ), PoolIntArray( 110, 112, 108 ), PoolIntArray( 115, 114, 113 ), PoolIntArray( 117, 116, 118 ), PoolIntArray( 118, 116, 119 ), PoolIntArray( 119, 116, 120 ), PoolIntArray( 120, 116, 121 ), PoolIntArray( 124, 123, 122 ), PoolIntArray( 125, 127, 126 ), PoolIntArray( 129, 128, 130 ), PoolIntArray( 130, 128, 131 ), PoolIntArray( 135, 134, 132 ), PoolIntArray( 132, 134, 133 ), PoolIntArray( 137, 136, 138 ), PoolIntArray( 138, 136, 139 ), PoolIntArray( 139, 136, 140 ), PoolIntArray( 140, 136, 141 ), PoolIntArray( 144, 143, 142 ), PoolIntArray( 146, 145, 147 ), PoolIntArray( 147, 145, 148 ), PoolIntArray( 148, 145, 150 ), PoolIntArray( 148, 150, 149 ), PoolIntArray( 151, 154, 152 ), PoolIntArray( 152, 154, 153 ), PoolIntArray( 156, 159, 160 ), PoolIntArray( 160, 159, 157 ), PoolIntArray( 157, 159, 155 ), PoolIntArray( 157, 155, 158 ), PoolIntArray( 163, 162, 161 ), PoolIntArray( 167, 166, 164 ), PoolIntArray( 164, 166, 165 ), PoolIntArray( 170, 169, 168 ), PoolIntArray( 173, 172, 171 ), PoolIntArray( 175, 174, 176 ), PoolIntArray( 176, 174, 177 ), PoolIntArray( 179, 178, 180 ), PoolIntArray( 180, 178, 181 ), PoolIntArray( 181, 178, 182 ), PoolIntArray( 182, 178, 183 ), PoolIntArray( 186, 185, 184 ), PoolIntArray( 188, 187, 189 ), PoolIntArray( 189, 187, 190 ), PoolIntArray( 190, 187, 191 ), PoolIntArray( 193, 192, 194 ), PoolIntArray( 194, 192, 195 ), PoolIntArray( 196, 198, 197 ), PoolIntArray( 201, 200, 199 ), PoolIntArray( 204, 203, 202 ), PoolIntArray( 206, 205, 207 ), PoolIntArray( 207, 205, 208 ), PoolIntArray( 210, 209, 211 ), PoolIntArray( 211, 209, 212 ), PoolIntArray( 212, 209, 213 ), PoolIntArray( 216, 215, 214 ), PoolIntArray( 217, 219, 218 ), PoolIntArray( 221, 220, 222 ), PoolIntArray( 222, 220, 224 ), PoolIntArray( 222, 224, 223 ), PoolIntArray( 226, 225, 227 ), PoolIntArray( 227, 225, 228 ) ]
+[sub_resource type="NavigationMesh" id=4]
+vertices = PoolVector3Array( -4.9, 0.2, -30.4, 1, 0.2, -30.4, 1.4, 0.2, -30.7, 1.4, 0.2, -33.3, -5.3, 0.2, -33.3, -5.3, 0.2, -30.7, -4.9, 0.2, -29.6, -5.3, 0.2, -29.3, -5.3, 0.2, -22.4, 1.4, 0.2, -22.3, 1.4, 0.2, -29.3, 1, 0.2, -29.6, 1, 0.2, -29.6, 1, 0.2, -30.4, -4.9, 0.2, -30.4, -4.9, 0.2, -29.6, -5.7, 0.2, -21.3, -6.3, 0.2, -21.4, -6.3, 0.2, -18.6, -5.6, 0.2, -18.6, -5.3, 0.2, -18.3, -5.3, 0.2, -17.6, 1.4, 0.2, -17.6, 1.4, 0.2, -18.3, 2.4, 0.2, -18.6, 2.3, 0.2, -21.4, 1.7, 0.2, -21.3, 1.7, 0.2, -18.6, 1.4, 0.2, -22.3, -5.3, 0.2, -22.4, -5.3, 0.2, -21.7, 1.4, 0.2, -21.6, 1.4, 0.2, -18.3, 1.7, 0.2, -18.6, 1.7, 0.2, -21.3, -5.7, 0.2, -21.3, -5.6, 0.2, -18.6, -5.3, 0.2, -18.3, 1.4, 0.2, -18.3, 1.7, 0.2, -21.3, 1.4, 0.2, -21.6, -5.3, 0.2, -21.7, -5.7, 0.2, -21.3, -5.3, 0.2, -18.3, -6.3, 0.2, -18.6, -6.3, 0.2, -21.4, -9.4, 0.2, -21.4, -9.4, 0.2, -18.6, 2.4, 0.2, -18.6, 5.4, 0.2, -18.6, 5.4, 0.2, -21.4, 2.3, 0.2, -21.4, -4.9, 0.2, -9.9, 1, 0.2, -9.9, 1, 0.2, -10.3, -4.9, 0.2, -10.3, -5.3, 0.2, -10.6, -4.9, 0.2, -10.3, 1, 0.2, -10.3, 1.4, 0.2, -10.6, 1.4, 0.2, -17.6, -5.3, 0.2, -17.6, -5.5, 0.2, -4.7, -5.5, 0.2, -2.2, -5.3, 0.2, -2.1, -5.2, 0.2, -9.3, -5.9, 0.2, -9.3, -5.9, 0.9, -4.9, -5.5, 0.2, -4.7, -5.3, 0.2, -2.1, -5.3, 0.2, -1.4, 1.4, 0.2, 1.4, 5.4, 0.2, 1.4, 5.4, 0.2, -9.3, 1.3, 0.2, -9.3, -4.9, 0.2, -9.6, -5.2, 0.2, -9.3, -5.5, 0.2, -4.7, -5.3, 0.2, -2.1, 1.3, 0.2, -9.3, 1, 0.2, -9.6, 1, 0.2, -9.6, 1, 0.2, -9.9, -4.9, 0.2, -9.9, -4.9, 0.2, -9.6, -9.3, 1.7, -4.1, -6.4, 1.7, -4, -6.4, 1.3, -4.6, -7.56, 1.3, -4.4, -9.3, 1.7, -4.1, -6.4, 1.3, -4.6, -5.9, 0.9, -4.9, -5.9, 0.2, -9.3, -9.3, 0.2, -9.3, -9.3, 0.2, -5.83333, -7.56, 1.3, -4.4, -6.79993, 0.2, -6.40408, -6.80391, 0.3, -5.8065, -9.3, 0.2, -4.6, -9.3, 0.2, -2.2, -8.4, 0.2, -2.2, -8.4, 0.2, -4.6, -7.5, 0.2, -4.6, -7.5, 0.2, -2.2, -6.4, 0.2, -2.2, -6.4, 0.2, -4.6, -8.9, 3.2, 2, -7, 3.2, 2.1, -7, 3.2, 1.7, -8.9, 3.2, 1.7, -9.3, 3.2, 1.4, -8.9, 3.2, 1.7, -7, 3.2, 1.7, -6.6, 3.2, 1.4, -6.4, 1.7, -4, -9.3, 1.7, -4.1, -9.3, 3.2, -1.9, -6.48, 3.2, -1.84, -8.61, 2, -3.41, -7.99398, 2.6, -2.79242, -7.40199, 2, -3.40121, -5.7, 0.2, -0.899998, -6, 0.2, -0.899998, -6, 0.2, 0.900002, -5.6, 0.2, 0.900002, -4.9, 0.2, 1.7, -4.9, 0.2, 2, 1, 0.2, 2, 1, 0.2, 1.7, -5.3, 0.2, -1.4, -5.7, 0.2, -0.899998, -5.6, 0.2, 0.900002, -4.9, 0.2, 1.7, 1, 0.2, 1.7, 1.4, 0.2, 1.4, -6, 0.2, 0.900002, -6, 0.2, -0.899998, -6.3, 0.2, -0.899998, -6.3, 0.2, 0.900002, -6.3, 0.2, 0.900002, -6.3, 0.2, -0.899998, -6.6, 0.2, -1.3, -9.3, 0.2, -1.3, -9.3, 0.2, 1.4, -6.6, 0.2, 1.4, -7, 3.2, 2.1, -8.9, 3.2, 2, -8.9, 3.2, 2.3, -6.9, 3.2, 2.5, -7, 3.2, 2.1, -8.9, 3.2, 2.3, -9.3, 3.2, 2.6, -9.3, 3.2, 5.4, -6.9, 3.2, 5.4, -5.7, 0.8, 3.8, -6, 0.8, 3.8, -6, 0.8, 4.3, -5.6, 0.2, 4.3, 1.4, 0.2, 2.7, 1, 0.2, 2.4, -4.9, 0.2, 2.4, -5.3, 0.2, 6.8, -5.3, 0.2, 9.4, 1.4, 0.2, 9.4, -5.7, 0.8, 3.8, -5.6, 0.2, 4.3, -5.3, 0.2, 4.6, -5.3, 0.2, 3.4, -4.9, 0.2, 2.4, -5.3, 0.2, 2.7, -5.3, 0.2, 3.4, -4.9, 0.2, 2.4, -5.3, 0.2, 4.6, -5.3, 0.2, 6.8, -5.6, 0.2, 7.1, -5.9, 0.2, 7.1, -5.9, 0.2, 9, -5.6, 0.2, 9, 1, 0.2, 2.4, 1, 0.2, 2, -4.9, 0.2, 2, -4.9, 0.2, 2.4, -5.3, 0.2, 6.8, -5.6, 0.2, 7.1, -5.6, 0.2, 9, -5.3, 0.2, 9.4, -4.9, 0.2, 2.4, -5.3, 0.2, 3.4, -5.3, 0.2, 4.6, 0.6, 3.2, 2.7, 0.3, 3.8, 2.2, -0.2, 3.8, 2.2, -0.599999, 3.2, 2.7, 1.4, 3.2, 5.4, -0.4, 3.2, 2.45, -3.4, 3.2, 2.7, -3.7, 3.8, 2.2, -4.3, 3.8, 2.2, -4.6, 3.2, 2.7, -4.6, 3.2, 2.7, -6.7, 3.2, 2.7, -6.9, 3.2, 5.4, -3.4, 3.2, 2.7, -4.6, 3.2, 2.7, -6.9, 3.2, 5.4, -6.7, 3.2, 2.7, -6.9, 3.2, 2.5, -6.9, 3.2, 5.4, 1.4, 3.2, 5.4, 1.4, 3.2, 2.7, 0.6, 3.2, 2.7, 1.4, 3.2, 5.4, -0.599999, 3.2, 2.7, -3.4, 3.2, 2.7, -6.9, 3.2, 5.4, -6.3, 0.2, 4.3, -6, 0.8, 4.3, -6, 0.8, 3.8, -6.3, 0.2, 3.8, -6.3, 0.2, 9, -6.3, 0.2, 7.1, -6.6, 0.2, 6.8, -13.3, 0.2, 9.4, -6.6, 0.2, 9.4, -6.6, 0.2, 4.6, -6.3, 0.2, 4.3, -6.3, 0.2, 3.8, -6.6, 0.2, 3.5, -13.3, 0.2, 2.7, -6.6, 0.2, 6.8, -6.6, 0.2, 4.6, -13.3, 0.2, 2.7, -13.3, 0.2, 9.4, -5.9, 0.2, 9, -5.9, 0.2, 7.1, -6.3, 0.2, 7.1, -6.3, 0.2, 9, -6.6, 0.2, 3.5, -6.6, 0.2, 2.7, -13.3, 0.2, 2.7 )
+polygons = [ PoolIntArray( 5, 4, 0 ), PoolIntArray( 0, 4, 1 ), PoolIntArray( 1, 4, 2 ), PoolIntArray( 2, 4, 3 ), PoolIntArray( 11, 10, 6 ), PoolIntArray( 6, 10, 7 ), PoolIntArray( 7, 10, 8 ), PoolIntArray( 8, 10, 9 ), PoolIntArray( 15, 14, 12 ), PoolIntArray( 12, 14, 13 ), PoolIntArray( 19, 18, 16 ), PoolIntArray( 16, 18, 17 ), PoolIntArray( 23, 22, 20 ), PoolIntArray( 20, 22, 21 ), PoolIntArray( 26, 25, 27 ), PoolIntArray( 27, 25, 24 ), PoolIntArray( 29, 28, 30 ), PoolIntArray( 30, 28, 31 ), PoolIntArray( 34, 33, 32 ), PoolIntArray( 37, 36, 35 ), PoolIntArray( 39, 38, 40 ), PoolIntArray( 40, 38, 43 ), PoolIntArray( 40, 43, 41 ), PoolIntArray( 41, 43, 42 ), PoolIntArray( 47, 46, 44 ), PoolIntArray( 44, 46, 45 ), PoolIntArray( 49, 48, 50 ), PoolIntArray( 50, 48, 51 ), PoolIntArray( 55, 54, 52 ), PoolIntArray( 52, 54, 53 ), PoolIntArray( 57, 56, 58 ), PoolIntArray( 58, 56, 59 ), PoolIntArray( 59, 56, 61 ), PoolIntArray( 59, 61, 60 ), PoolIntArray( 64, 63, 62 ), PoolIntArray( 67, 66, 68 ), PoolIntArray( 68, 66, 65 ), PoolIntArray( 70, 69, 71 ), PoolIntArray( 71, 69, 72 ), PoolIntArray( 72, 69, 74 ), PoolIntArray( 72, 74, 73 ), PoolIntArray( 76, 75, 77 ), PoolIntArray( 77, 75, 78 ), PoolIntArray( 78, 75, 80 ), PoolIntArray( 78, 80, 79 ), PoolIntArray( 84, 83, 81 ), PoolIntArray( 81, 83, 82 ), PoolIntArray( 87, 86, 88 ), PoolIntArray( 88, 86, 85 ), PoolIntArray( 92, 96, 93 ), PoolIntArray( 93, 96, 94 ), PoolIntArray( 94, 95, 89 ), PoolIntArray( 95, 97, 90 ), PoolIntArray( 90, 97, 91 ), PoolIntArray( 91, 96, 92 ), PoolIntArray( 96, 97, 94 ), PoolIntArray( 94, 97, 95 ), PoolIntArray( 97, 96, 91 ), PoolIntArray( 101, 100, 98 ), PoolIntArray( 98, 100, 99 ), PoolIntArray( 105, 104, 102 ), PoolIntArray( 102, 104, 103 ), PoolIntArray( 109, 108, 106 ), PoolIntArray( 106, 108, 107 ), PoolIntArray( 114, 120, 115 ), PoolIntArray( 115, 118, 116 ), PoolIntArray( 116, 113, 110 ), PoolIntArray( 110, 113, 111 ), PoolIntArray( 111, 113, 112 ), PoolIntArray( 113, 116, 117 ), PoolIntArray( 117, 120, 114 ), PoolIntArray( 120, 118, 115 ), PoolIntArray( 118, 119, 116 ), PoolIntArray( 116, 119, 117 ), PoolIntArray( 117, 119, 120 ), PoolIntArray( 120, 119, 118 ), PoolIntArray( 122, 121, 123 ), PoolIntArray( 123, 121, 124 ), PoolIntArray( 128, 127, 125 ), PoolIntArray( 125, 127, 126 ), PoolIntArray( 130, 129, 131 ), PoolIntArray( 131, 129, 132 ), PoolIntArray( 132, 129, 133 ), PoolIntArray( 133, 129, 134 ), PoolIntArray( 138, 137, 135 ), PoolIntArray( 135, 137, 136 ), PoolIntArray( 140, 139, 141 ), PoolIntArray( 141, 139, 144 ), PoolIntArray( 141, 144, 143 ), PoolIntArray( 141, 143, 142 ), PoolIntArray( 147, 146, 145 ), PoolIntArray( 149, 148, 150 ), PoolIntArray( 150, 148, 151 ), PoolIntArray( 151, 148, 152 ), PoolIntArray( 152, 148, 153 ), PoolIntArray( 155, 154, 156 ), PoolIntArray( 156, 154, 157 ), PoolIntArray( 159, 158, 160 ), PoolIntArray( 160, 158, 161 ), PoolIntArray( 161, 158, 162 ), PoolIntArray( 162, 158, 163 ), PoolIntArray( 165, 164, 166 ), PoolIntArray( 166, 164, 167 ), PoolIntArray( 170, 169, 168 ), PoolIntArray( 173, 172, 171 ), PoolIntArray( 177, 176, 174 ), PoolIntArray( 174, 176, 175 ), PoolIntArray( 181, 180, 178 ), PoolIntArray( 178, 180, 179 ), PoolIntArray( 183, 182, 184 ), PoolIntArray( 184, 182, 185 ), PoolIntArray( 188, 187, 186 ), PoolIntArray( 191, 190, 194 ), PoolIntArray( 194, 190, 192 ), PoolIntArray( 192, 190, 189 ), PoolIntArray( 192, 189, 193 ), PoolIntArray( 197, 196, 198 ), PoolIntArray( 198, 196, 195 ), PoolIntArray( 201, 200, 199 ), PoolIntArray( 204, 203, 202 ), PoolIntArray( 205, 207, 206 ), PoolIntArray( 210, 209, 208 ), PoolIntArray( 212, 211, 213 ), PoolIntArray( 213, 211, 214 ), PoolIntArray( 218, 217, 215 ), PoolIntArray( 215, 217, 216 ), PoolIntArray( 220, 219, 221 ), PoolIntArray( 221, 219, 223 ), PoolIntArray( 221, 223, 222 ), PoolIntArray( 226, 225, 227 ), PoolIntArray( 227, 225, 224 ), PoolIntArray( 227, 224, 228 ), PoolIntArray( 230, 229, 231 ), PoolIntArray( 231, 229, 232 ), PoolIntArray( 236, 235, 233 ), PoolIntArray( 233, 235, 234 ), PoolIntArray( 239, 238, 237 ) ]
 cell/size = 0.1
 cell/height = 0.1
-agent/height = 1.0
+agent/height = 0.5
+agent/radius = 0.4
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -5, 0.2, -30.4, 1.1, 0.2, -30.4, 1.5, 0.2, -30.6, 1.5, 0.2, -33.4, -5.4, 0.2, -33.4, -5.4, 0.2, -30.6, -5, 0.2, -29.6, -5.4, 0.2, -29.4, -5.4, 0.2, -22.4, 1.5, 0.2, -22.3, 1.5, 0.2, -29.4, 1.1, 0.2, -29.6, 1.1, 0.2, -29.6, 1.1, 0.2, -30.4, -5, 0.2, -30.4, -5, 0.2, -29.6, -5.7, 0.2, -21.4, -6.3, 0.2, -21.5, -6.3, 0.2, -18.5, -5.6, 0.2, -18.5, -5.4, 0.2, -18.3, -5.4, 0.2, -17.6, 1.5, 0.2, -17.6, 1.5, 0.2, -18.3, 2.4, 0.2, -18.5, 2.3, 0.2, -21.5, 1.7, 0.2, -21.4, 1.7, 0.2, -18.5, 1.5, 0.2, -22.3, -5.4, 0.2, -22.4, -5.4, 0.2, -21.7, 1.5, 0.2, -21.6, 1.5, 0.2, -18.3, 1.7, 0.2, -18.5, 1.7, 0.2, -21.4, -5.7, 0.2, -21.4, -5.6, 0.2, -18.5, -5.4, 0.2, -18.3, 1.5, 0.2, -18.3, 1.7, 0.2, -21.4, 1.5, 0.2, -21.6, -5.4, 0.2, -21.7, -5.7, 0.2, -21.4, -5.4, 0.2, -18.3, -6.3, 0.2, -18.5, -6.3, 0.2, -21.5, -9.5, 0.2, -21.5, -9.5, 0.2, -18.5, 2.4, 0.2, -18.5, 5.5, 0.2, -18.5, 5.5, 0.2, -21.5, 2.3, 0.2, -21.5, -5, 0.2, -9.9, 1.1, 0.2, -9.9, 1.1, 0.2, -10.3, -5, 0.2, -10.3, -5.4, 0.2, -10.5, -5, 0.2, -10.3, 1.1, 0.2, -10.3, 1.5, 0.2, -10.5, 1.5, 0.2, -17.6, -5.4, 0.2, -17.6, -5.6, 0.2, -4.7, -5.6, 0.2, -2.2, -5.4, 0.2, -2.1, -5.2, 0.2, -9.4, -5.9, 0.2, -9.4, -5.9, 1.1, -4.8, -5.6, 0.2, -4.7, -5.4, 0.2, -2.1, -5.4, 0.2, -1.4, 1.4, 0.2, 1.5, 5.5, 0.2, 1.5, 5.5, 0.2, -9.4, 1.3, 0.2, -9.4, -5, 0.2, -9.9, -5.2, 0.2, -9.4, -5.6, 0.2, -4.7, -5.4, 0.2, -2.1, 1.3, 0.2, -9.4, 1.1, 0.2, -9.9, -9.4, 1.7, -4.1, -6.3, 1.7, -4, -6.3, 1.3, -4.6, -7.85, 1.3, -4.35, -9.4, 1.7, -4.1, -6.3, 1.3, -4.6, -5.9, 1.1, -4.8, -5.9, 0.2, -9.4, -9.4, 0.2, -9.4, -9.4, 0.2, -5.86667, -7.85, 1.3, -4.35, -6.80391, 0.2, -6.4065, -6.80789, 0.3, -5.80892, -6.5, 3, -2.1, -6.3, 3, -2.2, -6.3, 1.7, -4, -9.4, 1.7, -4.1, -8.43333, 2, -3.43333, -7.95, 2.4, -3.1, -9, 3.2, 2, -6.9, 3.2, 2.1, -6.9, 3.2, 1.7, -9, 3.2, 1.7, -9.4, 3.2, 1.5, -9, 3.2, 1.7, -6.9, 3.2, 1.7, -6.5, 3.2, 1.5, -6.5, 3, -2.1, -9.4, 1.7, -4.1, -9.4, 3.2, -1.86, -6.5, 3.2, -1.58572, -7.95, 2.4, -3.1, -8.43333, 2, -3.43333, -8.00199, 3, -2.20121, -7.99398, 3.2, -1.59242, -8.61, 2.6, -2.81, -9.4, 0.2, -2.7, -9.4, 0.2, -2.1, -8.3, 0.2, -2.1, -8.3, 0.2, -2.7, -7.6, 0.2, -2.7, -7.6, 0.2, -2.1, -6.3, 0.2, -2.2, -6.3, 0.2, -2.7, -6, 0.2, 1, -6, 0.2, -1, -6.3, 0.2, -1, -6.5, 0.2, 1.2, -6, 0.2, 1, -6.3, 0.2, -1, -6.5, 0.2, -1.4, -9.4, 0.2, -1.4, -9.4, 0.2, 1.5, -9.4, 0.2, 1.5, -6.5, 0.2, 1.5, -6.5, 0.2, 1.2, -5.6, 0.2, 1, -5.4, 0.2, 1.5, -5, 0.2, 1.7, -5.7, 0.2, -1, -6, 0.2, -1, -6, 0.2, 1, -5.6, 0.2, 1, -5, 0.2, 1.7, -5, 0.2, 2, 1.1, 0.2, 2, 1.1, 0.2, 1.7, -5.4, 0.2, -1.4, -5.7, 0.2, -1, -5.6, 0.2, 1, -5, 0.2, 1.7, 1.1, 0.2, 1.7, 1.4, 0.2, 1.5, -6.9, 3.2, 2.1, -9, 3.2, 2, -9, 3.2, 2.3, -6.7, 3.2, 2.6, -6.9, 3.2, 2.1, -9, 3.2, 2.3, -9.4, 3.2, 2.6, -9.4, 3.2, 5.5, -6.2, 3.2, 5.5, -6.2, 3.2, 5.5, -6.1, 3.2, 2.6, -6.7, 3.2, 2.6, -5.9, 0.2, 7, -5.9, 0.2, 9.1, -5.6, 0.2, 9.1, -5.4, 0.2, 6.8, -5.9, 0.2, 7, -5.6, 0.2, 9.1, -5.4, 0.2, 9.5, 1.5, 0.2, 2.6, 1.1, 0.2, 2.4, -5, 0.2, 2.4, -5.4, 0.2, 6.8, -5.4, 0.2, 9.5, 1.5, 0.2, 9.5, -5, 0.2, 2.4, -5.4, 0.2, 2.6, -5.4, 0.2, 6.8, 1.1, 0.2, 2.4, 1.1, 0.2, 2, -5, 0.2, 2, -5, 0.2, 2.4, -6.3, 0.2, 9.1, -5.9, 0.2, 9.1, -5.9, 0.2, 7, -6.3, 0.2, 9.1, -5.9, 0.2, 7, -6.5, 0.2, 6.8, -13.4, 0.2, 9.5, -6.5, 0.2, 9.5, -6.5, 0.2, 6.8, -6.5, 0.2, 2.6, -13.4, 0.2, 2.6, -13.4, 0.2, 9.5, 1.5, 3.2, 5.5, 1.5, 3.2, 2.6, -6.1, 3.2, 2.6, -6.2, 3.2, 5.5 )
+polygons = [ PoolIntArray( 5, 4, 0 ), PoolIntArray( 0, 4, 1 ), PoolIntArray( 1, 4, 2 ), PoolIntArray( 2, 4, 3 ), PoolIntArray( 11, 10, 6 ), PoolIntArray( 6, 10, 7 ), PoolIntArray( 7, 10, 8 ), PoolIntArray( 8, 10, 9 ), PoolIntArray( 15, 14, 12 ), PoolIntArray( 12, 14, 13 ), PoolIntArray( 19, 18, 16 ), PoolIntArray( 16, 18, 17 ), PoolIntArray( 23, 22, 20 ), PoolIntArray( 20, 22, 21 ), PoolIntArray( 26, 25, 27 ), PoolIntArray( 27, 25, 24 ), PoolIntArray( 29, 28, 30 ), PoolIntArray( 30, 28, 31 ), PoolIntArray( 34, 33, 32 ), PoolIntArray( 37, 36, 35 ), PoolIntArray( 39, 38, 40 ), PoolIntArray( 40, 38, 43 ), PoolIntArray( 40, 43, 41 ), PoolIntArray( 41, 43, 42 ), PoolIntArray( 47, 46, 44 ), PoolIntArray( 44, 46, 45 ), PoolIntArray( 49, 48, 50 ), PoolIntArray( 50, 48, 51 ), PoolIntArray( 55, 54, 52 ), PoolIntArray( 52, 54, 53 ), PoolIntArray( 57, 56, 58 ), PoolIntArray( 58, 56, 59 ), PoolIntArray( 59, 56, 61 ), PoolIntArray( 59, 61, 60 ), PoolIntArray( 64, 63, 62 ), PoolIntArray( 67, 66, 68 ), PoolIntArray( 68, 66, 65 ), PoolIntArray( 70, 69, 71 ), PoolIntArray( 71, 69, 72 ), PoolIntArray( 72, 69, 74 ), PoolIntArray( 72, 74, 73 ), PoolIntArray( 76, 75, 77 ), PoolIntArray( 77, 75, 78 ), PoolIntArray( 78, 75, 79 ), PoolIntArray( 79, 75, 80 ), PoolIntArray( 83, 82, 84 ), PoolIntArray( 84, 82, 81 ), PoolIntArray( 88, 92, 89 ), PoolIntArray( 89, 92, 90 ), PoolIntArray( 90, 91, 85 ), PoolIntArray( 91, 93, 86 ), PoolIntArray( 86, 93, 87 ), PoolIntArray( 87, 92, 88 ), PoolIntArray( 92, 93, 90 ), PoolIntArray( 90, 93, 91 ), PoolIntArray( 93, 92, 87 ), PoolIntArray( 94, 99, 95 ), PoolIntArray( 95, 99, 98 ), PoolIntArray( 95, 98, 96 ), PoolIntArray( 96, 98, 97 ), PoolIntArray( 103, 102, 100 ), PoolIntArray( 100, 102, 101 ), PoolIntArray( 113, 116, 109 ), PoolIntArray( 109, 116, 110 ), PoolIntArray( 110, 115, 104 ), PoolIntArray( 104, 115, 105 ), PoolIntArray( 105, 115, 106 ), PoolIntArray( 106, 115, 107 ), PoolIntArray( 107, 115, 111 ), PoolIntArray( 111, 115, 108 ), PoolIntArray( 108, 114, 112 ), PoolIntArray( 112, 116, 113 ), PoolIntArray( 116, 114, 110 ), PoolIntArray( 110, 114, 115 ), PoolIntArray( 115, 114, 108 ), PoolIntArray( 114, 116, 112 ), PoolIntArray( 120, 119, 117 ), PoolIntArray( 117, 119, 118 ), PoolIntArray( 124, 123, 121 ), PoolIntArray( 121, 123, 122 ), PoolIntArray( 127, 126, 125 ), PoolIntArray( 129, 128, 130 ), PoolIntArray( 130, 128, 131 ), PoolIntArray( 131, 128, 132 ), PoolIntArray( 132, 128, 133 ), PoolIntArray( 136, 135, 134 ), PoolIntArray( 137, 139, 138 ), PoolIntArray( 141, 140, 142 ), PoolIntArray( 142, 140, 143 ), PoolIntArray( 147, 146, 144 ), PoolIntArray( 144, 146, 145 ), PoolIntArray( 149, 148, 150 ), PoolIntArray( 150, 148, 151 ), PoolIntArray( 151, 148, 152 ), PoolIntArray( 152, 148, 153 ), PoolIntArray( 156, 155, 154 ), PoolIntArray( 158, 157, 159 ), PoolIntArray( 159, 157, 160 ), PoolIntArray( 160, 157, 161 ), PoolIntArray( 161, 157, 162 ), PoolIntArray( 165, 164, 163 ), PoolIntArray( 168, 167, 166 ), PoolIntArray( 170, 169, 171 ), PoolIntArray( 171, 169, 172 ), PoolIntArray( 174, 173, 175 ), PoolIntArray( 175, 173, 176 ), PoolIntArray( 176, 173, 177 ), PoolIntArray( 177, 173, 178 ), PoolIntArray( 181, 180, 179 ), PoolIntArray( 185, 184, 182 ), PoolIntArray( 182, 184, 183 ), PoolIntArray( 186, 188, 187 ), PoolIntArray( 190, 189, 191 ), PoolIntArray( 191, 189, 193 ), PoolIntArray( 191, 193, 192 ), PoolIntArray( 195, 194, 196 ), PoolIntArray( 196, 194, 197 ), PoolIntArray( 199, 198, 200 ), PoolIntArray( 200, 198, 201 ) ]
+cell/size = 0.1
+cell/height = 0.1
 agent/radius = 0.25
 
 [sub_resource type="ProceduralSky" id=2]
@@ -60,903 +67,908 @@ glow_bloom = 0.5
 
 [node name="Spatial" type="Spatial"]
 
-[node name="Navigation" type="Navigation" parent="."]
+[node name="NavigationHorker" type="Navigation" parent="."]
 
-[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
-navmesh = SubResource( 1 )
+[node name="NavigationMeshInstanceHorker" type="NavigationMeshInstance" parent="NavigationHorker"]
+navmesh = SubResource( 4 )
 
-[node name="LevelMesh" type="Spatial" parent="Navigation/NavigationMeshInstance"]
+[node name="LevelMesh" type="Spatial" parent="NavigationHorker/NavigationMeshInstanceHorker"]
 
-[node name="Floor_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_13" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_13" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_14" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_14" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_15" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_15" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_16" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_16" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_21" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_21" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_22" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_22" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_23" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_23" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_24" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_24" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -24 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_25" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_25" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_26" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_26" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -28 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_29" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_29" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_30" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_30" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_35" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_35" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_36" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_36" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_37" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_37" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4 )
 material/0 = ExtResource( 27 )
 
-[node name="Floor_38" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_38" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8 )
 material/0 = ExtResource( 27 )
 
-[node name="Floor_39" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_39" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4 )
 material/0 = ExtResource( 27 )
 
-[node name="Floor_40" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_40" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8 )
 material/0 = ExtResource( 27 )
 
-[node name="Floor_31" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_31" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 material/0 = ExtResource( 26 )
 
-[node name="Floor_32" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_32" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_7" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_7" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_11" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_11" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_17" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_17" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 0 )
 material/0 = ExtResource( 27 )
 
-[node name="Floor_20" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_20" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 4 )
 material/0 = ExtResource( 27 )
 
-[node name="Floor_27" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_27" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 4 )
 material/0 = ExtResource( 27 )
 
-[node name="Floor_28" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_28" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4 )
 material/0 = ExtResource( 27 )
 
-[node name="Floor_12" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_12" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_33" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_33" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_34" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_34" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_8" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_8" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
 material/0 = ExtResource( 26 )
 
-[node name="ShortWallCap" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 11 )]
+[node name="ShortWallCap" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 3, 0 )
 skeleton = NodePath("../Floor_34")
 material/0 = ExtResource( 28 )
 
-[node name="Wall" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -8 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_9" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_9" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_10" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_10" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 2.38419e-07 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_71" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_71" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_72" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_72" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.76837e-07, 0, 8 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_73" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_73" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.76837e-07, 0, 8 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_74" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_74" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 8 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_75" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_75" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8, 0, 8 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_76" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_76" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12, 0, 8 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_77" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_77" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -12, 0, 8 )
 material/0 = ExtResource( 28 )
 
-[node name="Wall_78" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_78" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -12, 0, 4 )
 material/0 = ExtResource( 28 )
 
-[node name="Wall_79" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_79" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -12, 0, 4 )
 material/0 = ExtResource( 28 )
 
-[node name="Wall_80" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_80" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -8, 0, 4 )
 material/0 = ExtResource( 28 )
 
-[node name="Wall_82" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_82" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 4 )
 material/0 = ExtResource( 28 )
 
-[node name="Wall_84" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_84" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 3, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_86" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_86" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 3, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_85" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_85" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8, 3, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_87" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_87" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -8, 3, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 0, 2.38419e-07 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_11" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_11" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_21" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_21" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_22" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_22" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_12" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_12" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 3, -8 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_13" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_13" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 3, -4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_14" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_14" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 3, 2.38419e-07 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_15" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_15" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4, 3, 2.38419e-07 )
 material/0 = ExtResource( 31 )
 
-[node name="Ceiling" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 18 )]
+[node name="Ceiling" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 18 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0, 4.76837e-07 )
 skeleton = NodePath("../Wall_5")
 material/0 = ExtResource( 28 )
 
-[node name="Wall_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 0, 4.76837e-07 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 0 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_81" type="MeshInstance" parent="Navigation/NavigationMeshInstance/LevelMesh"]
+[node name="Wall_81" type="MeshInstance" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
 mesh = ExtResource( 30 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_7" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_7" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -8 )
 material/0 = ExtResource( 31 )
 
-[node name="WallEndCap" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 9 )]
+[node name="WallEndCap" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, -2 )
 skeleton = NodePath("../Wall_81")
 material/0 = ExtResource( 31 )
 
-[node name="Wall_8" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_8" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_16" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_16" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 3, -4 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_26" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_26" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.38419e-07, 3, -12 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_27" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_27" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 3, -12 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_31" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_31" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 3, -12 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_32" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_32" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -12 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_33" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_33" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 3, -16 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_34" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_34" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -16 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_35" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_35" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.53674e-07, 3, -16 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_36" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_36" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.53674e-07, 0, -16 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_37" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_37" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.76837e-07, 3, -12 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_38" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_38" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.76837e-07, 0, -12 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_39" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_39" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 3, -24 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_40" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_40" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -24 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_41" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_41" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 3, -28 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_42" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_42" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -28 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_43" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_43" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.53674e-07, 3, -28 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_44" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_44" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.53674e-07, 0, -28 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_47" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_47" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 3, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_48" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_48" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_51" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_51" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_52" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_52" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_53" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_53" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_55" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_55" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -28 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_56" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_56" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -28 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_57" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_57" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_58" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_58" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 3, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_54" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_54" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_49" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_49" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.53674e-07, 3, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_50" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_50" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9.53674e-07, 0, -32 )
 material/0 = ExtResource( 29 )
 
-[node name="Wall_45" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_45" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.76837e-07, 3, -24 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_46" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_46" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -4.76837e-07, 0, -24 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_59" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_59" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_60" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_60" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_61" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_61" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 4, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_62" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_62" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 4, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_63" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_63" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 4, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_64" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_64" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 4, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_65" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_65" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -8, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_66" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_66" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -8, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_67" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_67" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, -8, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_68" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_68" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, -8, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_69" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_69" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -3.93403e-07, 0, 1, 0, 1, 0, -1, 0, -3.93403e-07, -8, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_70" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_70" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -3.93403e-07, 0, 1, 0, 1, 0, -1, 0, -3.93403e-07, -8, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_18" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_18" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 3, 0 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_19" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_19" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 3, -8 )
 material/0 = ExtResource( 31 )
 
-[node name="Wall_20" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 6 )]
+[node name="Wall_20" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorExtendableLeft" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 17 )]
+[node name="DoorExtendableLeft" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableRight" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 19 )]
+[node name="DoorExtendableRight" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableLeft_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 17 )]
+[node name="DoorExtendableLeft_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 17 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 0 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableRight_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 19 )]
+[node name="DoorExtendableRight_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 19 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0, 2.38419e-07 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorFrameExtendable" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 12 )]
+[node name="DoorFrameExtendable" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorFrameExtendable_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 12 )]
+[node name="DoorFrameExtendable_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 12 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorExtendableMiddle" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableMiddle_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, 0 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorFrameExtendableMiddle" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 10 )]
+[node name="DoorFrameExtendableMiddle" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorExtendableMiddle_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableMiddle_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 0 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorFrameExtendableMiddle_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 10 )]
+[node name="DoorFrameExtendableMiddle_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorExtendableLeft_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 17 )]
+[node name="DoorExtendableLeft_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorExtendableRight_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 19 )]
+[node name="DoorExtendableRight_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorExtendableLeft_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 17 )]
+[node name="DoorExtendableLeft_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 17 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, -12 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorExtendableRight_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 19 )]
+[node name="DoorExtendableRight_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 19 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0, -12 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorFrameExtendable_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 12 )]
+[node name="DoorFrameExtendable_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -10 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorFrameExtendable_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 12 )]
+[node name="DoorFrameExtendable_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 12 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorExtendableMiddle_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorExtendableMiddle_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, -12 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorFrameExtendableMiddle_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 10 )]
+[node name="DoorFrameExtendableMiddle_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorExtendableMiddle_7" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_7" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorExtendableMiddle_8" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_8" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, -12 )
 material/0 = ExtResource( 29 )
 
-[node name="DoorFrameExtendableMiddle_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 10 )]
+[node name="DoorFrameExtendableMiddle_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorExtendableLeft_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 17 )]
+[node name="DoorExtendableLeft_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -28 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableRight_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 19 )]
+[node name="DoorExtendableRight_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -28 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableLeft_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 17 )]
+[node name="DoorExtendableLeft_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 17 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, -32 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableRight_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 19 )]
+[node name="DoorExtendableRight_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 19 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0, -32 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorFrameExtendable_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 12 )]
+[node name="DoorFrameExtendable_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -30 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorFrameExtendable_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 12 )]
+[node name="DoorFrameExtendable_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 12 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -30 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorExtendableMiddle_9" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_9" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -28 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableMiddle_10" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_10" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0, -32 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorFrameExtendableMiddle_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 10 )]
+[node name="DoorFrameExtendableMiddle_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -30 )
 material/0 = ExtResource( 28 )
 
-[node name="DoorExtendableMiddle_11" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_11" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -28 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorExtendableMiddle_12" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 14 )]
+[node name="DoorExtendableMiddle_12" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 14 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, -32 )
 material/0 = ExtResource( 31 )
 
-[node name="DoorFrameExtendableMiddle_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 10 )]
+[node name="DoorFrameExtendableMiddle_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -30 )
 material/0 = ExtResource( 28 )
 
-[node name="Stairs" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 15 )]
+[node name="Stairs" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 15 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0, -4 )
-skeleton = NodePath("../../Ceilings/Ceiling_4")
+skeleton = NodePath("../../../../NavigationLanker/Ceilings/Ceiling_4")
 material/0 = ExtResource( 26 )
 material/1 = ExtResource( 31 )
 
-[node name="Stairs_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 15 )]
+[node name="Stairs_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 15 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 0, -4 )
-skeleton = NodePath("../../Ceilings/Ceiling_4")
+skeleton = NodePath("../../../../NavigationLanker/Ceilings/Ceiling_4")
 material/0 = ExtResource( 26 )
 material/1 = ExtResource( 31 )
 
-[node name="Floor_47" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_47" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_48" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_48" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -20 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_49" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_49" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32 )
 material/0 = ExtResource( 26 )
 
-[node name="Floor_50" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 13 )]
+[node name="Floor_50" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -32 )
 material/0 = ExtResource( 26 )
 
-[node name="WallOutsideCorner" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 20 )]
+[node name="WallOutsideCorner" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="WallOutsideCorner_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 20 )]
+[node name="WallOutsideCorner_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="WallOutsideCorner_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 20 )]
+[node name="WallOutsideCorner_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="WallOutsideCorner_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 20 )]
+[node name="WallOutsideCorner_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 20 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="WallOutsideCorner_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 20 )]
+[node name="WallOutsideCorner_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 20 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="WallOutsideCorner_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 20 )]
+[node name="WallOutsideCorner_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 20 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="WallOutsideCorner_7" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 20 )]
+[node name="WallOutsideCorner_7" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 20 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 0, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="WallOutsideCorner_8" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 20 )]
+[node name="WallOutsideCorner_8" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 20 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 3, -20 )
 material/0 = ExtResource( 31 )
 
-[node name="Window" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 16 )]
+[node name="Window" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 16 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 4 )
 material/0 = ExtResource( 28 )
 
-[node name="WindowFrame" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 21 )]
+[node name="WindowFrame" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 21 )]
 transform = Transform( 3.69552e-07, 0, -1, 0, 1, 0, 1, 0, 3.69552e-07, -6, 0, 4 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../NavigationLanker/NavigationMeshInstance")
 material/0 = ExtResource( 28 )
 
-[node name="DoorWide" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 8 )]
+[node name="DoorWide" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 8 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8, 0, 8 )
 skeleton = NodePath("../Window_2")
 material/0 = ExtResource( 28 )
 
-[node name="DoorFrameWide" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 7 )]
+[node name="DoorFrameWide" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 7 )]
 transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -6, 0, 8 )
 skeleton = NodePath("../DoorWide_2")
 material/0 = ExtResource( 28 )
 
-[node name="DoorWide_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 8 )]
+[node name="DoorWide_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 8 )]
 transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -4, 0, 8 )
 skeleton = NodePath("../Window_2")
 material/0 = ExtResource( 28 )
 
-[node name="DoorWide_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 8 )]
+[node name="DoorWide_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 8 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8, 0, 0 )
 skeleton = NodePath("../Window_2")
 material/0 = ExtResource( 31 )
 
-[node name="DoorFrameWide_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 7 )]
+[node name="DoorFrameWide_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 7 )]
 transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -6, 0, -9.53674e-07 )
 skeleton = NodePath("../DoorWide_2")
 material/0 = ExtResource( 27 )
 
-[node name="DoorWide_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 8 )]
+[node name="DoorWide_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 8 )]
 transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -4, 0, -9.53674e-07 )
 skeleton = NodePath("../Window_2")
 material/0 = ExtResource( 31 )
 
-[node name="DoorWide_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 8 )]
+[node name="DoorWide_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -8, 3, 4 )
 skeleton = NodePath("../Window_2")
 material/0 = ExtResource( 28 )
 
-[node name="DoorFrameWide_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 7 )]
+[node name="DoorFrameWide_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -8, 3, 2 )
 skeleton = NodePath("../DoorWide_2")
 material/0 = ExtResource( 28 )
 
-[node name="DoorWide_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 8 )]
+[node name="DoorWide_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 8 )]
 transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -8, 3, -4.76837e-07 )
 skeleton = NodePath("../Window_2")
 material/0 = ExtResource( 28 )
 
-[node name="ShortWall" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 22 )]
+[node name="ShortWall" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 22 )]
 transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -4, 3, 0 )
 skeleton = NodePath("../Window_2")
 material/0 = ExtResource( 29 )
 
-[node name="ShortWall_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 22 )]
+[node name="ShortWall_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 22 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8, 3, 0 )
 skeleton = NodePath("../Window_2")
 material/0 = ExtResource( 29 )
 
-[node name="Window_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 16 )]
+[node name="Window_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 16 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8, 0, 4 )
 material/0 = ExtResource( 28 )
 
-[node name="Window_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 16 )]
+[node name="Window_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 16 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 3, 0 )
 material/0 = ExtResource( 28 )
 
-[node name="WindowFrame_2" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 21 )]
+[node name="WindowFrame_2" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 4.13264e-07, 0, 1, 0, -4.13264e-07, 0, 1, -4, 3, 2 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../NavigationLanker/NavigationMeshInstance")
 material/0 = ExtResource( 28 )
 
-[node name="Window_4" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 16 )]
+[node name="Window_4" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -4, 3, 4 )
 material/0 = ExtResource( 28 )
 
-[node name="Window_5" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 16 )]
+[node name="Window_5" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 16 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, 0 )
 material/0 = ExtResource( 28 )
 
-[node name="WindowFrame_3" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 21 )]
+[node name="WindowFrame_3" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 4.13264e-07, 0, 1, 0, -4.13264e-07, 0, 1, 0, 3, 2 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../NavigationLanker/NavigationMeshInstance")
 material/0 = ExtResource( 28 )
 
-[node name="Window_6" parent="Navigation/NavigationMeshInstance/LevelMesh" instance=ExtResource( 16 )]
+[node name="Window_6" parent="NavigationHorker/NavigationMeshInstanceHorker/LevelMesh" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4.76837e-07, 3, 4 )
 material/0 = ExtResource( 28 )
 
-[node name="Ceilings" type="Spatial" parent="Navigation/NavigationMeshInstance"]
+[node name="NavigationLanker" type="Navigation" parent="."]
 
-[node name="Ceiling" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="NavigationLanker"]
+navmesh = SubResource( 1 )
+
+[node name="Ceilings" type="Spatial" parent="NavigationLanker"]
+
+[node name="Ceiling" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_2" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_2" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 0 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_3" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_3" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 0 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_35" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_35" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_36" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_36" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, 4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_37" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_37" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_4" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_4" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 0 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_5" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_5" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_6" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_6" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_7" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_7" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_8" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_8" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_27" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_27" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 27 )
 
-[node name="Ceiling_28" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_28" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_29" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_29" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_30" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_30" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 27 )
 
-[node name="Ceiling_31" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_31" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 27 )
 
-[node name="Ceiling_32" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_32" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_33" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_33" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_34" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_34" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 27 )
 
-[node name="Ceiling_9" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_9" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_10" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_10" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -8 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_25" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_25" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -32 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_26" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_26" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -32 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_11" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_11" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -8 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
-[node name="Ceiling_12" parent="Navigation/NavigationMeshInstance/Ceilings" instance=ExtResource( 18 )]
+[node name="Ceiling_12" parent="NavigationLanker/Ceilings" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -8 )
-skeleton = NodePath("../../LevelMesh")
+skeleton = NodePath("../../../NavigationHorker/NavigationMeshInstanceHorker/LevelMesh")
 material/0 = ExtResource( 28 )
 
 [node name="Props" type="Spatial" parent="."]

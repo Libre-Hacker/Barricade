@@ -19,14 +19,15 @@ func _process(delta):
 
 func _ready():
 	connect("pistol_equipped", find_parent("FPSPlayer").get_node("HUD/TutorialUI"), "toggle_gun_controls")
+	connect("pistol_equipped", find_parent("FPSPlayer").get_node("HUD/Crosshairs"), "on_pistol_equipped")
 
 func equip():
 	show()
-	set_process(true)
 	primaryFireNode.update_ui()
 	animationPlayer.play("equip")
 	emit_signal("pistol_equipped")
 	yield(animationPlayer, "animation_finished")
+	set_process(true)
 
 
 func unequip():

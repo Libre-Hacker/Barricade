@@ -13,7 +13,6 @@ var spawnQue = 0 # Number of zombies wiating to be spawned.
 var zombiesAlive = 0
 
 onready var spawners = get_tree().get_root().find_node("ZombieSpawners", true, false)
-onready var navigation = get_tree().get_root().find_node("Navigation", true, false)
 
 func _physics_process(_delta):
 	spawn_zombie()
@@ -32,7 +31,6 @@ func spawn_zombie():
 		newZombie.transform.origin = spawnPoint.transform.origin
 		add_child(newZombie)
 		newZombie.get_node("Health").connect("destroyed", self, "_on_zombie_destroyed")
-		newZombie.get_node("Navigator").navigation = navigation
 		spawnQue -= 1 # Need to remove last.
 		zombiesAlive += 1
 

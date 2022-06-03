@@ -26,8 +26,7 @@ angular_damp = 1.0
 script = ExtResource( 1 )
 realName = "Plank"
 followSpeed = 5.0
-rotationAcceleration = 1.0
-maxRotationSpeed = 6.0
+rotationAcceleration = 1.5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 3 )

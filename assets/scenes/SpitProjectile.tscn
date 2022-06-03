@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/textures/Test/splat20.png" type="Texture" id=1]
+[ext_resource path="res://assets/scripts/SpitProjectile.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/Test/splat35.png" type="Texture" id=3]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.100091
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.42844, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+angular_velocity = 90.0
+angular_velocity_random = 1.0
+angle = 90.0
+angle_random = 1.0
+scale_curve = SubResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_transparent = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.682353, 0.87451, 0, 1 )
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=12]
+material = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+angular_velocity = 90.0
+angular_velocity_random = 1.0
+angle = 90.0
+angle_random = 1.0
+scale_curve = SubResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.745098, 0.768627, 0, 1 )
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=7]
+material = SubResource( 6 )
+
+[node name="SpitProjectile" type="RigidBody"]
+collision_layer = 0
+mass = 0.102041
+can_sleep = false
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 67
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Particles_3" type="Particles" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+amount = 1
+explosiveness = 0.5
+randomness = 1.0
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 12 )
+
+[node name="Particles_2" type="Particles" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+amount = 1
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 7 )
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_hit"]

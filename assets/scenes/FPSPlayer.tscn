@@ -82,6 +82,21 @@ shape = SubResource( 9 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
 shape = SubResource( 8 )
 
+[node name="HUD" parent="." instance=ExtResource( 1 )]
+margin_right = -0.00012207
+
+[node name="Leftside" parent="HUD/Crosshairs/AutoRifleCrosshair" index="0"]
+margin_left = -2.0
+margin_top = 8.0
+margin_right = 22.0
+margin_bottom = 32.0
+
+[node name="RightSide" parent="HUD/Crosshairs/AutoRifleCrosshair" index="2"]
+margin_left = 18.0
+margin_top = 8.0
+margin_right = 42.0
+margin_bottom = 32.0
+
 [node name="OccupiedArea" type="Area" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -139,7 +154,7 @@ deathSound = ExtResource( 18 )
 
 [node name="Wallet" type="Node" parent="."]
 script = ExtResource( 10 )
-startingMoney = 5000
+startingMoney = 0
 
 [node name="Footsteps" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
@@ -152,9 +167,6 @@ concreteSounds = [ ExtResource( 28 ), ExtResource( 26 ), ExtResource( 27 ), ExtR
 [node name="FPSMesh" parent="." instance=ExtResource( 3 )]
 
 [node name="AudioManager" parent="." instance=ExtResource( 21 )]
-
-[node name="HUD" parent="." instance=ExtResource( 1 )]
-margin_right = -0.00012207
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 anchor_right = 1.0

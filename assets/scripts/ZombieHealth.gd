@@ -3,7 +3,7 @@ extends Health
 
 export (Array, Resource) var hurtSounds
 export (Resource) var deathSound
-
+export var despawnTime = 3.0
 signal change_state
 
 # Damages zombie and plays audio.
@@ -22,5 +22,5 @@ func is_destroyed():
 		print(get_parent().name, " is destroyed.") # For debugging
 		emit_signal("change_state", 3)
 		emit_signal("destroyed") # Emit signal for zombie manager to spawn another zombie.
-		yield(get_tree().create_timer(3), "timeout")
+		yield(get_tree().create_timer(despawnTime), "timeout")
 		get_parent().queue_free()

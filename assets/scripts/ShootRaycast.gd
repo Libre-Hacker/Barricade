@@ -18,11 +18,13 @@ export (Resource) var fireSound
 var recoilValue : float = 0
 var isReloading : bool = false
 
+signal shot_fired
 signal play_animation(animationName)
 signal play_camera_animation
 signal play_3d_sound
 
 var buletHitParticleNode = preload("res://assets/scenes/BulletHitParticle.tscn")
+var zombieHitEffect = preload("res://assets/scenes/ZombieBloodHit.tscn")
 
 onready var player = find_parent("FPSPlayer*")
 onready var audioPlayer = get_node("AudioStreamPlayer3D")
@@ -35,6 +37,8 @@ const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
 
 func _ready():
 	connect("play_camera_animation", find_parent("Camera").get_node("AnimationPlayer"), "_on_change_animation")
+	connect("play_animation", find_parent("FPSPlayer").get_node("HUD/Crosshairs/PistolCrosshair/AnimationPlayer"), "_on_change_animation")
+	connect("play_animation", find_parent("FPSPlayer").get_node("HUD/Crosshairs/AutoRifleCrosshair/AnimationPlayer"), "_on_change_animation")
 	cooldownTimer.wait_time = 60 / rateOfFire # Convert rounds/minute into time per round.
 	cast_to = Vector3(0,0,maxRange)
 
@@ -48,7 +52,8 @@ func primary_fire():
 	currentAmmo -= 1
 
 	update_ui()
-	emit_signal("play_animation", "primary_fire")
+	emit_signal("play_animation", "Shoot", true)
+	emit_signal("play_animation", "primary_fire", true)
 	emit_signal("play_camera_animation", "recoil")
 	emit_signal("play_3d_sound", fireSound)
 	cooldownTimer.start() # Start CycleTimer so this can't shoot before it is done.
@@ -78,7 +83,13 @@ func change_recoil(value : float):
 
 # Emits a particle effect where the bullet impacted.
 func emitImpactEffect():
-	var particleInstance = buletHitParticleNode.instance()
+	var particleInstance = null
+	if(get_collider().is_in_group("Zombies")):
+		particleInstance = zombieHitEffect.instance()
+	else:
+		particleInstance = buletHitParticleNode.instance()
+	if(particleInstance == null):
+		push_error("No particle effect node assigned!")
 	get_collider().add_child(particleInstance)
 	particleInstance.global_transform.origin = get_collision_point()
 	# Causes the particle to emit perpendicular to the hit surface.
@@ -86,7 +97,6 @@ func emitImpactEffect():
 		particleInstance.rotation_degrees.x = -90
 	else:
 		particleInstance.look_at(get_collision_point() - get_collision_normal(), Vector3.UP) 
-	particleInstance.emitting = true
 
 
 # Starts the reload animation.
