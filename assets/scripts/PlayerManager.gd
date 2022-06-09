@@ -53,3 +53,7 @@ func _on_player_death(player, respawn = false):
 	if(playersAlive <= 0):
 		GameManager._on_all_players_dead()
 		emit_signal("all_players_dead")
+
+func free_all_players():
+	for player in players:
+		player.queue_free()

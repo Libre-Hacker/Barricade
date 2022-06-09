@@ -8,3 +8,4 @@ func _on_Cancel_button_up():
 # Quit the application.
 func _on_Confirm_button_up():
 	get_tree().quit()
+

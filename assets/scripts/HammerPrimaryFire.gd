@@ -49,6 +49,4 @@ func emitImpactEffect():
 	var particleInstance = repairParticleNode.instance()
 	get_collider().add_child(particleInstance)
 	particleInstance.global_transform.origin = get_collision_point()
-	particleInstance.look_at(get_collision_point() + get_collision_normal(), Vector3.UP) # Causes the particle to emit perpendicular to the hit surface.
-	particleInstance.emitting = true
 

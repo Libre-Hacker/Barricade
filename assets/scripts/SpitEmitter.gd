@@ -14,7 +14,7 @@ onready var projectile = preload("res://assets/scenes/SpitProjectile.tscn")
 
 var primaryTarget = null
 var target = null # Keep target variable for optimization.
-var storedTarget = null
+var storedTarget = Vector3.ZERO
 var hitPoint
 
 signal play_animation(animationName)
@@ -33,7 +33,7 @@ func _ready():
 func attack_behaviour():
 	find_target()
 	if(target != null):
-		storedTarget = target
+		storedTarget = target.global_transform.origin
 		emit_signal("play_animation", "Attack", true)
 
 # Establishes a target by checking if there is line of sight to each object
@@ -75,5 +75,5 @@ func shoot_projectiles():
 	for projectiles in projectileCount:
 		var newProjectile = projectile.instance()
 		add_child(newProjectile)
-		newProjectile.look_at(storedTarget.global_transform.origin, Vector3.UP)
+		newProjectile.look_at(storedTarget, Vector3.UP)
 	storedTarget = null

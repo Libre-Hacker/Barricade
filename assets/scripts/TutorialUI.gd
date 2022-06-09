@@ -43,7 +43,9 @@ func toggle_hammer_controls():
 func toggle_prop_controls():
 	if(propEnabled):
 		get_node("VBoxContainer/RotateProps").hide()
+		get_node("VBoxContainer/HoldProp").hide()
 		propEnabled = false
 	else:
 		get_node("VBoxContainer/RotateProps").show()
+		get_node("VBoxContainer/HoldProp").show()
 		propEnabled = true

@@ -10,14 +10,12 @@ func _ready():
 		print("ERROR: Default animation isn't defined.")
 
 # Plays the signaled animation
-func _on_change_animation(animationName, interupt = false):
+func _on_change_animation(animationName, interupt = false, replay = false):
 	if(has_animation(animationName) == false):
-		return
-	if(current_animation == animationName and interupt == false):
 		return
 	if(is_playing() and interupt == false):
 		yield(self, "animation_finished")
-	if(interupt == true):
+	if(replay):
 		stop(true)
 	play(animationName)
 

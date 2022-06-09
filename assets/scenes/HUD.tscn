@@ -48,7 +48,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Rightside:rect_position")
+tracks/0/path = NodePath("r:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -60,7 +60,7 @@ tracks/0/keys = {
 "values": [ Vector2( 18, 8 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("LeftSide:rect_position")
+tracks/1/path = NodePath("l:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -76,7 +76,7 @@ tracks/1/keys = {
 resource_name = "Shoot"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Rightside:rect_position")
+tracks/0/path = NodePath("r:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -88,7 +88,7 @@ tracks/0/keys = {
 "values": [ Vector2( 30, 8 ), Vector2( 18, 8 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("LeftSide:rect_position")
+tracks/1/path = NodePath("l:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -119,6 +119,7 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
+mouse_filter = 2
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -133,6 +134,7 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -149,6 +151,7 @@ rect_min_size = Vector2( 32, 32 )
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 16, 16 )
 rect_clip_content = true
+mouse_filter = 2
 texture = ExtResource( 11 )
 expand = true
 __meta__ = {
@@ -166,6 +169,7 @@ margin_right = 16.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 32, 32 )
 rect_clip_content = true
+mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 1 )
@@ -183,6 +187,7 @@ rect_min_size = Vector2( 32, 32 )
 rect_rotation = 270.0
 rect_pivot_offset = Vector2( 16, 16 )
 rect_clip_content = true
+mouse_filter = 2
 texture = ExtResource( 11 )
 expand = true
 __meta__ = {
@@ -194,7 +199,6 @@ anims/Shoot = SubResource( 1 )
 script = ExtResource( 12 )
 
 [node name="AutoRifleCrosshair" type="Control" parent="Crosshairs"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -203,19 +207,21 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Rightside" type="TextureRect" parent="Crosshairs/AutoRifleCrosshair"]
+[node name="r" type="TextureRect" parent="Crosshairs/AutoRifleCrosshair"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -2.0
-margin_top = -12.0
-margin_right = 22.0
-margin_bottom = 12.0
+margin_left = 18.0
+margin_top = 8.0
+margin_right = 42.0
+margin_bottom = 32.0
+mouse_filter = 2
 texture = ExtResource( 16 )
 expand = true
 flip_h = true
@@ -233,18 +239,20 @@ margin_top = -8.0
 margin_right = 8.0
 margin_bottom = 8.0
 rect_min_size = Vector2( 16, 16 )
+mouse_filter = 2
 texture = ExtResource( 15 )
 expand = true
 
-[node name="LeftSide" type="TextureRect" parent="Crosshairs/AutoRifleCrosshair"]
+[node name="l" type="TextureRect" parent="Crosshairs/AutoRifleCrosshair"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -22.0
-margin_top = -12.0
-margin_right = 2.0
-margin_bottom = 12.0
+margin_left = -2.0
+margin_top = 8.0
+margin_right = 22.0
+margin_bottom = 32.0
+mouse_filter = 2
 texture = ExtResource( 16 )
 expand = true
 __meta__ = {
@@ -266,6 +274,7 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -281,6 +290,7 @@ margin_right = 12.0
 margin_bottom = 12.0
 rect_min_size = Vector2( 8, 8 )
 rect_clip_content = true
+mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 14 )

@@ -9,6 +9,7 @@ signal autorifle_equipped
 func _ready():
 	connect("autorifle_equipped", find_parent("FPSPlayer").get_node("HUD/TutorialUI"), "toggle_gun_controls")
 	connect("autorifle_equipped", find_parent("FPSPlayer").get_node("HUD/Crosshairs"), "on_autorifle_equipped")
+	set_process(false)
 
 func _process(delta):
 	if(GameManager.isPaused):

@@ -12,25 +12,25 @@ onready var randomPoint = round(rand_range(-2,2))
 onready var navigation = get_tree().get_root().find_node("Navigation" + navigationType, true, false)
 
 # Need to replace this with an aggro system for multiplayer.
-onready var player = get_tree().get_root().find_node("FPSPlayer", true, false)
+onready var AIController = get_parent().get_node("AIController")
 
 
 func _on_NavigationTimer_timeout():
-	if(get_parent().get_node("AIController").currentState != get_parent().get_node("AIController").AI_STATE.SEEK):
+	if(AIController.currentState != get_parent().get_node("AIController").AI_STATE.SEEK):
 		pathPoints = []
 		return
-	if(get_parent().transform.origin.distance_to(player.transform.origin) > 4):
-		calculate_path(player.transform.origin + Vector3(randomPoint,0,0))
+	if(get_parent().transform.origin.distance_to(AIController.currentTarget.transform.origin) > 4):
+		calculate_path(AIController.currentTarget.transform.origin + Vector3(randomPoint,0,0))
 		return
-	elif(get_parent().transform.origin.distance_to(player.transform.origin) > 1):
-		calculate_path(player.transform.origin)
+	elif(get_parent().transform.origin.distance_to(AIController.currentTarget.transform.origin) > 1):
+		calculate_path(AIController.currentTarget.transform.origin)
 	else:
 		pathPoints = []
 
 # Updates the pathPoints to the current target.
 func calculate_path(destination):
 	# Doesn't calculate a path if the target is within the targetMargin.
-	if(global_transform.origin.distance_to(player.transform.origin) < targetMargin):
+	if(global_transform.origin.distance_to(AIController.currentTarget.transform.origin) < targetMargin):
 		return
 	pathPoints = navigation.get_simple_path(global_transform.origin, destination)
 	pathIndex = 0

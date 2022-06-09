@@ -5,6 +5,8 @@ var currentWeaponIndex : int = 0 # Currently equipped weapon. Default 0.
 var switchInProgress = false # Prevents switching multiple times.
 var enabled = true # Is switching enabled.
 
+signal switch_complete
+
 func _ready():
 	for child in get_child_count():
 		get_child(child).hide()
@@ -55,12 +57,17 @@ func switch_weapons(index = -1):
 
 	yield(get_child(currentWeaponIndex).equip(), "completed")
 	switchInProgress = false
+	emit_signal("switch_complete")
 
 # Adds a new weapon to the gun belt.
 func add_weapon(newWeapon):
 	newWeapon.hide()
 	newWeapon.set_process(false)
 	add_child(newWeapon)
+	if(switchInProgress):
+		yield(self, "switch_complete")
+		print("YEND")
+	print("Switching")
 	set_current_weapon_index(newWeapon.get_index())
 
 # Enables weapons when not phased.

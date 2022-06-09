@@ -15,8 +15,8 @@ onready var primaryAttack = get_node("PrimaryAttack")
 func _physics_process(delta):
 	if(primaryAttack.target != null):
 		look_at_target(primaryAttack.target.global_transform.origin, delta)
-	elif(global_transform.origin.distance_to(navigator.player.transform.origin) < 3):
-		look_at_target(navigator.player.transform.origin, delta)
+	elif(global_transform.origin.distance_to(navigator.AIController.currentTarget.transform.origin) < 3):
+		look_at_target(navigator.AIController.currentTarget.transform.origin, delta)
 	elif(navigator.has_path()):
 		look_at_target(navigator.get_current_path_point(), delta)
 

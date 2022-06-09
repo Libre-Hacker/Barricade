@@ -52,7 +52,7 @@ func primary_fire():
 	currentAmmo -= 1
 
 	update_ui()
-	emit_signal("play_animation", "Shoot", true)
+	emit_signal("play_animation", "Shoot", true, true)
 	emit_signal("play_animation", "primary_fire", true)
 	emit_signal("play_camera_animation", "recoil")
 	emit_signal("play_3d_sound", fireSound)

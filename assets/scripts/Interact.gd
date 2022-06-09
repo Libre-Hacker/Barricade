@@ -33,8 +33,6 @@ func _unhandled_input(event):
 func _physics_process(_delta):
 	is_prop_in_range()
 	show_ui_prompt()
-	if(Input.is_action_pressed("rotate_prop") and is_holding_prop()):
-		rotate_prop(mouseX, mouseY)
 
 func show_ui_prompt():
 	if(is_colliding() == false):
@@ -56,6 +54,10 @@ func interact():
 
 	if(get_collider().is_in_group("Interactables")):
 		get_collider().buy_item(get_owner())
+		return
+	
+	if(get_collider().is_in_group("Core")):
+		pickup_prop()
 		return
 
 	if(get_collider().is_in_group("Props") and get_collider().isNailed == false):

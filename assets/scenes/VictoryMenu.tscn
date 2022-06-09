@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/Pixeled.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/MALERMEI.TTF" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/scripts/VictoryMenu.gd" type="Script" id=4]
 [ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sounds/music/Half-Life17.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/button-click.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=4]
 size = 48
@@ -26,6 +27,7 @@ font_data = SubResource( 3 )
 [node name="VictoryMenu" type="CanvasLayer"]
 script = ExtResource( 4 )
 music = ExtResource( 6 )
+clickSound = ExtResource( 7 )
 
 [node name="AudioManager" parent="." instance=ExtResource( 5 )]
 
@@ -93,3 +95,7 @@ __meta__ = {
 
 [connection signal="button_up" from="VBoxContainer/ReturnToMainMenu" to="." method="_on_ReturnToMainMenu_button_up"]
 [connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_Quit_button_up"]
+[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_ui_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_ui_pressed"]
+
+[editable path="Popup"]

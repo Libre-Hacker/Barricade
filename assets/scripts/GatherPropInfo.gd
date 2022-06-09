@@ -6,10 +6,11 @@ const maxHealth = preload("res://assets/resources/max_prop_health.tres")
 const propName = preload("res://assets/resources/prop_name.tres")
 
 func gather_prop_info():
-	if(is_colliding() and get_collider().is_in_group("Props")):
-		update_ui(get_collider())
-	else:
-		propName.Value = ""
+	if(is_colliding()):
+		if(get_collider().is_in_group("Props") or get_collider().is_in_group("Core")):
+			update_ui(get_collider())
+			return
+	propName.Value = ""
 
 func update_ui(prop):
 	currentHealth.Value = prop.get_node("Health").health

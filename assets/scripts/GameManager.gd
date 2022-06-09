@@ -7,6 +7,8 @@ var roundManager : Node
 
 var isPaused = false
 
+var core = null
+
 func _ready():
 	MenuSwitcher.load_scene("res://assets/scenes/MainMenu.tscn")
 	set_process_unhandled_input(false)
@@ -35,6 +37,9 @@ func start_game():
 	MenuSwitcher.unload_scene()
 	set_process_unhandled_input(true)
 	instance_managers()
+	core = get_tree().get_root().find_node("Core",true,false)
+	if(core == null):
+		push_error("Core not found!!")
 
 # Instances and connects the player, zombie, and round managers.
 func instance_managers():
@@ -74,6 +79,7 @@ func end_game():
 	set_process_unhandled_input(false)
 	
 	zombieManager.queue_free()
+	playerManager.free_all_players()
 	playerManager.queue_free()
 	roundManager.queue_free()
 	

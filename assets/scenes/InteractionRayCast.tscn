@@ -8,7 +8,5 @@ enabled = true
 cast_to = Vector3( 0, 0, 2 )
 collision_mask = 4
 script = ExtResource( 1 )
-maxInteractionDistance = 2.5
-ignoreOwner = true
 
 [node name="HoldPoint" type="Position3D" parent="."]

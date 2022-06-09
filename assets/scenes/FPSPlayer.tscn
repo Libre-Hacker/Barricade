@@ -85,18 +85,6 @@ shape = SubResource( 8 )
 [node name="HUD" parent="." instance=ExtResource( 1 )]
 margin_right = -0.00012207
 
-[node name="Leftside" parent="HUD/Crosshairs/AutoRifleCrosshair" index="0"]
-margin_left = -2.0
-margin_top = 8.0
-margin_right = 22.0
-margin_bottom = 32.0
-
-[node name="RightSide" parent="HUD/Crosshairs/AutoRifleCrosshair" index="2"]
-margin_left = 18.0
-margin_top = 8.0
-margin_right = 42.0
-margin_bottom = 32.0
-
 [node name="OccupiedArea" type="Area" parent="."]
 collision_layer = 0
 collision_mask = 4

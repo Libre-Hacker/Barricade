@@ -8,6 +8,7 @@ export (float) var followSpeed : float = 7.5 # The speed the prop moves while he
 export (float) var rotationAcceleration = 2 # The speed the prop can rotate.
 export (float) var maxRotationSpeed = 20
 
+var holdInPlace = false
 var nodeToFollow : Node # Node the prop follows while picked up.
 var isNailed : bool = false
 
@@ -39,6 +40,7 @@ func pickup(assignedNode, player):
 # Called from outside class.
 func drop():
 	nodeToFollow = null
+	holdInPlace = false
 	gravity_scale = 1
 	if(get_node("OccupiedArea").bodyCount.size() > 0):
 		yield(get_node("OccupiedArea"), "area_empty")
@@ -52,7 +54,10 @@ func drop():
 # Moves this object to the nodeToFollow variable.
 func followPoint():
 	if(is_picked_up()):
-
+		if(holdInPlace):
+			linear_velocity = Vector3.ZERO
+			angular_velocity = Vector3.ZERO
+			return
 		var moveDistance = (nodeToFollow.global_transform.origin - transform.origin) * followSpeed
 		linear_velocity = moveDistance # Use physics to detect collisions.
 
@@ -60,7 +65,8 @@ func followPoint():
 func mouse_rotate(mouseMovement, snapping):
 	var xRot = Vector3.ZERO
 	var yRot = Vector3.ZERO
-	
+	if(holdInPlace):
+		return
 	if(mouseMovement.length() == 0):
 		return
 

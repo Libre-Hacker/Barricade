@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/scripts/Navigator.gd" type="Script" id=1]
-[ext_resource path="res://assets/Enemies/Material_001.material" type="Material" id=2]
+[ext_resource path="res://Blender/Characters/Horker/Textures/Horker.png" type="Texture" id=2]
 [ext_resource path="res://assets/scripts/SpitEmitter.gd" type="Script" id=3]
 [ext_resource path="res://assets/scripts/LineOfSight.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/zo_pain2.wav" type="AudioStream" id=5]
@@ -127,6 +127,9 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 1.12405, 0 ), Vector3( 0, 1.18603, 0 ), Vector3( 0, 1.18603, 0 ), Vector3( 0, 1.12405, 0 ) ]
 }
 
+[sub_resource type="SpatialMaterial" id=47]
+albedo_texture = ExtResource( 2 )
+
 [sub_resource type="ArrayMesh" id=36]
 resource_name = "Horker_Horker"
 surfaces/0 = {
@@ -136,7 +139,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 306,
-"material": ExtResource( 2 ),
+"material": SubResource( 47 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 220
