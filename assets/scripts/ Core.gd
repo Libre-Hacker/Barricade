@@ -7,6 +7,7 @@ export (String) var realName = "Core" # The name of the prop, for UI use.
 export (float) var followSpeed : float = 7.5 # The speed the prop moves while held.
 
 var nodeToFollow : Node # Node the prop follows while picked up.
+var holdInPlace = false
 
 signal damage_taken
 signal repair_received

@@ -1,0 +1,634 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://assets/scripts/HitscanGun.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/HitscanBullet.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/ShotgunMuzzleFlash.png" type="Texture" id=3]
+[ext_resource path="res://assets/scripts/Shotgun.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=5]
+[ext_resource path="res://assets/sounds/sbarrel1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sounds/scock1.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/reload3.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/textures/crosshairs/crosshair193.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/crosshairs/crosshair121.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/crosshairs/crosshair121a.png" type="Texture" id=12]
+[ext_resource path="res://assets/scenes/AmmoCount.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/scripts/Ejector.gd" type="Script" id=14]
+[ext_resource path="res://assets/scenes/ShotgunBulletCasing.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/meshes/ShotgunCasingMesh.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/meshes/Bennelli_M4Mesh.tscn" type="PackedScene" id=17]
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.606, -0.305084, -1.48383 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bennelli/Pump:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Bennelli/OmniLight:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Bennelli/ShotgunCasing:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1.299, -1.883, 1.716 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Bennelli/ShotgunCasing:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Bennelli/Sprite3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "equip"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -25.622, -4.54379e-06, -36.816 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 4, -2, 0 ), Vector3( 0.606, -0.486, -2.029 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "primary_fire"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.606, -0.305084, -1.48383 ), Vector3( 0.606, -0.486, -2.029 ), Vector3( 0.606, -0.486, -2.029 ), Vector3( 0.606, -0.486, -1.88895 ), Vector3( 0.606, -0.486, -2.029 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 11.4434, -3.51425, -17.1992 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 3.4937, -0.483842, -7.88975 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bennelli/Pump:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0.598835 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../AudioManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ ExtResource( 6 ) ],
+"method": "new_3d_sound"
+}, {
+"args": [ ExtResource( 8 ) ],
+"method": "new_3d_sound"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Bennelli/OmniLight:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("Bennelli/Ejector")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "eject_shell"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Bennelli/Sprite3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.0501513 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "reload"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.606, -0.486, -2.029 ), Vector3( 1.08496, -0.486, -2.029 ), Vector3( 0.606, -0.486, -2.029 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 10.6708, -5.62638, -28.0149 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../AudioManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 9 ) ],
+"method": "new_3d_sound"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../PrimaryFire")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "endReload"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Bennelli/ShotgunCasing:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -1.299, -1.883, 1.716 ), Vector3( -0.0121416, -0.482084, 0.31107 ), Vector3( 0.0322366, -0.244123, 0.00270104 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Bennelli/ShotgunCasing:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "unequip"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.606, -0.486, -2.029 ), Vector3( 4, -3, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -21.4956, 7.25223, -19.1514 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "primary_fire"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../HUD/Crosshair/LeftSide:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -16, 12 ), Vector2( -8, 12 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../HUD/Crosshair/Rightside:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 46, 12 ), Vector2( 38, 12 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../HUD/Crosshair/TopSide:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 12, -14 ), Vector2( 12, -6 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../HUD/Crosshair/BottomSide:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 12, 46 ), Vector2( 12, 38 ) ]
+}
+
+[node name="Shotgun" type="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+addAmmoSound = ExtResource( 9 )
+
+[node name="PrimaryFire" type="Spatial" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Controls the primary fire functionality."
+}
+ammoCapacity = 8
+reserveAmmo = 32
+maxReserveAmmo = 32
+damage = 16.0
+bulletForce = 20.0
+cycleTime = 0.8
+minRecoilValue = 1.3
+maxRecoilSpread = Vector2( 2, 2 )
+minRecoilSpread = Vector2( -2, -2 )
+
+[node name="RayCast" type="RayCast" parent="PrimaryFire"]
+enabled = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 193
+collide_with_areas = true
+script = ExtResource( 2 )
+
+[node name="RayCast_2" type="RayCast" parent="PrimaryFire"]
+enabled = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 193
+collide_with_areas = true
+script = ExtResource( 2 )
+
+[node name="RayCast_3" type="RayCast" parent="PrimaryFire"]
+enabled = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 193
+collide_with_areas = true
+script = ExtResource( 2 )
+
+[node name="RayCast_4" type="RayCast" parent="PrimaryFire"]
+enabled = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 193
+collide_with_areas = true
+script = ExtResource( 2 )
+
+[node name="RayCast_5" type="RayCast" parent="PrimaryFire"]
+enabled = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 193
+collide_with_areas = true
+script = ExtResource( 2 )
+
+[node name="RayCast_6" type="RayCast" parent="PrimaryFire"]
+enabled = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 193
+collide_with_areas = true
+script = ExtResource( 2 )
+
+[node name="CycleTimer" type="Timer" parent="PrimaryFire"]
+one_shot = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Bennelli_M4" parent="." instance=ExtResource( 17 )]
+transform = Transform( -0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, -0.029, -0.048, 0.058 )
+
+[node name="RootNode" parent="Bennelli_M4" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.606, -0.305084, -1.48383 )
+
+[node name="Pump" parent="Bennelli_M4/RootNode/Bennelli" index="0"]
+transform = Transform( 1, -1.83267e-10, 2.02505e-10, -2.17833e-10, 1, 0, -3.58369e-10, 1.86265e-08, 1, 0, 0, 0 )
+
+[node name="OmniLight" type="OmniLight" parent="Bennelli_M4/RootNode/Bennelli" index="2"]
+transform = Transform( 9.57082, -2.89817, 2.90713e-06, 2.83521, 9.36293, 2.07297, -0.600783, -1.984, 9.78278, -1.07288e-06, -0.0365203, -3.71063 )
+visible = false
+
+[node name="ShotgunCasing" parent="Bennelli_M4/RootNode/Bennelli" index="3" instance=ExtResource( 16 )]
+transform = Transform( -0.1, 2.79397e-10, -9.11483e-09, -1.86265e-10, 0.1, -1.62838e-17, 8.36977e-09, -1.49012e-09, -0.1, -1.299, -1.883, 1.716 )
+visible = false
+
+[node name="Ejector" type="Spatial" parent="Bennelli_M4/RootNode/Bennelli" index="4"]
+transform = Transform( -1, 4.65662e-09, 1.4727e-07, 0, 1, 1.49012e-08, -1.54721e-07, 1.69407e-21, -1, 0.113545, 0.125759, 0.584259 )
+script = ExtResource( 14 )
+primaryShell = ExtResource( 15 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Bennelli_M4/RootNode/Bennelli" index="5"]
+transform = Transform( 2, 0, 1.13687e-13, 0, 2, 0, -1.13687e-13, 0, 2, 8.9407e-07, 0, -3.78776 )
+visible = false
+texture = ExtResource( 3 )
+
+[node name="AudioManager" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 0.998893, 0.0470367, 0, -0.0470367, 0.998893, 0, 0.00286487, -0.00344467 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Bennelli_M4/RootNode")
+anims/RESET = SubResource( 14 )
+anims/equip = SubResource( 4 )
+anims/primary_fire = SubResource( 6 )
+anims/reload = SubResource( 5 )
+anims/unequip = SubResource( 7 )
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" type="Control" parent="HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftSide" type="TextureRect" parent="HUD/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -8.0
+margin_right = -28.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 16 )
+rect_pivot_offset = Vector2( 4, 8 )
+rect_clip_content = true
+mouse_filter = 2
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rightside" type="TextureRect" parent="HUD/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 26.0
+margin_top = -8.0
+margin_right = 34.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 16 )
+rect_pivot_offset = Vector2( 16, 16 )
+rect_clip_content = true
+mouse_filter = 2
+texture = ExtResource( 12 )
+expand = true
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopSide" type="TextureRect" parent="HUD/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -34.0
+margin_right = 8.0
+margin_bottom = -26.0
+rect_min_size = Vector2( 16, 8 )
+rect_pivot_offset = Vector2( 16, 16 )
+rect_clip_content = true
+mouse_filter = 2
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomSide" type="TextureRect" parent="HUD/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = 26.0
+margin_right = 8.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 16, 8 )
+rect_pivot_offset = Vector2( 16, 16 )
+rect_clip_content = true
+mouse_filter = 2
+texture = ExtResource( 11 )
+expand = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterPoint" type="TextureRect" parent="HUD/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 24, 24 )
+rect_clip_content = true
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Crosshair"]
+anims/primary_fire = SubResource( 13 )
+script = ExtResource( 5 )
+
+[node name="AmmoCount" parent="HUD" instance=ExtResource( 13 )]
+
+[connection signal="play_animation" from="PrimaryFire" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="play_animation" from="PrimaryFire" to="HUD/Crosshair/AnimationPlayer" method="_on_change_animation"]
+[connection signal="update_ammo_display" from="PrimaryFire" to="HUD/AmmoCount" method="update_ui"]
+
+[editable path="Bennelli_M4"]

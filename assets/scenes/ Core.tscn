@@ -45,8 +45,8 @@ shape = SubResource( 2 )
 [node name="Health" type="Spatial" parent="."]
 script = ExtResource( 2 )
 
-[node name="HitBox" type="Area" parent="." groups=["Players"]]
-collision_layer = 2
+[node name="HitBox" type="Area" parent="." groups=["Cores", "Players", "Repairables"]]
+collision_layer = 64
 collision_mask = 0
 script = ExtResource( 1 )
 
@@ -62,5 +62,6 @@ script = ExtResource( 4 )
 shape = SubResource( 4 )
 
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
 [connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]

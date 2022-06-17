@@ -22,10 +22,15 @@ func _unhandled_input(event):
 		mouseX = event.relative.x
 		mouseY = event.relative.y
 		get_tree().get_root().set_input_as_handled()
+		rotate_prop(mouseX,mouseY)
 		return
 	else:
 		mouseX = 0
 		mouseY = 0
+	if(is_holding_prop() and Input.is_action_pressed("hold_prop_in_place")):
+		propInUse.holdInPlace = true
+	elif(is_holding_prop()):
+		propInUse.holdInPlace = false
 	if(event.is_action_pressed("interact")):
 		interact()
 		get_tree().get_root().set_input_as_handled()
@@ -66,10 +71,7 @@ func interact():
 # Gathers mouse input and sends it to the prop in use to be rotated.
 func rotate_prop(x, y):
 	var mouseMovement = Vector3(x, y, 0) * 0.1
-	var snapping = false
-	if(Input.is_action_pressed("rotate_snap")):
-		snapping = true
-	propInUse.mouse_rotate(mouseMovement, snapping)
+	propInUse.mouse_rotate(mouseMovement)
 
 # Sets the targeted prop to follow the assigned point.
 func pickup_prop():

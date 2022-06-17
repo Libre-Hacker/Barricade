@@ -17,6 +17,8 @@ func heal(value = 0, entity = null):
 	emit_signal("hitbox_hit_heal", value, entity)
 
 
-func get_health():
-	var healthValues = [get_parent().get_node("Health").health, get_parent().get_node("Health").maxHealth]
-	return healthValues
+func is_repairable():
+	if(get_parent().get_node("Health").health < get_parent().get_node("Health").maxHealth and get_parent().isNailed):
+		return true
+	else:
+		return false

@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Equippable",
 "language": "GDScript",
-"path": "res://assets/scripts/Class_Equippable.gd"
+"path": "res://assets/scripts/Template_Gun.gd"
 }, {
 "base": "Resource",
 "class": "FloatReference",
@@ -195,11 +195,6 @@ phase={
 pause={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
-}
-rotate_snap={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 hold_prop_in_place={

@@ -35,7 +35,6 @@ func find_new_target():
 			_on_change_state(1)
 	else:
 		currentTarget = GameManager.core
-	print(currentTarget)
 
 # Sends the signal for the current state.
 func send_current_state(delta):

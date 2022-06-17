@@ -40,7 +40,7 @@ script = ExtResource( 4 )
 health = 200.0
 maxHealth = 200.0
 
-[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props"]]
+[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props", "Repairables"]]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource( 5 )

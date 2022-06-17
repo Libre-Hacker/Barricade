@@ -7,7 +7,10 @@ export (Resource) var healSound
 
 # Applies damage.
 func _on_hitbox_collision(value, entity):
+	if(get_parent().isNailed):
+		return
 	.damage(value)
+	AudioManager.new_3d_sound(hurtSound,global_transform.origin)
 	is_destroyed()
 
 # Applies haling.
@@ -15,6 +18,7 @@ func _on_hitbox_hit_heal(value, entity):
 	if(.heal(value)):
 		emit_signal("health_changed", entity, value)
 	emit_signal("play_3d_sound", healSound, global_transform.origin)
+	print(health)
 
 # Overrides the base function for player specific uses. Handles respawning and audio.
 func is_destroyed():

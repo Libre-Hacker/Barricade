@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sounds/ZapSplat/zapsplat_foley_cash_register_ka_ching_002_44083.mp3" type="AudioStream" id=2]
 [ext_resource path="res://assets/scripts/VendingMachine.gd" type="Script" id=3]
-[ext_resource path="res://assets/scenes/AutoRifle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/sounds/ZapSplat/zapsplat_multimedia_game_error_tone_007_24925.mp3" type="AudioStream" id=5]
 
 [sub_resource type="BoxShape" id=1]
@@ -43,7 +42,6 @@ script = ExtResource( 3 )
 price = 1000
 primaryAmmo = 60
 ammoPrice = 200
-weapon = ExtResource( 4 )
 purchaseSound = ExtResource( 2 )
 insufficientFundsSound = ExtResource( 5 )
 

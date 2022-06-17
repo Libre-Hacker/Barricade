@@ -24,7 +24,7 @@ func _physics_process(delta):
 
 # Gets a new target from the PlayerManager.
 func find_new_target():
-	if(rand_range(0,1) > 0.5):
+	if(rand_range(0,1) > 0.25):
 		if(GameManager.playerManager.players.size() != 0):
 			currentTarget = GameManager.playerManager.players[0]
 		else:
@@ -34,7 +34,6 @@ func find_new_target():
 			_on_change_state(1)
 	else:
 		currentTarget = GameManager.core
-	print(currentTarget)
 
 # Sends the signal for the current state.
 func send_current_state(delta):

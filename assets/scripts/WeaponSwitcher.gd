@@ -9,8 +9,10 @@ signal switch_complete
 
 func _ready():
 	for child in get_child_count():
+		if(child == currentWeaponIndex):
+			continue
 		get_child(child).hide()
-		get_child(child).set_process(false)
+		get_child(child).unequip()
 	switch_weapons() # Switch to weapon 0 or all weapons will be active at game start.
 
 
@@ -46,7 +48,7 @@ func set_current_weapon_index(value : int):
 # Unequips active weapon, and equips the weapon at the current index.
 func switch_weapons(index = -1):
 	switchInProgress = true
-	# Loop through all children, unequip any equipped weaons. Equip the new weapon.
+	# Loop through all children, unequip any equipped weapons. Equip the new weapon.
 	for weapon in get_child_count():
 		var iteratedNode = get_child(weapon)
 		if(iteratedNode.is_processing()):
@@ -66,8 +68,6 @@ func add_weapon(newWeapon):
 	add_child(newWeapon)
 	if(switchInProgress):
 		yield(self, "switch_complete")
-		print("YEND")
-	print("Switching")
 	set_current_weapon_index(newWeapon.get_index())
 
 # Enables weapons when not phased.

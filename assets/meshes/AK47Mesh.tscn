@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/meshes/AK47.gltf" type="PackedScene" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.701961, 0.243137, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.65098, 0.65098, 0.65098, 1 )
+
+[node name="AK47" instance=ExtResource( 1 )]
+
+[node name="AK47" parent="RootNode" index="0"]
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+
+[node name="Bolt" parent="RootNode/AK47" index="0"]
+material/0 = SubResource( 3 )
+
+[node name="Mag" parent="RootNode/AK47" index="1"]
+material/0 = SubResource( 1 )
+
+[node name="Trigger" parent="RootNode/AK47" index="2"]
+material/0 = SubResource( 1 )

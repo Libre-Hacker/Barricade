@@ -40,7 +40,7 @@ maxHealth = 80.0
 payoutOnDeath = false
 rewardAmount = 10
 
-[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props"]]
+[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props", "Repairables"]]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource( 2 )

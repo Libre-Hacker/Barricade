@@ -1,24 +1,29 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/scripts/HammerPrimaryFire.gd" type="Script" id=1]
-[ext_resource path="res://assets/scenes/HammerModel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/meshes/HammerMesh.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/animations/hammer/equip.tres" type="Animation" id=3]
 [ext_resource path="res://assets/animations/hammer/unequip.tres" type="Animation" id=4]
-[ext_resource path="res://assets/scripts/HammerAltFire.gd" type="Script" id=5]
+[ext_resource path="res://assets/sounds/claw_miss2.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/scripts/Hammer.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=7]
-[ext_resource path="res://assets/scripts/GatherPropInfo.gd" type="Script" id=8]
-[ext_resource path="res://assets/sounds/metal1.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/sounds/cbar_miss1.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/scripts/HitscanRepair.gd" type="Script" id=9]
 [ext_resource path="res://assets/sounds/ZapSplat/industrial_plastic_box_of_drywall_screws_movement_2.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/textures/crosshairs/crosshair188.png" type="Texture" id=12]
 [ext_resource path="res://assets/sounds/metal6.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/scenes/AmmoCount.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/scripts/HurtBox.gd" type="Script" id=16]
+[ext_resource path="res://assets/scripts/HammerAltFire.gd" type="Script" id=17]
+[ext_resource path="res://assets/sounds/metal1.wav" type="AudioStream" id=18]
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.5, 0.5, 1 )
+
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/HammerModel:translation")
+tracks/0/path = NodePath("HammerMesh/RootNode:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -30,7 +35,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/HammerModel:rotation_degrees")
+tracks/1/path = NodePath("HammerMesh/RootNode:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -40,99 +45,250 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("HammerMesh/RootNode:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 2.63902, 0.353554 ),
+"update": 0,
+"values": [ Vector3( -0.466392, 0.05064, 0 ), Vector3( -0.136707, -0.285353, 0.163711 ), Vector3( 0.433972, -0.0151983, 0.404557 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HammerMesh/RootNode:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 2.63902, 0.353554 ),
+"update": 0,
+"values": [ Vector3( -15.25, -1.91116e-06, 33.968 ), Vector3( -9.471, -7.15656e-06, 78.3743 ), Vector3( 6.91819e-06, -7.48982e-06, 104.866 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("PrimaryFire/HurtBox")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "damageAll"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("AudioManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 5 ) ],
+"method": "new_3d_sound"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
-length = 0.7
+length = 0.6
 tracks/0/type = "value"
-tracks/0/path = NodePath("Pivot/HammerModel:rotation_degrees")
+tracks/0/path = NodePath("HammerMesh/RootNode:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 0.0544094, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 15, 0, 0 ), Vector3( 5, 0, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 2.5442e-07, -1.93867e-06, 14.953 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Pivot/HammerModel:translation")
+tracks/1/path = NodePath("HammerMesh/RootNode:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 0.0544094, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, -0.2 ), Vector3( 0, 0, 0.2 ), Vector3( 0, 0, 0.2 ), Vector3( 0, 0.1, 0.1 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.0665497, -0.362419, -4.47035e-08 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "repair"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("HammerMesh/RootNode:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 0.0544094, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 2.5442e-07, -1.93867e-06, 14.953 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HammerMesh/RootNode:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 0.0544094, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.0665497, -0.362419, -4.47035e-08 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AudioManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 18 ) ],
+"method": "new_3d_sound"
+} ]
 }
 
 [node name="Hammer" type="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 6 )
 addAmmoSound = ExtResource( 11 )
 
-[node name="Repair" type="RayCast" parent="."]
+[node name="PrimaryFire" type="Spatial" parent="."]
+script = ExtResource( 1 )
+repairAmount = 20.0
+repairCycleTime = 0.6
+damage = 10.0
+attackCycleTime = 0.7
+
+[node name="Repair" type="RayCast" parent="PrimaryFire"]
 enabled = true
 cast_to = Vector3( 0, 0, 1.8 )
-collision_mask = 193
+collision_mask = 65
 collide_with_areas = true
 collide_with_bodies = false
-script = ExtResource( 1 )
-repairRange = 3.0
-repairAmount = 20.0
-damage = 25.0
-swingSound = ExtResource( 10 )
-hitSound = ExtResource( 9 )
+script = ExtResource( 9 )
 
-[node name="Cooldown" type="Timer" parent="Repair"]
+[node name="CycleTimer" type="Timer" parent="PrimaryFire"]
 wait_time = 0.7
 one_shot = true
 __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
 
-[node name="Nail" type="RayCast" parent="."]
+[node name="HurtBox" type="Area" parent="PrimaryFire"]
+collision_layer = 0
+collision_mask = 193
+script = ExtResource( 16 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PrimaryFire/HurtBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+shape = SubResource( 6 )
+
+[node name="AltFire" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 0, 3 )
 collision_mask = 5
-script = ExtResource( 5 )
+script = ExtResource( 17 )
 ammo = 5
 maxAmmo = 10
+cycleTime = 0.6
 nailRange = 3.0
 nailMargin = 0.2
 nailSound = ExtResource( 13 )
 
-[node name="Cooldown" type="Timer" parent="Nail"]
+[node name="CycleTimer" type="Timer" parent="AltFire"]
 wait_time = 0.7
 one_shot = true
 __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
 
-[node name="InfoGather" type="RayCast" parent="."]
-enabled = true
-cast_to = Vector3( 0, 0, 3 )
-collision_mask = 5
-script = ExtResource( 8 )
+[node name="HammerMesh" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1.91069e-16, -4.37114e-09, 0.1, -0.1, -4.37114e-09, 0, 4.37114e-09, -0.1, -4.37114e-09, -0.021, -0.021, 0.026 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/attack = SubResource( 4 )
 anims/equip = ExtResource( 3 )
-anims/idle = SubResource( 1 )
 anims/nail = SubResource( 2 )
+anims/repair = SubResource( 7 )
 anims/unequip = ExtResource( 4 )
 script = ExtResource( 7 )
 
-[node name="Pivot" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257752, -0.421191, 0.648785 )
-
-[node name="HammerModel" parent="Pivot" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
-
 [node name="AudioManager" parent="." instance=ExtResource( 14 )]
 
-[connection signal="play_3d_sound" from="Repair" to="AudioManager" method="new_3d_sound"]
-[connection signal="play_animation" from="Repair" to="AnimationPlayer" method="_on_change_animation"]
-[connection signal="play_3d_sound" from="Nail" to="AudioManager" method="new_3d_sound"]
-[connection signal="play_animation" from="Nail" to="AnimationPlayer" method="_on_change_animation"]
+[node name="HUD" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" type="Control" parent="HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterPoint" type="TextureRect" parent="HUD/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -18.0
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 24, 24 )
+rect_clip_content = true
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmmoCount" parent="HUD" instance=ExtResource( 15 )]
+
+[connection signal="play_animation" from="PrimaryFire" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="play_3d_sound" from="AltFire" to="AudioManager" method="new_3d_sound"]
+[connection signal="play_animation" from="AltFire" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="update_ammo_display" from="AltFire" to="HUD/AmmoCount" method="update_ui"]
+
+[editable path="HammerMesh"]

@@ -1,7 +1,5 @@
 extends Control
 
-var hammerEnabled = false
-var gunEnabled = false
 var propEnabled = false
 
 onready var enabled = Settings.settings.miscSettings[1][0]
@@ -17,27 +15,19 @@ func _process(delta):
 
 
 func toggle_gun_controls():
-	if(gunEnabled):
-		get_node("VBoxContainer/Reload").hide()
-		get_node("VBoxContainer/Shoot").hide()
-		gunEnabled = false
-	else:
-		get_node("VBoxContainer/Reload").show()
-		get_node("VBoxContainer/Shoot").show()
-		gunEnabled = true
+	get_node("VBoxContainer/Nail").hide()
+	get_node("VBoxContainer/Repair").hide()
+	get_node("VBoxContainer/RemoveNail").hide()
+	get_node("VBoxContainer/Reload").show()
+	get_node("VBoxContainer/Shoot").show()
 
 
 func toggle_hammer_controls():
-	if(hammerEnabled):
-		get_node("VBoxContainer/Nail").hide()
-		get_node("VBoxContainer/Repair").hide()
-		get_node("VBoxContainer/RemoveNail").hide()
-		hammerEnabled = false
-	else:
-		get_node("VBoxContainer/Nail").show()
-		get_node("VBoxContainer/Repair").show()
-		get_node("VBoxContainer/RemoveNail").show()
-		hammerEnabled = true
+	get_node("VBoxContainer/Reload").hide()
+	get_node("VBoxContainer/Shoot").hide()
+	get_node("VBoxContainer/Nail").show()
+	get_node("VBoxContainer/Repair").show()
+	get_node("VBoxContainer/RemoveNail").show()
 
 
 func toggle_prop_controls():

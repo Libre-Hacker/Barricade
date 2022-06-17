@@ -31,10 +31,6 @@ onready var audioPlayer = get_node("AudioStreamPlayer3D")
 onready var cooldownTimer = get_node("Cooldown")
 onready var currentAmmo = ammoCapacity
 
-const uiLoadedAmmo = preload("res://assets/resources/loaded_ammo.tres")
-const uiReserveAmmo = preload("res://assets/resources/reserve_ammo.tres")
-
-
 func _ready():
 	connect("play_camera_animation", find_parent("Camera").get_node("AnimationPlayer"), "_on_change_animation")
 	connect("play_animation", find_parent("FPSPlayer").get_node("HUD/Crosshairs/PistolCrosshair/AnimationPlayer"), "_on_change_animation")
@@ -111,11 +107,9 @@ func startReload():
 # Called by the animator after the reload has been completed.
 func endReload():
 	isReloading = false
-	var ammoToReload : int
-	if(reserveAmmo < ammoCapacity):
+	var ammoToReload = ammoCapacity - currentAmmo
+	if(reserveAmmo < ammoToReload):
 		ammoToReload = reserveAmmo
-	else:
-		ammoToReload = ammoCapacity - currentAmmo
 	
 	currentAmmo += ammoToReload
 	reserveAmmo -= ammoToReload
@@ -138,5 +132,4 @@ func add_ammo(value):
 
 
 func update_ui():
-	uiLoadedAmmo.Value = currentAmmo
-	uiReserveAmmo.Value = reserveAmmo
+	pass

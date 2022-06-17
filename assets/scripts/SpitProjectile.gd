@@ -1,7 +1,6 @@
 extends RigidBody
 
 var damage = 5
-var velocity = Vector3.ZERO
 var shot = false
 var spread = 0.2
 
@@ -18,6 +17,5 @@ func _physics_process(delta):
 
 func _on_area_hit(area):
 	if(area.is_in_group("Players") or area.is_in_group("Props")):
-		print("Hit")
 		area.damage(damage)
 	queue_free()
