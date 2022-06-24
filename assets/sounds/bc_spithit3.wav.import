@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bc_spithit3.wav-6865b2129aed9eae55f4efe63ef68e3c.sample"
+
+[deps]
+
+source_file="res://assets/sounds/bc_spithit3.wav"
+dest_files=[ "res://.import/bc_spithit3.wav-6865b2129aed9eae55f4efe63ef68e3c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

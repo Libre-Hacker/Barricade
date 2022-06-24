@@ -99,6 +99,102 @@ tracks/4/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("AK47/RootNode/AK47/Mag:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.436202, -0.277833, 0.0489548 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AK47/RootNode/AK47/Mag:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -6.72579, 11.9727, -27.4393 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("AK47/RootNode/AK47/Mag:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("AK47/RootNode/MagEjected:translation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("AK47/RootNode/MagEjected:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -8.14222e-13, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("AK47/RootNode/MagEjected:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("AK47/RootNode/AK47:translation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("AK47/RootNode/AK47:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "equip"
@@ -486,6 +582,10 @@ one_shot = true
 [node name="AK47" parent="." instance=ExtResource( 16 )]
 transform = Transform( -0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, -0.05, -0.055, 0.13 )
 
+[node name="Mag" parent="AK47/RootNode/AK47" index="1"]
+transform = Transform( 0.879389, 0.429222, 0.206018, -0.457637, 0.881392, 0.117118, -0.131313, -0.197274, 0.971514, -0.436202, -0.277833, 0.0489548 )
+visible = false
+
 [node name="Ejector" type="Spatial" parent="AK47/RootNode/AK47" index="3"]
 transform = Transform( -0.1, 0, -1.50996e-08, 0, 0.1, 0, 1.50996e-08, 0, -0.1, 1.49012e-08, 0.0152523, -0.0601311 )
 script = ExtResource( 6 )
@@ -497,8 +597,7 @@ visible = false
 texture = ExtResource( 17 )
 
 [node name="MagEjected" type="MeshInstance" parent="AK47/RootNode" index="1"]
-transform = Transform( 0.897642, -0.172699, -0.405475, 0.440539, 0.378013, 0.814267, 0.0126518, -0.909548, 0.415403, 5.21541e-08, -0.636834, -0.287807 )
-visible = false
+transform = Transform( 0.999998, 0, -1.42109e-14, 0, 0.999998, 0, 1.42108e-14, 0, 1, 0, 0, 0 )
 mesh = SubResource( 4 )
 skeleton = NodePath("")
 material/0 = SubResource( 1 )
@@ -510,7 +609,6 @@ visible = false
 [node name="AudioManager" parent="." instance=ExtResource( 8 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-reset_on_save = false
 anims/RESET = SubResource( 14 )
 anims/equip = SubResource( 5 )
 anims/primary_fire = SubResource( 7 )
@@ -584,15 +682,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 8.0
-margin_bottom = 8.0
-rect_min_size = Vector2( 16, 16 )
-rect_clip_content = true
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 32, 32 )
 mouse_filter = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {

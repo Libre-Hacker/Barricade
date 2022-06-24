@@ -39,6 +39,8 @@ func equip():
 func unequip():
 	if(primaryFire.isReloading):
 		primaryFire.isReloading = false
+		animationPlayer.play("RESET")
+		yield(animationPlayer, "animation_finished")
 	set_process(false)
 	animationPlayer.play("unequip")
 	yield(animationPlayer, "animation_finished")

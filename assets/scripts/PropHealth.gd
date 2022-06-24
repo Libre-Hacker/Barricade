@@ -7,7 +7,7 @@ export (Resource) var healSound
 
 # Applies damage.
 func _on_hitbox_collision(value, entity):
-	if(get_parent().isNailed):
+	if(entity != null and entity.is_in_group("Players") and get_parent().isNailed):
 		return
 	.damage(value)
 	AudioManager.new_3d_sound(hurtSound,global_transform.origin)

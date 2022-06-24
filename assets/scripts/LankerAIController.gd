@@ -17,6 +17,7 @@ onready var obstructedTimer = get_node("ObstructedTimer")
 func _ready():
 	GameManager.playerManager.connect("player_died", self, "find_new_target")
 	find_new_target()
+	get_parent().get_node("PrimaryAttack/PlayerDetector").target = currentTarget
 
 # Use physics process, because the behaviour nodes rely on physics.
 func _physics_process(delta):
@@ -24,6 +25,8 @@ func _physics_process(delta):
 
 # Gets a new target from the PlayerManager.
 func find_new_target():
+	currentTarget = GameManager.playerManager.players[0]
+	return
 	if(rand_range(0,1) > 0.25):
 		if(GameManager.playerManager.players.size() != 0):
 			currentTarget = GameManager.playerManager.players[0]

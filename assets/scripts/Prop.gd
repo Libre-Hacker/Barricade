@@ -62,7 +62,7 @@ func followPoint():
 		linear_velocity = moveDistance # Use physics to detect collisions.
 
 # Rotates this object relative to the nodeToFollow.
-func mouse_rotate(mouseMovement, snapping):
+func mouse_rotate(mouseMovement):
 	var xRot = Vector3.ZERO
 	var yRot = Vector3.ZERO
 	if(holdInPlace):

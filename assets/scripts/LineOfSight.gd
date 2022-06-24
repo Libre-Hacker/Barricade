@@ -11,5 +11,4 @@ func has_line_of_sight(object):
 		var collision = ray.get_collider()
 		ray.enabled = false
 		if(collision == object):
-			get_parent().hitPoint = ray.get_collision_point()
 			return true

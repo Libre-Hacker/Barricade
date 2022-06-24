@@ -12,12 +12,13 @@ signal attack
 signal seek
 signal play_animation
 
-onready var obstructedTimer = get_node("ObstructedTimer")
 onready var deathParticles = preload("res://assets/scenes/BloodExplosionParticle.tscn")
+onready var propDetector = get_parent().get_node("PropDetector")
 
 func _ready():
 	GameManager.playerManager.connect("player_died", self, "find_new_target")
 	find_new_target()
+	get_parent().get_node("PrimaryAttack/PlayerDetector").target = currentTarget
 
 # Use physics process, because the behaviour nodes rely on physics.
 func _physics_process(delta):
@@ -25,7 +26,9 @@ func _physics_process(delta):
 
 # Gets a new target from the PlayerManager.
 func find_new_target():
-	if(rand_range(0,1) > 0.5):
+	currentTarget = GameManager.playerManager.players[0]
+	return
+	if(rand_range(0,1) > 0.2):
 		if(GameManager.playerManager.players.size() != 0):
 			currentTarget = GameManager.playerManager.players[0]
 		else:
@@ -45,7 +48,7 @@ func send_current_state(delta):
 			emit_signal("seek", delta)
 			emit_signal("play_animation", "Walk")
 		AI_STATE.ATTACK:
-			emit_signal("attack")
+			get_parent().get_node("PrimaryAttack").attack_behaviour()
 		AI_STATE.DEAD:
 			var newParticle = deathParticles.instance()
 			newParticle.global_transform.origin = get_parent().get_node("Horker").global_transform.origin
@@ -61,10 +64,3 @@ func _on_change_state(newState : int):
 		return
 	currentState = newState
 	print("Switching state to: ", AI_STATE.keys()[currentState])
-
-func _on_PrimaryAttack_targets_available():
-	_on_change_state(2)
-
-func _on_PrimaryAttack_targets_unavailable():
-	if(GameManager.playerManager.players.size() != 0):
-		_on_change_state(1)

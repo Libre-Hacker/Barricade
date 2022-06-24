@@ -6,12 +6,15 @@ export (float, 0, 10) var  multiplier = 1 # Multiply the damaged received by thi
 signal hitbox_collision
 signal hitbox_hit_heal
 signal ragdoll_collision
+signal apply_status_effect
 
 
 # Called by the attacker to cause damage.
-func damage(value = 0, entity = null, hitDirection = Vector3.ZERO):
+func damage(value = 0, entity = null, hitDirection = Vector3.ZERO, statusEffect = null):
 	emit_signal("hitbox_collision", value * multiplier, entity)
 	emit_signal("ragdoll_collision", hitDirection)
+	if(statusEffect != null):
+		emit_signal("apply_status_effect", statusEffect)
 
 func heal(value = 0, entity = null):
 	emit_signal("hitbox_hit_heal", value, entity)

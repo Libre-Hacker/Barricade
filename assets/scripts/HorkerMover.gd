@@ -11,6 +11,7 @@ signal play_animation
 onready var aiController = get_node("AIController")
 onready var navigator = get_node("Navigator")
 onready var primaryAttack = get_node("PrimaryAttack")
+onready var lineOfSight = get_node("LineOfSight")
 
 func _physics_process(delta):
 	if(is_instance_valid(primaryAttack.currentTarget)):
@@ -38,3 +39,4 @@ func move(direction):
 
 func disable_collisions():
 	get_node("ColliderMain").disabled = true
+

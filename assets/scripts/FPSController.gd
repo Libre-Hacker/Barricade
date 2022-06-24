@@ -13,12 +13,12 @@ export (Resource) var landSound
 
 var falling = false
 var velocity : Vector3 = Vector3() # The velocity and direction to move the player by.
+var speedModifier = 1.0
 
 onready var baseMoveSpeed = moveSpeed # Players base move speed before any modifiers.
 onready var audioManager = get_node("AudioManager")
 onready var footSteps = get_node("Footsteps")
 onready var occupiedArea = get_node("OccupiedArea") # Area taken up by the player.
-
 
 func _physics_process(_delta): # Use physics because this uses a KinematicBody.
 	if(GameManager.isPaused): # Disables input when game is paused.
@@ -46,8 +46,12 @@ func move():
 
 # Calculates this objects velocity.
 func calculate_movement():
-	velocity.x = get_input().x * moveSpeed
-	velocity.z = get_input().z * moveSpeed
+	if(get_node("StatusEffects").get_child_count() > 0):
+		speedModifier = get_node("StatusEffects").get_child(0).speedModifier
+	else:
+		speedModifier = 1.0
+	velocity.x = get_input().x * (moveSpeed * speedModifier)
+	velocity.z = get_input().z * (moveSpeed * speedModifier)
 	
 	if(jump()):
 		return

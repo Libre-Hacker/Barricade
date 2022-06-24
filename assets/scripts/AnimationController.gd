@@ -19,14 +19,11 @@ func _on_change_animation(animationName, interupt = false, replay = false, speed
 		stop(true)
 	play(animationName,-1,speed)
 
-
 func has_animation(animationName):
 	for animation in get_animation_list():
 		if(animation == animationName):
 			return true
 	return false
-
-
 
 # Plays the default animation if set.
 func _on_animation_finished(_anim_name):

@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/textures/Test/splat20.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/SpitProjectile.gd" type="Script" id=2]
 [ext_resource path="res://assets/textures/Test/splat35.png" type="Texture" id=3]
+[ext_resource path="res://assets/sounds/bc_spithit3.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/scenes/StickySpit.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.100091
@@ -14,6 +16,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.42844, 0.0, 0, 0 
 curve = SubResource( 8 )
 
 [sub_resource type="ParticlesMaterial" id=10]
+gravity = Vector3( 0, 0, 0 )
 angular_velocity = 90.0
 angular_velocity_random = 1.0
 angle = 90.0
@@ -33,6 +36,7 @@ albedo_texture = ExtResource( 3 )
 material = SubResource( 11 )
 
 [sub_resource type="ParticlesMaterial" id=5]
+gravity = Vector3( 0, 0, 0 )
 angular_velocity = 90.0
 angular_velocity_random = 1.0
 angle = 90.0
@@ -53,9 +57,11 @@ material = SubResource( 6 )
 
 [node name="SpitProjectile" type="RigidBody"]
 collision_layer = 0
-mass = 0.102041
+mass = 0.05
 can_sleep = false
 script = ExtResource( 2 )
+hitSound = ExtResource( 4 )
+statusEffect = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
