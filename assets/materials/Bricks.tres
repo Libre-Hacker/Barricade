@@ -1,13 +1,7 @@
-[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://assets/textures/Bricks023_1K_AmbientOcclusion.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/Bricks023_1K_Color_Pixelized.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/Vol_18_2_Metals_Base_color.png" type="Texture" id=1]
 
 [resource]
-albedo_texture = ExtResource( 4 )
-ao_enabled = true
-ao_light_affect = 0.0
-ao_texture = ExtResource( 2 )
-ao_on_uv2 = false
-ao_texture_channel = 0
-uv1_scale = Vector3( 2, 2, 1 )
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 3, 3, 3 )

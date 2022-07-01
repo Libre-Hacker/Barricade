@@ -75,10 +75,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Wishlist" type="Button" parent="VBoxContainer"]
 margin_top = 150.0
 margin_right = 390.0
 margin_bottom = 194.0
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "WISHLIST ON STEAM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+margin_top = 198.0
+margin_right = 390.0
+margin_bottom = 242.0
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "QUIT"
@@ -103,6 +114,7 @@ __meta__ = {
 
 [connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_Start_button_up"]
 [connection signal="button_up" from="VBoxContainer/Options" to="." method="_on_Options_button_up"]
+[connection signal="button_up" from="VBoxContainer/Wishlist" to="." method="_on_Wishlist_button_up"]
 [connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_Quit_button_up"]
 [connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_ui_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_ui_pressed"]

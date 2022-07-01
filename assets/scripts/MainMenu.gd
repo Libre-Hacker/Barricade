@@ -27,3 +27,11 @@ func _on_Quit_button_up():
 
 func _on_ui_pressed():
 	AudioManager.new_sound(clickSound)
+
+
+func _on_Wishlist_button_up():
+	var res = OS.shell_open("steam://advertise/2006180")
+	if(res != OK):
+		OS.shell_open("https://store.steampowered.com/app/2006180/Barricade/")
+	
+	get_tree().quit()

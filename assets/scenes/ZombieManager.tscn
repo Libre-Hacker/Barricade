@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/scripts/ZombieManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Lanker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/Horker.tscn" type="PackedScene" id=3]
 
 [node name="ZombieManager" type="Node"]
 script = ExtResource( 1 )
 maxZombiesPerRound = [ 0, 1, 5, 10 ]
 respawnTime = 7.5
-zombies = [ ExtResource( 2 ) ]
+zombies = [ ExtResource( 2 ), ExtResource( 3 ) ]
