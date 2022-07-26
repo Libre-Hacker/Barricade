@@ -40,7 +40,10 @@ func nail():
 	emit_signal("play_animation", "nail")
 	emit_signal("nail_prop")
 	cycleTimer.start()
-	create_nail(propData,surfaceData)
+	var midpoint = (propData.collisionPoint + surfaceData.collisionPoint) / 2
+	rpc("create_nail", midpoint, surfaceData.collisionPoint, propData.collider.get_path())
+	ammo -= 1
+	update_ui()
 
 # Queries the RaycastAll data for the first StaticBody. We always want the first to prevent a nail
 # being created through multiple walls.
@@ -57,27 +60,28 @@ func get_prop(raycastData):
 			return collisionData
 
 # Spawns a nail instance, setting the transforms, and parent. Only unnailed props can be nailed.
-func create_nail(propData, surfaceData):
+sync func create_nail(position, direction, prop):
+	print(position, direction, prop)
 	var nailInstance = nailNode.instance()
-	var midpoint = (propData.collisionPoint + surfaceData.collisionPoint) / 2
-	ammo -= 1
-	update_ui()
-	propData.collider.add_child(nailInstance)
-	nailInstance.global_transform.origin = midpoint
-	nailInstance.look_at(propData.collisionPoint, Vector3.UP)
-	propData.collider.nail() # Tell the prop it has been nailed, so it can handle it's state.
+	get_node(prop).add_child(nailInstance)
+	nailInstance.global_transform.origin = position
+	nailInstance.look_at(direction, Vector3.UP)
+	get_node(prop).nail() # Tell the prop it has been nailed, so it can handle it's state.
 
 # Removes a nail from a prop. Returning the prop to its rigidbody state.
 func remove_nail():
 	if(is_colliding() == false or get_collider().is_in_group("Props") == false or get_collider().isNailed == false or cycleTimer.is_stopped() == false):  
 		return
-	get_collider().unnail()
-	get_collider().get_node("Nail").queue_free()
 	emit_signal("play_animation", "nail")
 	emit_signal("play_3d_sound", nailSound)
 	cycleTimer.start()
 	ammo += 1
 	update_ui()
+	rpc("remove_nail_on_all_clients", get_collider().get_path())
+
+sync func remove_nail_on_all_clients(prop):
+	get_node(prop).unnail()
+	get_node(prop).get_node("Nail").queue_free()
 
 func is_ammo_full():
 	if(ammo == maxAmmo):

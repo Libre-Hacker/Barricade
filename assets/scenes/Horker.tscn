@@ -217,7 +217,7 @@ maxHealth = 50.0
 hurtSounds = [ ExtResource( 7 ), ExtResource( 5 ) ]
 despawnTime = 0.0
 
-[node name="Reward" parent="." instance=ExtResource( 18 )]
+[node name="Reward" parent="Health" instance=ExtResource( 18 )]
 
 [node name="PrimaryAttack" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -320,6 +320,12 @@ lifetime = 2.0
 process_material = SubResource( 42 )
 draw_pass_1 = SubResource( 44 )
 
+[node name="Tween" type="Tween" parent="."]
+
+[node name="NetworkTickRate" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="play_animation" from="." to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="attack" from="AIController" to="PrimaryAttack/PropDetector" method="attack_behaviour"]
 [connection signal="play_animation" from="AIController" to="AnimationPlayer" method="_on_change_animation"]
@@ -328,9 +334,7 @@ draw_pass_1 = SubResource( 44 )
 [connection signal="timeout" from="Navigator/NavigationTimerLong" to="Navigator" method="_on_NavigationTimer_timeout"]
 [connection signal="change_state" from="Health" to="AIController" method="_on_change_state"]
 [connection signal="destroyed" from="Health" to="." method="disable_collisions"]
-[connection signal="destroyed" from="Health" to="Reward" method="distribute_reward"]
 [connection signal="destroyed" from="Health" to="IdleAudio" method="_on_destroyed"]
-[connection signal="health_changed" from="Health" to="Reward" method="add_contribution"]
 [connection signal="play_animation" from="PrimaryAttack" to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="targets_available" from="PrimaryAttack" to="AIController" method="_on_change_state" binds= [ 2 ]]
 [connection signal="targets_unavailable" from="PrimaryAttack" to="AIController" method="_on_change_state" binds= [ 1 ]]
@@ -344,3 +348,4 @@ draw_pass_1 = SubResource( 44 )
 [connection signal="play_3dsound" from="IdleAudio" to="AudioManager" method="new_3d_sound"]
 [connection signal="timeout" from="IdleAudio/Timer" to="IdleAudio" method="_on_Timer_timeout"]
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]

@@ -85,6 +85,8 @@ LevelSwitcher="*res://assets/scripts/SceneSwitcher.gd"
 GameManager="*res://assets/scripts/GameManager.gd"
 MenuSwitcher="*res://assets/scripts/SceneSwitcher.gd"
 AudioManager="*res://assets/scripts/AudioManager.gd"
+SteamGlobals="*res://addons/godotsteam/steam.gd"
+Network="*res://assets/scripts/Network.gd"
 
 [debug]
 
@@ -102,6 +104,10 @@ window/stretch/aspect="expand"
 [editor]
 
 reimport_missing_imported_files=false
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
 
 [gdnative]
 

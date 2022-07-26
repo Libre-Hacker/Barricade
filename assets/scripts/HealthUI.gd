@@ -1,8 +1,11 @@
 extends Panel
 # Displays the player's health.
 
-const health = preload("res://assets/resources/player_health.tres")
 onready var healthLabel = get_node("HBoxContainer/HealthLabel")
 
-func _process(_delta):
-	healthLabel.text = str(health.Value)
+func _ready():
+	if(is_network_master()):
+		show()
+
+func update_health(value):
+	healthLabel.text = str(value)

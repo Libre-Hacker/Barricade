@@ -9,15 +9,18 @@ onready var altFire = get_node("AltFire")
 onready var animationPlayer = get_node("AnimationPlayer")
 onready var audioManager = get_node("AudioManager")
 onready var hud = get_node("HUD")
+onready var player = find_parent(str(get_network_master()))
 
 signal equipped
 
 func _ready():
-	connect("equipped", find_parent("FPSPlayer").get_node("HUD/TutorialUI"), "toggle_hammer_controls")
+	connect("equipped", player.get_node("HUD/TutorialUI"), "toggle_hammer_controls")
 	altFire.update_ui()
 
 
 func _process(_delta):
+	if(is_network_master() == false):
+		return
 	if(GameManager.isPaused):
 		return
 	if(primaryFire.cycleTimer.is_stopped() == false or altFire.cycleTimer.is_stopped() == false):
@@ -34,8 +37,9 @@ func _process(_delta):
 
 
 func equip():
-	show()
-	hud.show()
+	if(is_network_master()):
+		show()
+		hud.show()
 	animationPlayer.play("equip")
 	emit_signal("equipped")
 	yield(animationPlayer, "animation_finished")

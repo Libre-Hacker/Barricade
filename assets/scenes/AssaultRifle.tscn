@@ -299,8 +299,8 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ ExtResource( 15 ) ],
-"method": "new_3d_sound"
+"args": [ ExtResource( 15 ), 0.0, 6.0 ],
+"method": "network_3d_sound"
 } ]
 }
 tracks/6/type = "value"
@@ -314,6 +314,20 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("AudioManager")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 15 ) ],
+"method": "new_3d_sound"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -617,6 +631,7 @@ anims/unequip = SubResource( 11 )
 script = ExtResource( 3 )
 
 [node name="HUD" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2

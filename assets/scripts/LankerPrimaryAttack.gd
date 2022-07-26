@@ -6,10 +6,11 @@ export (Resource) var attackSound
 
 export var attackDamage = 5.0
 
-var currentTarget = null
+sync var currentTarget = null setget set_current_target
 var targets = []
 
 signal play_animation(animationName)
+signal play_network_animation
 signal targets_available # Emit's when viable targets are in range.
 signal targets_unavailable # Emit's when no targets are within area.
 signal play_3dsound(stream)
@@ -21,6 +22,13 @@ onready var propDetector = get_node("PropDetector")
 onready var navigator = get_parent().get_node("Navigator")
 onready var AIController = get_parent().get_node("AIController")
 
+
+func set_current_target(value):
+	if(value != null):
+		currentTarget = get_node(value)
+	else:
+		currentTarget = null
+
 func remove_target(object):
 	if(targets.has(object)):
 		targets.erase(object)
@@ -30,6 +38,8 @@ func remove_target(object):
 		emit_signal("targets_unavailable")
 
 func update_targets():
+	if(is_network_master() == false):
+		return
 	var availableTargets = []
 	availableTargets.append_array(playerDetector.areaCount)
 	availableTargets.append_array(propDetector.areaCount)
@@ -56,6 +66,8 @@ func select_target():
 			break
 		else:
 			playerTarget = object
+	if(propTarget == null and playerTarget == null):
+		return
 	if(propTarget != null):
 		currentTarget = propTarget
 	else:
@@ -70,13 +82,16 @@ func attack_behaviour():
 		return
 	if(navigator.has_path()):
 		emit_signal("play_animation", "WalkAttack", true, true)
+		emit_signal("play_network_animation", "WalkAttack", true, true)
 	else:
 		emit_signal("play_animation", "Attack", true, true)
-	emit_signal("play_3dsound", attackSound)
+		emit_signal("play_network_animation", "Attack", true, true)
 	attackCDTimer.start()
 
 # Damages the target, called by the AnimationPlayer
 func damage_target():
+	if(is_network_master() == false):
+		return
 	if(is_instance_valid(currentTarget) == false or AIController.currentState == AIController.AI_STATE.DEAD):
 		return
 	if(lineOfSight.has_line_of_sight(currentTarget)):

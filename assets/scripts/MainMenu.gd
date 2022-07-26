@@ -11,7 +11,7 @@ func _ready():
 # Starts the game with the selected level.
 func _on_Start_button_up():
 	AudioManager.new_sound(clickSound)
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # Hides cursor.
+	Network.create_server()
 	GameManager.start_game()
 
 # Loads the options menu.
@@ -35,3 +35,7 @@ func _on_Wishlist_button_up():
 		OS.shell_open("https://store.steampowered.com/app/2006180/Barricade/")
 	
 	get_tree().quit()
+
+func _on_Multiplayer_button_up():
+	AudioManager.new_sound(clickSound)
+	MenuSwitcher.load_scene("res://assets/scenes/MultiplayerMenu.tscn")

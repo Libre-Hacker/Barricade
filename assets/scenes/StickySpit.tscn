@@ -47,9 +47,6 @@ one_shot = true
 autostart = true
 
 [node name="CanvasLayer" type="Control" parent="."]
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 modulate = Color( 0.623529, 1, 0, 1 )

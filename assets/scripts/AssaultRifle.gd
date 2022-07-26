@@ -7,14 +7,18 @@ signal equipped
 onready var primaryFire = get_node("PrimaryFire")
 onready var animationPlayer = get_node("AnimationPlayer")
 onready var hud = get_node("HUD")
+onready var player = find_parent(str(get_network_master()))
 
 
 func _ready():
-	connect("equipped", find_parent("FPSPlayer").get_node("HUD/TutorialUI"), "toggle_gun_controls")
+	get_network_master()
+	connect("equipped", player.get_node("HUD/TutorialUI"), "toggle_gun_controls")
 	primaryFire.update_ui()
 
 
 func _process(delta):
+	if(is_network_master() == false):
+		return
 	if(GameManager.isPaused):
 		return
 	if(Input.is_action_just_pressed("reload")):
@@ -27,8 +31,9 @@ func _process(delta):
 
 # Equips this weapon. If something changes here it probably needs to change in all equippables.
 func equip():
-	show()
-	hud.show()
+	if(is_network_master()):
+		show()
+		hud.show()
 	animationPlayer.play("equip")
 	emit_signal("equipped") # Tells the HUD to display gun controls.
 	yield(animationPlayer, "animation_finished")

@@ -171,6 +171,20 @@ tracks/2/keys = {
 "method": "new_3d_sound"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("AudioManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 18 ), 0.0, 2.0 ],
+"method": "network_3d_sound"
+} ]
+}
 
 [node name="Hammer" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )

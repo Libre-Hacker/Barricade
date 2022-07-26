@@ -15,21 +15,29 @@ var zombiesAlive = 0
 onready var spawners = get_tree().get_root().find_node("ZombieSpawners", true, false)
 
 func _physics_process(_delta):
-	spawn_zombie()
+	if(spawnQue <= 0 or enableSpawning == false or is_network_master() == false):
+		return
+	var spawnPosition = get_spawn_point()
+	if(spawnPosition == null):
+		return
+	spawnPosition = spawnPosition.global_transform.origin
+	var zombieTypeIdx = get_random_zombie_to_spawn()
+	rpc("spawn_zombie", spawnPosition, zombieTypeIdx)
+
+
+func get_spawn_point():
+	return spawners.get_random_spawner()
+
+func get_random_zombie_to_spawn():
+	return round(rand_range(0, zombies.size()-1))
+
 
 # Spawns and initializes a new zombie.
-func spawn_zombie():
-	if(spawnQue > 0 and enableSpawning):
-		# Find a spawner.
-		var spawnPoint = spawners.get_random_spawner()
-		if(spawnPoint == null):
-			# If no spawner is found, wait until one becomes available.
-			# This saves countless computing time.
-			yield(spawners, "spawner_available")
-			return
-		var newZombie = zombies[round(rand_range(0, zombies.size()-1))].instance()
-		newZombie.transform.origin = spawnPoint.transform.origin
-		add_child(newZombie)
+sync func spawn_zombie(position, index):
+	var newZombie = zombies[index].instance()
+	newZombie.transform.origin = position
+	add_child(newZombie)
+	if(is_network_master()):
 		newZombie.get_node("Health").connect("destroyed", self, "_on_zombie_destroyed")
 		spawnQue -= 1 # Need to remove last.
 		zombiesAlive += 1

@@ -31,10 +31,11 @@ func pause_game():
 
 # Called when start game button is pressed. Requests level changes and initializes
 # the player, zombie, and round managers.
-func start_game():
+remotesync func start_game():
 	AudioManager.stop_music()
 	LevelSwitcher.load_scene("res://assets/scenes/levels/DevLvlWarehouse.tscn")
 	MenuSwitcher.unload_scene()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # Hides cursor.
 	set_process_unhandled_input(true)
 	instance_managers()
 	core = get_tree().get_root().find_node("Core",true,false)

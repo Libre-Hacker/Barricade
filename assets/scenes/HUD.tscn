@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/scenes/PropInfo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/scenes/Money.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scenes/RoundTimer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scripts/HUD.gd" type="Script" id=6]
-[ext_resource path="res://assets/scenes/HealthUI.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/scenes/RespawnsUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/scenes/TutorialUI.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/scenes/InteractionPrompt.tscn" type="PackedScene" id=10]
 
@@ -15,24 +12,10 @@ anchor_bottom = 1.0
 margin_right = -0.000183105
 mouse_filter = 2
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PropInfo" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="Money" parent="." instance=ExtResource( 4 )]
 
 [node name="RoundTimer" parent="." instance=ExtResource( 5 )]
-
-[node name="Health" parent="." instance=ExtResource( 7 )]
-
-[node name="RespawnsUI" parent="." instance=ExtResource( 8 )]
-margin_left = -169.132
-margin_top = -74.3268
-margin_right = -31.1322
-margin_bottom = -45.3268
 
 [node name="TutorialUI" parent="." instance=ExtResource( 9 )]
 margin_left = -27.0

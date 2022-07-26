@@ -1,7 +1,7 @@
 extends Spatial
 class_name Health
 
-export (float, 1,1000) var health = 100.0
+export (float, 1,1000) sync var health = 100.0
 export (float, 1,1000) var maxHealth = 100.0
 
 signal health_changed
@@ -14,14 +14,14 @@ func _ready():
 func damage(value = 0):
 	if(health <= 0):
 		return
-	health -= value
+	rset("health", health - value)
 
 # Adds health to this object.
 func heal(value = 0):
 	if(health == maxHealth):
 		return false
 	if(health + value > maxHealth):
-		health = maxHealth
+		rset("health", maxHealth)
 	else:
-		health += value
+		rset("health", health + value)
 	return true

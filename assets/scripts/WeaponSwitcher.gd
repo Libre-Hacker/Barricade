@@ -17,6 +17,8 @@ func _ready():
 
 
 func _unhandled_input(event):
+	if(is_network_master() == false):
+		return
 	if(GameManager.isPaused): # Prevents input while the game is paused.
 		return
 	# Use +/- 1 to increment the current weapon when using scroll wheel.

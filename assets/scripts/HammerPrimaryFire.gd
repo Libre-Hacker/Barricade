@@ -13,7 +13,7 @@ signal play_3d_sound
 
 var repairParticleNode = preload("res://assets/scenes/RepairParticle.tscn")
 
-onready var player = find_parent("FPSPlayer*")
+onready var player = find_parent(str(get_network_master()))
 onready var cycleTimer = get_node("CycleTimer")
 onready var repair = get_node("Repair")
 onready var hurtBox = get_node("HurtBox")
@@ -27,6 +27,7 @@ func primary_fire():
 	else:
 		hurtBox.damage = damage
 		hurtBox.player = player
+		print(player)
 		emit_signal("play_animation", "attack")
 		cycleTimer.start(attackCycleTime)
 	

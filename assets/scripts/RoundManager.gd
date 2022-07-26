@@ -21,18 +21,18 @@ onready var roundTimer = get_node("RoundTimer")
 
 
 func _ready():
-	set_roundTimer(roundTimes[currentRound])
+	set_round_timer(roundTimes[currentRound])
 	AudioManager.new_music(prepareMusic)
 
 
 # DELETE LATER FOR TESTING ONLY
 func _unhandled_input(event):
-	if(event.is_action_pressed("next_round")):
-			roundTimer.start(0.01)
+	if(event.is_action_pressed("next_round") and is_network_master()):
+		rpc("set_round_timer", 0.1)
 
 
 # Sets and starts the timer to the given perameter.
-func set_roundTimer(time = 0):
+sync func set_round_timer(time = 0):
 	roundTimer.start(time)
 
 
@@ -51,4 +51,4 @@ func _on_RoundTimer_timeout():
 	else:
 		emit_signal("last_round_ended")
 		return
-	set_roundTimer(roundTimes[currentRound])
+	set_round_timer(roundTimes[currentRound])

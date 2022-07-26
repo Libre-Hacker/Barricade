@@ -13,10 +13,12 @@ signal prop_interacted_with
 signal show_ui
 signal hide_ui
 
-onready var player = find_parent("FPSPlayer")
+onready var player = find_parent(str(get_network_master()))
 
 
 func _unhandled_input(event):
+	if(is_network_master() == false):
+		return
 	# Must use Input to check if rotating prop, because the event is researved for mouse motion.
 	if(event is InputEventMouseMotion and Input.is_action_pressed("rotate_prop") and is_holding_prop()):
 		mouseX = event.relative.x
@@ -76,12 +78,14 @@ func rotate_prop(x, y):
 # Sets the targeted prop to follow the assigned point.
 func pickup_prop():
 	propInUse = get_collider()
-	propInUse.connect("dropped", self, "drop_prop")
-	propInUse.connect("tree_exiting", self, "drop_prop")
-	propInUse.pickup(get_node("HoldPoint"), player)
-	enabled = false
-	emit_signal("prop_interacted_with")
-	emit_signal("prop_picked_up", 0)
+	if(propInUse.pickup(get_node("HoldPoint"), player)):
+		propInUse.connect("dropped", self, "drop_prop")
+		propInUse.connect("tree_exiting", self, "drop_prop")
+		enabled = false
+		emit_signal("prop_interacted_with")
+		emit_signal("prop_picked_up", 0)
+		return
+	propInUse = null
 
 # Tells the held prop to stop following the assigned point.
 func drop_prop():

@@ -12,44 +12,81 @@ var holdInPlace = false
 var nodeToFollow : Node # Node the prop follows while picked up.
 var isNailed : bool = false
 
+puppet var puppetTransform = Vector3.ZERO setget puppet_transform_set
+puppet var puppetRotation = null
+remotesync var pickedUp = false setget set_picked_up
 signal damage_taken
 signal repair_received
 signal dropped
 
 onready var defaultAngularDamp = angular_damp
+onready var tween = get_node("Tween")
+
+
+func puppet_transform_set(newValue):
+	puppetTransform = newValue
+	tween.interpolate_property(self, "global_transform:origin", global_transform.origin, puppetTransform, 0.1)
+	tween.start()
+
+
+func _on_NetworkTickRate_timeout():
+	if(is_network_master()):
+		rset_unreliable("puppetTransform", global_transform.origin)
+		rset_unreliable("puppetRotation", transform.basis)
 
 func _physics_process(_delta):
+	if(puppetRotation != null and is_network_master() == false):
+		var a = Quat(transform.basis)
+		var b = Quat(puppetRotation)
+		var c = a.slerp(b, 0.1)
+		transform.basis = Basis(c)
 	followPoint()
+
+remotesync func set_new_network_master(id):
+	set_network_master(id)
+	if(is_network_master()):
+		gravity_scale = 1
+	else:
+		gravity_scale = 0
+
+func set_picked_up(value):
+	pickedUp = value
+	if(pickedUp):
+		for materials in get_node("Model/MeshInstance").get_surface_material_count():
+				get_node("Model/MeshInstance").get_surface_material(materials).flags_transparent = true
+		set_collision_mask_bit(3, false) # Change collision mask so this won't collide while held.
+		for players in GameManager.playerManager.get_children():
+			add_collision_exception_with(players)
+	else:
+		for materials in get_node("Model/MeshInstance").get_surface_material_count():
+				get_node("Model/MeshInstance").get_surface_material(materials).flags_transparent = false
+		set_collision_mask_bit(3, true) # Change collision mask so this won't collide while held.
+		for exception in get_collision_exceptions():
+			remove_collision_exception_with(exception)
 
 # Sets class variables to enable pickup. 
 # Called from outside class.
 func pickup(assignedNode, player):
-	if(is_picked_up() == false):
-		gravity_scale = 0
-		for materials in get_node("Model/MeshInstance").get_surface_material_count():
-			get_node("Model/MeshInstance").get_surface_material(materials).flags_transparent = true
-		set_collision_mask_bit(3, false) # Change collision mask so this won't collide while held.
+	if(pickedUp == false):
+		rpc("set_new_network_master", int(player.name))
+		rset("pickedUp", true)
 		nodeToFollow = assignedNode
 		angular_damp = 10
-		for players in GameManager.get_node("PlayerManager").players:
-			add_collision_exception_with(players)
+		return true
 	else:
 		print("Prop already in use.")
+		return false
 
 # Resets class variables to defaults.
 # Called from outside class.
 func drop():
+	rpc("set_new_network_master()", 1)
 	nodeToFollow = null
 	holdInPlace = false
-	gravity_scale = 1
+	angular_damp = defaultAngularDamp
 	if(get_node("OccupiedArea").bodyCount.size() > 0):
 		yield(get_node("OccupiedArea"), "area_empty")
-	for exception in get_collision_exceptions():
-		remove_collision_exception_with(exception)
-	set_collision_mask_bit(3, true) # Change collision mask so this won't collide while held.
-	angular_damp = defaultAngularDamp
-	for materials in get_node("Model/MeshInstance").get_surface_material_count():
-		get_node("Model/MeshInstance").get_surface_material(materials).flags_transparent = false
+	rset("pickedUp", false)
 
 # Moves this object to the nodeToFollow variable.
 func followPoint():
@@ -88,7 +125,7 @@ func mouse_rotate(mouseMovement):
 
 
 # Changes the prop to a static body, drops the prop if it was carried.
-func nail():
+remotesync func nail():
 	if(is_picked_up()):
 		emit_signal("dropped") # Connected via script to Player's Interaction node.
 	else:
@@ -98,6 +135,7 @@ func nail():
 	linear_velocity = Vector3.ZERO
 	lock_all_axis(true)
 	isNailed = true
+	print(isNailed)
 
 
 func lock_all_axis(value : bool):
@@ -110,7 +148,7 @@ func lock_all_axis(value : bool):
 
 
 # Returns the prop to a rigid body.
-func unnail():
+remotesync func unnail():
 	lock_all_axis(false)
 	isNailed = false
 	sleeping = false

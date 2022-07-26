@@ -18,7 +18,6 @@ func buy_item(player):
 	var wallet = player.find_node("Wallet")
 	var inventory = player.find_node("GunBelt")
 	if (wallet == null or inventory == null):
-		print("ERROR: Missing wallet / gun belt...")
 		return
 
 	# Must check if player already owns weapon first. If they do, attempt to buy ammo.
@@ -41,7 +40,6 @@ func buy_item(player):
 func is_weapon_owned(player):
 	var inventory = player.find_node("GunBelt")
 	if (inventory == null):
-		#print("ERROR: Missing gun belt...")
 		return false
 	
 	for item in inventory.get_children():

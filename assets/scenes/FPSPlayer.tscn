@@ -30,7 +30,7 @@
 [ext_resource path="res://assets/sounds/pl_step1.wav" type="AudioStream" id=28]
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=29]
 [ext_resource path="res://assets/scripts/StatusEffectManager.gd" type="Script" id=30]
-[ext_resource path="res://assets/scenes/StickySpit.tscn" type="PackedScene" id=31]
+[ext_resource path="res://assets/scenes/HealthUI.tscn" type="PackedScene" id=31]
 [ext_resource path="res://assets/scripts/GatherPropInfo.gd" type="Script" id=32]
 [ext_resource path="res://assets/scenes/PropInfo.tscn" type="PackedScene" id=33]
 [ext_resource path="res://assets/scenes/AssaultRifle.tscn" type="PackedScene" id=34]
@@ -90,9 +90,8 @@ shape = SubResource( 8 )
 [node name="StatusEffects" type="Node" parent="."]
 script = ExtResource( 30 )
 
-[node name="StickySpit" parent="StatusEffects" instance=ExtResource( 31 )]
-
 [node name="HUD" parent="." instance=ExtResource( 1 )]
+visible = false
 margin_right = -0.00012207
 
 [node name="OccupiedArea" type="Area" parent="."]
@@ -115,10 +114,8 @@ shape = SubResource( 5 )
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.8, 0 )
-cull_mask = 524285
-current = true
+cull_mask = 1048575
 fov = 93.0
-playerNodePath = NodePath("..")
 
 [node name="InfoGather" type="RayCast" parent="Camera"]
 enabled = true
@@ -127,6 +124,7 @@ collision_mask = 5
 script = ExtResource( 32 )
 
 [node name="PropInfo" parent="Camera/InfoGather" instance=ExtResource( 33 )]
+visible = false
 
 [node name="Interaction" type="RayCast" parent="Camera"]
 transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 0 )
@@ -153,9 +151,11 @@ script = ExtResource( 29 )
 
 [node name="Health" parent="." instance=ExtResource( 23 )]
 script = ExtResource( 24 )
-respawns = 1
 hurtSound = ExtResource( 17 )
 deathSound = ExtResource( 18 )
+
+[node name="HealthUI" parent="Health" instance=ExtResource( 31 )]
+visible = false
 
 [node name="Wallet" type="Node" parent="."]
 script = ExtResource( 10 )
@@ -173,27 +173,11 @@ concreteSounds = [ ExtResource( 28 ), ExtResource( 26 ), ExtResource( 27 ), ExtR
 
 [node name="AudioManager" parent="." instance=ExtResource( 21 )]
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Tween" type="Tween" parent="."]
 
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1920, 1080 )
-size_override_stretch = true
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-shadow_atlas_size = 4
-
-[node name="GunCamera" type="Camera" parent="ViewportContainer/Viewport"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.8, 0 )
-cull_mask = 2
-fov = 90.0
+[node name="NetworkTickRate" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
 
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
 [connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]
@@ -205,5 +189,6 @@ fov = 90.0
 [connection signal="show_ui" from="Camera/Interaction" to="HUD/InteractionPrompt" method="show_text"]
 [connection signal="play_3d_sound" from="Health" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_3DSound" from="Footsteps" to="AudioManager" method="new_3d_sound"]
+[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]
 
 [editable path="HUD"]

@@ -13,7 +13,6 @@ signal seek
 signal play_animation
 
 onready var deathParticles = preload("res://assets/scenes/BloodExplosionParticle.tscn")
-onready var propDetector = get_parent().get_node("PropDetector")
 
 func _ready():
 	GameManager.playerManager.connect("player_died", self, "find_new_target")
@@ -26,7 +25,7 @@ func _physics_process(delta):
 
 # Gets a new target from the PlayerManager.
 func find_new_target():
-	currentTarget = GameManager.playerManager.players[0]
+	currentTarget = GameManager.playerManager.get_child(0)
 	return
 	if(rand_range(0,1) > 0.2):
 		if(GameManager.playerManager.players.size() != 0):

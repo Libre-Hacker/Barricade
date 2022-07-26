@@ -15,22 +15,33 @@ var falling = false
 var velocity : Vector3 = Vector3() # The velocity and direction to move the player by.
 var speedModifier = 1.0
 
+puppet var puppetTransform = Vector3.ZERO setget puppet_transform_set
+puppet var puppetRotation = 0
+
 onready var baseMoveSpeed = moveSpeed # Players base move speed before any modifiers.
 onready var audioManager = get_node("AudioManager")
 onready var footSteps = get_node("Footsteps")
 onready var occupiedArea = get_node("OccupiedArea") # Area taken up by the player.
+onready var tween = get_node("Tween")
 
-func _physics_process(_delta): # Use physics because this uses a KinematicBody.
+
+func _ready():
+	if(is_network_master()):
+		get_node("FPSMesh").hide()
+
+func _physics_process(delta): # Use physics because this uses a KinematicBody.
+	if(is_network_master() == false):
+		rotation.y = lerp_angle(rotation.y, puppetRotation, delta * 8)
+		return
 	if(GameManager.isPaused): # Disables input when game is paused.
 		return
-		
+
 	move()
 
 	if(Input.is_action_pressed("phase")):
 		start_phase()
 	if(Input.is_action_just_released("phase")):
 		end_phase()
-
 
 # Move this object.
 func move():
@@ -140,3 +151,14 @@ func push_rigid_bodies():
 		var collision = get_slide_collision(index)
 		if(collision.collider.is_in_group("Props") and collision.get_collider().isNailed == false):
 			collision.collider.apply_central_impulse(-collision.normal * push)
+
+
+func puppet_transform_set(newValue):
+	puppetTransform = newValue
+	tween.interpolate_property(self, "global_transform:origin", global_transform.origin, puppetTransform, 0.1)
+	tween.start()
+
+func _on_NetworkTickRate_timeout():
+	if(is_network_master()):
+		rset_unreliable("puppetTransform", global_transform.origin)
+		rset_unreliable("puppetRotation", rotation.y)

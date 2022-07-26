@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/Pixeled.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/MALERMEI.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/scenes/QuitPopup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/scripts/MainMenu.gd" type="Script" id=4]
-[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sounds/music/Prospero01.mp3" type="AudioStream" id=6]
 [ext_resource path="res://assets/sounds/button-click.wav" type="AudioStream" id=7]
 
@@ -29,8 +28,6 @@ script = ExtResource( 4 )
 music = ExtResource( 6 )
 clickSound = ExtResource( 7 )
 
-[node name="AudioManager" parent="." instance=ExtResource( 5 )]
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,9 +37,6 @@ margin_left = -195.0
 margin_top = -109.5
 margin_right = 195.0
 margin_bottom = 109.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tittle" type="Label" parent="VBoxContainer"]
 margin_right = 390.0
@@ -64,10 +58,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Multiplayer" type="Button" parent="VBoxContainer"]
 margin_top = 102.0
 margin_right = 390.0
 margin_bottom = 146.0
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "MULTIPLAYER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+margin_top = 150.0
+margin_right = 390.0
+margin_bottom = 194.0
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "OPTIONS"
@@ -76,9 +81,9 @@ __meta__ = {
 }
 
 [node name="Wishlist" type="Button" parent="VBoxContainer"]
-margin_top = 150.0
+margin_top = 198.0
 margin_right = 390.0
-margin_bottom = 194.0
+margin_bottom = 242.0
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "WISHLIST ON STEAM"
@@ -87,9 +92,9 @@ __meta__ = {
 }
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
-margin_top = 198.0
+margin_top = 246.0
 margin_right = 390.0
-margin_bottom = 242.0
+margin_bottom = 290.0
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "QUIT"
@@ -113,6 +118,7 @@ __meta__ = {
 }
 
 [connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_Start_button_up"]
+[connection signal="button_up" from="VBoxContainer/Multiplayer" to="." method="_on_Multiplayer_button_up"]
 [connection signal="button_up" from="VBoxContainer/Options" to="." method="_on_Options_button_up"]
 [connection signal="button_up" from="VBoxContainer/Wishlist" to="." method="_on_Wishlist_button_up"]
 [connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_Quit_button_up"]

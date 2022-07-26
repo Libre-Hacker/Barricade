@@ -24,14 +24,14 @@
 [ext_resource path="res://assets/scenes/modularassets/buildings/basic/ShortWall.tscn" type="PackedScene" id=22]
 [ext_resource path="res://assets/scenes/VendingMachineHammer.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/scenes/props/PropStorageShelf.tscn" type="PackedScene" id=24]
-[ext_resource path="res://assets/scenes/props/PropCrate.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/scenes/props/PropPlank.tscn" type="PackedScene" id=25]
 [ext_resource path="res://assets/materials/Concrete.tres" type="Material" id=26]
 [ext_resource path="res://assets/materials/Planks.tres" type="Material" id=27]
 [ext_resource path="res://assets/materials/ChipBoard.tres" type="Material" id=28]
 [ext_resource path="res://assets/materials/WoodPanels.tres" type="Material" id=29]
 [ext_resource path="res://assets/meshes/modularbasicroom/BasicRoom_Wall.mesh" type="ArrayMesh" id=30]
 [ext_resource path="res://assets/materials/Bricks.tres" type="Material" id=31]
-[ext_resource path="res://assets/scenes/props/PropPlank.tscn" type="PackedScene" id=32]
+[ext_resource path="res://assets/scenes/props/PropCrate.tscn" type="PackedScene" id=32]
 [ext_resource path="res://assets/scenes/props/PropChair.tscn" type="PackedScene" id=33]
 [ext_resource path="res://assets/scenes/ Core.tscn" type="PackedScene" id=34]
 [ext_resource path="res://assets/scenes/VendingMachineShotgun.tscn" type="PackedScene" id=35]
@@ -988,104 +988,35 @@ material/0 = ExtResource( 28 )
 
 [node name="Props" type="Spatial" parent="."]
 
-[node name="PropStorageShelf" parent="Props" instance=ExtResource( 24 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.1, 1, -1.4 )
-
-[node name="PropStorageShelf_2" parent="Props" instance=ExtResource( 24 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.1, 1, 1.4 )
-
-[node name="PropStorageShelf_3" parent="Props" instance=ExtResource( 24 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.1, 1, 2.6 )
-
-[node name="PropStorageShelf_4" parent="Props" instance=ExtResource( 24 )]
-transform = Transform( 0.707107, -3.09086e-08, -0.707107, 0.640856, 0.422618, 0.640856, 0.298836, -0.906308, 0.298836, -4, 4.3, 2.4 )
-
-[node name="PropCrate" parent="Props" instance=ExtResource( 25 )]
-transform = Transform( -0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, -9, 0.6, 1.1 )
-
-[node name="PropCrate_2" parent="Props" instance=ExtResource( 25 )]
-transform = Transform( -0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, 3.7, 0.6, -8.9 )
-
-[node name="PropCrate_3" parent="Props" instance=ExtResource( 25 )]
-transform = Transform( -0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 4.7, 0.6, -7.9 )
-
-[node name="PropCrate_5" parent="Props" instance=ExtResource( 25 )]
-transform = Transform( 0.591957, 0, -0.805969, 0, 1, 0, 0.805969, 0, 0.591957, 4.7, 0.6, 0.784996 )
-
-[node name="PropCrate_6" parent="Props" instance=ExtResource( 25 )]
-transform = Transform( 0.591957, 0, -0.805969, 0, 1, 0, 0.805969, 0, 0.591957, 0.927593, 3.73649, 3.25237 )
-
-[node name="PropCrate_7" parent="Props" instance=ExtResource( 25 )]
-transform = Transform( 0.591957, 0, -0.805969, 0, 1, 0, 0.805969, 0, 0.591957, -12.5626, 0.583664, 8.50203 )
-
-[node name="PropCrate_8" parent="Props" instance=ExtResource( 25 )]
-transform = Transform( -0.14831, 0, -0.988941, 0, 1, 0, 0.988941, 0, -0.14831, -12.5626, 0.583664, 7.12936 )
-
-[node name="PropCrate_4" parent="Props" instance=ExtResource( 25 )]
-transform = Transform( 0.0871558, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871558, 4.3, 1.7, -8.5 )
-
-[node name="PropPlank" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( -0.79227, -0.574392, 0.205868, 0.0378757, 0.290448, 0.956141, -0.608993, 0.76532, -0.208358, -8.19457, 1.09578, -1.19274 )
-
-[node name="PropPlank_4" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( -0.0120993, -0.55856, 0.829376, 0.245272, 0.802439, 0.543997, -0.969379, 0.210005, 0.12729, -6.59457, 4.09578, -1.19274 )
-
-[node name="PropPlank_9" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20511, 0.0970569, -3.2332 )
-
-[node name="PropPlank_10" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88138, 0.0970569, -3.2332 )
-
-[node name="PropPlank_11" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51501, 0.0970569, -3.2332 )
-
-[node name="PropPlank_12" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68479, 0.235263, -3.2332 )
-
-[node name="PropPlank_13" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03386, 0.235263, -3.2332 )
-
-[node name="PropPlank_5" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( -0.270462, -0.540779, 0.796497, -0.0139789, 0.82945, 0.558406, -0.962629, 0.139893, -0.231894, -6.39457, 4.09578, 0.00726254 )
-
-[node name="PropPlank_6" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( -0.0120993, -0.55856, 0.829376, -0.0139789, 0.82945, 0.558406, -0.999829, -0.00483743, -0.0178438, -6.79457, 4.09578, -0.692737 )
-
-[node name="PropPlank_2" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( -0.79227, -0.574392, 0.205868, 0.0378757, 0.290448, 0.956141, -0.608993, 0.76532, -0.208358, -8.44293, 1.19931, -1.48871 )
-
-[node name="PropPlank_7" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.857075, 0.899311, 7.11129 )
-
-[node name="PropPlank_8" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.957075, 0.799311, 7.11129 )
-
-[node name="PropPlank_3" parent="Props" instance=ExtResource( 32 )]
-transform = Transform( -0.79227, -0.574392, 0.205868, 0.0378757, 0.290448, 0.956141, -0.608993, 0.76532, -0.208358, -8.44596, 1.35245, -1.16231 )
-
-[node name="PropChair" parent="Props" instance=ExtResource( 33 )]
-transform = Transform( 0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 1, 0.7, 6 )
-
-[node name="PropChair_2" parent="Props" instance=ExtResource( 33 )]
-transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 1, 0.7, 8.1 )
-
-[node name="PropChair_3" parent="Props" instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 5.96046e-08, 5.2108e-15, -1, -8.74228e-08, 5.96046e-08, 8.74228e-08, -1, -6.77069, 1.09902, 2.8 )
-
-[node name="PropChair_4" parent="Props" instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 5.96046e-08, 5.2108e-15, -1, -8.74228e-08, 5.96046e-08, 8.74228e-08, -1, -7.45631, 1.10094, 2.8 )
-
-[node name="PropChair_5" parent="Props" instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 5.96046e-08, 5.2108e-15, -1, -8.74228e-08, 5.96046e-08, 8.74228e-08, -1, 1.40803, 3.85237, 5.47196 )
-
-[node name="PropChair_6" parent="Props" instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 5.96046e-08, 5.2108e-15, -1, -8.74228e-08, 5.96046e-08, 8.74228e-08, -1, 0.722412, 3.8543, 5.47196 )
-
-[node name="PropChair_7" parent="Props" instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 5.96046e-08, -2.49599e-09, 0.999123, 0.0418757, -5.95524e-08, -0.0418757, 0.999123, 1.40803, 3.68852, 5.13358 )
-
 [node name="PropChair_8" parent="Props" instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 5.96046e-08, -2.49599e-09, 0.999123, 0.0418757, -5.95524e-08, -0.0418757, 0.999123, 0.722412, 3.68659, 5.13366 )
+transform = Transform( 1, 0, 5.96046e-08, -2.49599e-09, 0.999123, 0.0418757, -5.95524e-08, -0.0418757, 0.999123, -3.27759, 2.43621, -0.819201 )
+
+[node name="PropChair_9" parent="Props" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 5.96046e-08, -2.49599e-09, 0.999123, 0.0418757, -5.95524e-08, -0.0418757, 0.999123, 3.72241, 0.74012, -7.85435 )
+
+[node name="PropChair_10" parent="Props" instance=ExtResource( 33 )]
+transform = Transform( 1, 0, 5.96046e-08, -2.49599e-09, 0.999123, 0.0418757, -5.95524e-08, -0.0418757, 0.999123, 1.72241, 0.744308, -7.75444 )
+
+[node name="PropPlank" parent="Props" instance=ExtResource( 25 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.8, 0.9, -7.8 )
+
+[node name="PropPlank_2" parent="Props" instance=ExtResource( 25 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.8, 0.9, -7.4 )
+
+[node name="PropPlank_3" parent="Props" instance=ExtResource( 25 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.8, 1.2, -7.6 )
+
+[node name="PropCrate" parent="Props" instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.6, -2.3 )
+
+[node name="PropCrate_2" parent="Props" instance=ExtResource( 32 )]
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 3.6, 0.6, -2.3 )
+
+[node name="PropCrate_3" parent="Props" instance=ExtResource( 32 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4.4, 1.6, -2.3 )
+
+[node name="PropStorageShelf" parent="Props" instance=ExtResource( 24 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 1.1, 1.4 )
 
 [node name="Lights" type="Spatial" parent="."]
 
@@ -1108,6 +1039,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 1
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.8, 1.7, 4 )
 
 [node name="Core" parent="Interactables" instance=ExtResource( 34 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="VendingMachineShotgun" parent="Interactables" instance=ExtResource( 35 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99389, 4.3576, 2.20334 )

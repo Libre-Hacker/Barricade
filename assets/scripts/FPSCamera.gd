@@ -4,25 +4,23 @@ extends Camera
 export var mounseSensitivity : float = 0.1
 export(float, 0, 90, 0.1) var maxLookUp : float= 90
 export(float, -90, 0, 0.1) var minLookDown : float = -90
-export(NodePath) var playerNodePath : NodePath
 
-onready var player = get_node(playerNodePath)
+onready var player = get_parent()
 onready var interactionRayCast = get_node("Interaction")
-onready var gunCamera = get_parent().get_node("ViewportContainer/Viewport/GunCamera")
 
 
 func _ready():
-	get_viewport().connect("size_changed", self, "_on_window_resize")
-	gunCamera.set_environment(get_environment())
-
-func _on_window_resize():
-	get_parent().get_node("ViewportContainer/Viewport").size = get_viewport().size
+	if(is_network_master()):
+		make_current()
 
 func _process(delta):
-	gunCamera.global_transform = global_transform
+	#gunCamera.global_transform = global_transform
+	pass
 
 # Gets mouse input and calls corresponding function.
 func _unhandled_input(event):
+	if(is_network_master() == false):
+		return
 	if(GameManager.isPaused): # Disable input while game is paused.
 		return
 		

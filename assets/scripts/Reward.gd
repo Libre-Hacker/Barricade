@@ -22,26 +22,20 @@ func add_contribution(attacker, value):
 	# Updates the value contributed by the player.
 	else:
 		contributors[1][i] = contributors[1][i] + value
+	print(contributors)
 
 # Pays out the reward to all players in the array.
-func distribute_reward():
-	var totalContributions = 0
-	for i in contributors[1].size():
-		totalContributions += contributors[1][i]
-
+func distribute_reward(maxValue):
 	for i in contributors[0].size():
 		# Convert the contribution of each player into a percentage of the total
 		# contributions, and payout their percentage of the reward.
-		var reward = rewardAmount * (contributors[1][i] / totalContributions)
+		var reward = clamp(rewardAmount * (contributors[1][i] / maxValue), 0, rewardAmount)
 		contributors[0][i].get_node("Wallet").add_money(reward)
 
 # Pays out an instant reward to the player, default reward can be overridden.
 func give_instant_reward(player, reward = rewardAmount):
 	player.get_node("Wallet").add_money(reward)
 
-# Called when the object is destroyed, pays out the rewards.
-func _on_destroyed():
-	distribute_reward()
 
 # Adds reward when health_changed signal is received.
 func _on_health_changed(attacker, value):

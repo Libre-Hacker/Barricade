@@ -9,13 +9,12 @@ func repair(value = 0, player = null):
 
 	if(hitObject.is_in_group("Props") and hitObject.is_repairable()):
 		hitObject.heal(value, player)
-		emitImpactEffect()
+		rpc("emitImpactEffect", get_collider().get_path(), get_collision_point())
 		return true
 
 
-func emitImpactEffect():
+remotesync func emitImpactEffect(path, position):
 	var particleInstance = repairParticleEffect.instance()
-	get_collider().add_child(particleInstance)
-	particleInstance.global_transform.origin = get_collision_point()
-	print(get_collision_point())
+	get_node(path).add_child(particleInstance)
+	particleInstance.global_transform.origin = position
 

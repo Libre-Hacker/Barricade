@@ -9,8 +9,13 @@ func _ready():
 	if(returnToDefaultAnimation and defaultAnimation == ""):
 		print("ERROR: Default animation isn't defined.")
 
+
+func network_play_animation(animationName, interupt = false, replay = false, speed = 1.0):
+	rpc("_on_change_animation", animationName, interupt, replay, speed)
+
+
 # Plays the signaled animation
-func _on_change_animation(animationName, interupt = false, replay = false, speed = 1.0):
+remote func _on_change_animation(animationName, interupt = false, replay = false, speed = 1.0):
 	if(has_animation(animationName) == false):
 		return
 	if(is_playing() and interupt == false):

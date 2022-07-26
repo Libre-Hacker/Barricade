@@ -14,10 +14,18 @@ func new_sound(stream = "", volumedb = 0.0, loop = false, bus = "Sound"):
 	newAudio.bus = bus
 	add_child(newAudio)
 
+
+func network_3d_sound(stream = "", volumedb = 0.0, unitSize = 1, loop = false, bus = "Sound"):
+	AudioManager.rpc("new_3d_sound", stream.get_path(), self.global_transform.origin, volumedb, unitSize, loop, bus)
+
+
 # Creates a new 3D sound, position must be set.
-func new_3d_sound(stream = "", position = Vector3.ZERO, volumedb = 0.0, unitSize = 1, loop = false, bus = "Sound"):
+remote func new_3d_sound(stream = "", position = Vector3.ZERO, volumedb = 0.0, unitSize = 0.5, loop = false, bus = "Sound"):
 	var newAudio = load("res://assets/scenes/AudioNode3D.tscn").instance()
-	newAudio.set_stream(stream)
+	if(stream is String):
+		newAudio.set_stream(load(stream))
+	else:
+		newAudio.set_stream(stream)
 	newAudio.transform.origin = position
 	newAudio.unit_db = volumedb
 	newAudio.unit_size = unitSize
@@ -25,6 +33,7 @@ func new_3d_sound(stream = "", position = Vector3.ZERO, volumedb = 0.0, unitSize
 		newAudio.loop = true
 	newAudio.bus = bus
 	add_child(newAudio)
+
 
 # Creates a new music stream, only one can exist at a time.
 func new_music(stream = "", volumedb = 0.0, loop = false, bus = "Music"):

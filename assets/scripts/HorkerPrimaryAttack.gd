@@ -3,6 +3,7 @@ extends Spatial
 export var projectileDamage = 5.0
 export var randomness = 1.0
 export var projectileCount = 1
+export var projectileSpread = 0.2
 
 onready var projectile = preload("res://assets/scenes/SpitProjectile.tscn")
 
@@ -26,6 +27,8 @@ func remove_target(object):
 		emit_signal("targets_unavailable")
 
 func update_targets():
+	if(is_network_master() == false):
+		return
 	var availableTargets = []
 	availableTargets.append_array(get_node("PlayerDetector").areaCount)
 	availableTargets.append_array(get_node("PropDetector").areaCount)
@@ -64,12 +67,22 @@ func attack_behaviour():
 		return
 	if(is_instance_valid(currentTarget)):
 		emit_signal("play_animation", "Attack", true)
+		emit_signal("play_network_animation", "Attack", true, true)
 		attackCDTimer.start()
 
 func shoot_projectiles():
+	if(is_network_master() == false):
+		return
 	for projectiles in projectileCount:
-		var newProjectile = projectile.instance()
-		add_child(newProjectile)
+		var targetDirection = Vector3.FORWARD
+		var randomOffset = Vector3(rand_range(-projectileSpread,projectileSpread), rand_range(0, projectileSpread), 0)
 		if(is_instance_valid(currentTarget)):
-			newProjectile.look_at(currentTarget.global_transform.origin,Vector3.UP)
-		newProjectile.shoot()
+			targetDirection = currentTarget.global_transform.origin
+		rpc("create_projectile", targetDirection, randomOffset)
+
+sync func create_projectile(direction = Vector3.FORWARD, offset = Vector3.ZERO):
+	var newProjectile = projectile.instance()
+	newProjectile.look_at(direction, Vector3.UP)
+	add_child(newProjectile)
+	newProjectile.shoot(offset)
+	

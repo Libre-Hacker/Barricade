@@ -1,12 +1,6 @@
 extends Health
 # Inherits the health class and extends it for use with players.
 
-# The health UI variable.
-const healthUI = preload("res://assets/resources/player_health.tres")
-# The respawn UI counter variable.
-const respawnCountUI = preload("res://assets/resources/player_respawns_left.tres")
-
-export (int, 0, 3) var respawns = 0 # Number of respawns remaining.
 export (Resource) var hurtSound
 export (Resource) var deathSound
 
@@ -14,6 +8,7 @@ signal play_3d_sound
 signal player_died
 
 onready var player = get_parent()
+onready var healthUI = get_node("HealthUI")
 
 # Set health to max health, and update the players UI.
 func _ready():
@@ -36,16 +31,11 @@ func is_destroyed():
 		# Play this on the global AudioManager so sound continues after player object has been freed.
 		# Might be able to change this once corpse stays in world.
 		AudioManager.new_3d_sound(deathSound, global_transform.origin) 
-		if(respawns > 0):
-			respawns -= 1
-			emit_signal("player_died", player, true) # Notifies PlayerManager that a player died and to respawn them.
-		else:
-			emit_signal("player_died", player) # Notifies PlayerManager that a player has died.
+		emit_signal("player_died", player) # Notifies PlayerManager that a player has died.
 	else:
 		updateUI()
 		emit_signal("play_3d_sound", hurtSound)
 
 # Updates the UI to the new values.
 func updateUI():
-	respawnCountUI.Value = respawns
-	healthUI.Value = health
+	healthUI.update_health(health)
