@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Ceiling004.scn" type="PackedScene" id=1]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( -1.6, 3.8, -1.6, 2, 3.5, -2, -2, 3.5, -2, -1.6, 3.8, -1.6, 2, 3.8, -1.6, 2, 3.5, -2, -2, 3.5, 2, -1.6, 3.8, -1.6, -2, 3.5, -2, -2, 3.5, 2, -1.6, 3.8, 1.6, -1.6, 3.8, -1.6, 2, 3.5, 2, -1.6, 3.8, 1.6, -2, 3.5, 2, 2, 3.5, 2, 2, 3.8, 1.6, -1.6, 3.8, 1.6, -1.6, 3.8, -1.6, 2, 3.8, 1.6, 2, 3.8, -1.6, -1.6, 3.8, -1.6, -1.6, 3.8, 1.6, 2, 3.8, 1.6, 2, 3.8, 1.6, 2, 4, -1.6, 2, 3.8, -1.6, 2, 3.8, 1.6, 2, 4, 1.6, 2, 4, -1.6 )
+
+[node name="Ceiling004" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Ceiling004" parent="." instance=ExtResource( 1 )]

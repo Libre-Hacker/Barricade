@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scripts/PropHealth.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=6]
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Fridge.material" type="Material" id=7]
+[ext_resource path="res://assets/sounds/bustcrate2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Fridge.scn" type="PackedScene" id=9]
+
+[sub_resource type="BoxShape" id=15]
+extents = Vector3( 0.465402, 1.03302, 0.537904 )
+
+[node name="PropFridge" type="RigidBody" groups=["Destructibles", "Props"]]
+collision_layer = 4
+collision_mask = 13
+continuous_cd = true
+script = ExtResource( 1 )
+realName = "Fridge"
+followSpeed = 1.5
+rotationAcceleration = 0.8
+maxRotationSpeed = 8.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 15 )
+
+[node name="Reward" parent="." instance=ExtResource( 2 )]
+payoutOnDeath = false
+rewardAmount = 10
+
+[node name="Health" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+health = 600.0
+maxHealth = 600.0
+hurtSound = ExtResource( 8 )
+
+[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props", "Repairables"]]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HitBox"]
+shape = SubResource( 15 )
+
+[node name="OccupiedArea" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="OccupiedArea"]
+shape = SubResource( 15 )
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="Fridge" parent="Model" instance=ExtResource( 9 )]
+transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.00115332, 0, 0.000648208 )
+material/0 = ExtResource( 7 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="NetworkTickRate" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
+[connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
+[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
+[connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
+[connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]
+[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Pipe001.scn" type="PackedScene" id=1]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( -2, 0, -1, 2, -0.866, -0.5, 2, 0, -1, -2, 0, -1, -2, -0.866, -0.5, 2, -0.866, -0.5, -2, -0.866, -0.5, 2, -0.866, 0.5, 2, -0.866, -0.5, -2, -0.866, -0.5, -2, -0.866, 0.5, 2, -0.866, 0.5, -2, -0.866, 0.5, 2, 0, 1, 2, -0.866, 0.5, -2, -0.866, 0.5, -2, 0, 1, 2, 0, 1, -2, 0, 1, 2, 0.866, 0.5, 2, 0, 1, -2, 0, 1, -2, 0.866, 0.5, 2, 0.866, 0.5, -2, 0.866, 0.5, 2, 0.866, -0.5, 2, 0.866, 0.5, -2, 0.866, 0.5, -2, 0.866, -0.5, 2, 0.866, -0.5, -2, 0.866, -0.5, 2, 0, -1, 2, 0.866, -0.5, -2, 0.866, -0.5, -2, 0, -1, 2, 0, -1 )
+
+[node name="Pipe001" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Pipe001" parent="." instance=ExtResource( 1 )]

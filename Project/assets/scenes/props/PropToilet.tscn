@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scripts/PropHealth.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=6]
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Toilet.scn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sounds/bustcrate2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Toilet.material" type="Material" id=9]
+
+[sub_resource type="ConvexPolygonShape" id=21]
+points = PoolVector3Array( -0.30453, 0.0809335, -0.274251, -0.235357, 0.0809335, 0.219048, 0.234914, 0.0810118, 0.219048, 0.304146, 0.0810118, -0.274251, -0.000191689, 0.0809335, -0.519671, -0.213252, -0.318988, -0.227828, -0.144258, -0.318988, 0.214493, 0.143815, -0.318988, 0.214493, 0.212809, -0.318988, -0.227828, -0.000191689, -0.318988, -0.379679 )
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 0.351792, 0.304113, 0.117985 )
+
+[sub_resource type="ConcavePolygonShape" id=19]
+data = PoolVector3Array( 0.3041, 0.081, -0.2742, -0.0002, 0.081, -0.4197, 0.2281, 0.081, -0.2124, 0.3041, 0.081, -0.2742, -0.0002, 0.081, -0.5197, -0.0002, 0.081, -0.4197, -0.1765, 0.081, 0.0572, 0.1761, 0.481, 0.0572, 0.1761, 0.081, 0.0572, -0.1765, 0.081, 0.0572, -0.1765, 0.481, 0.0572, 0.1761, 0.481, 0.0572, -0.0002, 0.081, -0.5197, -0.2284, 0.081, -0.2124, -0.0002, 0.081, -0.4197, -0.0002, 0.081, -0.5197, -0.3045, 0.081, -0.2742, -0.2284, 0.081, -0.2124, 0.2349, 0.081, 0.219, 0.2281, 0.081, -0.2124, 0.1761, 0.081, 0.0572, 0.2349, 0.081, 0.219, 0.3041, 0.081, -0.2742, 0.2281, 0.081, -0.2124, -0.3045, 0.081, -0.2742, -0.1765, 0.081, 0.0572, -0.2284, 0.081, -0.2124, -0.3045, 0.081, -0.2742, -0.2353, 0.081, 0.219, -0.1765, 0.081, 0.0572, -0.1154, -0.119, 0.1745, 0.1438, -0.319, 0.2145, 0.115, -0.119, 0.1745, -0.1154, -0.119, 0.1745, -0.1442, -0.319, 0.2145, 0.1438, -0.319, 0.2145, -0.1765, 0.081, 0.0572, -0.16, -0.119, -0.1846, -0.2284, 0.081, -0.2124, -0.1765, 0.081, 0.0572, -0.1236, -0.119, -0.0156, -0.16, -0.119, -0.1846, 0.2349, 0.081, 0.219, 0.1702, -0.119, -0.2278, 0.3041, 0.081, -0.2742, 0.2349, 0.081, 0.219, 0.115, -0.119, 0.1745, 0.1702, -0.119, -0.2278, -0.0002, 0.081, -0.5197, -0.1706, -0.119, -0.2278, -0.3045, 0.081, -0.2742, -0.0002, 0.081, -0.5197, -0.0002, -0.119, -0.3797, -0.1706, -0.119, -0.2278, 0.1761, 0.081, 0.0572, -0.1236, -0.119, -0.0156, -0.1765, 0.081, 0.0572, 0.1761, 0.081, 0.0572, 0.1232, -0.119, -0.0156, -0.1236, -0.119, -0.0156, 0.3041, 0.081, -0.2742, -0.0002, -0.119, -0.3797, -0.0002, 0.081, -0.5197, 0.3041, 0.081, -0.2742, 0.1702, -0.119, -0.2278, -0.0002, -0.119, -0.3797, -0.3045, 0.081, -0.2742, -0.1154, -0.119, 0.1745, -0.2353, 0.081, 0.219, -0.3045, 0.081, -0.2742, -0.1706, -0.119, -0.2278, -0.1154, -0.119, 0.1745, 0.2281, 0.081, -0.2124, 0.1232, -0.119, -0.0156, 0.1761, 0.081, 0.0572, 0.2281, 0.081, -0.2124, 0.1596, -0.119, -0.1846, 0.1232, -0.119, -0.0156, -0.2284, 0.081, -0.2124, -0.0002, -0.119, -0.3297, -0.0002, 0.081, -0.4197, -0.2284, 0.081, -0.2124, -0.16, -0.119, -0.1846, -0.0002, -0.119, -0.3297, -0.0002, 0.081, -0.4197, 0.1596, -0.119, -0.1846, 0.2281, 0.081, -0.2124, -0.0002, 0.081, -0.4197, -0.0002, -0.119, -0.3297, 0.1596, -0.119, -0.1846, -0.0002, -0.319, -0.3797, -0.1442, -0.319, 0.2145, -0.2132, -0.319, -0.2278, -0.1442, -0.319, 0.2145, 0.2128, -0.319, -0.2278, 0.1438, -0.319, 0.2145, -0.1442, -0.319, 0.2145, -0.0002, -0.319, -0.3797, 0.2128, -0.319, -0.2278, 0.115, -0.119, 0.1745, 0.2128, -0.319, -0.2278, 0.1702, -0.119, -0.2278, 0.115, -0.119, 0.1745, 0.1438, -0.319, 0.2145, 0.2128, -0.319, -0.2278, -0.0002, -0.119, -0.3797, -0.2132, -0.319, -0.2278, -0.1706, -0.119, -0.2278, -0.0002, -0.119, -0.3797, -0.0002, -0.319, -0.3797, -0.2132, -0.319, -0.2278, 0.1702, -0.119, -0.2278, -0.0002, -0.319, -0.3797, -0.0002, -0.119, -0.3797, 0.1702, -0.119, -0.2278, 0.2128, -0.319, -0.2278, -0.0002, -0.319, -0.3797, -0.1706, -0.119, -0.2278, -0.1442, -0.319, 0.2145, -0.1154, -0.119, 0.1745, -0.1706, -0.119, -0.2278, -0.2132, -0.319, -0.2278, -0.1442, -0.319, 0.2145, 0.1232, -0.119, -0.0156, -0.16, -0.119, -0.1846, -0.1236, -0.119, -0.0156, -0.16, -0.119, -0.1846, 0.1596, -0.119, -0.1846, -0.0002, -0.119, -0.3297, -0.16, -0.119, -0.1846, 0.1232, -0.119, -0.0156, 0.1596, -0.119, -0.1846, -0.2353, 0.481, 0.219, 0.1761, 0.481, 0.0572, -0.1765, 0.481, 0.0572, -0.2353, 0.481, 0.219, 0.2349, 0.481, 0.219, 0.1761, 0.481, 0.0572, -0.2353, 0.081, 0.219, -0.1765, 0.481, 0.0572, -0.1765, 0.081, 0.0572, -0.2353, 0.081, 0.219, -0.2353, 0.481, 0.219, -0.1765, 0.481, 0.0572, 0.2349, 0.081, 0.219, -0.2353, 0.481, 0.219, -0.2353, 0.081, 0.219, 0.2349, 0.081, 0.219, 0.2349, 0.481, 0.219, -0.2353, 0.481, 0.219, 0.1761, 0.081, 0.0572, 0.2349, 0.481, 0.219, 0.2349, 0.081, 0.219, 0.1761, 0.081, 0.0572, 0.1761, 0.481, 0.0572, 0.2349, 0.481, 0.219, -0.2353, 0.081, 0.219, 0.115, -0.119, 0.1745, 0.2349, 0.081, 0.219, -0.2353, 0.081, 0.219, -0.1154, -0.119, 0.1745, 0.115, -0.119, 0.1745 )
+
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.476914, 0.619769, 0.577539 )
+
+[node name="PropToilet" type="RigidBody" groups=["Destructibles", "Props"]]
+collision_layer = 4
+collision_mask = 13
+continuous_cd = true
+script = ExtResource( 1 )
+realName = "Toilet"
+followSpeed = 2.5
+rotationAcceleration = 0.8
+maxRotationSpeed = 7.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+shape = SubResource( 21 )
+
+[node name="CollisionShape_2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417796, 0.204966 )
+shape = SubResource( 20 )
+
+[node name="Reward" parent="." instance=ExtResource( 2 )]
+payoutOnDeath = false
+rewardAmount = 10
+
+[node name="Health" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+health = 250.0
+maxHealth = 250.0
+hurtSound = ExtResource( 8 )
+
+[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props", "Repairables"]]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HitBox"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+visible = false
+shape = SubResource( 19 )
+
+[node name="OccupiedArea" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117461, -0.217047 )
+visible = false
+shape = SubResource( 17 )
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="Toilet" parent="Model" instance=ExtResource( 7 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+material/0 = ExtResource( 9 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="NetworkTickRate" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
+[connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
+[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
+[connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
+[connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]
+[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]

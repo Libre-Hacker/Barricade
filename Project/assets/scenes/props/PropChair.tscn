@@ -32,6 +32,7 @@ albedo_color = Color( 0.984314, 0.396078, 0.196078, 0.490196 )
 [node name="PropChair" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
 collision_mask = 13
+mass = 0.526882
 continuous_cd = true
 script = ExtResource( 1 )
 realName = "Chair"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Window003.scn" type="PackedScene" id=1]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( 0, 0.95, 0, 2, 0, 0, 0, 0, 0, 0, 0.95, 0, 0.7425, 1.2575, 0, 2, 0, 0, -1.05, 2, 0, -2, 0, 0, -2, 2, 0, -1.05, 2, 0, -0.7425, 1.2575, 0, -2, 0, 0, 2, 2, 0, 0.7425, 2.7425, 0, 2, 4, 0, 2, 2, 0, 1.05, 2, 0, 0.7425, 2.7425, 0, 0, 4, 0, -0.7425, 2.7425, 0, -2, 4, 0, 0, 4, 0, 0, 3.05, 0, -0.7425, 2.7425, 0, 2, 0, 0, 1.05, 2, 0, 2, 2, 0, 2, 0, 0, 0.7425, 1.2575, 0, 1.05, 2, 0, -0.7425, 2.7425, 0, -2, 2, 0, -2, 4, 0, -0.7425, 2.7425, 0, -1.05, 2, 0, -2, 2, 0, -0.7425, 1.2575, 0, 0, 0, 0, -2, 0, 0, -0.7425, 1.2575, 0, 0, 0.95, 0, 0, 0, 0, 2, 4, 0, 0, 3.05, 0, 0, 4, 0, 2, 4, 0, 0.7425, 2.7425, 0, 0, 3.05, 0 )
+
+[node name="Window003" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Window003" parent="." instance=ExtResource( 1 )]

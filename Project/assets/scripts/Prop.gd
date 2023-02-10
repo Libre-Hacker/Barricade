@@ -52,14 +52,14 @@ remotesync func set_new_network_master(id):
 func set_picked_up(value):
 	pickedUp = value
 	if(pickedUp):
-		for materials in get_node("Model/MeshInstance").get_surface_material_count():
-				get_node("Model/MeshInstance").get_surface_material(materials).flags_transparent = true
+		for material in get_node("Model").get_child(0).get_surface_material_count():
+			get_node("Model").get_child(0).get_surface_material(material).flags_transparent = true
 		set_collision_mask_bit(3, false) # Change collision mask so this won't collide while held.
 		for players in GameManager.playerManager.get_children():
 			add_collision_exception_with(players)
 	else:
-		for materials in get_node("Model/MeshInstance").get_surface_material_count():
-				get_node("Model/MeshInstance").get_surface_material(materials).flags_transparent = false
+		for materials in get_node("Model").get_child(0).get_surface_material_count():
+				get_node("Model").get_child(0).get_surface_material(materials).flags_transparent = false
 		set_collision_mask_bit(3, true) # Change collision mask so this won't collide while held.
 		for exception in get_collision_exceptions():
 			remove_collision_exception_with(exception)

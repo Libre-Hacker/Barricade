@@ -230,6 +230,7 @@ name_num_separator=2
 common/physics_fps=120
 3d/physics_engine="Bullet"
 3d/active_soft_world=false
+3d/default_gravity=18.6
 
 [rendering]
 
@@ -238,6 +239,6 @@ quality/directional_shadow/size=1024
 quality/shadow_atlas/size=1024
 quality/shading/force_lambert_over_burley=true
 quality/shading/use_physical_light_attenuation=true
+quality/subsurface_scattering/scale=1
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-quality/filters/msaa=2
 environment/default_environment="res://assets/environments/default_env.tres"
