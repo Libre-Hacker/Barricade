@@ -3,6 +3,8 @@ extends Area
 # This simply sends signals to notify the spawn manager if this spawn point can
 # be used.
 
+export (bool) var enabled = true
+
 # Keep track of our own collisions because 
 # get_overlapping_bodies() is unreliable.
 var bodyCount = [] 
@@ -16,7 +18,7 @@ func _ready():
 	# a small amount of time so spawn manager can initialize.
 	yield(get_tree().create_timer(0.5), "timeout")
 	
-	if(is_open()):
+	if(is_open() and enabled):
 		emit_signal("open", self)
 	else:
 		emit_signal("closed", self)
@@ -38,3 +40,7 @@ func _on_body_exited(body):
 func _on_body_entered(body):
 	bodyCount.append(body)
 	emit_signal("closed", self)
+
+
+func _on_PayWall_on_purchase():
+	emit_signal("open", self)

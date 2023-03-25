@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/meshes/modular_sewer_kit/Wall001.scn" type="PackedScene" id=1]
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Wall002.scn" type="PackedScene" id=1]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 2, 0.1 )
@@ -17,4 +17,4 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.9 )
 shape = SubResource( 1 )
 
-[node name="Wall001" parent="." instance=ExtResource( 1 )]
+[node name="Wall002" parent="." instance=ExtResource( 1 )]

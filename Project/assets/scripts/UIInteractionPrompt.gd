@@ -13,6 +13,9 @@ func update_text(interactable, player):
 		else:
 			text = "Press " + InputMap.get_action_list("interact")[0].as_text() + " to purchase ammo for $" + String(interactable.ammoPrice)
 			text = text.to_upper()
+	if(interactable.is_in_group("PayWall")):
+		text = "Press " + InputMap.get_action_list("interact")[0].as_text() + " to purchase door for $" + String(interactable.price)
+		text = text.to_upper()
 
 func hide_text():
 	hide()

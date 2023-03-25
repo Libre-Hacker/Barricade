@@ -588,6 +588,7 @@ enabled = true
 cast_to = Vector3( 0, 0, 100 )
 collision_mask = 193
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 12 )
 
 [node name="CycleTimer" type="Timer" parent="PrimaryFire"]

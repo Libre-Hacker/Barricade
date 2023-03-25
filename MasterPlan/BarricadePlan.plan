@@ -4,9 +4,9 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": -671.4346923828125,
-  "Pan.Y": -261.4836120605469,
-  "ZoomLevel": 4,
+  "Pan.X": -383.008056640625,
+  "Pan.Y": -361.4826965332031,
+  "ZoomLevel": 3,
   "TaskTransparency": 5,
   "OutlineTasks": true,
   "BracketSubtasks": true,
@@ -733,14 +733,14 @@
     {
       "BoardIndex": 0,
       "Position.X": 512,
-      "Position.Y": 160,
+      "Position.Y": 144,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "Setup Modular Assets in Godot",
+      "Description": "[LEVEL DESIGN] Sewer Level",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:45:47"
+      "CreationTime": "Feb 23 2023 14:51:48"
     }, 
     {
       "BoardIndex": 0,
@@ -1646,15 +1646,27 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 512,
-      "Position.Y": 144,
-      "Checkbox.Checked": true,
+      "Position.X": -480,
+      "Position.Y": 704,
+      "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "Setup Props in Godot",
+      "Description": "[BUG] Player can buy items through walls",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 03:11:26"
+      "CreationTime": "Feb 23 2023 14:51:16"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": 512,
+      "Position.Y": 160,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[PROGRAMMING] Level Doors",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "Mar 17 2023 14:32:08"
     }
   ]
 }

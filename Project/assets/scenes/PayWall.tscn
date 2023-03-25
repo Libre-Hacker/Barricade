@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/scripts/PayWall.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/ZapSplat/zapsplat_multimedia_game_error_tone_007_24925.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/sounds/ZapSplat/zapsplat_foley_cash_register_ka_ching_002_44083.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.1, 2, 2 )
+
+[node name="PayWall" type="StaticBody" groups=["Interactables", "PayWall"]]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource( 1 )
+purchaseSound = ExtResource( 3 )
+insufficientFundsSound = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+shape = SubResource( 1 )
+
+[node name="AudioManager" parent="." instance=ExtResource( 4 )]
