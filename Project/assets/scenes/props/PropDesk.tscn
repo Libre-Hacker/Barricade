@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scripts/PropHealth.gd" type="Script" id=4]
+[ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=6]
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Desk.scn" type="PackedScene" id=7]
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Desk.material" type="Material" id=8]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.2458, 0.505256, 0.751918 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 1.43834, 0.0355758, 0.754546 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 1, 0.306701, 0.0196021 )
+
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( -1.425, 0.2691, 0.7923, -1.425, 0.3191, -0.7077, -1.425, 0.3191, 0.7923, -1.425, 0.2691, 0.7923, -1.425, 0.2691, -0.7077, -1.425, 0.3191, -0.7077, -1.425, 0.2691, -0.7077, 1.425, 0.3191, -0.7077, -1.425, 0.3191, -0.7077, -1.425, 0.2691, -0.7077, 1.425, 0.2691, -0.7077, 1.425, 0.3191, -0.7077, 1.425, 0.2691, -0.7077, 1.425, 0.3191, 0.7923, 1.425, 0.3191, -0.7077, 1.425, 0.2691, -0.7077, 1.425, 0.2691, 0.7923, 1.425, 0.3191, 0.7923, 1.425, 0.2691, 0.7923, -1.425, 0.3191, 0.7923, 1.425, 0.3191, 0.7923, 1.425, 0.2691, 0.7923, -1.425, 0.2691, 0.7923, -1.425, 0.3191, 0.7923, -1.425, 0.2691, -0.7077, 1.425, 0.2691, 0.7923, 1.425, 0.2691, -0.7077, -1.425, 0.2691, -0.7077, -1.425, 0.2691, 0.7923, 1.425, 0.2691, 0.7923, 1.425, 0.3191, -0.7077, -1.425, 0.3191, 0.7923, -1.425, 0.3191, -0.7077, 1.425, 0.3191, -0.7077, 1.425, 0.3191, 0.7923, -1.425, 0.3191, 0.7923, -1.4, -0.7059, 0.7923, -1.425, 0.2691, -0.7077, -1.425, 0.2691, 0.7923, -1.4, -0.7059, 0.7923, -1.4, -0.7059, -0.7077, -1.425, 0.2691, -0.7077, -1.4, -0.7059, -0.7077, -0.925, 0.2691, -0.7077, -1.425, 0.2691, -0.7077, -1.4, -0.7059, -0.7077, -0.95, -0.7059, -0.7077, -0.925, 0.2691, -0.7077, -0.95, -0.7059, -0.7077, -0.925, 0.2691, 0.7923, -0.925, 0.2691, -0.7077, -0.95, -0.7059, -0.7077, -0.95, -0.7059, 0.7923, -0.925, 0.2691, 0.7923, -0.95, -0.7059, 0.7923, -1.425, 0.2691, 0.7923, -0.925, 0.2691, 0.7923, -0.95, -0.7059, 0.7923, -1.4, -0.7059, 0.7923, -1.425, 0.2691, 0.7923, -1.4, -0.7059, -0.7077, -0.95, -0.7059, 0.7923, -0.95, -0.7059, -0.7077, -1.4, -0.7059, -0.7077, -1.4, -0.7059, 0.7923, -0.95, -0.7059, 0.7923, 0.95, -0.7059, 0.7923, 0.925, 0.2691, -0.7077, 0.925, 0.2691, 0.7923, 0.95, -0.7059, 0.7923, 0.95, -0.7059, -0.7077, 0.925, 0.2691, -0.7077, 0.95, -0.7059, -0.7077, 1.425, 0.2691, -0.7077, 0.925, 0.2691, -0.7077, 0.95, -0.7059, -0.7077, 1.4, -0.7059, -0.7077, 1.425, 0.2691, -0.7077, 1.4, -0.7059, -0.7077, 1.425, 0.2691, 0.7923, 1.425, 0.2691, -0.7077, 1.4, -0.7059, -0.7077, 1.4, -0.7059, 0.7923, 1.425, 0.2691, 0.7923, 1.4, -0.7059, 0.7923, 0.925, 0.2691, 0.7923, 1.425, 0.2691, 0.7923, 1.4, -0.7059, 0.7923, 0.95, -0.7059, 0.7923, 0.925, 0.2691, 0.7923, 0.95, -0.7059, -0.7077, 1.4, -0.7059, 0.7923, 1.4, -0.7059, -0.7077, 0.95, -0.7059, -0.7077, 0.95, -0.7059, 0.7923, 1.4, -0.7059, 0.7923, -0.9398, -0.3088, -0.7077, 0.925, 0.2691, -0.7077, 0.9398, -0.3088, -0.7077, -0.9398, -0.3088, -0.7077, -0.925, 0.2691, -0.7077, 0.925, 0.2691, -0.7077 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1.43969, 0.524763, 0.779141 )
+
+[node name="PropDesk" type="RigidBody" groups=["Destructibles", "Props"]]
+collision_layer = 4
+collision_mask = 13
+continuous_cd = true
+script = ExtResource( 1 )
+realName = "Desk"
+followSpeed = 2.0
+rotationAcceleration = 1.0
+maxRotationSpeed = 4.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17828, -0.210686, 0.0430167 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape_2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17904, -0.210686, 0.0430167 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape_3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000381231, 0.294044, 0.0430167 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape_4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.689295 )
+shape = SubResource( 8 )
+
+[node name="Reward" parent="." instance=ExtResource( 2 )]
+payoutOnDeath = false
+rewardAmount = 10
+
+[node name="Health" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+health = 850.0
+maxHealth = 850.0
+
+[node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props", "Repairables"]]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HitBox"]
+shape = SubResource( 5 )
+
+[node name="OccupiedArea" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="OccupiedArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.195079, 0.0429175 )
+shape = SubResource( 4 )
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="Desk" parent="Model" instance=ExtResource( 7 )]
+material/0 = ExtResource( 8 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="NetworkTickRate" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
+[connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
+[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
+[connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
+[connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
+[connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]
+[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]
