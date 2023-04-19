@@ -6,21 +6,19 @@
 [ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=4]
 [ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/meshes/props/StorageShelf_StorageShelf.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://assets/meshes/modular_sewer_kit/Shelf.scn" type="PackedScene" id=7]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.252148, 0.05, 0.74981 )
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.0235541, 0.978971, 0.0264983 )
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 0.02, 1, 0.02 )
+extents = Vector3( 0.205329, 0.0486929, 0.752426 )
 
-[sub_resource type="SpatialMaterial" id=5]
-resource_local_to_scene = true
-albedo_color = Color( 0.477344, 0.477344, 0.477344, 0.490196 )
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( -0.75, -0.05, 0.2, -0.75, 0.05, -0.2, -0.75, 0.05, 0.2, -0.75, -0.05, 0.2, -0.75, -0.05, -0.2, -0.75, 0.05, -0.2, -0.75, -0.05, -0.2, 0.75, 0.05, -0.2, -0.75, 0.05, -0.2, -0.75, -0.05, -0.2, 0.75, -0.05, -0.2, 0.75, 0.05, -0.2, 0.75, -0.05, -0.2, 0.75, 0.05, 0.2, 0.75, 0.05, -0.2, 0.75, -0.05, -0.2, 0.75, -0.05, 0.2, 0.75, 0.05, 0.2, 0.75, -0.05, 0.2, -0.75, 0.05, 0.2, 0.75, 0.05, 0.2, 0.75, -0.05, 0.2, -0.75, -0.05, 0.2, -0.75, 0.05, 0.2, -0.75, -0.05, -0.2, 0.75, -0.05, 0.2, 0.75, -0.05, -0.2, -0.75, -0.05, -0.2, -0.75, -0.05, 0.2, 0.75, -0.05, 0.2, 0.75, 0.05, -0.2, -0.75, 0.05, 0.2, -0.75, 0.05, -0.2, 0.75, 0.05, -0.2, 0.75, 0.05, 0.2, -0.75, 0.05, 0.2, -0.75, 0.9, 0.2, -0.75, 1, -0.2, -0.75, 1, 0.2, -0.75, 0.9, 0.2, -0.75, 0.9, -0.2, -0.75, 1, -0.2, -0.75, 0.9, -0.2, 0.75, 1, -0.2, -0.75, 1, -0.2, -0.75, 0.9, -0.2, 0.75, 0.9, -0.2, 0.75, 1, -0.2, 0.75, 0.9, -0.2, 0.75, 1, 0.2, 0.75, 1, -0.2, 0.75, 0.9, -0.2, 0.75, 0.9, 0.2, 0.75, 1, 0.2, 0.75, 0.9, 0.2, -0.75, 1, 0.2, 0.75, 1, 0.2, 0.75, 0.9, 0.2, -0.75, 0.9, 0.2, -0.75, 1, 0.2, -0.75, 0.9, -0.2, 0.75, 0.9, 0.2, 0.75, 0.9, -0.2, -0.75, 0.9, -0.2, -0.75, 0.9, 0.2, 0.75, 0.9, 0.2, 0.75, 1, -0.2, -0.75, 1, 0.2, -0.75, 1, -0.2, 0.75, 1, -0.2, 0.75, 1, 0.2, -0.75, 1, 0.2, -0.75, -1, 0.2, -0.75, -0.9, -0.2, -0.75, -0.9, 0.2, -0.75, -1, 0.2, -0.75, -1, -0.2, -0.75, -0.9, -0.2, -0.75, -1, -0.2, 0.75, -0.9, -0.2, -0.75, -0.9, -0.2, -0.75, -1, -0.2, 0.75, -1, -0.2, 0.75, -0.9, -0.2, 0.75, -1, -0.2, 0.75, -0.9, 0.2, 0.75, -0.9, -0.2, 0.75, -1, -0.2, 0.75, -1, 0.2, 0.75, -0.9, 0.2, 0.75, -1, 0.2, -0.75, -0.9, 0.2, 0.75, -0.9, 0.2, 0.75, -1, 0.2, -0.75, -1, 0.2, -0.75, -0.9, 0.2, -0.75, -1, -0.2, 0.75, -1, 0.2, 0.75, -1, -0.2, -0.75, -1, -0.2, -0.75, -1, 0.2, 0.75, -1, 0.2, 0.75, -0.9, -0.2, -0.75, -0.9, 0.2, -0.75, -0.9, -0.2, 0.75, -0.9, -0.2, 0.75, -0.9, 0.2, -0.75, -0.9, 0.2, -0.75, 0.05, -0.16, -0.71, 0.9, -0.16, -0.71, 0.05, -0.16, -0.75, 0.05, -0.16, -0.75, 0.9, -0.16, -0.71, 0.9, -0.16, -0.75, -0.05, 0.16, -0.71, -0.9, 0.16, -0.71, -0.05, 0.16, -0.75, -0.05, 0.16, -0.75, -0.9, 0.16, -0.71, -0.9, 0.16, -0.75, -0.05, -0.2, -0.71, -0.9, -0.2, -0.71, -0.05, -0.2, -0.75, -0.05, -0.2, -0.75, -0.9, -0.2, -0.71, -0.9, -0.2, -0.75, 0.05, 0.2, -0.71, 0.9, 0.2, -0.71, 0.05, 0.2, -0.75, 0.05, 0.2, -0.75, 0.9, 0.2, -0.71, 0.9, 0.2, -0.75, -0.05, 0.16, -0.75, -0.9, 0.2, -0.75, -0.9, 0.16, -0.75, -0.05, 0.16, -0.75, -0.05, 0.2, -0.75, -0.9, 0.2, -0.71, 0.05, 0.16, -0.71, 0.9, 0.2, -0.71, 0.9, 0.16, -0.71, 0.05, 0.16, -0.71, 0.05, 0.2, -0.71, 0.9, 0.2, -0.75, -0.05, -0.2, -0.75, -0.9, -0.16, -0.75, -0.9, -0.2, -0.75, -0.05, -0.2, -0.75, -0.05, -0.16, -0.75, -0.9, -0.16, -0.71, 0.05, -0.2, -0.71, 0.9, -0.16, -0.71, 0.9, -0.2, -0.71, 0.05, -0.2, -0.71, 0.05, -0.16, -0.71, 0.9, -0.16, 0.71, -0.05, 0.16, 0.75, -0.9, 0.16, 0.75, -0.05, 0.16, 0.71, -0.05, 0.16, 0.71, -0.9, 0.16, 0.75, -0.9, 0.16, 0.71, 0.05, 0.2, 0.75, 0.9, 0.2, 0.75, 0.05, 0.2, 0.71, 0.05, 0.2, 0.71, 0.9, 0.2, 0.75, 0.9, 0.2, 0.71, -0.05, 0.16, 0.71, -0.9, 0.2, 0.71, -0.9, 0.16, 0.71, -0.05, 0.16, 0.71, -0.05, 0.2, 0.71, -0.9, 0.2, 0.75, 0.05, 0.16, 0.75, 0.9, 0.2, 0.75, 0.9, 0.16, 0.75, 0.05, 0.16, 0.75, 0.05, 0.2, 0.75, 0.9, 0.2, 0.71, -0.05, -0.2, 0.75, -0.9, -0.2, 0.75, -0.05, -0.2, 0.71, -0.05, -0.2, 0.71, -0.9, -0.2, 0.75, -0.9, -0.2, 0.71, 0.05, -0.16, 0.75, 0.9, -0.16, 0.75, 0.05, -0.16, 0.71, 0.05, -0.16, 0.71, 0.9, -0.16, 0.75, 0.9, -0.16, 0.71, -0.05, -0.2, 0.71, -0.9, -0.16, 0.71, -0.9, -0.2, 0.71, -0.05, -0.2, 0.71, -0.05, -0.16, 0.71, -0.9, -0.16, 0.75, 0.05, -0.2, 0.75, 0.9, -0.16, 0.75, 0.9, -0.2, 0.75, 0.05, -0.2, 0.75, 0.05, -0.16, 0.75, 0.9, -0.16, 0.75, -0.9, -0.2, 0.75, -0.05, -0.16, 0.75, -0.05, -0.2, 0.75, -0.9, -0.2, 0.75, -0.9, -0.16, 0.75, -0.05, -0.16, 0.71, 0.9, -0.2, 0.71, 0.05, -0.16, 0.71, 0.05, -0.2, 0.71, 0.9, -0.2, 0.71, 0.9, -0.16, 0.71, 0.05, -0.16, 0.71, -0.9, -0.16, 0.75, -0.05, -0.16, 0.75, -0.9, -0.16, 0.71, -0.9, -0.16, 0.71, -0.05, -0.16, 0.75, -0.05, -0.16, 0.71, 0.9, -0.2, 0.75, 0.05, -0.2, 0.75, 0.9, -0.2, 0.71, 0.9, -0.2, 0.71, 0.05, -0.2, 0.75, 0.05, -0.2, 0.75, -0.9, 0.16, 0.75, -0.05, 0.2, 0.75, -0.05, 0.16, 0.75, -0.9, 0.16, 0.75, -0.9, 0.2, 0.75, -0.05, 0.2, 0.71, 0.9, 0.16, 0.71, 0.05, 0.2, 0.71, 0.05, 0.16, 0.71, 0.9, 0.16, 0.71, 0.9, 0.2, 0.71, 0.05, 0.2, 0.71, -0.9, 0.2, 0.75, -0.05, 0.2, 0.75, -0.9, 0.2, 0.71, -0.9, 0.2, 0.71, -0.05, 0.2, 0.75, -0.05, 0.2, 0.71, 0.9, 0.16, 0.75, 0.05, 0.16, 0.75, 0.9, 0.16, 0.71, 0.9, 0.16, 0.71, 0.05, 0.16, 0.75, 0.05, 0.16, -0.71, -0.9, 0.16, -0.71, -0.05, 0.2, -0.71, -0.05, 0.16, -0.71, -0.9, 0.16, -0.71, -0.9, 0.2, -0.71, -0.05, 0.2, -0.75, 0.9, 0.16, -0.75, 0.05, 0.2, -0.75, 0.05, 0.16, -0.75, 0.9, 0.16, -0.75, 0.9, 0.2, -0.75, 0.05, 0.2, -0.75, -0.9, 0.2, -0.71, -0.05, 0.2, -0.71, -0.9, 0.2, -0.75, -0.9, 0.2, -0.75, -0.05, 0.2, -0.71, -0.05, 0.2, -0.75, 0.9, 0.16, -0.71, 0.05, 0.16, -0.71, 0.9, 0.16, -0.75, 0.9, 0.16, -0.75, 0.05, 0.16, -0.71, 0.05, 0.16, -0.71, -0.9, -0.2, -0.71, -0.05, -0.16, -0.71, -0.05, -0.2, -0.71, -0.9, -0.2, -0.71, -0.9, -0.16, -0.71, -0.05, -0.16, -0.75, 0.9, -0.2, -0.75, 0.05, -0.16, -0.75, 0.05, -0.2, -0.75, 0.9, -0.2, -0.75, 0.9, -0.16, -0.75, 0.05, -0.16, -0.75, 0.9, -0.2, -0.71, 0.05, -0.2, -0.71, 0.9, -0.2, -0.75, 0.9, -0.2, -0.75, 0.05, -0.2, -0.71, 0.05, -0.2, -0.75, -0.9, -0.16, -0.71, -0.05, -0.16, -0.71, -0.9, -0.16, -0.75, -0.9, -0.16, -0.75, -0.05, -0.16, -0.71, -0.05, -0.16 )
 
-[sub_resource type="SpatialMaterial" id=6]
-resource_local_to_scene = true
-albedo_color = Color( 1, 0.486275, 0, 0.490196 )
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.216355, 1.01824, 0.762392 )
 
 [node name="PropStorageShelf" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
@@ -33,31 +31,30 @@ followSpeed = 5.0
 rotationAcceleration = 1.5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.996918, 0 )
-shape = SubResource( 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179601, 0, -0.73018 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape_2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000360906, 0 )
-shape = SubResource( 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177722, 0, -0.73018 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape_3" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00518, 0 )
-shape = SubResource( 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177722, 0, 0.724292 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape_4" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199734, -0.000758946, -0.700119 )
-shape = SubResource( 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180369, 0, 0.724292 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape_5" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198719, -0.000758946, -0.700119 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape_6" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198719, -0.000758946, 0.697417 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.947889, 0 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape_7" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201452, -0.000758946, 0.697417 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.952217, 0 )
 shape = SubResource( 4 )
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
@@ -75,32 +72,8 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="HitBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.996918, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 1 )
-
-[node name="CollisionShape_2" type="CollisionShape" parent="HitBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000360906, 0 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape_3" type="CollisionShape" parent="HitBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00518, 0 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape_4" type="CollisionShape" parent="HitBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199734, -0.000758946, -0.700119 )
-shape = SubResource( 4 )
-
-[node name="CollisionShape_5" type="CollisionShape" parent="HitBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198719, -0.000758946, -0.700119 )
-shape = SubResource( 4 )
-
-[node name="CollisionShape_6" type="CollisionShape" parent="HitBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198719, -0.000758946, 0.697417 )
-shape = SubResource( 4 )
-
-[node name="CollisionShape_7" type="CollisionShape" parent="HitBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201452, -0.000758946, 0.697417 )
-shape = SubResource( 4 )
 
 [node name="OccupiedArea" type="Area" parent="."]
 collision_layer = 0
@@ -108,40 +81,12 @@ collision_mask = 10
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="OccupiedArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.996918, 0 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape_2" type="CollisionShape" parent="OccupiedArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000360906, 0 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape_3" type="CollisionShape" parent="OccupiedArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00518, 0 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape_4" type="CollisionShape" parent="OccupiedArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199734, -0.000758946, -0.700119 )
-shape = SubResource( 4 )
-
-[node name="CollisionShape_5" type="CollisionShape" parent="OccupiedArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198719, -0.000758946, -0.700119 )
-shape = SubResource( 4 )
-
-[node name="CollisionShape_6" type="CollisionShape" parent="OccupiedArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198719, -0.000758946, 0.697417 )
-shape = SubResource( 4 )
-
-[node name="CollisionShape_7" type="CollisionShape" parent="OccupiedArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201452, -0.000758946, 0.697417 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Model" type="Spatial" parent="."]
 
-[node name="MeshInstance" type="MeshInstance" parent="Model"]
-mesh = ExtResource( 7 )
-skeleton = NodePath("../..")
-material/0 = SubResource( 5 )
-material/1 = SubResource( 6 )
+[node name="Shelf" parent="Model" instance=ExtResource( 7 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="Tween" type="Tween" parent="."]
 
