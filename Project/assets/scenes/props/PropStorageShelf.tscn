@@ -27,7 +27,7 @@ collision_mask = 13
 continuous_cd = true
 angular_damp = 0.1
 script = ExtResource( 1 )
-realName = "Plank"
+realName = "Shelf"
 followSpeed = 5.0
 rotationAcceleration = 1.5
 

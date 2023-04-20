@@ -4,9 +4,9 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": -544.9703369140625,
-  "Pan.Y": -251.99493408203125,
-  "ZoomLevel": 4,
+  "Pan.X": -418.124755859375,
+  "Pan.Y": -290.7922058105469,
+  "ZoomLevel": 3,
   "TaskTransparency": 5,
   "OutlineTasks": true,
   "BracketSubtasks": true,
@@ -745,7 +745,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 336,
+      "Position.Y": 320,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -757,7 +757,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 352,
+      "Position.Y": 336,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -769,7 +769,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 368,
+      "Position.Y": 352,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -781,7 +781,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 384,
+      "Position.Y": 368,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -793,7 +793,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 400,
+      "Position.Y": 384,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -805,7 +805,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 496,
+      "Position.Y": 544,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -817,7 +817,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 512,
+      "Position.Y": 560,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -829,7 +829,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 528,
+      "Position.Y": 576,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -841,7 +841,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 544,
+      "Position.Y": 592,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -853,7 +853,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 560,
+      "Position.Y": 608,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -865,7 +865,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 576,
+      "Position.Y": 624,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -877,7 +877,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 592,
+      "Position.Y": 640,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -888,15 +888,15 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 288,
+      "Position.X": 16,
+      "Position.Y": 160,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[NETWORKING] Multiplayer",
+      "Description": "[BUG] Horker Spit is Inaccurate",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 17 2022 22:49:58"
+      "CreationTime": "Apr 19 2023 19:30:06"
     }, 
     {
       "BoardIndex": 2,
@@ -1308,19 +1308,19 @@
     {
       "BoardIndex": 0,
       "Position.X": 512,
-      "Position.Y": 224,
+      "Position.Y": 160,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "Fix Normals on Car Door Prop",
+      "Description": "[BUG] Player Health Doesn't hide on pause",
       "Selected": true,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 19 2023 18:53:22"
+      "CreationTime": "Apr 19 2023 19:50:26"
     }, 
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 304,
+      "Position.Y": 288,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1332,7 +1332,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 320,
+      "Position.Y": 304,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1343,8 +1343,8 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 480,
+      "Position.X": 16,
+      "Position.Y": 144,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1356,7 +1356,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 416,
+      "Position.Y": 400,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1368,7 +1368,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 432,
+      "Position.Y": 416,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1380,7 +1380,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 448,
+      "Position.Y": 432,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1392,7 +1392,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -304,
-      "Position.Y": 336,
+      "Position.Y": 320,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1404,7 +1404,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 464,
+      "Position.Y": 448,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1416,7 +1416,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -304,
-      "Position.Y": 416,
+      "Position.Y": 400,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1440,19 +1440,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 608,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[UI] Multiplayer Coming Soon Button",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jun 27 2022 14:36:51"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 624,
+      "Position.Y": 464,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1538,9 +1526,9 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 640,
-      "Checkbox.Checked": false,
+      "Position.X": 976,
+      "Position.Y": 144,
+      "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "[BUG] Shelf Name Is Plank?",
@@ -1550,9 +1538,9 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 656,
-      "Checkbox.Checked": false,
+      "Position.X": 976,
+      "Position.Y": 160,
+      "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "[BUG] Gun UI Doesn't Hide On Game Pause",
@@ -1563,7 +1551,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 672,
+      "Position.Y": 496,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1575,7 +1563,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 688,
+      "Position.Y": 512,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1587,7 +1575,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 704,
+      "Position.Y": 528,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1595,54 +1583,6 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "Feb 23 2023 14:51:16"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 512,
-      "Position.Y": 160,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[PROGRAMMING] Level Doors",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Mar 17 2023 14:32:08"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 512,
-      "Position.Y": 176,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Set All Prop Material Alphas to 200",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 19 2023 18:25:59"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 512,
-      "Position.Y": 192,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Fix All Prop Transparent Material Swap",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 19 2023 18:26:17"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 512,
-      "Position.Y": 208,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Restore Backface Culling on Props",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 19 2023 18:26:48"
     }
   ]
 }

@@ -22,7 +22,10 @@ func _process(_delta):
 	if(is_network_master() == false):
 		return
 	if(GameManager.isPaused):
+		get_node("HUD").hide()
 		return
+	else:
+		get_node("HUD").show()
 	if(primaryFire.cycleTimer.is_stopped() == false or altFire.cycleTimer.is_stopped() == false):
 		return
 	if(Input.is_action_pressed("primary_fire")):

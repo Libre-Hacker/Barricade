@@ -19,7 +19,10 @@ func _process(delta):
 	if(is_network_master() == false):
 		return
 	if(GameManager.isPaused):
+		get_node("HUD").hide()
 		return
+	else:
+		get_node("HUD").show()
 	if(Input.is_action_just_pressed("reload")):
 		primaryFire.startReload()
 		get_tree().get_root().set_input_as_handled()
