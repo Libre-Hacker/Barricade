@@ -1307,15 +1307,15 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 144,
+      "Position.X": 512,
+      "Position.Y": 224,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "Modeling",
-      "Selected": false,
+      "Description": "Fix Normals on Car Door Prop",
+      "Selected": true,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:46:00"
+      "CreationTime": "Apr 19 2023 18:53:22"
     }, 
     {
       "BoardIndex": 0,
@@ -1538,30 +1538,6 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 992,
-      "Position.Y": 160,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Chair",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:46:17"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 992,
-      "Position.Y": 176,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Plank",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:46:26"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 640,
       "Checkbox.Checked": false,
@@ -1607,42 +1583,6 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "Nov 15 2022 13:56:19"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 992,
-      "Position.Y": 192,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Shelf",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:46:31"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 992,
-      "Position.Y": 208,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Desk",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:47:06"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 992,
-      "Position.Y": 224,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Table",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:47:11"
     }, 
     {
       "BoardIndex": 0,

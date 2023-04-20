@@ -1308,14 +1308,14 @@
     {
       "BoardIndex": 0,
       "Position.X": 512,
-      "Position.Y": 176,
+      "Position.Y": 224,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "Modeling",
-      "Selected": false,
+      "Description": "Fix Normals on Car Door Prop",
+      "Selected": true,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:46:00"
+      "CreationTime": "Apr 19 2023 18:53:22"
     }, 
     {
       "BoardIndex": 0,
@@ -1538,30 +1538,6 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 528,
-      "Position.Y": 192,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Chair",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:46:17"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 528,
-      "Position.Y": 208,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Plank",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:46:26"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 640,
       "Checkbox.Checked": false,
@@ -1610,42 +1586,6 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 528,
-      "Position.Y": 224,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Shelf",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:46:31"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 528,
-      "Position.Y": 240,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Desk",
-      "Selected": true,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:47:06"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 528,
-      "Position.Y": 256,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "Table",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jan 6 2023 07:47:11"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 704,
       "Checkbox.Checked": false,
@@ -1667,6 +1607,42 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "Mar 17 2023 14:32:08"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": 512,
+      "Position.Y": 176,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Set All Prop Material Alphas to 200",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "Apr 19 2023 18:25:59"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": 512,
+      "Position.Y": 192,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Fix All Prop Transparent Material Swap",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "Apr 19 2023 18:26:17"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": 512,
+      "Position.Y": 208,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Restore Backface Culling on Props",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "Apr 19 2023 18:26:48"
     }
   ]
 }

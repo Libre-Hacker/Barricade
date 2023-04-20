@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
@@ -13,8 +13,6 @@
 [sub_resource type="BoxShape" id=16]
 
 [sub_resource type="BoxShape" id=17]
-
-[sub_resource type="CubeMesh" id=14]
 
 [node name="PropChair" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
@@ -52,10 +50,6 @@ script = ExtResource( 6 )
 shape = SubResource( 17 )
 
 [node name="Model" type="Spatial" parent="."]
-
-[node name="MeshInstance" type="MeshInstance" parent="Model"]
-mesh = SubResource( 14 )
-material/0 = null
 
 [node name="Tween" type="Tween" parent="."]
 
