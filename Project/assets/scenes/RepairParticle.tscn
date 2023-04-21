@@ -19,6 +19,7 @@ initial_velocity = 0.6
 scale_curve = SubResource( 5 )
 
 [sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
 params_billboard_mode = 3
 params_use_alpha_scissor = true
 params_alpha_scissor_threshold = 0.98
