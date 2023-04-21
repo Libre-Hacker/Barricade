@@ -15,6 +15,7 @@ func damage(value = 0):
 	if(health <= 0):
 		return
 	rset("health", health - value)
+	emit_signal("health_changed", health/maxHealth)
 
 # Adds health to this object.
 func heal(value = 0):
@@ -24,4 +25,5 @@ func heal(value = 0):
 		rset("health", maxHealth)
 	else:
 		rset("health", health + value)
+	emit_signal("health_changed", health/maxHealth)
 	return true

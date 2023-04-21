@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/meshes/modular_sewer_kit/Barrel.material" type="Material" id=7]
 [ext_resource path="res://assets/sounds/bustcrate2.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/meshes/modular_sewer_kit/Barrel.scn" type="PackedScene" id=9]
+[ext_resource path="res://assets/scripts/MeshSaturationChanger.gd" type="Script" id=10]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.5
@@ -59,6 +60,7 @@ shape = SubResource( 1 )
 
 [node name="Barrel" parent="Model" instance=ExtResource( 9 )]
 material/0 = ExtResource( 7 )
+script = ExtResource( 10 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -69,6 +71,7 @@ autostart = true
 [connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
 [connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
 [connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="updateDamageIndicator" from="Health" to="Model/Barrel" method="_on_Health_updateDamageIndicator"]
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]

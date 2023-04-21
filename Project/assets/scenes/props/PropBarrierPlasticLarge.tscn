@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/sounds/bustcrate2.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/scenes/Health.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/meshes/modular_sewer_kit/BarrierLarge.material" type="Material" id=9]
+[ext_resource path="res://assets/scripts/MeshSaturationChanger.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( 1, 0.610032, 0.0999608, 1, -0.189988, 0.3, 1, 0.610032, -0.10002, -1, 0.610032, 0.0999608, 1, -0.389968, 0.3, -1, -0.189988, 0.3, 1, -0.189988, -0.3, -1, 0.610032, -0.10002, 1, -0.389968, -0.3, -1, -0.389968, 0.3, -1, -0.189988, -0.3, -1, -0.389968, -0.3 )
@@ -66,6 +67,7 @@ shape = SubResource( 3 )
 [node name="BarrierLarge" parent="Model" instance=ExtResource( 6 )]
 transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1, 0, 0, 0 )
 material/0 = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -76,6 +78,7 @@ autostart = true
 [connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
 [connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
 [connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="updateDamageIndicator" from="Health" to="Model/BarrierLarge" method="_on_Health_updateDamageIndicator"]
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]

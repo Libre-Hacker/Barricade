@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scripts/Prop.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/meshes/modular_sewer_kit/Toilet.scn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sounds/bustcrate2.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/meshes/modular_sewer_kit/Toilet.material" type="Material" id=9]
+[ext_resource path="res://assets/scripts/MeshSaturationChanger.gd" type="Script" id=10]
 
 [sub_resource type="ConvexPolygonShape" id=21]
 points = PoolVector3Array( -0.30453, 0.0809335, -0.274251, -0.235357, 0.0809335, 0.219048, 0.234914, 0.0810118, 0.219048, 0.304146, 0.0810118, -0.274251, -0.000191689, 0.0809335, -0.519671, -0.213252, -0.318988, -0.227828, -0.144258, -0.318988, 0.214493, 0.143815, -0.318988, 0.214493, 0.212809, -0.318988, -0.227828, -0.000191689, -0.318988, -0.379679 )
@@ -75,6 +76,7 @@ shape = SubResource( 17 )
 [node name="Toilet" parent="Model" instance=ExtResource( 7 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 material/0 = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -85,6 +87,7 @@ autostart = true
 [connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
 [connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
 [connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="updateDamageIndicator" from="Health" to="Model/Toilet" method="_on_Health_updateDamageIndicator"]
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]

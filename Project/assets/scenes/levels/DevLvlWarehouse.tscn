@@ -32,7 +32,7 @@
 [ext_resource path="res://assets/scenes/modularassets/Sewer/Wires001.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/scenes/modularassets/Sewer/PlugWall005.tscn" type="PackedScene" id=31]
 [ext_resource path="res://assets/scenes/props/PropCrate.tscn" type="PackedScene" id=32]
-[ext_resource path="res://assets/scenes/PropChair.tscn" type="PackedScene" id=33]
+[ext_resource path="res://assets/scenes/props/PropChair.tscn" type="PackedScene" id=33]
 [ext_resource path="res://assets/scenes/ Core.tscn" type="PackedScene" id=34]
 [ext_resource path="res://assets/scenes/VendingMachineShotgun.tscn" type="PackedScene" id=35]
 [ext_resource path="res://assets/scenes/modularassets/Sewer/Window003.tscn" type="PackedScene" id=36]

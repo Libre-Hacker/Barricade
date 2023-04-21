@@ -4,8 +4,8 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": 119.75186157226562,
-  "Pan.Y": -509.81219482421875,
+  "Pan.X": -484.1541748046875,
+  "Pan.Y": -224.96243286132812,
   "ZoomLevel": 4,
   "TaskTransparency": 5,
   "OutlineTasks": true,
@@ -805,7 +805,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 480,
+      "Position.Y": 512,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -817,7 +817,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 496,
+      "Position.Y": 528,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -829,7 +829,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 512,
+      "Position.Y": 544,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -841,7 +841,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 528,
+      "Position.Y": 560,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -853,7 +853,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 544,
+      "Position.Y": 576,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -865,7 +865,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 560,
+      "Position.Y": 592,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -877,7 +877,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 576,
+      "Position.Y": 608,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -885,6 +885,18 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "May 17 2022 22:45:52"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": 16,
+      "Position.Y": 160,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[BUG] Horker Spit is Inaccurate",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "Apr 19 2023 19:30:06"
     }, 
     {
       "BoardIndex": 2,
@@ -1319,13 +1331,13 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 464,
+      "Position.X": 512,
+      "Position.Y": 160,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "[DESIGN] Visual Prop Damage Indiciation",
-      "Selected": false,
+      "Selected": true,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "Jun 24 2022 06:03:34"
     }, 
@@ -1416,19 +1428,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 592,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[UI] Multiplayer Coming Soon Button",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jun 27 2022 14:36:51"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 608,
+      "Position.Y": 464,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1515,43 +1515,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 624,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Shelf Name Is Plank?",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jul 2 2022 22:21:50"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 640,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Gun UI Doesn't Hide On Game Pause",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jul 3 2022 19:23:47"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 656,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Horker Spit Despawns When Killed",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jul 20 2022 05:44:11"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 672,
+      "Position.Y": 480,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1563,7 +1527,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 688,
+      "Position.Y": 496,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,

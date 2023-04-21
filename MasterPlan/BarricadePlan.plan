@@ -4,8 +4,8 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": -414.807373046875,
-  "Pan.Y": -315.1245422363281,
+  "Pan.X": -589.0770874023438,
+  "Pan.Y": -351.981201171875,
   "ZoomLevel": 3,
   "TaskTransparency": 5,
   "OutlineTasks": true,
@@ -805,7 +805,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 528,
+      "Position.Y": 512,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -817,7 +817,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 544,
+      "Position.Y": 528,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -829,7 +829,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 560,
+      "Position.Y": 544,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -841,7 +841,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 576,
+      "Position.Y": 560,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -853,7 +853,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 592,
+      "Position.Y": 576,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -865,7 +865,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 608,
+      "Position.Y": 592,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -877,7 +877,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 624,
+      "Position.Y": 608,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1307,18 +1307,6 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 176,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Player Health Doesn't hide on pause",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 19 2023 19:50:26"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 288,
       "Checkbox.Checked": false,
@@ -1340,18 +1328,6 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "Jun 16 2022 06:58:07"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 16,
-      "Position.Y": 144,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[DESIGN] Visual Prop Damage Indiciation",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jun 24 2022 06:03:34"
     }, 
     {
       "BoardIndex": 0,
@@ -1526,32 +1502,8 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 144,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Shelf Name Is Plank?",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jul 2 2022 22:21:50"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 160,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Gun UI Doesn't Hide On Game Pause",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jul 3 2022 19:23:47"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 496,
+      "Position.Y": 480,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1563,7 +1515,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 512,
+      "Position.Y": 496,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1571,6 +1523,18 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "Feb 23 2023 14:51:16"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": -480,
+      "Position.Y": 624,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[BUG] Healing Particles Affected by Light",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "Apr 20 2023 20:55:28"
     }
   ]
 }
