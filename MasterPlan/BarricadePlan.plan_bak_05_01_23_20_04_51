@@ -4,8 +4,8 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": -589.0770874023438,
-  "Pan.Y": -351.981201171875,
+  "Pan.X": -732.0770874023438,
+  "Pan.Y": -407.981201171875,
   "ZoomLevel": 3,
   "TaskTransparency": 5,
   "OutlineTasks": true,
@@ -888,7 +888,7 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 16,
+      "Position.X": 512,
       "Position.Y": 160,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
@@ -1331,18 +1331,6 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 144,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[DESIGN] Visual Prop Damage Indiciation",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Jun 24 2022 06:03:34"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 400,
       "Checkbox.Checked": false,
@@ -1535,30 +1523,6 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "Feb 23 2023 14:51:16"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 624,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Healing Particles Affected by Light",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 20 2023 20:55:28"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 160,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[DESIGN] Make all Props Work With Damage Indicator Script",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "Apr 20 2023 20:55:59"
     }
   ]
 }

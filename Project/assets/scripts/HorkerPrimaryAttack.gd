@@ -67,22 +67,19 @@ func attack_behaviour():
 		return
 	if(is_instance_valid(currentTarget)):
 		emit_signal("play_animation", "Attack", true)
-		emit_signal("play_network_animation", "Attack", true, true)
 		attackCDTimer.start()
 
 func shoot_projectiles():
-	if(is_network_master() == false):
-		return
 	for projectiles in projectileCount:
-		var targetDirection = Vector3.FORWARD
-		var randomOffset = Vector3(rand_range(-projectileSpread,projectileSpread), rand_range(0, projectileSpread), 0)
-		if(is_instance_valid(currentTarget)):
-			targetDirection = currentTarget.global_transform.origin
-		rpc("create_projectile", targetDirection, randomOffset)
+		if(!currentTarget):
+			return
+		var distance = global_transform.origin.distance_to(currentTarget.global_transform.origin)
+		var offset = Vector3(rand_range(-3, 3), max(distance * 0.3, 1), 0)
+		var targetDirection = ((currentTarget.global_transform.origin + offset) - global_transform.origin).normalized()
+		create_projectile(targetDirection)
 
-sync func create_projectile(direction = Vector3.FORWARD, offset = Vector3.ZERO):
+sync func create_projectile(direction):
 	var newProjectile = projectile.instance()
-	newProjectile.look_at(direction, Vector3.UP)
 	add_child(newProjectile)
-	newProjectile.shoot(offset)
+	newProjectile.shoot(direction)
 	

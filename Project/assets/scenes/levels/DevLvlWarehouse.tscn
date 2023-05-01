@@ -4844,7 +4844,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 9, -32 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.1939, 2.6576, -43.9967 )
 
 [node name="VendingMachinePistol" parent="Interactables" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.8, 1.7, -5 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.8, 2, -39 )
 
 [node name="PayWall" parent="Interactables" instance=ExtResource( 73 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, -8.8 )

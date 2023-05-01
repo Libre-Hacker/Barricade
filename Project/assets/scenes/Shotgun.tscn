@@ -433,6 +433,7 @@ enabled = true
 cast_to = Vector3( 0, 0, 20 )
 collision_mask = 193
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 2 )
 
 [node name="RayCast_2" type="RayCast" parent="PrimaryFire"]
@@ -440,6 +441,7 @@ enabled = true
 cast_to = Vector3( 0, 0, 20 )
 collision_mask = 193
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 2 )
 
 [node name="RayCast_3" type="RayCast" parent="PrimaryFire"]
@@ -447,6 +449,7 @@ enabled = true
 cast_to = Vector3( 0, 0, 20 )
 collision_mask = 193
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 2 )
 
 [node name="RayCast_4" type="RayCast" parent="PrimaryFire"]
@@ -454,6 +457,7 @@ enabled = true
 cast_to = Vector3( 0, 0, 20 )
 collision_mask = 193
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 2 )
 
 [node name="RayCast_5" type="RayCast" parent="PrimaryFire"]
@@ -461,6 +465,7 @@ enabled = true
 cast_to = Vector3( 0, 0, 20 )
 collision_mask = 193
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 2 )
 
 [node name="RayCast_6" type="RayCast" parent="PrimaryFire"]
@@ -468,6 +473,7 @@ enabled = true
 cast_to = Vector3( 0, 0, 20 )
 collision_mask = 193
 collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource( 2 )
 
 [node name="CycleTimer" type="Timer" parent="PrimaryFire"]

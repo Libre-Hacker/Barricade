@@ -10,8 +10,8 @@ var speed = 1
 func _ready():
 	set_as_toplevel(true)
 
-func shoot(randomness = Vector3.ZERO):
-	apply_central_impulse((-transform.basis.z * speed) + randomness)
+func shoot(direction = Vector3.ZERO):
+	apply_central_impulse(direction * speed)
 
 func _on_area_hit(area):
 	if(area.is_in_group("Players") or area.is_in_group("Props")):
