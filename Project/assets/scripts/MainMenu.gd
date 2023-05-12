@@ -30,12 +30,7 @@ func _on_ui_pressed():
 
 
 func _on_Wishlist_button_up():
-	var res = OS.shell_open("steam://advertise/2006180")
-	if(res != OK):
-		OS.shell_open("https://store.steampowered.com/app/2006180/Barricade/")
+	OS.shell_open("steam://store/2006180")
+	OS.shell_open("https://store.steampowered.com/app/2006180/Barricade/")
 	
 	get_tree().quit()
-
-func _on_Multiplayer_button_up():
-	AudioManager.new_sound(clickSound)
-	MenuSwitcher.load_scene("res://assets/scenes/MultiplayerMenu.tscn")
