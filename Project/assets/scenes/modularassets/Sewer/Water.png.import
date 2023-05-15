@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/Water.png-d5426e843a948c2cd63f2bb8702b0658.image"
+
+[deps]
+
+source_file="res://assets/scenes/modularassets/Sewer/Water.png"
+dest_files=[ "res://.import/Water.png-d5426e843a948c2cd63f2bb8702b0658.image" ]
+
+[params]
+

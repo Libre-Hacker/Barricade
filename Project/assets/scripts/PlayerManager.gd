@@ -20,7 +20,7 @@ func spawn_player(id):
 	var newPlayer = load("res://assets/scenes/FPSPlayer.tscn").instance()
 	newPlayer.set_network_master(id)
 	newPlayer.name = str(id)
-	newPlayer.transform.origin = Vector3(-32, 0.6, -36)
+	newPlayer.transform.origin = Vector3(0, 0, 0)
 	add_child(newPlayer)
 	newPlayer.get_node("Health").connect("player_died", self, "_on_player_death")
 	playersAlive += 1

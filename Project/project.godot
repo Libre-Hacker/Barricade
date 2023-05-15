@@ -223,7 +223,7 @@ hold_prop_in_place={
 
 [node]
 
-name_num_separator=2
+name_num_separator=3
 
 [physics]
 
