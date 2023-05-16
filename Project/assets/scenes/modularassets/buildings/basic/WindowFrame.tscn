@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://assets/meshes/modularbasicroom/BasicRoom_WindowFrame.mesh" type="ArrayMesh" id=1]
-
-[node name="WindowFrame" type="MeshInstance"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
-mesh = ExtResource( 1 )
-material/0 = null

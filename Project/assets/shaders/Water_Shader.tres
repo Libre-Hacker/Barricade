@@ -1,0 +1,24 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+resource_local_to_scene = true
+code = "shader_type spatial;
+
+uniform vec2 amplitude = vec2(0.01, 0.01);
+uniform vec2 frequency = vec2(10, 10);
+uniform vec2 time_factor = vec2(1, 1);
+
+uniform sampler2D texturemap : hint_albedo;
+uniform vec2 texture_scale = vec2(2, 2);
+
+
+float height(vec2 pos, float time) {
+	return (amplitude.x * sin(pos.x * frequency.x + time * time_factor.x)) + (amplitude.y * cos(pos.y * frequency.y + time * time_factor.y));
+}
+
+void fragment() {
+	vec2 uv = ((UV * texture_scale) + height(UV, TIME));
+	ALBEDO = texture(texturemap, uv).rgb;
+}
+
+"

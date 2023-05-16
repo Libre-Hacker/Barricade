@@ -6,8 +6,8 @@
 [ext_resource path="res://assets/scripts/PropHealth.gd" type="Script" id=4]
 [ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=5]
 [ext_resource path="res://assets/scripts/Class_AreaExtended.gd" type="Script" id=6]
-[ext_resource path="res://assets/meshes/modular_sewer_kit/Crate.scn" type="PackedScene" id=7]
-[ext_resource path="res://assets/meshes/modular_sewer_kit/Crate.material" type="Material" id=8]
+[ext_resource path="res://assets/imports/modular_sewer_kit/Crate.scn" type="PackedScene" id=7]
+[ext_resource path="res://assets/imports/modular_sewer_kit/Crate.material" type="Material" id=8]
 [ext_resource path="res://assets/scripts/MeshSaturationChanger.gd" type="Script" id=9]
 
 [sub_resource type="BoxShape" id=4]
