@@ -3,17 +3,19 @@ extends Spatial
 
 export (float) var pathMargin = 0.3 # The distance margin to the next path point.
 export (float) var targetMargin = 1 # The distance margin to the target.
-export (String) var navigationType = ""
 
 var pathPoints = [] # An array of points that lead to the target.
 var pathIndex = 0 # The current index of the path array.
 
 onready var randomPoint = round(rand_range(-2,2))
-onready var navigation = get_tree().get_root().find_node("Navigation" + navigationType, true, false)
+onready var navigation = get_tree().get_root().find_node("Navigation", true, false)
 
 # Need to replace this with an aggro system for multiplayer.
 onready var AIController = get_parent().get_node("AIController")
 
+func _ready():
+	if(!navigation):
+		print('Navigation is null')
 
 func _on_NavigationTimer_timeout():
 	if(AIController.currentState != get_parent().get_node("AIController").AI_STATE.SEEK):

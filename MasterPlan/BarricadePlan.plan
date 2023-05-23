@@ -4,8 +4,8 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": -556.6941528320312,
-  "Pan.Y": -292.2406005859375,
+  "Pan.X": -707.1035766601562,
+  "Pan.Y": -228.83995056152344,
   "ZoomLevel": 4,
   "TaskTransparency": 5,
   "OutlineTasks": true,
@@ -732,9 +732,9 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 512,
+      "Position.X": 976,
       "Position.Y": 144,
-      "Checkbox.Checked": false,
+      "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "[LEVEL DESIGN] Sewer Level",
@@ -1514,15 +1514,27 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 624,
+      "Position.X": 512,
+      "Position.Y": 144,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BUG] Fix Light Emission Materials",
+      "Description": "[MODELING] Replace Unfit Meshes",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 15 2023 23:00:47"
+      "CreationTime": "May 22 2023 16:17:10"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": 528,
+      "Position.Y": 160,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Floor To Wall Pieces",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 23 2023 13:08:32"
     }
   ]
 }
