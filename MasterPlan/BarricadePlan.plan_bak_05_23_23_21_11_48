@@ -4,8 +4,8 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": -707.1035766601562,
-  "Pan.Y": -228.83995056152344,
+  "Pan.X": -604.1035766601562,
+  "Pan.Y": -250.83995056152344,
   "ZoomLevel": 4,
   "TaskTransparency": 5,
   "OutlineTasks": true,
@@ -732,15 +732,15 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
+      "Position.X": 512,
       "Position.Y": 144,
-      "Checkbox.Checked": true,
+      "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[LEVEL DESIGN] Sewer Level",
+      "Description": "[DESIGN] Add Props To Sewers",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "Feb 23 2023 14:51:48"
+      "CreationTime": "May 23 2023 19:11:39"
     }, 
     {
       "BoardIndex": 0,
@@ -1511,18 +1511,6 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "May 15 2023 19:03:07"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 512,
-      "Position.Y": 144,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[MODELING] Replace Unfit Meshes",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 22 2023 16:17:10"
     }
   ]
 }

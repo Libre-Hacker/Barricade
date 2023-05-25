@@ -66,12 +66,6 @@ shape = SubResource( 17 )
 material/0 = ExtResource( 7 )
 script = ExtResource( 10 )
 
-[node name="Tween" type="Tween" parent="."]
-
-[node name="NetworkTickRate" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
 [connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
 [connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
 [connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
@@ -80,4 +74,3 @@ autostart = true
 [connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
 [connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]
-[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]

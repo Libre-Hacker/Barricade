@@ -66,12 +66,6 @@ shape = SubResource( 2 )
 
 [node name="Table" parent="Model" instance=ExtResource( 7 )]
 
-[node name="Tween" type="Tween" parent="."]
-
-[node name="NetworkTickRate" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.335528, 0 )
 shape = SubResource( 3 )
@@ -91,4 +85,3 @@ shape = SubResource( 5 )
 [connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
 [connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]
-[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]
