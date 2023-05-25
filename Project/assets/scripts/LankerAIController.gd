@@ -58,7 +58,7 @@ func _on_change_state(newState : int):
 	if(currentState == AI_STATE.DEAD):
 		return
 	currentState = newState
-	print("Switching state to: ", AI_STATE.keys()[currentState])
+#	print("Switching state to: ", AI_STATE.keys()[currentState])
 
 func _on_PrimaryAttack_targets_available():
 	_on_change_state(2)

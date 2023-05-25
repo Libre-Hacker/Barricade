@@ -13,12 +13,10 @@ signal prop_interacted_with
 signal show_ui
 signal hide_ui
 
-onready var player = find_parent(str(get_network_master()))
+onready var player = GameManager.playerManager.PLAYER
 
 
 func _unhandled_input(event):
-	if(is_network_master() == false):
-		return
 	# Must use Input to check if rotating prop, because the event is researved for mouse motion.
 	if(event is InputEventMouseMotion and Input.is_action_pressed("rotate_prop") and is_holding_prop()):
 		mouseX = event.relative.x

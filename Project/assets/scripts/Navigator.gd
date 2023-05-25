@@ -13,10 +13,6 @@ onready var navigation = get_tree().get_root().find_node("Navigation", true, fal
 # Need to replace this with an aggro system for multiplayer.
 onready var AIController = get_parent().get_node("AIController")
 
-func _ready():
-	if(!navigation):
-		print('Navigation is null')
-
 func _on_NavigationTimer_timeout():
 	if(AIController.currentState != get_parent().get_node("AIController").AI_STATE.SEEK):
 		pathPoints = []

@@ -6,6 +6,6 @@
 
 [node name="ZombieManager" type="Node"]
 script = ExtResource( 1 )
-maxZombiesPerRound = [ 0, 1, 5, 10 ]
+maxZombiesPerRound = [ 0, 3, 6, 12 ]
 respawnTime = 7.5
 zombies = [ ExtResource( 2 ), ExtResource( 3 ) ]

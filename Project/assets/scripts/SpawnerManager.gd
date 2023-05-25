@@ -8,7 +8,6 @@ signal spawner_available # Signals when a spawn has become available.
 
 func _ready():
 	if(spawners.size() == 0):
-		#print("WARNING: No spawners detected ")
 		return
 	for spawn in spawners:
 		spawn.connect("open", self, "_on_spawner_opened")

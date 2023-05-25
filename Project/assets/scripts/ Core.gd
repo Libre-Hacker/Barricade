@@ -27,8 +27,6 @@ func pickup(assignedNode, player):
 		nodeToFollow = assignedNode
 		for players in GameManager.get_node("PlayerManager").players:
 			add_collision_exception_with(players)
-	else:
-		print("Prop already in use.")
 
 # Resets class variables to defaults.
 # Called from outside class.

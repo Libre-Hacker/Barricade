@@ -13,10 +13,7 @@ func _ready():
 
 # Adds money to the wallet.
 func add_money(value):
-	if(money + value > maxMoney):
-		money = maxMoney
-	else:
-		money += value
+	money = min(money + value, maxMoney)
 	update_UI()
 
 # Removes money from the wallet. Returns true or false if funds are available.

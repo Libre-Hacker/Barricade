@@ -15,7 +15,6 @@ func load_settings(default = false):
 		settings = ResourceLoader.load(FILE_PATH)
 	else:
 		settings = ResourceLoader.load("res://assets/resources/default_settings.tres")
-		#print("Error: Customs settings not found. Using defaults.")
 	apply_settings()
 
 # Applies the loaded settings to the game.

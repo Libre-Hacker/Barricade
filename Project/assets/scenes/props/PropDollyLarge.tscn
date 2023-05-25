@@ -69,7 +69,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.8247
 shape = SubResource( 3 )
 
 [node name="Reward" parent="." instance=ExtResource( 2 )]
-payoutOnDeath = false
 rewardAmount = 10
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
@@ -105,7 +104,7 @@ script = ExtResource( 10 )
 
 [connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
 [connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
-[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="give_reward" from="Health" to="Reward" method="_on_give_reward"]
 [connection signal="updateDamageIndicator" from="Health" to="Model/DollyLarge" method="_on_Health_updateDamageIndicator"]
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]

@@ -82,10 +82,8 @@ func attack_behaviour():
 		return
 	if(navigator.has_path()):
 		emit_signal("play_animation", "WalkAttack", true, true)
-		emit_signal("play_network_animation", "WalkAttack", true, true)
 	else:
 		emit_signal("play_animation", "Attack", true, true)
-		emit_signal("play_network_animation", "Attack", true, true)
 	attackCDTimer.start()
 
 # Damages the target, called by the AnimationPlayer

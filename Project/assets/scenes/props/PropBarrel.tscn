@@ -31,13 +31,11 @@ maxRotationSpeed = 10.0
 shape = SubResource( 1 )
 
 [node name="Reward" parent="." instance=ExtResource( 2 )]
-payoutOnDeath = false
 rewardAmount = 10
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
 script = ExtResource( 4 )
 health = 300.0
-maxHealth = 300.0
 hurtSound = ExtResource( 8 )
 
 [node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props", "Repairables"]]
@@ -62,18 +60,11 @@ shape = SubResource( 1 )
 material/0 = ExtResource( 7 )
 script = ExtResource( 10 )
 
-[node name="Tween" type="Tween" parent="."]
-
-[node name="NetworkTickRate" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
 [connection signal="damage_taken" from="." to="Health" method="_on_damage_taken"]
 [connection signal="repair_received" from="." to="Health" method="_on_repair_received"]
-[connection signal="health_changed" from="Health" to="Reward" method="_on_health_changed"]
+[connection signal="give_reward" from="Health" to="Reward" method="_on_give_reward"]
 [connection signal="updateDamageIndicator" from="Health" to="Model/Barrel" method="_on_Health_updateDamageIndicator"]
 [connection signal="hitbox_collision" from="HitBox" to="Health" method="_on_hitbox_collision"]
 [connection signal="hitbox_hit_heal" from="HitBox" to="Health" method="_on_hitbox_hit_heal"]
 [connection signal="body_entered" from="OccupiedArea" to="OccupiedArea" method="_on_body_entered"]
 [connection signal="body_exited" from="OccupiedArea" to="OccupiedArea" method="_on_body_exited"]
-[connection signal="timeout" from="NetworkTickRate" to="." method="_on_NetworkTickRate_timeout"]

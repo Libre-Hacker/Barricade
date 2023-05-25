@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/scripts/HammerPrimaryFire.gd" type="Script" id=1]
 [ext_resource path="res://assets/meshes/HammerMesh.tscn" type="PackedScene" id=2]
@@ -13,12 +13,8 @@
 [ext_resource path="res://assets/sounds/metal6.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/scenes/AmmoCount.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/scripts/HurtBox.gd" type="Script" id=16]
 [ext_resource path="res://assets/scripts/HammerAltFire.gd" type="Script" id=17]
 [ext_resource path="res://assets/sounds/metal1.wav" type="AudioStream" id=18]
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 0.5, 0.5, 1 )
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -75,26 +71,12 @@ tracks/1/keys = {
 "values": [ Vector3( -15.25, -1.91116e-06, 33.968 ), Vector3( -9.471, -7.15656e-06, 78.3743 ), Vector3( 6.91819e-06, -7.48982e-06, 104.866 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("PrimaryFire/HurtBox")
+tracks/2/path = NodePath("AudioManager")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "damageAll"
-} ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath("AudioManager")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -185,6 +167,20 @@ tracks/3/keys = {
 "method": "network_3d_sound"
 } ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("PrimaryFire/Repair")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "repair"
+} ]
+}
 
 [node name="Hammer" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -212,15 +208,6 @@ one_shot = true
 __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
-
-[node name="HurtBox" type="Area" parent="PrimaryFire"]
-collision_layer = 0
-collision_mask = 193
-script = ExtResource( 16 )
-
-[node name="CollisionShape" type="CollisionShape" parent="PrimaryFire/HurtBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
-shape = SubResource( 6 )
 
 [node name="AltFire" type="RayCast" parent="."]
 enabled = true

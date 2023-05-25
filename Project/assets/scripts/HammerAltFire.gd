@@ -61,7 +61,6 @@ func get_prop(raycastData):
 
 # Spawns a nail instance, setting the transforms, and parent. Only unnailed props can be nailed.
 sync func create_nail(position, direction, prop):
-	print(position, direction, prop)
 	var nailInstance = nailNode.instance()
 	get_node(prop).add_child(nailInstance)
 	nailInstance.global_transform.origin = position

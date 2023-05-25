@@ -9,7 +9,7 @@ onready var altFire = get_node("AltFire")
 onready var animationPlayer = get_node("AnimationPlayer")
 onready var audioManager = get_node("AudioManager")
 onready var hud = get_node("HUD")
-onready var player = find_parent(str(get_network_master()))
+onready var player = GameManager.playerManager.PLAYER
 
 signal equipped
 
