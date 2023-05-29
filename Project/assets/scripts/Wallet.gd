@@ -19,7 +19,7 @@ func add_money(value):
 # Removes money from the wallet. Returns true or false if funds are available.
 func spend_money(value):
 	# Purchase fails if funds are insufficent, or player is phasing.
-	if(money - value < 0 or get_parent().is_phasing()):
+	if(money - value < 0):
 		return false 
 	else:
 		money -= value

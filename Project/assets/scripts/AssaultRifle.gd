@@ -9,16 +9,14 @@ onready var animationPlayer = get_node("AnimationPlayer")
 onready var hud = get_node("HUD")
 onready var player = GameManager.playerManager.PLAYER
 
+var enabled = true # Enables shooting.
 
 func _ready():
-	get_network_master()
 	connect("equipped", player.get_node("HUD/TutorialUI"), "toggle_gun_controls")
 	primaryFire.update_ui()
 
 
 func _process(delta):
-	if(is_network_master() == false):
-		return
 	if(GameManager.isPaused):
 		get_node("HUD").hide()
 		return
@@ -27,7 +25,7 @@ func _process(delta):
 	if(Input.is_action_just_pressed("reload")):
 		primaryFire.startReload()
 		get_tree().get_root().set_input_as_handled()
-	if(Input.is_action_pressed("primary_fire")):
+	if(Input.is_action_pressed("primary_fire") and enabled):
 		primaryFire.primary_fire()
 		get_tree().get_root().set_input_as_handled()
 

@@ -15,14 +15,14 @@ var zombiesAlive = 0
 onready var spawners = get_tree().get_root().find_node("ZombieSpawners", true, false)
 
 func _physics_process(_delta):
-	if(spawnQue <= 0 or enableSpawning == false or is_network_master() == false):
+	if(spawnQue <= 0 or enableSpawning == false):
 		return
 	var spawnPosition = get_spawn_point()
 	if(spawnPosition == null):
 		return
 	spawnPosition = spawnPosition.global_transform.origin
 	var zombieTypeIdx = get_random_zombie_to_spawn()
-	rpc("spawn_zombie", spawnPosition, zombieTypeIdx)
+	spawn_zombie(spawnPosition, zombieTypeIdx)
 
 
 func get_spawn_point():
@@ -33,7 +33,7 @@ func get_random_zombie_to_spawn():
 
 
 # Spawns and initializes a new zombie.
-sync func spawn_zombie(position, index):
+func spawn_zombie(position, index):
 	var newZombie = zombies[index].instance()
 	newZombie.transform.origin = position
 	add_child(newZombie)

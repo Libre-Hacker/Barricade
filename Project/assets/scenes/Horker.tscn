@@ -27,11 +27,11 @@
 radius = 0.312313
 height = 0.914678
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 1.5, 0.75, 3 )
+[sub_resource type="BoxShape" id=49]
+extents = Vector3( 1, 0.5, 3 )
 
 [sub_resource type="BoxShape" id=48]
-extents = Vector3( 1.5, 1, 6 )
+extents = Vector3( 2, 1, 6 )
 
 [sub_resource type="Animation" id=39]
 resource_name = "Attack"
@@ -185,7 +185,6 @@ material = SubResource( 43 )
 
 [node name="Horker" type="KinematicBody"]
 collision_layer = 8
-collision_mask = 9
 input_ray_pickable = false
 script = ExtResource( 13 )
 
@@ -233,8 +232,8 @@ collision_mask = 64
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PrimaryAttack/PropDetector"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.065, -3 )
-shape = SubResource( 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -3 )
+shape = SubResource( 49 )
 
 [node name="PlayerDetector" type="Area" parent="PrimaryAttack"]
 collision_layer = 0
@@ -312,7 +311,7 @@ shape = SubResource( 38 )
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04887, 0 )
 amount = 6
-lifetime = 2.0
+lifetime = 0.6
 process_material = SubResource( 42 )
 draw_pass_1 = SubResource( 44 )
 
@@ -323,8 +322,7 @@ draw_pass_1 = SubResource( 44 )
 [connection signal="timeout" from="Navigator/NavigationTimerShort" to="Navigator" method="_on_NavigationTimer_timeout"]
 [connection signal="timeout" from="Navigator/NavigationTimerLong" to="Navigator" method="_on_NavigationTimer_timeout"]
 [connection signal="change_state" from="Health" to="AIController" method="_on_change_state"]
-[connection signal="destroyed" from="Health" to="." method="disable_collisions"]
-[connection signal="destroyed" from="Health" to="IdleAudio" method="_on_destroyed"]
+[connection signal="death" from="Health" to="Health" method="_on_death"]
 [connection signal="give_reward" from="Health" to="Reward" method="_on_give_reward"]
 [connection signal="play_animation" from="PrimaryAttack" to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="targets_available" from="PrimaryAttack" to="AIController" method="_on_change_state" binds= [ 2 ]]

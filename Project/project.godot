@@ -90,6 +90,7 @@ Network="*res://assets/scripts/Network.gd"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/completion/autocomplete_setters_and_getters=true
 shapes/collision/shape_color=Color( 0, 0.6, 0.701961, 0.470588 )
 
@@ -227,18 +228,21 @@ name_num_separator=3
 
 [physics]
 
-common/physics_fps=120
 3d/physics_engine="Bullet"
 3d/active_soft_world=false
 3d/default_gravity=18.6
 
 [rendering]
 
-threads/thread_model=2
 quality/directional_shadow/size=1024
 quality/shadow_atlas/size=1024
-quality/shading/force_lambert_over_burley=true
+quality/reflections/texture_array_reflections=false
+quality/shading/force_vertex_shading=true
+quality/shading/force_vertex_shading.mobile=false
+quality/shading/force_lambert_over_burley.mobile=false
+quality/shading/force_blinn_over_ggx.mobile=false
 quality/shading/use_physical_light_attenuation=true
+quality/subsurface_scattering/quality=0
 quality/subsurface_scattering/scale=1
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://assets/environments/default_env.tres"

@@ -21,7 +21,7 @@ signal play_animation(animationName)
 signal play_camera_animation
 signal update_ammo_display
 
-onready var player = find_parent(str(get_network_master()))
+onready var player = GameManager.playerManager.PLAYER
 onready var cycleTimer = get_node("CycleTimer")
 onready var currentAmmo = ammoCapacity
 

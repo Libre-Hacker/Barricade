@@ -74,12 +74,8 @@ func add_weapon(newWeapon):
 
 # Enables weapons when not phased.
 func enable_weapons():
-	get_child(currentWeaponIndex).set_process(true)
-	enabled = true
+	get_child(currentWeaponIndex).enabled = true
 
 # Disables current weapon, and weapon switching.
 func disable_weapons():
-	if(switchInProgress):
-		yield(switch_weapons(), "completed")
-	get_child(currentWeaponIndex).set_process(false)
-	enabled = false
+	get_child(currentWeaponIndex).enabled = false

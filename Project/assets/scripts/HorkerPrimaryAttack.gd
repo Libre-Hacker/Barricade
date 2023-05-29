@@ -55,10 +55,10 @@ func select_target():
 			break
 		else:
 			playerTarget = object
-	if(propTarget != null):
-		currentTarget = propTarget
-	else:
+	if(playerTarget != null):
 		currentTarget = playerTarget
+	else:
+		currentTarget = propTarget
 
 
 # Main behaviour loop.
@@ -74,7 +74,7 @@ func shoot_projectiles():
 		if(!currentTarget):
 			return
 		var distance = global_transform.origin.distance_to(currentTarget.global_transform.origin)
-		var offset = Vector3(rand_range(-3, 3), max(distance * 0.3, 1), 0)
+		var offset = Vector3(rand_range(-3, 3), max(distance * 0.2, 0.1), 0)
 		var targetDirection = ((currentTarget.global_transform.origin + offset) - global_transform.origin).normalized()
 		create_projectile(targetDirection)
 

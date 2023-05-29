@@ -10,12 +10,17 @@ signal give_reward
 
 # Applies damage.
 func _on_hitbox_collision(value, attacker):
-	if(attacker != null and attacker.is_in_group("Players") and get_parent().isNailed):
+	if(get_parent().isNailed and is_player_attacker(attacker)):
 		return
-	.damage(value)
+	
+	var damageMult = 1
+	if(get_parent().isNailed == false and !is_player_attacker(attacker)):
+		damageMult = 5
+
+	.damage(value * damageMult)
 	emit_signal("updateDamageIndicator", health/maxHealth)
 	AudioManager.new_3d_sound(hurtSound,global_transform.origin)
-	if(is_dead()):
+	if(!is_alive()):
 		destroy()
 
 # Applies healing.
@@ -33,3 +38,8 @@ func destroy():
 	AudioManager.new_3d_sound(deathSound, global_transform.origin) 
 	get_parent().queue_free()
 
+func is_player_attacker(attacker):
+	if(attacker != null and attacker.is_in_group("Players")):
+		return true
+	else:
+		return false

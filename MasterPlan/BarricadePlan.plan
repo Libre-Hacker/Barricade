@@ -4,8 +4,8 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": -548.79296875,
-  "Pan.Y": -529.8929443359375,
+  "Pan.X": -292.56756591796875,
+  "Pan.Y": -265.25848388671875,
   "ZoomLevel": 3,
   "TaskTransparency": 5,
   "OutlineTasks": true,
@@ -793,7 +793,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 496,
+      "Position.Y": 480,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -805,7 +805,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 512,
+      "Position.Y": 496,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -817,7 +817,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 528,
+      "Position.Y": 512,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -829,7 +829,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 544,
+      "Position.Y": 528,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -841,7 +841,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 560,
+      "Position.Y": 544,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -853,7 +853,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 576,
+      "Position.Y": 560,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -865,7 +865,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -464,
-      "Position.Y": 592,
+      "Position.Y": 576,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1283,6 +1283,18 @@
     }, 
     {
       "BoardIndex": 0,
+      "Position.X": 976,
+      "Position.Y": 160,
+      "Checkbox.Checked": true,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[BUG] Zombies Block Each other",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 26 2023 09:44:30"
+    }, 
+    {
+      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 304,
       "Checkbox.Checked": false,
@@ -1466,8 +1478,8 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 480,
+      "Position.X": 512,
+      "Position.Y": 144,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1478,9 +1490,9 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 672,
-      "Checkbox.Checked": false,
+      "Position.X": 976,
+      "Position.Y": 192,
+      "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "[BUG] Fix Catwalk Alpha",
@@ -1491,55 +1503,55 @@
     {
       "BoardIndex": 0,
       "Position.X": 976,
+      "Position.Y": 176,
+      "Checkbox.Checked": true,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[FEATURE] Props Take More Damage When Unnailed",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 26 2023 11:35:18"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": 976,
+      "Position.Y": 240,
+      "Checkbox.Checked": true,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "[BUG] Horker Particles Visible through floor",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 26 2023 11:37:20"
+    }, 
+    {
+      "BoardIndex": 0,
+      "Position.X": 976,
       "Position.Y": 144,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BUG] Hammer Can Damage Through Walls",
+      "Description": "[PERFORMANCE] Fix Frame Jitters",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 24 2023 21:07:04"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 272,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Walking ontop of unnailed props is wonky, perhaps remove pushing?",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 24 2023 21:07:18"
+      "CreationTime": "May 26 2023 11:37:50"
     }, 
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 608,
+      "Position.Y": 656,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BUG] Zombies get hung up too easily on unnailed props",
+      "Description": "[PHYSICS] Tune Jumping and Prop Handling",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 24 2023 21:07:50"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 256,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BALANCE] Increase Max Zombies Per Round",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 24 2023 21:08:10"
+      "CreationTime": "May 26 2023 11:38:04"
     }, 
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 624,
+      "Position.Y": 592,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1551,7 +1563,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 640,
+      "Position.Y": 608,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1563,7 +1575,7 @@
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 656,
+      "Position.Y": 624,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1575,19 +1587,19 @@
     {
       "BoardIndex": 0,
       "Position.X": 976,
-      "Position.Y": 160,
+      "Position.Y": 208,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[PROGRAMMING] Remove Melee From Hammer",
+      "Description": "[Balance] Allow Player to Buy While Phased",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 24 2023 21:16:02"
+      "CreationTime": "May 26 2023 14:48:42"
     }, 
     {
       "BoardIndex": 0,
       "Position.X": -480,
-      "Position.Y": 688,
+      "Position.Y": 640,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1599,75 +1611,26 @@
     {
       "BoardIndex": 0,
       "Position.X": 976,
-      "Position.Y": 288,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Player Can See Through Ceilings",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 25 2023 10:06:31"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 240,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[REFACTOR] Make Player Globally Accessible",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 25 2023 10:57:35"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 192,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Make Reward Contributions singular",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 25 2023 11:45:12"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 176,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Fix Player Respawn",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 25 2023 12:46:56"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
       "Position.Y": 224,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BUG] Reconnect Prop Reward Signal",
+      "Description": "[BUG] Killing Zombie Spawns More Than 1",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 25 2023 12:47:58",
-      "CompletionTime": "May 25 2023 12:47:59"
+      "CreationTime": "May 26 2023 14:48:56"
     }, 
     {
       "BoardIndex": 0,
       "Position.X": 976,
-      "Position.Y": 208,
+      "Position.Y": 256,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BUG] Props drop while being held in place",
+      "Description": "[BALANCE] Allow Weapon Switching While Phased",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 25 2023 13:10:35"
+      "CreationTime": "May 26 2023 15:56:23"
     }
   ]
 }

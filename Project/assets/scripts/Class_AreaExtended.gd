@@ -3,7 +3,7 @@ class_name AreaExtended
 # Improves upon the Area node by improving on tracking of bodies and adds new signals.
 
 # Keep track of our own collisions because get_overlapping_bodies() is unreliable.
-var bodyCount = [] 
+var bodyCount = []
 var areaCount = []
 
 signal area_empty # Signals this area is unoccupied.
