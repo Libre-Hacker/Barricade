@@ -4,8 +4,8 @@
   "BoardIndex": 0,
   "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": -292.56756591796875,
-  "Pan.Y": -265.25848388671875,
+  "Pan.X": -773.4884033203125,
+  "Pan.Y": -505.862060546875,
   "ZoomLevel": 3,
   "TaskTransparency": 5,
   "OutlineTasks": true,
@@ -1283,15 +1283,15 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
+      "Position.X": 512,
       "Position.Y": 160,
-      "Checkbox.Checked": true,
+      "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BUG] Zombies Block Each other",
+      "Description": "[FEATURE] Round only starts when the core is selected",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 09:44:30"
+      "CreationTime": "May 29 2023 12:37:24"
     }, 
     {
       "BoardIndex": 0,
@@ -1490,54 +1490,6 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 192,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Fix Catwalk Alpha",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 15 2023 19:03:07"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 176,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[FEATURE] Props Take More Damage When Unnailed",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 11:35:18"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 240,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Horker Particles Visible through floor",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 11:37:20"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 144,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[PERFORMANCE] Fix Frame Jitters",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 11:37:50"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 656,
       "Checkbox.Checked": false,
@@ -1550,9 +1502,9 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 592,
-      "Checkbox.Checked": false,
+      "Position.X": 976,
+      "Position.Y": 144,
+      "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "[FEATURE] Core positions are pre selected, player picks the room.",
@@ -1586,18 +1538,6 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 208,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[Balance] Allow Player to Buy While Phased",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 14:48:42"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 640,
       "Checkbox.Checked": false,
@@ -1607,30 +1547,6 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "May 24 2023 21:16:20"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 224,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Killing Zombie Spawns More Than 1",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 14:48:56"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 256,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BALANCE] Allow Weapon Switching While Phased",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 15:56:23"
     }
   ]
 }

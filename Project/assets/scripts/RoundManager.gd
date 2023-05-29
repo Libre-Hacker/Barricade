@@ -27,17 +27,19 @@ func _ready():
 
 # DELETE LATER FOR TESTING ONLY
 func _unhandled_input(event):
-	if(event.is_action_pressed("next_round") and is_network_master()):
-		rpc("set_round_timer", 0.1)
+	if(event.is_action_pressed("next_round")):
+		set_round_timer(0.1)
 
 
 # Sets and starts the timer to the given perameter.
-sync func set_round_timer(time = 0):
+func set_round_timer(time = 0):
 	roundTimer.start(time)
 
 
 # Checks if this round was the last, and updates the current round and timer accordingly.
 func _on_RoundTimer_timeout():
+	if(!GameManager.coreManager.CORE):
+		GameManager.coreManager.select_rand_core()
 	if(currentRound % 2 != 0):
 		emit_signal("round_finished")
 		AudioManager.new_music(roundEndMusic)

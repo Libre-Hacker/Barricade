@@ -17,18 +17,18 @@ func _on_NavigationTimer_timeout():
 	if(AIController.currentState != get_parent().get_node("AIController").AI_STATE.SEEK):
 		pathPoints = []
 		return
-	if(get_parent().transform.origin.distance_to(AIController.currentTarget.transform.origin) > 4):
-		calculate_path(AIController.currentTarget.transform.origin + Vector3(randomPoint,0,0))
+	if(get_parent().transform.origin.distance_to(AIController.primaryTarget.transform.origin) > 4):
+		calculate_path(AIController.primaryTarget.transform.origin + Vector3(randomPoint,0,0))
 		return
-	elif(get_parent().transform.origin.distance_to(AIController.currentTarget.transform.origin) > 1):
-		calculate_path(AIController.currentTarget.transform.origin)
+	elif(get_parent().transform.origin.distance_to(AIController.primaryTarget.transform.origin) > 1):
+		calculate_path(AIController.primaryTarget.transform.origin)
 	else:
 		pathPoints = []
 
 # Updates the pathPoints to the current target.
 func calculate_path(destination):
 	# Doesn't calculate a path if the target is within the targetMargin.
-	if(global_transform.origin.distance_to(AIController.currentTarget.transform.origin) < targetMargin):
+	if(global_transform.origin.distance_to(AIController.primaryTarget.transform.origin) < targetMargin):
 		return
 	pathPoints = navigation.get_simple_path(global_transform.origin, destination)
 	pathIndex = 0

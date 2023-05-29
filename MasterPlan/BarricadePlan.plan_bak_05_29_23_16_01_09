@@ -2,11 +2,11 @@
   "Version": "0.7.2",
   "LockProject": false,
   "BoardIndex": 0,
-  "BoardCount": 5,
+  "BoardCount": 6,
   "AutoSave": false,
-  "Pan.X": 317.4150695800781,
-  "Pan.Y": -307.59832763671875,
-  "ZoomLevel": 4,
+  "Pan.X": -931.4323120117188,
+  "Pan.Y": -329.74273681640625,
+  "ZoomLevel": 3,
   "TaskTransparency": 5,
   "OutlineTasks": true,
   "BracketSubtasks": true,
@@ -34,7 +34,8 @@
     "Vertical Slice", 
     "Polished Demo", 
     "Mood Board", 
-    "Blender Importing"
+    "Blender Importing", 
+    "Sewer Kit Concepts"
   ],
   "Tasks": [
     {
@@ -899,20 +900,20 @@
     }, 
     {
       "BoardIndex": 2,
-      "Position.X": 48,
-      "Position.Y": 208,
+      "Position.X": 32,
+      "Position.Y": 128,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "Flyer",
+      "Description": "Multiplayer",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 17:59:41"
+      "CreationTime": "May 17 2022 23:12:34"
     }, 
     {
       "BoardIndex": 2,
       "Position.X": 32,
-      "Position.Y": 128,
+      "Position.Y": 144,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -924,7 +925,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 144,
+      "Position.Y": 160,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -936,7 +937,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 160,
+      "Position.Y": 176,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -948,7 +949,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 176,
+      "Position.Y": 192,
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -960,7 +961,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 32,
-      "Position.Y": 224,
+      "Position.Y": 240,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -972,7 +973,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 240,
+      "Position.Y": 256,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -984,7 +985,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 256,
+      "Position.Y": 272,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -996,7 +997,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 272,
+      "Position.Y": 288,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1008,7 +1009,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 32,
-      "Position.Y": 304,
+      "Position.Y": 368,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1020,7 +1021,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 32,
-      "Position.Y": 320,
+      "Position.Y": 384,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1032,8 +1033,8 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 336,
-      "Checkbox.Checked": true,
+      "Position.Y": 400,
+      "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "Crate",
@@ -1044,8 +1045,8 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 352,
-      "Checkbox.Checked": true,
+      "Position.Y": 416,
+      "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "Plank",
@@ -1056,8 +1057,8 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 368,
-      "Checkbox.Checked": true,
+      "Position.Y": 432,
+      "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "Chair",
@@ -1068,8 +1069,8 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 384,
-      "Checkbox.Checked": true,
+      "Position.Y": 448,
+      "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "Shelf",
@@ -1080,8 +1081,8 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 400,
-      "Checkbox.Checked": true,
+      "Position.Y": 464,
+      "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "Fridge",
@@ -1092,7 +1093,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 32,
-      "Position.Y": 416,
+      "Position.Y": 480,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1104,31 +1105,67 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 288,
+      "Position.Y": 224,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "Stapler",
+      "Description": "Boss Zombie",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 17:58:29"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 672,
-      "Checkbox.Checked": false,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[UI] Redesign",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 18:22:04"
+      "CreationTime": "May 17 2022 23:17:24"
     }, 
     {
       "BoardIndex": 2,
       "Position.X": 32,
-      "Position.Y": 432,
+      "Position.Y": 304,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Melee Weapons",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 17 2022 23:17:46"
+    }, 
+    {
+      "BoardIndex": 2,
+      "Position.X": 48,
+      "Position.Y": 320,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Hammer",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 17 2022 23:17:59"
+    }, 
+    {
+      "BoardIndex": 2,
+      "Position.X": 48,
+      "Position.Y": 336,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Shovel",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 17 2022 23:18:15"
+    }, 
+    {
+      "BoardIndex": 2,
+      "Position.X": 48,
+      "Position.Y": 352,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Space Maker",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 17 2022 23:21:16"
+    }, 
+    {
+      "BoardIndex": 2,
+      "Position.X": 32,
+      "Position.Y": 496,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1140,7 +1177,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 32,
-      "Position.Y": 448,
+      "Position.Y": 512,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1148,6 +1185,18 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "May 17 2022 23:22:20"
+    }, 
+    {
+      "BoardIndex": 2,
+      "Position.X": 32,
+      "Position.Y": 528,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "Player Model",
+      "Selected": false,
+      "TaskType.CurrentChoice": 0,
+      "CreationTime": "May 17 2022 23:23:11"
     }, 
     {
       "BoardIndex": 2,
@@ -1239,10 +1288,10 @@
       "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
-      "Description": "[BUG] Zombies Block Each other",
+      "Description": "[FEATURE] Round only starts when the core is selected",
       "Selected": false,
       "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 09:44:30"
+      "CreationTime": "May 29 2023 12:37:24"
     }, 
     {
       "BoardIndex": 0,
@@ -1331,7 +1380,7 @@
     {
       "BoardIndex": 2,
       "Position.X": 48,
-      "Position.Y": 192,
+      "Position.Y": 208,
       "Checkbox.Checked": false,
       "Progression.Current": 0,
       "Progression.Max": 0,
@@ -1353,6 +1402,81 @@
       "CreationTime": "Jun 27 2022 14:37:09"
     }, 
     {
+      "BoardIndex": 5,
+      "Position.X": 0,
+      "Position.Y": 544,
+      "ImageDisplaySize.X": 480,
+      "ImageDisplaySize.Y": 224,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "",
+      "FilePath": "C:\\Users\\talbo\\Downloads\\artwork-sewers-jordan-grimmer-hd-wallpaper-preview.jpg",
+      "Selected": false,
+      "TaskType.CurrentChoice": 3,
+      "CreationTime": "Jun 27 2022 14:41:49"
+    }, 
+    {
+      "BoardIndex": 5,
+      "Position.X": 480,
+      "Position.Y": 304,
+      "ImageDisplaySize.X": 480,
+      "ImageDisplaySize.Y": 272,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "",
+      "FilePath": "C:\\Users\\talbo\\Downloads\\tumblr_9ef2daa672c7a67d2892530b0e2e442b_a01ed3b0_1280.jpg",
+      "Selected": false,
+      "TaskType.CurrentChoice": 3,
+      "CreationTime": "Jun 27 2022 14:41:49"
+    }, 
+    {
+      "BoardIndex": 5,
+      "Position.X": 480,
+      "Position.Y": 32,
+      "ImageDisplaySize.X": 480,
+      "ImageDisplaySize.Y": 272,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "",
+      "FilePath": "C:\\Users\\talbo\\Downloads\\3a8e58dc240f1e3b5aa0df1ea36a2fa0.jpg",
+      "Selected": false,
+      "TaskType.CurrentChoice": 3,
+      "CreationTime": "Jun 27 2022 14:41:49"
+    }, 
+    {
+      "BoardIndex": 5,
+      "Position.X": 0,
+      "Position.Y": 272,
+      "ImageDisplaySize.X": 480,
+      "ImageDisplaySize.Y": 272,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "",
+      "FilePath": "C:\\Users\\talbo\\Downloads\\index.jpg",
+      "Selected": false,
+      "TaskType.CurrentChoice": 3,
+      "CreationTime": "Jun 27 2022 14:41:49"
+    }, 
+    {
+      "BoardIndex": 5,
+      "Position.X": 0,
+      "Position.Y": 32,
+      "ImageDisplaySize.X": 480,
+      "ImageDisplaySize.Y": 240,
+      "Checkbox.Checked": false,
+      "Progression.Current": 0,
+      "Progression.Max": 0,
+      "Description": "",
+      "FilePath": "C:\\Users\\talbo\\Downloads\\BfAHCHzCYAAzyKz.jpg",
+      "Selected": false,
+      "TaskType.CurrentChoice": 3,
+      "CreationTime": "Jun 27 2022 14:41:49"
+    }, 
+    {
       "BoardIndex": 0,
       "Position.X": 512,
       "Position.Y": 144,
@@ -1363,54 +1487,6 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "Nov 15 2022 13:56:19"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 192,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Fix Catwalk Alpha",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 15 2023 19:03:07"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 176,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[FEATURE] Props Take More Damage When Unnailed",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 11:35:18"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 240,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Horker Particles Visible through floor",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 11:37:20"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 144,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[PERFORMANCE] Fix Frame Jitters",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 11:37:50"
     }, 
     {
       "BoardIndex": 0,
@@ -1426,9 +1502,9 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": -480,
-      "Position.Y": 592,
-      "Checkbox.Checked": false,
+      "Position.X": 976,
+      "Position.Y": 144,
+      "Checkbox.Checked": true,
       "Progression.Current": 0,
       "Progression.Max": 0,
       "Description": "[FEATURE] Core positions are pre selected, player picks the room.",
@@ -1462,18 +1538,6 @@
     }, 
     {
       "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 208,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[Balance] Allow Player to Buy While Phased",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 14:48:42"
-    }, 
-    {
-      "BoardIndex": 0,
       "Position.X": -480,
       "Position.Y": 640,
       "Checkbox.Checked": false,
@@ -1483,30 +1547,6 @@
       "Selected": false,
       "TaskType.CurrentChoice": 0,
       "CreationTime": "May 24 2023 21:16:20"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 224,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BUG] Killing Zombie Spawns More Than 1",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 14:48:56"
-    }, 
-    {
-      "BoardIndex": 0,
-      "Position.X": 976,
-      "Position.Y": 256,
-      "Checkbox.Checked": true,
-      "Progression.Current": 0,
-      "Progression.Max": 0,
-      "Description": "[BALANCE] Allow Weapon Switching While Phased",
-      "Selected": false,
-      "TaskType.CurrentChoice": 0,
-      "CreationTime": "May 26 2023 15:56:23"
     }
   ]
 }

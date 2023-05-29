@@ -56,16 +56,17 @@ func interact():
 
 	if(is_colliding() == false):
 		return
+	
+	var interactable = get_collider()
+	
+	if(interactable.is_in_group("Core")):
+		interactable.select_core()
 
-	if(get_collider().is_in_group("Interactables")):
+	if(interactable.is_in_group("Interactables")):
 		get_collider().buy_item(get_owner())
 		return
 	
-	if(get_collider().is_in_group("Core")):
-		pickup_prop()
-		return
-
-	if(get_collider().is_in_group("Props") and get_collider().isNailed == false):
+	if(interactable.is_in_group("Props") and interactable.isNailed == false):
 		pickup_prop()
 
 # Gathers mouse input and sends it to the prop in use to be rotated.

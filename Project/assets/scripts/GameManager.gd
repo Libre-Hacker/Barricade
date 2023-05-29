@@ -4,10 +4,11 @@ extends Node
 var zombieManager : Node
 var playerManager : Node
 var roundManager : Node
+var coreManager : Node
 
 var isPaused = false
 
-var core = null
+var CORE = null
 
 func _ready():
 	MenuSwitcher.load_scene("res://assets/scenes/MainMenu.tscn")
@@ -31,16 +32,13 @@ func pause_game():
 
 # Called when start game button is pressed. Requests level changes and initializes
 # the player, zombie, and round managers.
-remotesync func start_game():
+func start_game():
 	AudioManager.stop_music()
 	LevelSwitcher.load_scene("res://assets/scenes/levels/DevLvlWarehouse.tscn")
 	MenuSwitcher.unload_scene()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # Hides cursor.
 	set_process_unhandled_input(true)
 	instance_managers()
-	core = get_tree().get_root().find_node("Core",true,false)
-	if(core == null):
-		push_error("Core not found!!")
 
 # Instances and connects the player, zombie, and round managers.
 func instance_managers():
@@ -63,6 +61,10 @@ func instance_managers():
 		roundManager.connect("round_finished", zombieManager, "_on_round_finished")
 		# warning-ignore:return_value_discarded
 		roundManager.connect("last_round_ended", self, "_on_last_round_ended")
+	
+	if(coreManager == null):
+		coreManager = load("res://assets/scenes/CoreManager.tscn").instance()
+		add_child(coreManager)
 
 # Ends the game with a defeat.
 func _on_all_players_dead():

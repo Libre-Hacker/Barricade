@@ -5,7 +5,6 @@ export (Resource) var hurtSound
 export (Resource) var deathSound
 export (Resource) var healSound
 
-signal updateDamageIndicator
 signal give_reward
 
 # Applies damage.
@@ -18,7 +17,6 @@ func _on_hitbox_collision(value, attacker):
 		damageMult = 5
 
 	.damage(value * damageMult)
-	emit_signal("updateDamageIndicator", health/maxHealth)
 	AudioManager.new_3d_sound(hurtSound,global_transform.origin)
 	if(!is_alive()):
 		destroy()
@@ -30,7 +28,6 @@ func _on_hitbox_hit_heal(value, healer):
 	
 	.heal(value)
 	emit_signal("give_reward")
-	emit_signal("updateDamageIndicator", health/maxHealth)
 	emit_signal("play_3d_sound", healSound, global_transform.origin)
 
 # Overrides the base function for player specific uses. Handles respawning and audio.

@@ -6,7 +6,7 @@ extends Node
 enum AI_STATE {IDLE, SEEK, ATTACK, DEAD	} # List of possible states.
 
 var currentState = AI_STATE.SEEK # The current state the AI is in.
-var currentTarget = null
+var primaryTarget = null
 
 signal attack
 signal seek
@@ -17,7 +17,6 @@ onready var deathParticles = preload("res://assets/scenes/BloodExplosionParticle
 func _ready():
 	GameManager.playerManager.connect("player_died", self, "find_new_target")
 	find_new_target()
-	get_parent().get_node("PrimaryAttack/PlayerDetector").target = currentTarget
 
 # Use physics process, because the behaviour nodes rely on physics.
 func _physics_process(delta):
@@ -25,18 +24,11 @@ func _physics_process(delta):
 
 # Gets a new target from the PlayerManager.
 func find_new_target():
-	currentTarget = GameManager.playerManager.get_child(0)
-	return
-	if(rand_range(0,1) > 0.2):
-		if(GameManager.playerManager.players.size() != 0):
-			currentTarget = GameManager.playerManager.players[0]
-		else:
-			_on_change_state(0)
-			yield(GameManager.playerManager, "player_respawned")
-			currentTarget = GameManager.playerManager.players[0]
-			_on_change_state(1)
+	if(rand_range(0,1) > 0.5):
+		primaryTarget = GameManager.playerManager.PLAYER
 	else:
-		currentTarget = GameManager.core
+		primaryTarget = GameManager.coreManager.CORE
+	print(primaryTarget)
 
 # Sends the signal for the current state.
 func send_current_state(delta):
