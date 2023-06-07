@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/imports/kenney_particle_pack/slash_01.png" type="Texture" id=2]
+[ext_resource path="res://assets/imports/kenney_particle_pack/spark_01.png" type="Texture" id=3]
+[ext_resource path="res://assets/scripts/ParticleController.gd" type="Script" id=4]
+
+[sub_resource type="SpatialMaterial" id=26]
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Curve" id=27]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, -360 ), 0.0, 0.0, 0, 0, Vector2( 1, 360 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=28]
+curve = SubResource( 27 )
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0, 0.0794872, 0.412821, 1 )
+colors = PoolColorArray( 1, 0.984375, 0, 1, 1, 0.421875, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
+
+[sub_resource type="Curve" id=33]
+max_value = 3.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.750605, 3 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.00909 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=34]
+curve = SubResource( 33 )
+
+[sub_resource type="ParticlesMaterial" id=31]
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+angle = 360.0
+angle_curve = SubResource( 28 )
+scale_random = 1.0
+scale_curve = SubResource( 34 )
+color_ramp = SubResource( 14 )
+
+[sub_resource type="QuadMesh" id=32]
+
+[sub_resource type="SpatialMaterial" id=35]
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=36]
+emission_shape = 2
+emission_box_extents = Vector3( 0, 6, 0 )
+direction = Vector3( 0, 0, 0 )
+spread = 1.0
+gravity = Vector3( 0, 0, 0 )
+angle = 360.0
+angle_random = 1.0
+color_ramp = SubResource( 14 )
+
+[sub_resource type="QuadMesh" id=37]
+size = Vector2( 3, 3 )
+
+[node name="ParticlesDamageBeam01" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Emitters" type="Spatial" parent="."]
+
+[node name="BeamParticle" type="Particles" parent="Emitters"]
+transform = Transform( -1, -8.74227e-08, -8.1537e-14, -7.77156e-14, -4.37114e-08, 1, -8.74227e-08, 1, 4.37114e-08, 0.0166047, 0.517604, 2.21562 )
+material_override = SubResource( 26 )
+cast_shadow = 0
+amount = 24
+process_material = SubResource( 31 )
+draw_pass_1 = SubResource( 32 )
+
+[node name="LightningParticle" type="Particles" parent="Emitters"]
+transform = Transform( -1, -8.74227e-08, -8.1537e-14, -7.77156e-14, -4.37114e-08, 1, -8.74227e-08, 1, 4.37114e-08, 0.0166047, 0.517604, 7.52461 )
+material_override = SubResource( 35 )
+cast_shadow = 0
+lifetime = 0.2
+explosiveness = 0.8
+process_material = SubResource( 36 )
+draw_pass_1 = SubResource( 37 )

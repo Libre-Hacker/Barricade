@@ -37,7 +37,7 @@ func nail():
 			return
 	
 	emit_signal("play_3d_sound", nailSound)
-	emit_signal("play_animation", "nail")
+	emit_signal("play_animation", "alt_fire", true)
 	emit_signal("nail_prop")
 	cycleTimer.start()
 	var midpoint = (propData.collisionPoint + surfaceData.collisionPoint) / 2

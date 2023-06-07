@@ -2,7 +2,7 @@ extends AnimationPlayer
 # Base Class for Animation Player nodes.
 
 export var returnToDefaultAnimation = false
-export var defaultAnimation = "" # Default animation to play after all animations.
+export var defaultAnimation = "RESET" # Default animation to play after all animations.
 
 # Check for variable errors.
 func _ready():
@@ -12,6 +12,8 @@ func _ready():
 # Plays the signaled animation
 remote func _on_change_animation(animationName, interupt = false, replay = false, speed = 1.0):
 	if(has_animation(animationName) == false):
+		return
+	if(is_playing() and current_animation == animationName and interupt == false):
 		return
 	if(is_playing() and interupt == false):
 		yield(self, "animation_finished")

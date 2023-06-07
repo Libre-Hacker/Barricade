@@ -1,0 +1,118 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://assets/imports/kenney_particle_pack/smoke_06.png" type="Texture" id=1]
+[ext_resource path="res://assets/scripts/ParticleController.gd" type="Script" id=2]
+[ext_resource path="res://assets/imports/kenney_particle_pack/circle_03.png" type="Texture" id=3]
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0.225641, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=14]
+curve = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+gravity = Vector3( 0.1, 0, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 14 )
+color_ramp = SubResource( 12 )
+
+[sub_resource type="QuadMesh" id=10]
+size = Vector2( 0.2, 0.2 )
+
+[sub_resource type="QuadMesh" id=32]
+size = Vector2( 0.8, 0.8 )
+
+[sub_resource type="SpatialMaterial" id=33]
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="Gradient" id=27]
+offsets = PoolRealArray( 0, 0.105128, 0.166667, 0.358974, 1 )
+colors = PoolColorArray( 0.0745098, 0.0745098, 0.0745098, 0, 1, 1, 1, 1, 0.667969, 0.667969, 0.667969, 1, 0.265625, 0.265625, 0.265625, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=28]
+gradient = SubResource( 27 )
+
+[sub_resource type="Curve" id=29]
+max_value = 4.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 4 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=25]
+curve = SubResource( 29 )
+
+[sub_resource type="ParticlesMaterial" id=30]
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 5.0
+scale_curve = SubResource( 25 )
+color_ramp = SubResource( 28 )
+
+[sub_resource type="QuadMesh" id=34]
+size = Vector2( 3, 3 )
+
+[node name="ParticlesSmoke01" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Emitters" type="Spatial" parent="."]
+
+[node name="Smoke" type="Particles" parent="Emitters"]
+transform = Transform( 25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0 )
+material_override = SubResource( 8 )
+cast_shadow = 0
+emitting = false
+amount = 2
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource( 9 )
+draw_pass_1 = SubResource( 10 )
+
+[node name="Smoke-2" type="Particles" parent="Emitters"]
+transform = Transform( -25, -2.18557e-06, -4.37114e-06, 2.18557e-06, -25, 1.91069e-13, -4.37114e-06, -1.91069e-13, 25, 0, 0, 0 )
+material_override = SubResource( 8 )
+cast_shadow = 0
+emitting = false
+amount = 2
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource( 9 )
+draw_pass_1 = SubResource( 32 )
+
+[node name="RingParticle" type="Particles" parent="Emitters"]
+transform = Transform( -1, -8.74227e-08, -8.1537e-14, -7.77156e-14, -4.37114e-08, 1, -8.74227e-08, 1, 4.37114e-08, 0.0166047, 0.517604, 2.21562 )
+material_override = SubResource( 33 )
+cast_shadow = 0
+emitting = false
+amount = 2
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource( 30 )
+draw_pass_1 = SubResource( 34 )

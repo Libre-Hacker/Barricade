@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/egon_off1.wav-f29d43898508170f0124e1ff2568ae1c.sample"
+
+[deps]
+
+source_file="res://assets/sounds/egon_off1.wav"
+dest_files=[ "res://.import/egon_off1.wav-f29d43898508170f0124e1ff2568ae1c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

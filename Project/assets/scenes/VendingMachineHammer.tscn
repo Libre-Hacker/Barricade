@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/scenes/templates/VendingMachine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/Hammer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/meshes/HammerMesh.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/imports/weapons/HammerGun.scn" type="PackedScene" id=3]
 
 [node name="VendingMachineHammer" type="Spatial"]
 
@@ -10,5 +10,5 @@
 primaryAmmo = 2
 weapon = ExtResource( 2 )
 
-[node name="Hammer" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.065949, 0.0855904 )
+[node name="HammerGun" parent="." instance=ExtResource( 3 )]
+transform = Transform( -6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, 0, 0, 0.1 )

@@ -1,37 +1,39 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/scripts/HammerPrimaryFire.gd" type="Script" id=1]
-[ext_resource path="res://assets/meshes/HammerMesh.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/imports/weapons/HammerGun.scn" type="PackedScene" id=2]
 [ext_resource path="res://assets/animations/hammer/equip.tres" type="Animation" id=3]
 [ext_resource path="res://assets/animations/hammer/unequip.tres" type="Animation" id=4]
-[ext_resource path="res://assets/sounds/claw_miss2.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/particles/ParticlesRepair01.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scripts/Hammer.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/AnimationController.gd" type="Script" id=7]
+[ext_resource path="res://assets/particles/ParticlesSmoke01.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/scripts/HitscanRepair.gd" type="Script" id=9]
+[ext_resource path="res://assets/particles/ParticlesDamageBeam01.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/sounds/ZapSplat/industrial_plastic_box_of_drywall_screws_movement_2.mp3" type="AudioStream" id=11]
-[ext_resource path="res://assets/textures/crosshairs/crosshair188.png" type="Texture" id=12]
+[ext_resource path="res://assets/imports/kenney_crosshair_pack/White/crosshair178.png" type="Texture" id=12]
 [ext_resource path="res://assets/sounds/metal6.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/scenes/AudioManager.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/scenes/AmmoCount.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/imports/kenney_crosshair_pack/White/crosshair086.png" type="Texture" id=16]
 [ext_resource path="res://assets/scripts/HammerAltFire.gd" type="Script" id=17]
 [ext_resource path="res://assets/sounds/metal1.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/sounds/egon_off1.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/sounds/egon_run3.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sounds/egon_windup2.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/scripts/HammerGunAudioController.gd" type="Script" id=22]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("HammerMesh/RootNode:translation")
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HammerGun")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
+tracks/0/keys = PoolRealArray( 0, 1, -0.0281262, -0.0624875, 0.14849, 0, 0, 0, 1, 0.04, 0.04, 0.04 )
 tracks/1/type = "value"
-tracks/1/path = NodePath("HammerMesh/RootNode:rotation_degrees")
+tracks/1/path = NodePath("HammerGun:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -42,36 +44,8 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
-
-[sub_resource type="Animation" id=4]
-resource_name = "attack"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath("HammerMesh/RootNode:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 2.63902, 0.353554 ),
-"update": 0,
-"values": [ Vector3( -0.466392, 0.05064, 0 ), Vector3( -0.136707, -0.285353, 0.163711 ), Vector3( 0.433972, -0.0151983, 0.404557 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("HammerMesh/RootNode:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 2.63902, 0.353554 ),
-"update": 0,
-"values": [ Vector3( -15.25, -1.91116e-06, 33.968 ), Vector3( -9.471, -7.15656e-06, 78.3743 ), Vector3( 6.91819e-06, -7.48982e-06, 104.866 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("AudioManager")
+tracks/2/type = "value"
+tracks/2/path = NodePath("HammerGun:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -79,73 +53,48 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ ExtResource( 5 ) ],
-"method": "new_3d_sound"
-} ]
+"update": 0,
+"values": [ Vector3( -0.0281262, -0.0624875, 0.14849 ) ]
 }
 
 [sub_resource type="Animation" id=2]
-length = 0.6
+resource_name = "alt_fire"
+length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("HammerMesh/RootNode:rotation_degrees")
+tracks/0/path = NodePath("HammerGun:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
-"transitions": PoolRealArray( 0.0544094, 1, 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 2.5442e-07, -1.93867e-06, 14.953 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( -0.0281262, -0.0624875, 0.134424 ), Vector3( -0.0281262, -0.0624875, 0.14849 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HammerMesh/RootNode:translation")
+tracks/1/path = NodePath("HammerGun:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
-"transitions": PoolRealArray( 0.0544094, 1, 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0.0665497, -0.362419, -4.47035e-08 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( -4.512, 1.55713e-08, -3.95269e-07 ), Vector3( -2.202, 3.70154e-09, -1.926e-07 ) ]
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "repair"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath("HammerMesh/RootNode:rotation_degrees")
+resource_name = "primary_fire"
+length = 0.7
+tracks/0/type = "method"
+tracks/0/path = NodePath("AudioManager")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
-"transitions": PoolRealArray( 0.0544094, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 2.5442e-07, -1.93867e-06, 14.953 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("HammerMesh/RootNode:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6 ),
-"transitions": PoolRealArray( 0.0544094, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0.0665497, -0.362419, -4.47035e-08 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("AudioManager")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -153,33 +102,60 @@ tracks/2/keys = {
 "method": "new_3d_sound"
 } ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath("AudioManager")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("HammerGun:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.0236428, -0.0669761, 0.137556 ), Vector3( -0.0281262, -0.0694056, 0.137556 ), Vector3( -0.0346848, -0.0681633, 0.137556 ), Vector3( -0.0236428, -0.0669761, 0.137556 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HammerGun:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -5.76323e-07, -3.32661e-08, 6.607 ), Vector3( 5.46343e-07, -4.7614e-08, -6.2756 ), Vector3( -5.76323e-07, -3.32661e-08, 6.607 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("OuterReticle:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ ExtResource( 18 ), 0.0, 2.0 ],
-"method": "network_3d_sound"
-} ]
+"update": 0,
+"values": [ 0.0 ]
 }
-tracks/4/type = "method"
-tracks/4/path = NodePath("PrimaryFire/Repair")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "repair"
-} ]
+
+[sub_resource type="Animation" id=8]
+resource_name = "primary_fire"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("OuterReticle:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0 ]
 }
 
 [node name="Hammer" type="Spatial"]
@@ -189,25 +165,37 @@ addAmmoSound = ExtResource( 11 )
 
 [node name="PrimaryFire" type="Spatial" parent="."]
 script = ExtResource( 1 )
-repairAmount = 20.0
-repairCycleTime = 0.6
-damage = 10.0
+repairValue = 2.0
+damageValue = 2.0
 attackCycleTime = 0.7
 
-[node name="Repair" type="RayCast" parent="PrimaryFire"]
+[node name="Raycast" type="RayCast" parent="PrimaryFire"]
 enabled = true
-cast_to = Vector3( 0, 0, 1.8 )
-collision_mask = 65
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 193
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource( 9 )
 
-[node name="CycleTimer" type="Timer" parent="PrimaryFire"]
-wait_time = 0.7
+[node name="AttackRate" type="Timer" parent="PrimaryFire"]
+wait_time = 0.1
 one_shot = true
 __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
+
+[node name="AudioManager" type="Node" parent="PrimaryFire"]
+script = ExtResource( 22 )
+
+[node name="WindUp" type="AudioStreamPlayer" parent="PrimaryFire/AudioManager"]
+stream = ExtResource( 21 )
+
+[node name="Run" type="AudioStreamPlayer" parent="PrimaryFire/AudioManager"]
+stream = ExtResource( 20 )
+autoplay = true
+
+[node name="Off" type="AudioStreamPlayer" parent="PrimaryFire/AudioManager"]
+stream = ExtResource( 19 )
 
 [node name="AltFire" type="RayCast" parent="."]
 enabled = true
@@ -228,28 +216,31 @@ __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
 
-[node name="HammerMesh" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1.91069e-16, -4.37114e-09, 0.1, -0.1, -4.37114e-09, 0, 4.37114e-09, -0.1, -4.37114e-09, -0.021, -0.021, 0.026 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 5 )
-anims/attack = SubResource( 4 )
+anims/alt_fire = SubResource( 2 )
 anims/equip = ExtResource( 3 )
-anims/nail = SubResource( 2 )
-anims/repair = SubResource( 7 )
+anims/primary_fire = SubResource( 7 )
 anims/unequip = ExtResource( 4 )
 script = ExtResource( 7 )
+defaultAnimation = ""
 
 [node name="AudioManager" parent="." instance=ExtResource( 14 )]
 
+[node name="HammerGun" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.0281262, -0.0624875, 0.14849 )
+
+[node name="ParticlesSmoke01" parent="HammerGun" instance=ExtResource( 8 )]
+transform = Transform( 0.5, 0, 1.42109e-14, 0, 0.5, 0, -1.42109e-14, 0, 0.5, -1.78814e-07, 0.419392, 2.03528 )
+
+[node name="ParticlesRepair01" parent="HammerGun" instance=ExtResource( 5 )]
+
+[node name="ParticlesDamageBeam01" parent="HammerGun" instance=ExtResource( 10 )]
+
 [node name="HUD" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Crosshair" type="Control" parent="HUD"]
 anchor_left = 0.5
@@ -261,19 +252,16 @@ margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CenterPoint" type="TextureRect" parent="HUD/Crosshair"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -18.0
-margin_top = -18.0
-margin_right = 18.0
-margin_bottom = 18.0
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 12.0
 rect_min_size = Vector2( 24, 24 )
 rect_clip_content = true
 mouse_filter = 2
@@ -281,15 +269,41 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 12 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="OuterReticle" type="TextureRect" parent="HUD/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 48, 48 )
+rect_pivot_offset = Vector2( 24, 24 )
+rect_clip_content = true
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 16 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Crosshair"]
+anims/RESET = SubResource( 9 )
+anims/primary_fire = SubResource( 8 )
+script = ExtResource( 7 )
+returnToDefaultAnimation = true
 
 [node name="AmmoCount" parent="HUD" instance=ExtResource( 15 )]
 
+[connection signal="damaging" from="PrimaryFire" to="HammerGun/ParticlesDamageBeam01" method="set_emitting"]
 [connection signal="play_animation" from="PrimaryFire" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="play_animation" from="PrimaryFire" to="HUD/Crosshair/AnimationPlayer" method="_on_change_animation"]
+[connection signal="repairing" from="PrimaryFire" to="HammerGun/ParticlesRepair01" method="set_emitting"]
+[connection signal="timeout" from="PrimaryFire/AttackRate" to="PrimaryFire/Raycast" method="hit_target"]
+[connection signal="finished" from="PrimaryFire/AudioManager/Run" to="PrimaryFire/AudioManager" method="test"]
+[connection signal="nail_prop" from="AltFire" to="HammerGun/ParticlesSmoke01" method="emit_once"]
 [connection signal="play_3d_sound" from="AltFire" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_animation" from="AltFire" to="AnimationPlayer" method="_on_change_animation"]
 [connection signal="update_ammo_display" from="AltFire" to="HUD/AmmoCount" method="update_ui"]
-
-[editable path="HammerMesh"]
+[connection signal="animation_finished" from="HUD/Crosshair/AnimationPlayer" to="HUD/Crosshair/AnimationPlayer" method="_on_animation_finished"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/textures/Test/splat26.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/Test/splat19.png" type="Texture" id=2]
-[ext_resource path="res://assets/scripts/ParticleFree.gd" type="Script" id=3]
+[ext_resource path="res://assets/scripts/ParticleController.gd" type="Script" id=3]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -1.64632, 0.0, 0, 0 ]
@@ -59,7 +59,14 @@ material = SubResource( 7 )
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="Particles" type="Particles" parent="."]
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Emitters" type="Spatial" parent="."]
+
+[node name="Particles" type="Particles" parent="Emitters"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00298953, -0.00709629, 0.00200558 )
 amount = 6
 lifetime = 2.0
@@ -68,7 +75,7 @@ randomness = 1.0
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 5 )
 
-[node name="Particles_2" type="Particles" parent="."]
+[node name="Particles_2" type="Particles" parent="Emitters"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00597906, -0.0141926, 0.00401115 )
 amount = 4
 lifetime = 2.0
@@ -76,10 +83,5 @@ explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 8 )
-
-[node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
 
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_DespawnTimer_timeout"]

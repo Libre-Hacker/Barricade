@@ -19,27 +19,34 @@ tracks/0/keys = {
 "method": "new_3d_sound"
 } ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("HammerMesh/RootNode:translation")
+tracks/1/type = "transform"
+tracks/1/path = NodePath("HammerGun")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0.857117, 1.19209e-07, -0.291384 ), Vector3( 0, 0, 0 ) ]
-}
+tracks/1/keys = PoolRealArray(  )
 tracks/2/type = "value"
-tracks/2/path = NodePath("HammerMesh/RootNode:rotation_degrees")
+tracks/2/path = NodePath("HammerGun:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 6.53685e-07, -3.06521e-06, 24.077 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 40.141, 1.54332e-06, 4.22406e-06 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HammerGun:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.0281262, -0.165952, 0.14849 ), Vector3( -0.0281262, -0.0624875, 0.14849 ) ]
 }
