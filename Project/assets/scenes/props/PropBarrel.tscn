@@ -12,8 +12,8 @@
 [ext_resource path="res://assets/scripts/MeshSaturationChanger.gd" type="Script" id=10]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.5
 height = 1.25474
+radius = 0.5
 
 [node name="PropBarrel" type="RigidBody" groups=["Destructibles", "Props"]]
 collision_layer = 4
@@ -37,6 +37,8 @@ rewardAmount = 10
 script = ExtResource( 4 )
 health = 300.0
 hurtSound = ExtResource( 8 )
+deathSound = null
+healSound = null
 
 [node name="HitBox" type="Area" parent="." groups=["Destructibles", "Props", "Repairables"]]
 collision_layer = 64

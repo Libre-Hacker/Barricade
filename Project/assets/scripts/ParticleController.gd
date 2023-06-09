@@ -1,6 +1,5 @@
 extends Spatial
 
-onready var despawnTimer = get_node("DespawnTimer")
 onready var emitters = get_node("Emitters").get_children()
 export var emitting = false
 

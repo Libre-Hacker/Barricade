@@ -1,8 +1,9 @@
 extends Health
 
 
-func _on_hitbox_collision(damageReceived = 0, entity = null):
-	.damage(damageReceived)
+func _on_hitbox_collision(attack):
+	if(attack.entity != GameManager.playerManager.PLAYER):
+		.damage(attack.value)
 
 # Applies haling.
 func _on_hitbox_hit_heal(value):

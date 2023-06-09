@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/medshotno1.wav-583c57a318db2093c88fb59b6117f74d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/medshotno1.wav"
+dest_files=[ "res://.import/medshotno1.wav-583c57a318db2093c88fb59b6117f74d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -94,6 +94,6 @@ func damage_target():
 		return
 	if(lineOfSight.has_line_of_sight(currentTarget)):
 		emit_signal("play_3dsound", hitSound)
-		currentTarget.damage(attackDamage, null)
+		currentTarget.damage({value = attackDamage, entity = get_owner()})
 	else:
 		emit_signal("play_3dsound", missSound)

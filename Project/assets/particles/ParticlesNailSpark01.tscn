@@ -1,0 +1,117 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/imports/kenney_particle_pack/trace_06.png" type="Texture" id=1]
+[ext_resource path="res://assets/imports/kenney_particle_pack/flare_01.png" type="Texture" id=2]
+[ext_resource path="res://assets/scripts/ParticleController.gd" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=17]
+interpolation_mode = 2
+offsets = PoolRealArray( 0, 0.177083, 0.450521, 0.789062, 1 )
+colors = PoolColorArray( 0.964844, 0.956894, 0.456039, 1, 1, 0.298828, 0, 1, 0.578613, 0.0796723, 0, 1, 1, 0.292969, 0, 1, 0.185547, 0.0761032, 0, 0 )
+
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
+
+[sub_resource type="Curve" id=12]
+max_value = 2.0
+_data = [ Vector2( 0, 1.00455 ), 0.0, 0.0, 0, 0, Vector2( 0.103194, 2 ), 0.0, 0.0, 0, 0, Vector2( 0.525798, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+lifetime_randomness = 0.5
+direction = Vector3( 0, 1, 0 )
+spread = 30.0
+gravity = Vector3( 0, -12, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.5
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 18 )
+
+[sub_resource type="QuadMesh" id=7]
+size = Vector2( 0.5, 0.5 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=9]
+interpolation_mode = 2
+offsets = PoolRealArray( 0.1875, 0.380208, 0.536458, 0.789062, 1 )
+colors = PoolColorArray( 0.964844, 0.956894, 0.456039, 1, 1, 0.298828, 0, 1, 0.578613, 0.0796723, 0, 1, 1, 0.292969, 0, 1, 0.185547, 0.0761032, 0, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 9 )
+
+[sub_resource type="Curve" id=11]
+max_value = 2.0
+_data = [ Vector2( 0, 1.00455 ), 0.0, 0.0, 0, 0, Vector2( 0.034398, 2 ), 0.0, 0.0, 0, 0, Vector2( 0.253071, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=16]
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 15 )
+color = Color( 0.968627, 0.666667, 0.192157, 1 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="QuadMesh" id=10]
+size = Vector2( 0.5, 0.5 )
+
+[node name="ParticlesNailSpark01" type="Spatial"]
+script = ExtResource( 3 )
+emitting = true
+
+[node name="Emitters" type="Spatial" parent="."]
+
+[node name="Sparks" type="Particles" parent="Emitters"]
+material_override = SubResource( 1 )
+cast_shadow = 0
+emitting = false
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 14 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="Flash" type="Particles" parent="Emitters"]
+material_override = SubResource( 8 )
+cast_shadow = 0
+emitting = false
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 16 )
+draw_pass_1 = SubResource( 10 )
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_DespawnTimer_timeout"]

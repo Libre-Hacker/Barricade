@@ -10,14 +10,22 @@ func shoot(direction = Vector3.FORWARD, damage = 0.0, force = 0.0):
 	cast_to.y = direction.y
 	cast_to.x = direction.x
 	force_raycast_update()
-	if(is_colliding()):
-		var target
-		if(get_collider().is_in_group("Zombies")):
-			target = targetType.ZOMBIE
-		else:
-			target = targetType.OTHER
-		rpc("emitImpactEffect", target, get_collider().get_path(), get_collision_point(), get_collision_normal())
-		damageObject(damage, force)
+	if(!is_colliding()):
+		return
+	
+	var hitbox = get_collider()
+	
+	if(!hitbox.has_method("damage")):
+		return
+	
+	var attack = {
+		value = damage,
+		entity = GameManager.playerManager.PLAYER,
+		collision = {position = get_collision_point(), normal = get_collision_normal()},
+		force = -get_collision_normal() * force
+		}
+	get_collider().damage(attack)
+#	rpc("emitImpactEffect", target, get_collider().get_path(), get_collision_point(), get_collision_normal())
 
 # Emits a particle effect where the bullet impacted.
 sync func emitImpactEffect(type, path, position, normal):
@@ -35,9 +43,3 @@ sync func emitImpactEffect(type, path, position, normal):
 		particleInstance.rotation_degrees.x = -90
 	else:
 		particleInstance.look_at(position - normal, Vector3.UP)
-
-
-# Damage the object hit.
-func damageObject(damage = 0.0, force = 0.0):
-	if(get_collider().is_in_group("Destructibles")):
-		get_collider().damage(damage, get_parent().player, -get_collision_normal() * force)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/scripts/Navigator.gd" type="Script" id=1]
 [ext_resource path="res://assets/Enemies/Horker.material" type="Material" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/scripts/HorkerAIController.gd" type="Script" id=12]
 [ext_resource path="res://assets/scripts/HorkerMover.gd" type="Script" id=13]
 [ext_resource path="res://assets/scripts/HorkerPrimaryAttack.gd" type="Script" id=14]
+[ext_resource path="res://assets/scenes/ZombieBloodHit.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/scripts/IdleAudio.gd" type="Script" id=16]
 [ext_resource path="res://assets/scripts/ZombieHealth.gd" type="Script" id=17]
 [ext_resource path="res://assets/scenes/Reward.tscn" type="PackedScene" id=18]
@@ -23,8 +24,8 @@
 [ext_resource path="res://assets/scripts/HitBox.gd" type="Script" id=23]
 
 [sub_resource type="CylinderShape" id=40]
-radius = 0.312313
 height = 0.914678
+radius = 0.312313
 
 [sub_resource type="BoxShape" id=49]
 extents = Vector3( 1, 0.5, 3 )
@@ -211,6 +212,8 @@ script = ExtResource( 17 )
 health = 50.0
 maxHealth = 50.0
 hurtSounds = [ ExtResource( 7 ), ExtResource( 5 ) ]
+hurtParticle = ExtResource( 15 )
+deathSound = null
 despawnTime = 0.0
 
 [node name="PrimaryAttack" type="Spatial" parent="."]
@@ -294,7 +297,6 @@ script = ExtResource( 22 )
 [node name="Horker" type="MeshInstance" parent="."]
 transform = Transform( -2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 1.12405, 0 )
 mesh = SubResource( 36 )
-material/0 = null
 
 [node name="HitBox" type="Area" parent="." groups=["Destructibles", "Zombies"]]
 transform = Transform( 0.999996, -2.08616e-07, -4.47035e-08, 1.46031e-06, 0.999989, -7.15256e-07, 1.2219e-06, 3.31551e-07, 0.999998, 0.0180054, 0.241025, 0.00747393 )

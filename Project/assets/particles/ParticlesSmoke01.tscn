@@ -23,7 +23,8 @@ colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 0 )
 gradient = SubResource( 11 )
 
 [sub_resource type="Curve" id=13]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+max_value = 2.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 2 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=14]
 curve = SubResource( 13 )
@@ -39,7 +40,7 @@ color_ramp = SubResource( 12 )
 size = Vector2( 0.2, 0.2 )
 
 [sub_resource type="QuadMesh" id=32]
-size = Vector2( 0.8, 0.8 )
+size = Vector2( 0.2, 0.2 )
 
 [sub_resource type="SpatialMaterial" id=33]
 flags_transparent = true
@@ -89,7 +90,9 @@ material_override = SubResource( 8 )
 cast_shadow = 0
 emitting = false
 amount = 2
+lifetime = 2.0
 one_shot = true
+preprocess = 0.5
 explosiveness = 0.6
 process_material = SubResource( 9 )
 draw_pass_1 = SubResource( 10 )
@@ -100,7 +103,9 @@ material_override = SubResource( 8 )
 cast_shadow = 0
 emitting = false
 amount = 2
+lifetime = 2.0
 one_shot = true
+preprocess = 0.5
 explosiveness = 0.6
 process_material = SubResource( 9 )
 draw_pass_1 = SubResource( 32 )

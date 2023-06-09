@@ -10,11 +10,16 @@ signal apply_status_effect
 
 
 # Called by the attacker to cause damage.
-func damage(value = 0, entity = null, hitDirection = Vector3.ZERO, statusEffect = null):
-	emit_signal("hitbox_collision", value * multiplier, entity)
-	emit_signal("ragdoll_collision", hitDirection)
-	if(statusEffect != null):
-		emit_signal("apply_status_effect", statusEffect)
+func damage(attack = {value = 0, entity = null, collision = {position = Vector3.ZERO, normal = Vector3.ZERO}, force = Vector3.ZERO, statusEffect = null}):
+	emit_signal("hitbox_collision", {
+		value = attack.value * multiplier,
+		entity = attack.entity,
+		collision = attack.collision if attack.has("collision") else null
+		})
+	if(attack.has("force")):
+		emit_signal("ragdoll_collision", attack.force)
+	if(attack.has("statusEffect")):
+		emit_signal("apply_status_effect", attack.statusEffect)
 
 func heal(value = 0, entity = null):
 	emit_signal("hitbox_hit_heal", value, entity)

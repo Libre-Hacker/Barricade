@@ -26,9 +26,11 @@ func hit_target():
 	if(hitObject.is_in_group("Props") and hitObject.is_repairable()):
 		hitObject.heal(_repairValue)
 		emitImpactEffect(get_collider().get_path(), get_collision_point())
-
+	
+	var collision = {position = get_collision_point(), normal = get_collision_normal()}
+	
 	if(is_hitting_zombie()):
-		hitObject.damage(_damageValue)
+		hitObject.damage({value = _damageValue, entity = GameManager.playerManager.PLAYER, collision = collision})
 
 func emitImpactEffect(path, position):
 	var particleInstance = repairParticleEffect.instance()

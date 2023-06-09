@@ -19,8 +19,8 @@ func _process(_delta):
 	updateUI()
 
 # Recevied from the hitbox that was hit. Removes health from the base class.
-func _on_hitbox_collision(damageReceived, attacker):
-	.damage(damageReceived)
+func _on_hitbox_collision(attack):
+	.damage(attack.value)
 	is_destroyed()
 
 # Overrides the base function for player specific uses. Handles respawning and audio.

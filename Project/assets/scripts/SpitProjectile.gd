@@ -15,7 +15,6 @@ func shoot(direction = Vector3.ZERO):
 
 func _on_area_hit(area):
 	if(area.is_in_group("Players") or area.is_in_group("Props")):
-		if(is_network_master()):
-			area.damage(damage, self, Vector3.ZERO, statusEffect)
+		area.damage({value = damage, entity = null, statusEffect = statusEffect})
 	AudioManager.new_3d_sound(hitSound, global_transform.origin, 0.0, 2)
 	queue_free()

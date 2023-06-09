@@ -12,17 +12,17 @@ curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=1]
 direction = Vector3( 0, 1, 0 )
-spread = 25.0
-flatness = 0.5
+spread = 90.0
 gravity = Vector3( 0, 0.5, 0 )
 initial_velocity = 0.6
 scale_curve = SubResource( 5 )
 
 [sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
 flags_unshaded = true
+flags_no_depth_test = true
+params_blend_mode = 1
 params_billboard_mode = 3
-params_use_alpha_scissor = true
-params_alpha_scissor_threshold = 0.98
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
@@ -43,7 +43,7 @@ autostart = true
 [node name="Emitters" type="Spatial" parent="."]
 
 [node name="RepairParticle" type="Particles" parent="Emitters"]
-amount = 4
+amount = 1
 lifetime = 0.75
 speed_scale = 0.7
 explosiveness = 0.8

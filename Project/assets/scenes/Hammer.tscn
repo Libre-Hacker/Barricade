@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/scripts/HammerPrimaryFire.gd" type="Script" id=1]
 [ext_resource path="res://assets/imports/weapons/HammerGun.scn" type="PackedScene" id=2]
@@ -17,11 +17,13 @@
 [ext_resource path="res://assets/scenes/AmmoCount.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/imports/kenney_crosshair_pack/White/crosshair086.png" type="Texture" id=16]
 [ext_resource path="res://assets/scripts/HammerAltFire.gd" type="Script" id=17]
-[ext_resource path="res://assets/sounds/metal1.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/sounds/egon_off1.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/sounds/egon_run3.wav" type="AudioStream" id=20]
-[ext_resource path="res://assets/sounds/egon_windup2.wav" type="AudioStream" id=21]
-[ext_resource path="res://assets/scripts/HammerGunAudioController.gd" type="Script" id=22]
+[ext_resource path="res://assets/sounds/xbow_fire1.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/scenes/AudioController_HammerGun.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/sounds/medshotno1.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sounds/dryfire1.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/sounds/xbow_hit1.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/sounds/mine_deploy.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/particles/ParticlesSmoke02.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -84,43 +86,91 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector3( -4.512, 1.55713e-08, -3.95269e-07 ), Vector3( -2.202, 3.70154e-09, -1.926e-07 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("AudioManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ ExtResource( 18 ) ],
+"method": "new_sound"
+}, {
+"args": [ ExtResource( 13 ) ],
+"method": "new_sound"
+} ]
+}
 
-[sub_resource type="Animation" id=7]
-resource_name = "primary_fire"
-length = 0.7
-tracks/0/type = "method"
-tracks/0/path = NodePath("AudioManager")
+[sub_resource type="Animation" id=10]
+resource_name = "alt_fire_unnail"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("HammerGun:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ ExtResource( 18 ) ],
-"method": "new_3d_sound"
-} ]
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.0281262, -0.0624875, 0.134424 ), Vector3( -0.0281262, -0.0624875, 0.14849 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HammerGun:translation")
-tracks/1/interp = 2
+tracks/1/path = NodePath("HammerGun:rotation_degrees")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -4.512, 1.55713e-08, -3.95269e-07 ), Vector3( -2.202, 3.70154e-09, -1.926e-07 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AudioManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ ExtResource( 23 ) ],
+"method": "new_sound"
+}, {
+"args": [ ExtResource( 22 ) ],
+"method": "new_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "primary_fire"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("HammerGun:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( -0.0236428, -0.0669761, 0.137556 ), Vector3( -0.0281262, -0.0694056, 0.137556 ), Vector3( -0.0346848, -0.0681633, 0.137556 ), Vector3( -0.0236428, -0.0669761, 0.137556 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("HammerGun:rotation_degrees")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("HammerGun:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
@@ -165,9 +215,8 @@ addAmmoSound = ExtResource( 11 )
 
 [node name="PrimaryFire" type="Spatial" parent="."]
 script = ExtResource( 1 )
-repairValue = 2.0
+repairValue = 4.0
 damageValue = 2.0
-attackCycleTime = 0.7
 
 [node name="Raycast" type="RayCast" parent="PrimaryFire"]
 enabled = true
@@ -184,18 +233,7 @@ __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
 
-[node name="AudioManager" type="Node" parent="PrimaryFire"]
-script = ExtResource( 22 )
-
-[node name="WindUp" type="AudioStreamPlayer" parent="PrimaryFire/AudioManager"]
-stream = ExtResource( 21 )
-
-[node name="Run" type="AudioStreamPlayer" parent="PrimaryFire/AudioManager"]
-stream = ExtResource( 20 )
-autoplay = true
-
-[node name="Off" type="AudioStreamPlayer" parent="PrimaryFire/AudioManager"]
-stream = ExtResource( 19 )
+[node name="AudioController" parent="PrimaryFire" instance=ExtResource( 19 )]
 
 [node name="AltFire" type="RayCast" parent="."]
 enabled = true
@@ -205,20 +243,25 @@ script = ExtResource( 17 )
 ammo = 5
 maxAmmo = 10
 cycleTime = 0.6
-nailRange = 3.0
+nailRange = 5.0
 nailMargin = 0.2
 nailSound = ExtResource( 13 )
+errorSound = ExtResource( 20 )
+dryFireSound = ExtResource( 21 )
 
 [node name="CycleTimer" type="Timer" parent="AltFire"]
-wait_time = 0.7
+wait_time = 0.3
 one_shot = true
 __meta__ = {
 "_editor_description_": "NOTE: Must be set in the editor."
 }
 
+[node name="AudioController" type="Node" parent="AltFire"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 5 )
 anims/alt_fire = SubResource( 2 )
+anims/alt_fire_unnail = SubResource( 10 )
 anims/equip = ExtResource( 3 )
 anims/primary_fire = SubResource( 7 )
 anims/unequip = ExtResource( 4 )
@@ -236,6 +279,9 @@ transform = Transform( 0.5, 0, 1.42109e-14, 0, 0.5, 0, -1.42109e-14, 0, 0.5, -1.
 [node name="ParticlesRepair01" parent="HammerGun" instance=ExtResource( 5 )]
 
 [node name="ParticlesDamageBeam01" parent="HammerGun" instance=ExtResource( 10 )]
+
+[node name="ParticlesSmoke02" parent="HammerGun" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 4.26326e-14, 0, 1, 0, -4.26326e-14, 0, 1, -4.76837e-07, 0.481466, 2.61858 )
 
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
@@ -301,9 +347,9 @@ returnToDefaultAnimation = true
 [connection signal="play_animation" from="PrimaryFire" to="HUD/Crosshair/AnimationPlayer" method="_on_change_animation"]
 [connection signal="repairing" from="PrimaryFire" to="HammerGun/ParticlesRepair01" method="set_emitting"]
 [connection signal="timeout" from="PrimaryFire/AttackRate" to="PrimaryFire/Raycast" method="hit_target"]
-[connection signal="finished" from="PrimaryFire/AudioManager/Run" to="PrimaryFire/AudioManager" method="test"]
+[connection signal="emit_particle" from="AltFire" to="HammerGun/ParticlesSmoke02" method="emit_once"]
 [connection signal="nail_prop" from="AltFire" to="HammerGun/ParticlesSmoke01" method="emit_once"]
-[connection signal="play_3d_sound" from="AltFire" to="AudioManager" method="new_3d_sound"]
 [connection signal="play_animation" from="AltFire" to="AnimationPlayer" method="_on_change_animation"]
+[connection signal="play_sound" from="AltFire" to="AudioManager" method="new_sound"]
 [connection signal="update_ammo_display" from="AltFire" to="HUD/AmmoCount" method="update_ui"]
 [connection signal="animation_finished" from="HUD/Crosshair/AnimationPlayer" to="HUD/Crosshair/AnimationPlayer" method="_on_animation_finished"]

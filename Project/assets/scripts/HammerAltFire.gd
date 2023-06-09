@@ -8,15 +8,20 @@ export (float,0,2) var nailSize = 1 # How long a nail is.
 export (float,0,10) var nailRange # How far the hammer can nail.
 export (float,0,1) var nailMargin # How much of the nail has to be exposed.
 export (Resource) var nailSound
+export (Resource) var errorSound
+export (Resource) var dryFireSound
+
 
 
 signal play_animation(animationName)
 signal nail_prop
-signal play_3d_sound
+signal play_sound
 signal update_ammo_display
+signal emit_particle
 
 var nailNode = preload("res://assets/scenes/Nail.tscn")
 
+onready var nailParticleEffect = preload("res://assets/particles/ParticlesNailSpark01.tscn")
 onready var cycleTimer = get_node("CycleTimer")
 
 func _ready():
@@ -25,6 +30,7 @@ func _ready():
 # Checks if there are nailable objects present
 func nail():
 	if (ammo <= 0):
+		emit_signal("play_sound", dryFireSound)
 		return
 	var raycastData = get_collision_data()
 	var propData = get_prop(raycastData)
@@ -34,14 +40,15 @@ func nail():
 		or surfaceData == null
 		or propData.collider.isNailed == true
 		or propData.collisionPoint.distance_to(surfaceData.collisionPoint) > nailSize - nailMargin):
+			emit_signal("play_sound", errorSound)
 			return
 	
-	emit_signal("play_3d_sound", nailSound)
 	emit_signal("play_animation", "alt_fire", true)
 	emit_signal("nail_prop")
 	cycleTimer.start()
 	var midpoint = (propData.collisionPoint + surfaceData.collisionPoint) / 2
-	rpc("create_nail", midpoint, surfaceData.collisionPoint, propData.collider.get_path())
+	create_nail(midpoint, surfaceData.collisionPoint, propData.collider.get_path())
+	emitImpactEffect(propData.collider.get_path(), propData.collisionPoint)
 	ammo -= 1
 	update_ui()
 
@@ -60,7 +67,7 @@ func get_prop(raycastData):
 			return collisionData
 
 # Spawns a nail instance, setting the transforms, and parent. Only unnailed props can be nailed.
-sync func create_nail(position, direction, prop):
+func create_nail(position, direction, prop):
 	var nailInstance = nailNode.instance()
 	get_node(prop).add_child(nailInstance)
 	nailInstance.global_transform.origin = position
@@ -70,17 +77,15 @@ sync func create_nail(position, direction, prop):
 # Removes a nail from a prop. Returning the prop to its rigidbody state.
 func remove_nail():
 	if(is_colliding() == false or get_collider().is_in_group("Props") == false or get_collider().isNailed == false or cycleTimer.is_stopped() == false):  
+		emit_signal("play_sound", errorSound)
 		return
-	emit_signal("play_animation", "nail")
-	emit_signal("play_3d_sound", nailSound)
+	var prop = get_collider()
+	emit_signal("play_animation", "alt_fire_unnail")
+	emit_signal("emit_particle")
 	cycleTimer.start()
 	ammo += 1
 	update_ui()
-	rpc("remove_nail_on_all_clients", get_collider().get_path())
-
-sync func remove_nail_on_all_clients(prop):
-	get_node(prop).unnail()
-	get_node(prop).get_node("Nail").queue_free()
+	prop.unnail()
 
 func is_ammo_full():
 	if(ammo == maxAmmo):
@@ -97,3 +102,9 @@ func add_ammo(value):
 
 func update_ui():
 	emit_signal("update_ammo_display", ammo, 0)
+
+
+func emitImpactEffect(parent, position):
+	var particleInstance = nailParticleEffect.instance()
+	get_node(parent).add_child(particleInstance)
+	particleInstance.global_transform.origin = position

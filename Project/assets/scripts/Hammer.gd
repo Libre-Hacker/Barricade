@@ -49,6 +49,7 @@ func equip():
 
 
 func unequip():
+	primaryFire.stop_primary_fire()
 	set_process(false)
 	animationPlayer.play("unequip")
 	yield(animationPlayer, "animation_finished")
@@ -58,7 +59,7 @@ func unequip():
 # Used by external sources to add ammo to this weapon.
 func add_ammo(primaryAmmo = 0, secondaryAmmo = 0):
 	altFire.add_ammo(primaryAmmo)
-	get_node("AudioManager").new_3d_sound(addAmmoSound)
+	get_node("AudioManager").new_sound(addAmmoSound)
 
 
 func has_max_ammo():

@@ -124,6 +124,7 @@ func unnail():
 	lock_all_axis(false)
 	isNailed = false
 	sleeping = false
+	get_node("Nail").queue_free()
 
 # Returns true if the object is nailed.
 func is_repairable():
