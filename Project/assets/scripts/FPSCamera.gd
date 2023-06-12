@@ -8,15 +8,6 @@ export(float, -90, 0, 0.1) var minLookDown : float = -90
 onready var player = get_parent()
 onready var interactionRayCast = get_node("Interaction")
 
-
-func _ready():
-	if(is_network_master()):
-		make_current()
-
-func _process(delta):
-	#gunCamera.global_transform = global_transform
-	pass
-
 # Gets mouse input and calls corresponding function.
 func _unhandled_input(event):
 	if(is_network_master() == false):
@@ -32,6 +23,7 @@ func _unhandled_input(event):
 		get_tree().get_root().set_input_as_handled()
 		VerticalLook(event.relative.y)
 		HorizontalLook(event.relative.x)
+
 
 # Rotates this object around the x-axis to look up and down.
 func VerticalLook(mouseMovement):

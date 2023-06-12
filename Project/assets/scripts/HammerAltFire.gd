@@ -13,7 +13,8 @@ export (Resource) var dryFireSound
 
 
 
-signal play_animation(animationName)
+signal play_animation
+signal play_camera_animation
 signal nail_prop
 signal play_sound
 signal update_ammo_display
@@ -26,6 +27,7 @@ onready var cycleTimer = get_node("CycleTimer")
 
 func _ready():
 	cast_to.z = nailRange
+	connect("play_camera_animation", find_parent("Camera").get_node("AnimationPlayer"), "_on_change_animation")
 
 # Checks if there are nailable objects present
 func nail():
@@ -43,6 +45,7 @@ func nail():
 			emit_signal("play_sound", errorSound)
 			return
 	
+	emit_signal("play_camera_animation", "recoil")
 	emit_signal("play_animation", "alt_fire", true)
 	emit_signal("nail_prop")
 	cycleTimer.start()
@@ -80,6 +83,7 @@ func remove_nail():
 		emit_signal("play_sound", errorSound)
 		return
 	var prop = get_collider()
+	emit_signal("play_camera_animation", "recoil")
 	emit_signal("play_animation", "alt_fire_unnail")
 	emit_signal("emit_particle")
 	cycleTimer.start()

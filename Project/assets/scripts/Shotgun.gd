@@ -4,6 +4,8 @@ export (Resource) var addAmmoSound
 
 signal equipped
 
+var enabled = true
+
 onready var primaryFire = get_node("PrimaryFire")
 onready var animationPlayer = get_node("AnimationPlayer")
 onready var hud = get_node("HUD")
@@ -26,7 +28,7 @@ func _process(delta):
 	if(Input.is_action_just_pressed("reload")):
 		primaryFire.startReload()
 		get_tree().get_root().set_input_as_handled()
-	if(Input.is_action_just_pressed("primary_fire")):
+	if(Input.is_action_just_pressed("primary_fire") and enabled):
 		primaryFire.primary_fire()
 		get_tree().get_root().set_input_as_handled()
 

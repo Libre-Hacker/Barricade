@@ -2,7 +2,7 @@ extends RayCast
 
 enum targetType {OTHER, ZOMBIE}
 
-var buletHitParticleNode = preload("res://assets/scenes/BulletHitParticle.tscn")
+var buletHitParticleNode = preload("res://assets/particles/ParticlesBulletImpact.tscn")
 var zombieHitEffect = preload("res://assets/scenes/ZombieBloodHit.tscn")
 
 func shoot(direction = Vector3.FORWARD, damage = 0.0, force = 0.0):
@@ -14,32 +14,30 @@ func shoot(direction = Vector3.FORWARD, damage = 0.0, force = 0.0):
 		return
 	
 	var hitbox = get_collider()
-	
-	if(!hitbox.has_method("damage")):
-		return
-	
 	var attack = {
 		value = damage,
 		entity = GameManager.playerManager.PLAYER,
 		collision = {position = get_collision_point(), normal = get_collision_normal()},
 		force = -get_collision_normal() * force
 		}
-	get_collider().damage(attack)
-#	rpc("emitImpactEffect", target, get_collider().get_path(), get_collision_point(), get_collision_normal())
+	
+	if(hitbox.get_collision_layer() != 128):
+		emitImpactEffect(hitbox, attack.collision)
+		
+	if(hitbox.has_method("damage")):
+		hitbox.damage(attack)
 
 # Emits a particle effect where the bullet impacted.
-sync func emitImpactEffect(type, path, position, normal):
-	var particleInstance = null
-	if(type == targetType.ZOMBIE):
-		particleInstance = zombieHitEffect.instance()
-	else:
-		particleInstance = buletHitParticleNode.instance()
+func emitImpactEffect(parent, collision = {position = Vector3.ZERO, normal = Vector3.ZERO}):
+	var particleInstance = buletHitParticleNode.instance()
 	if(particleInstance == null):
 		push_error("No particle effect node assigned!")
-	get_node(path).add_child(particleInstance)
-	particleInstance.global_transform.origin = position
+	parent.add_child(particleInstance)
+	particleInstance.global_transform.origin = collision.position
 	# Causes the particle to emit perpendicular to the hit surface.
-	if(normal == Vector3.UP):
+	if(collision.normal == Vector3.UP):
 		particleInstance.rotation_degrees.x = -90
+	elif(collision.normal == Vector3.DOWN):
+		particleInstance.rotation_degrees.x = 90
 	else:
-		particleInstance.look_at(position - normal, Vector3.UP)
+		particleInstance.look_at(collision.position - collision.normal, Vector3.UP)

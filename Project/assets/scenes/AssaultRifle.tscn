@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/meshes/Mat.material" type="Material" id=1]
 [ext_resource path="res://assets/scripts/HitscanGun.gd" type="Script" id=2]
@@ -17,6 +17,10 @@
 [ext_resource path="res://assets/sounds/hks3.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/meshes/AK47Mesh.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/sprites/RifleMuzzleFlash.png" type="Texture" id=17]
+[ext_resource path="res://assets/sounds/ammopickup1.wav" type="AudioStream" id=18]
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 0.231373, 0.231373, 0.231373, 1 )
 
 [sub_resource type="ArrayMesh" id=4]
 blend_shape_mode = 0
@@ -198,7 +202,7 @@ tracks/12/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "equip"
-length = 0.4
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("AK47/RootNode:translation")
 tracks/0/interp = 1
@@ -206,7 +210,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0.281458, -0.496653, 0 ), Vector3( 0, 0, 0 ) ]
@@ -218,10 +222,24 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( -34.4117, 1.21381, -78.3421 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AudioManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 18 ) ],
+"method": "new_sound"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -475,7 +493,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "unequip"
-length = 0.3
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("AK47/RootNode:translation")
 tracks/0/interp = 1
@@ -483,7 +501,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0.172345, -0.524733, 0.0377564 ) ]
@@ -495,7 +513,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( -24.223, 8.25848e-07, -28.1 ) ]
@@ -596,6 +614,9 @@ one_shot = true
 
 [node name="AK47" parent="." instance=ExtResource( 16 )]
 transform = Transform( -0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, -0.05, -0.055, 0.13 )
+
+[node name="AK47" parent="AK47/RootNode" index="0"]
+material/0 = SubResource( 15 )
 
 [node name="Mag" parent="AK47/RootNode/AK47" index="1"]
 transform = Transform( 0.879389, 0.429222, 0.206018, -0.457637, 0.881392, 0.117118, -0.131313, -0.197274, 0.971514, -0.436202, -0.277833, 0.0489548 )

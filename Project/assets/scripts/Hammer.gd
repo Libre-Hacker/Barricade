@@ -3,6 +3,7 @@ extends Spatial
 
 export (Resource) var addAmmoSound
 
+var enabled = true
 
 onready var primaryFire = get_node("PrimaryFire")
 onready var altFire = get_node("AltFire")
@@ -24,16 +25,19 @@ func _process(_delta):
 		return
 	else:
 		get_node("HUD").show()
+	
+	if(!enabled):
+		primaryFire.stop_primary_fire()
 	if(Input.is_action_just_released("primary_fire")):
 		primaryFire.stop_primary_fire()
 		get_tree().get_root().set_input_as_handled()
-	if(Input.is_action_pressed("primary_fire")):
+	if(Input.is_action_pressed("primary_fire") and enabled):
 		primaryFire.primary_fire()
 		get_tree().get_root().set_input_as_handled()
-	if(Input.is_action_just_pressed("alt_fire")):
+	if(Input.is_action_just_pressed("alt_fire") and enabled):
 		altFire.nail()
 		get_tree().get_root().set_input_as_handled()
-	if(Input.is_action_just_pressed("reload")):
+	if(Input.is_action_just_pressed("reload") and enabled):
 		altFire.remove_nail()
 		get_tree().get_root().set_input_as_handled()
 

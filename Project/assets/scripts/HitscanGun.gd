@@ -41,7 +41,7 @@ func primary_fire():
 	if(currentAmmo <= 0 or cycleTimer.is_stopped() == false or isReloading):
 		return
 	currentAmmo -= 1
-
+	
 	update_ui()
 	emit_signal("play_animation", "primary_fire", true, true, fireRate)
 	emit_signal("play_camera_animation", "recoil")

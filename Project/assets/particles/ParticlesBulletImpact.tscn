@@ -1,0 +1,105 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/scripts/ParticleController.gd" type="Script" id=1]
+[ext_resource path="res://assets/imports/kenney_particle_pack/smoke_01.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.296875, 0.450521 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.820312, 0, 1, 1, 0.211765, 0, 0.819608 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+direction = Vector3( 0, 0, 1 )
+spread = 30.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 1.0
+scale = 2.0
+scale_random = 0.5
+scale_curve = SubResource( 2 )
+color_ramp = SubResource( 6 )
+
+[sub_resource type="QuadMesh" id=7]
+size = Vector2( 0.02, 0.02 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=9]
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+gravity = Vector3( 0, 0, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
+
+[sub_resource type="QuadMesh" id=14]
+size = Vector2( 2, 2 )
+
+[node name="ParticlesBulletImpact" type="Spatial"]
+script = ExtResource( 1 )
+emitting = true
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="Emitters" type="Spatial" parent="."]
+
+[node name="Sparks" type="Particles" parent="Emitters"]
+material_override = SubResource( 4 )
+emitting = false
+amount = 12
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="Smoke" type="Particles" parent="Emitters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.164808 )
+material_override = SubResource( 8 )
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+process_material = SubResource( 13 )
+draw_pass_1 = SubResource( 14 )
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_DespawnTimer_timeout"]

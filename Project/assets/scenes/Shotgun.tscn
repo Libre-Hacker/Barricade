@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/scripts/HitscanGun.gd" type="Script" id=1]
 [ext_resource path="res://assets/scripts/HitscanBullet.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/scenes/ShotgunBulletCasing.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/meshes/ShotgunCasingMesh.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/meshes/Bennelli_M4Mesh.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/sounds/ammopickup1.wav" type="AudioStream" id=18]
 
 [sub_resource type="Animation" id=14]
 length = 0.001
@@ -107,7 +108,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "equip"
-length = 0.6
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
@@ -115,7 +116,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( -25.622, -4.54379e-06, -36.816 ), Vector3( 0, 0, 0 ) ]
@@ -127,10 +128,24 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 4, -2, 0 ), Vector3( 0.606, -0.486, -2.029 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../AudioManager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ ExtResource( 18 ) ],
+"method": "new_sound"
+} ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -327,7 +342,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "unequip"
-length = 0.4
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:translation")
 tracks/0/interp = 1
@@ -335,7 +350,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0.606, -0.486, -2.029 ), Vector3( 4, -3, 0 ) ]
@@ -347,7 +362,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( -21.4956, 7.25223, -19.1514 ) ]

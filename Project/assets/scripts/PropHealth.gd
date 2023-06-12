@@ -29,7 +29,6 @@ func _on_hitbox_hit_heal(value, healer):
 	
 	.heal(value)
 	emit_signal("give_reward", 1 * value)
-	emit_signal("play_3d_sound", healSound, global_transform.origin)
 
 # Overrides the base function for player specific uses. Handles respawning and audio.
 func destroy():

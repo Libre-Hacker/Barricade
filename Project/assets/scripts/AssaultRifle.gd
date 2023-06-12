@@ -32,9 +32,8 @@ func _process(delta):
 
 # Equips this weapon. If something changes here it probably needs to change in all equippables.
 func equip():
-	if(is_network_master()):
-		show()
-		hud.show()
+	show()
+	hud.show()
 	animationPlayer.play("equip")
 	emit_signal("equipped") # Tells the HUD to display gun controls.
 	yield(animationPlayer, "animation_finished")
