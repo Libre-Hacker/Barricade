@@ -1,0 +1,101 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/scripts/ParticleController.gd" type="Script" id=1]
+[ext_resource path="res://assets/imports/kenney_particle_pack/circle_03.png" type="Texture" id=2]
+[ext_resource path="res://assets/particles/MeltSparks01.tres" type="Texture" id=3]
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+albedo_color = Color( 1, 0.678431, 0, 1 )
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.963542, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.981771, 0.981771, 0.981771, 0.0182292, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
+
+[sub_resource type="QuadMesh" id=14]
+
+[sub_resource type="SpatialMaterial" id=16]
+render_priority = -1
+flags_transparent = true
+flags_unshaded = true
+flags_no_depth_test = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="Gradient" id=21]
+offsets = PoolRealArray( 0, 0.114583, 0.296875, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.9375, 0, 1, 1, 0.681035, 0, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=22]
+gradient = SubResource( 21 )
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.034398, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+gravity = Vector3( 0, 0, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 22 )
+anim_offset_random = 1.0
+
+[sub_resource type="QuadMesh" id=20]
+size = Vector2( 0.8, 0.8 )
+
+[node name="ParticlesMeltImpact" type="Spatial"]
+script = ExtResource( 1 )
+emitting = true
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="Emitters" type="Spatial" parent="."]
+
+[node name="Impact" type="Particles" parent="Emitters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00104185 )
+material_override = SubResource( 8 )
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+process_material = SubResource( 13 )
+draw_pass_1 = SubResource( 14 )
+
+[node name="Burn" type="Particles" parent="Emitters"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00255212 )
+material_override = SubResource( 16 )
+emitting = false
+amount = 1
+lifetime = 0.2
+one_shot = true
+process_material = SubResource( 19 )
+draw_pass_1 = SubResource( 20 )
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_DespawnTimer_timeout"]

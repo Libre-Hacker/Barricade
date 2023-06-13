@@ -8,8 +8,6 @@ const propName = preload("res://assets/resources/prop_name.tres")
 onready var propInfo = get_node("PropInfo")
 
 func _physics_process(_delta):
-	if(is_network_master() == false):
-		return
 	if(GameManager.isPaused):
 		return
 	gather_prop_info()
@@ -20,5 +18,4 @@ func gather_prop_info():
 			propInfo.show()
 			propInfo.update_ui(get_collider().realName, get_collider().get_node("Health").health,get_collider().get_node("Health").maxHealth )
 			return
-	else:
-		propInfo.hide()
+	propInfo.hide()

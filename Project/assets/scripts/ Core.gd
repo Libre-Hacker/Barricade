@@ -6,6 +6,5 @@ extends StaticBody
 export (String) var realName = "Core" # The name of the prop, for UI use.
 
 func select_core():
-	print(self.name, " selected!")
 	get_node("MeshInstance").get_surface_material(0).flags_transparent = false
 	GameManager.coreManager.set_core(self)
